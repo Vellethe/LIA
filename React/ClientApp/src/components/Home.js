@@ -3,12 +3,9 @@ import React, { Component } from 'react';
 //import React from "react";
 import { Header } from "./Header";
 import { Table } from "./Table";
-//import "./HomePageStyle.css";
-import "./Testingstyle.css";
+import "./HomePageStyle.css";
+//import "./Testingstyle.css";
 import "./Table.css";
-
-export class Home extends Component {
-  static displayName = Home.name;
 
 
 
@@ -335,6 +332,3 @@ export const HomePage = () => {
     );
 };
 
-      );
-  }
-}
