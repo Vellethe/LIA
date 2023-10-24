@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api.csproj", "{6F885AD5-1D97-4D47-9944-32B473B8F57E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api.csproj", "{6F885AD5-1D97-4D47-9944-32B473B8F57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{84A30010-DF48-4FA3-ABDB-6E83519FD141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{84A30010-DF48-4FA3-ABDB-6E83519FD141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{496CA523-F4DF-45C5-8533-A52AEB1B8004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{496CA523-F4DF-45C5-8533-A52AEB1B8004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{496CA523-F4DF-45C5-8533-A52AEB1B8004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{496CA523-F4DF-45C5-8533-A52AEB1B8004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{496CA523-F4DF-45C5-8533-A52AEB1B8004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
