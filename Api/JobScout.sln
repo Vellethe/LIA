@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{496CA523-F4DF-45C5-8533-A52AEB1B8004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "React", "..\React\React.csproj", "{939B5F4D-3447-43D5-92A4-E8F405D55626}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{462BC6AF-D294-46A0-A5F1-2CDA83F925FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939B5F4D-3447-43D5-92A4-E8F405D55626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939B5F4D-3447-43D5-92A4-E8F405D55626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939B5F4D-3447-43D5-92A4-E8F405D55626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939B5F4D-3447-43D5-92A4-E8F405D55626}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
