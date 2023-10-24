@@ -29,9 +29,6 @@ export const HomePage = () => {
                                     <div className="div-wrapper">
                                         <div className="text-wrapper-4">Settings</div>
                                     </div>
-                                    <div className="home-button">
-                                        <div className="text-wrapper-5">Home</div>
-                                    </div>
                                 </div>
                             </div>
                             {/*<img className="img" alt="Group" src="group.png" />*/}
@@ -116,7 +113,7 @@ export const HomePage = () => {
                                             <div className="overlap-8">
                                                 <div className="card-container-3" />
                                                 <div className="card-container-3" />
-                                                <div className="text-wrapper-20">Arbetsförmedligen</div>
+                                                <div className="text-wrapper-20">Arbetsformedligen</div>
                                                 <div className="text-wrapper-21">Systemutvecklare/programmerare</div>
                                             </div>
                                             <div className="overlap-group-4">
@@ -166,7 +163,7 @@ export const HomePage = () => {
                                                 <div className="card-container-5" />
                                                 <div className="text-wrapper-33">City Gross</div>
                                             </div>
-                                            <div className="text-wrapper-34">Lars Göransson</div>
+                                            <div className="text-wrapper-34">Lars Goransson</div>
                                             {/*<img className="vector-9" alt="Vector" src="vector-13.svg" />*/}
                                         </div>
                                         {/*<img className="image-5" alt="Image" src="image-6.png" />*/}
@@ -274,7 +271,7 @@ export const HomePage = () => {
                             </div>
                             <div className="text-wrapper-51">Location</div>
                             <div className="text-wrapper-52">Tags</div>
-                            <div className="location">Göteborg</div>
+                            <div className="location">Goteborg</div>
                             <div className="embedded-frontend">
                                 Embedded, Frontend,
                                 <br />
