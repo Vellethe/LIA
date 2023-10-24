@@ -1,5 +1,28 @@
 import React from "react";
 import "./Table.css";
+import { TableEntry } from "./TableEntry"
+
+export const Table2 = () => {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th className="name">Name</th>
+                    <th className="text">Role</th>
+                    <th className="text">Contact name</th>
+                    <th className="text">date</th>
+                    <th className="text">Location</th>
+                    <th className="text">tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <TableEntry/>
+                <TableEntry/>
+                <TableEntry/>
+            </tbody>
+        </table>
+    )
+}
 
 export const Table = () => {
     return (

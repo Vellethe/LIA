@@ -1,7 +1,8 @@
 import { NavBar } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { HomePage } from "./components/Home";
-import { TableEntry } from "./components/lineItem"
+import { TableEntry } from "./components/TableEntry"
+import { Table2 } from "./components/Table"
 
 const AppRoutes = [
   {
@@ -13,8 +14,8 @@ const AppRoutes = [
     element: <NavBar />
   },
   {
-    path: '/fetch-data',
-    element: <FetchData />
+      path: '/fetch-data',
+      element: <Table2 />
   }
 ];
 

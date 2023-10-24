@@ -1,4 +1,11 @@
-﻿.table {
+﻿.name{
+    width:50%;
+}
+
+table .row2:nth-child(odd){
+    background-color:red;
+}
+.table {
     height: 529px;
     width: 1907px;
 }
