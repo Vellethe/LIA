@@ -20,7 +20,7 @@ export const HomePage = () => {
                     </div>
                     <div className="overlap-group">
                         <header className="header">
-                            <img className="image" alt="Image" src="image-28.png" />
+                            {/*<img className="image" alt="Image" src="image-28.png" />*/}
                             <div className="nav-bar">
                                 <div className="about-button">
                                     <div className="text-wrapper-3">Excluded</div>
@@ -34,12 +34,12 @@ export const HomePage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <img className="img" alt="Group" src="group.png" />
+                            {/*<img className="img" alt="Group" src="group.png" />*/}
                             <div className="text-wrapper-6">Logout</div>
                         </header>
                         <div className="group-2">
                             <div className="star">
-                                <img className="vector" alt="Vector" src="vector.svg" />
+                                {/*<img className="vector" alt="Vector" src="vector.svg" />*/}
                                 <div className="text-wrapper-7">only stared</div>
                             </div>
                             <div className="overlap-2">
@@ -49,48 +49,48 @@ export const HomePage = () => {
                             <div className="text-wrapper-9">And/Or tags</div>
                             <div className="group-3">
                                 <div className="c">
-                                    <img className="vector-2" alt="Vector" src="image.svg" />
+                                    {/*<img className="vector-2" alt="Vector" src="image.svg" />*/}
                                     <div className="text-wrapper-10">c#</div>
                                 </div>
                                 <div className="developer">
-                                    <img className="vector-3" alt="Vector" src="vector-2.svg" />
+                                    {/*<img className="vector-3" alt="Vector" src="vector-2.svg" />*/}
                                     <div className="text-wrapper-11">Developer</div>
                                 </div>
                                 <div className="embeded">
-                                    <img className="vector-4" alt="Vector" src="vector-3.svg" />
+                                    {/*<img className="vector-4" alt="Vector" src="vector-3.svg" />*/}
                                     <div className="text-wrapper-12">Embedded</div>
                                 </div>
                                 <div className="overlap-group-3">
                                     <div className="software">
-                                        <img className="vector-4" alt="Vector" src="vector-4.svg" />
+                                        {/*<img className="vector-4" alt="Vector" src="vector-4.svg" />*/}
                                         <div className="text-wrapper-13">Software</div>
                                     </div>
                                     <div className="backend">
-                                        <img className="vector-4" alt="Vector" src="vector-9.svg" />
+                                        {/*<img className="vector-4" alt="Vector" src="vector-9.svg" />*/}
                                         <div className="text-wrapper-13">Backend</div>
                                     </div>
                                 </div>
                                 <div className="python">
-                                    <img className="vector-4" alt="Vector" src="vector-5.svg" />
+                                   {/* <img className="vector-4" alt="Vector" src="vector-5.svg" />*/}
                                     <div className="text-wrapper-14">python</div>
                                 </div>
                                 <div className="overlap-3">
                                     <div className="frontend">
-                                        <img className="vector-5" alt="Vector" src="vector-6.svg" />
+                                        {/*<img className="vector-5" alt="Vector" src="vector-6.svg" />*/}
                                         <div className="text-wrapper-14">Frontend</div>
                                     </div>
                                     <div className="fullstack">
-                                        <img className="vector-6" alt="Vector" src="vector-7.svg" />
+                                        {/*<img className="vector-6" alt="Vector" src="vector-7.svg" />*/}
                                         <div className="text-wrapper-14">Fullstack</div>
                                     </div>
                                 </div>
                                 <div className="tester">
-                                    <img className="vector-4" alt="Vector" src="vector-8.svg" />
+                                    {/*<img className="vector-4" alt="Vector" src="vector-8.svg" />*/}
                                     <div className="text-wrapper-14">Tester</div>
                                 </div>
                             </div>
                         </div>
-                        <img className="polygon" alt="Polygon" src="polygon-21.svg" />
+                        {/*<img className="polygon" alt="Polygon" src="polygon-21.svg" />*/}
                         <div className="search-bar">
                             <div className="overlap-4">
                                 <div className="text-wrapper-15">Text search</div>
@@ -123,9 +123,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-22">2023-10-18</div>
                                                 <div className="text-wrapper-23">Alexander Andersson</div>
                                             </div>
-                                            <img className="vector-7" alt="Vector" src="vector-10.svg" />
+                                            {/*<img className="vector-7" alt="Vector" src="vector-10.svg" />*/}
                                         </div>
-                                        <img className="image-2" alt="Image" src="image-3.png" />
+                                        {/*<img className="image-2" alt="Image" src="image-3.png" />*/}
                                     </div>
                                 </div>
                                 <div className="overlap-group-wrapper">
@@ -137,9 +137,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-25">Power</div>
                                             </div>
                                             <div className="text-wrapper-26">Karl karlson</div>
-                                            <img className="vector-8" alt="Vector" src="vector-11.svg" />
+                                            {/*<img className="vector-8" alt="Vector" src="vector-11.svg" />*/}
                                         </div>
-                                        <img className="image-3" alt="Image" src="image-4.png" />
+                                        {/*<img className="image-3" alt="Image" src="image-4.png" />*/}
                                         <div className="text-wrapper-27">2023-9-18</div>
                                     </div>
                                 </div>
@@ -152,9 +152,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-29">Stadium</div>
                                             </div>
                                             <div className="text-wrapper-30">Henrik henrikson</div>
-                                            <img className="vector-7" alt="Vector" src="vector-12.svg" />
+                                            {/*<img className="vector-7" alt="Vector" src="vector-12.svg" />*/}
                                         </div>
-                                        <img className="image-4" alt="Image" src="image-5.png" />
+                                        {/*<img className="image-4" alt="Image" src="image-5.png" />*/}
                                         <div className="text-wrapper-31">2023-10-11</div>
                                     </div>
                                 </div>
@@ -167,9 +167,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-33">City Gross</div>
                                             </div>
                                             <div className="text-wrapper-34">Lars Göransson</div>
-                                            <img className="vector-9" alt="Vector" src="vector-13.svg" />
+                                            {/*<img className="vector-9" alt="Vector" src="vector-13.svg" />*/}
                                         </div>
-                                        <img className="image-5" alt="Image" src="image-6.png" />
+                                        {/*<img className="image-5" alt="Image" src="image-6.png" />*/}
                                         <div className="text-wrapper-35">2023-10-2</div>
                                     </div>
                                 </div>
@@ -182,8 +182,8 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-29">Ica</div>
                                             </div>
                                             <div className="text-wrapper-37">Abram Hansson</div>
-                                            <img className="image-6" alt="Image" src="image-7.png" />
-                                            <img className="vector-10" alt="Vector" src="vector-14.svg" />
+                                            {/*<img className="image-6" alt="Image" src="image-7.png" />*/}
+                                            {/*<img className="vector-10" alt="Vector" src="vector-14.svg" />*/}
                                         </div>
                                         <div className="text-wrapper-38">2023-10-3</div>
                                     </div>
@@ -197,9 +197,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-25">Power</div>
                                             </div>
                                             <div className="text-wrapper-40">Karl karlson</div>
-                                            <img className="vector-8" alt="Vector" src="vector-15.svg" />
+                                            {/*<img className="vector-8" alt="Vector" src="vector-15.svg" />*/}
                                         </div>
-                                        <img className="image-7" alt="Image" src="image.png" />
+                                        {/*<img className="image-7" alt="Image" src="image.png" />*/}
                                         <div className="text-wrapper-41">2023-9-18</div>
                                     </div>
                                 </div>
@@ -212,8 +212,8 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-29">Ica</div>
                                             </div>
                                             <div className="text-wrapper-43">Abram Hansson</div>
-                                            <img className="image-8" alt="Image" src="image-7-2.png" />
-                                            <img className="vector-10" alt="Vector" src="vector-16.svg" />
+                                            {/*<img className="image-8" alt="Image" src="image-7-2.png" />*/}
+                                            {/*<img className="vector-10" alt="Vector" src="vector-16.svg" />*/}
                                         </div>
                                         <div className="text-wrapper-44">2023-10-3</div>
                                     </div>
@@ -227,9 +227,9 @@ export const HomePage = () => {
                                                 <div className="text-wrapper-25">Power</div>
                                             </div>
                                             <div className="text-wrapper-40">Karl karlson</div>
-                                            <img className="vector-8" alt="Vector" src="vector-17.svg" />
+                                            {/*<img className="vector-8" alt="Vector" src="vector-17.svg" />*/}
                                         </div>
-                                        <img className="image-9" alt="Image" src="image-4-2.png" />
+                                        {/*<img className="image-9" alt="Image" src="image-4-2.png" />*/}
                                         <div className="text-wrapper-45">2023-9-18</div>
                                     </div>
                                 </div>
@@ -238,36 +238,36 @@ export const HomePage = () => {
                                 <div className="overlap-15">
                                     <div className="text-wrapper-46">Role</div>
                                     <div className="polygon-wrapper">
-                                        <img className="polygon-2" alt="Polygon" src="polygon-21-2.svg" />
+                                        {/*<img className="polygon-2" alt="Polygon" src="polygon-21-2.svg" />*/}
                                     </div>
                                 </div>
                             </div>
                             <div className="frame-12">
                                 <div className="group-5">
                                     <div className="text-wrapper-47">Company</div>
-                                    <div className="img-wrapper">
-                                        <img className="polygon-2" alt="Polygon" src="polygon-21-3.svg" />
-                                    </div>
+                                    {/*<div className="img-wrapper">*/}
+                                    {/*    */}{/*<img className="polygon-2" alt="Polygon" src="polygon-21-3.svg" />*/}
+                                    {/*</div>*/}
                                 </div>
                                 <div className="group-6">
                                     <div className="overlap-group-12">
                                         <div className="text-wrapper-48">Date</div>
                                         <div className="group-7">
-                                            <img className="polygon-3" alt="Polygon" src="polygon-21-4.svg" />
+                                            {/*<img className="polygon-3" alt="Polygon" src="polygon-21-4.svg" />*/}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="group-8">
                                     <div className="text-wrapper-49">Contact</div>
                                     <div className="group-9">
-                                        <img className="polygon-2" alt="Polygon" src="polygon-21-5.svg" />
+                                        {/*<img className="polygon-2" alt="Polygon" src="polygon-21-5.svg" />*/}
                                     </div>
                                 </div>
                                 <div className="group-10">
                                     <div className="overlap-16">
                                         <div className="text-wrapper-50">Favorit</div>
                                         <div className="group-11">
-                                            <img className="polygon-2" alt="Polygon" src="polygon-21-6.svg" />
+                                            {/*<img className="polygon-2" alt="Polygon" src="polygon-21-6.svg" />*/}
                                         </div>
                                     </div>
                                 </div>
