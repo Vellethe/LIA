@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual List<JobScoutTagJob> TagJobs { get; set; }
+        public List<JobScoutTagJob> TagJobs { get; set; }
+       // public List<JobScoutJobs> Jobs { get; set; }
     }
 }

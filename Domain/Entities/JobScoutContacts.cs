@@ -12,6 +12,6 @@ namespace Domain
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
-        public virtual JobScoutJobs Job { get; set; }
+        public JobScoutJobs Job { get; set; }
     }
 }

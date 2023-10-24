@@ -18,8 +18,9 @@ namespace Domain
         public string Url { get; set; }
         public string Description { get; set; }
 
-        public virtual JobScoutCompany Company { get; set; }
-        public virtual List<JobScoutTagJob> TagJobs { get; set; }
-        public virtual List<JobScoutContacts> Contacts { get; set; }
+        public JobScoutCompany Company { get; set; }
+        public List<JobScoutTagJob> TagJobs { get; set; }
+        //public List<JobScoutTags> Tags { get; set; }
+        public List<JobScoutContacts> Contacts { get; set; }
     }
 }

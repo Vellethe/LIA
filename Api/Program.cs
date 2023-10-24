@@ -1,3 +1,5 @@
+using Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
@@ -13,6 +15,11 @@ namespace Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<JobScoutContext>(options =>
+            {
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=JobScout;Integrated Security=True;MultipleActiveResultSets=true"); //TODO add string
+            });
 
             var app = builder.Build();
 

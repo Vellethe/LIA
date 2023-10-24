@@ -9,7 +9,9 @@ namespace Domain
     public class JobScoutTagJob
     {
         public int Id { get; set; }
-        public virtual List<JobScoutTags> Tags { get; set; }
-        public virtual List<JobScoutJobs> Jobs { get; set; }
+        public int JobId { get; set; }
+        public int TagId { get; set; }
+        public JobScoutTags Tag { get; set; }
+        public JobScoutJobs Job { get; set; }
     }
 }

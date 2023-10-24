@@ -11,6 +11,6 @@ namespace Domain
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Excluded { get; set; }
-        public virtual List<JobScoutJobs> Jobs { get; set; }
+        public List<JobScoutJobs> Jobs { get; set; }
     }
 }

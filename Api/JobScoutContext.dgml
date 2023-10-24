@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="IModel" Category="Model" Annotations="BaseTypeDiscoveryConvention:DerivedTypes: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.List`1[Microsoft.EntityFrameworkCore.Metadata.IConventionEntityType]] Relational:MaxIdentifierLength: 128 RelationshipDiscoveryConvention:InverseNavigationCandidates: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.SortedSet`1[System.Type]] SqlServer:ValueGenerationStrategy: IdentityColumn" Bounds="0,0,703.175,857.48" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" Label="JobScoutContext" ProductVersion="7.0.12" PropertyAccessMode="PropertyAccessMode.Default" />
+    <Node Id="JobScoutCompany" Category="EntityType" Annotations="Relational:TableName: JobScoutCompanies RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="143.578333333333,639.6,183.54,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="JobScoutCompany" Name="JobScoutCompany" />
+    <Node Id="JobScoutCompany.Excluded" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="163.578333333333,791.52,101.773333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Excluded (bool)" MaxLength="None" Name="Excluded" PropertyAccessMode="PropertyAccessMode.Default" Type="bool" ValueGenerated="None" />
+    <Node Id="JobScoutCompany.Id" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="163.578333333333,679.6,54.55,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Id (int)" MaxLength="None" Name="Id" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="JobScoutCompany.Jobs" Category="Navigation Collection" Bounds="248.128333333333,679.6,58.99,25.96" Dependent="JobScoutJobs" Field="" Inverse="Company" Label="Jobs (*)" Name="Jobs" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="List&lt;JobScoutJobs&gt;" />
+    <Node Id="JobScoutCompany.Name" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="163.578333333333,735.56,92.32,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Name (string)" MaxLength="None" Name="Name" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutContacts" Category="EntityType" Annotations="Relational:TableName: JobScoutContacts RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="93.9333333333334,40,282.83,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="JobScoutContacts" Name="JobScoutContacts" />
+    <Node Id="JobScoutContacts.Email" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="113.933333333333,135.96,88.95,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Email (string)" MaxLength="None" Name="Email" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutContacts.Id" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="113.933333333333,80,54.55,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Id (int)" MaxLength="None" Name="Id" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="JobScoutContacts.Job" Category="Navigation Property" Bounds="198.483333333333,80,55.3633333333333,25.96" Dependent="" Field="" Inverse="Contacts" Label="Job (1)" Name="Job" Principal="JobScoutJobs" PropertyAccessMode="PropertyAccessMode.Default" Type="JobScoutJobs" />
+    <Node Id="JobScoutContacts.JobId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="283.846666666667,80,72.9166666666667,25.96" Field="nofield" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="True" IsUnicode="True" Label="JobId (int)" MaxLength="None" Name="JobId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="JobScoutContacts.Name" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="232.883333333333,135.96,92.32,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Name (string)" MaxLength="None" Name="Name" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutContacts.PhoneNumber" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="113.933333333333,191.92,137.836666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="PhoneNumber (string)" MaxLength="None" Name="PhoneNumber" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs" Category="EntityType" Annotations="Relational:TableName: JobScoutJobs RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="20,283.84,430.696666666667,309.8" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="JobScoutJobs" Name="JobScoutJobs" />
+    <Node Id="JobScoutJobs.Company" Category="Navigation Property" Bounds="153.663333333333,379.8,87.55,25.96" Dependent="" Field="" Inverse="Jobs" Label="Company (1)" Name="Company" Principal="JobScoutCompany" PropertyAccessMode="PropertyAccessMode.Default" Type="JobScoutCompany" />
+    <Node Id="JobScoutJobs.CompanyId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="174.716666666667,435.76,105.103333333333,25.96" Field="nofield" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="True" IsUnicode="True" Label="CompanyId (int)" MaxLength="None" Name="CompanyId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.Contacts" Category="Navigation Collection" Bounds="337.6,323.84,81.6566666666666,25.96" Dependent="JobScoutContacts" Field="" Inverse="Job" Label="Contacts (*)" Name="Contacts" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="List&lt;JobScoutContacts&gt;" />
+    <Node Id="JobScoutJobs.Description" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="309.82,435.76,120.876666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Description (string)" MaxLength="None" Name="Description" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.Favorite" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="271.213333333333,379.8,96.3033333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Favorite (bool)" MaxLength="None" Name="Favorite" PropertyAccessMode="PropertyAccessMode.Default" Type="bool" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.Id" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,323.84,54.55,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Id (int)" MaxLength="None" Name="Id" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="JobScoutJobs.Municipality" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,491.72,125.183333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Municipality (string)" MaxLength="None" Name="Municipality" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.PostDate" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="195.183333333333,491.72,128.526666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="PostDate (DateTime)" MaxLength="None" Name="PostDate" PropertyAccessMode="PropertyAccessMode.Default" Type="DateTime" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.Provider" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,435.76,104.716666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Provider (string)" MaxLength="None" Name="Provider" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.ProviderUniqueId" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,547.68,153.05,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="ProviderUniqueId (string)" MaxLength="None" Name="ProviderUniqueId" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.Role" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,379.8,83.6633333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Role (string)" MaxLength="None" Name="Role" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutJobs.TagJobs" Category="Navigation Collection" Bounds="230.496666666667,323.84,77.1033333333334,25.96" Dependent="JobScoutTagJob" Field="" Inverse="Job" Label="TagJobs (*)" Name="TagJobs" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="List&lt;JobScoutTagJob&gt;" />
+    <Node Id="JobScoutJobs.Url" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="124.55,323.84,75.9466666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Url (string)" MaxLength="None" Name="Url" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutTagJob" Category="EntityType" Annotations="Relational:TableName: JobScoutTagJobs RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="407.335,40,198.026666666667,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="JobScoutTagJob" Name="JobScoutTagJob" />
+    <Node Id="JobScoutTagJob.Id" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="427.335,80,54.55,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Id (int)" MaxLength="None" Name="Id" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="JobScoutTagJob.Job" Category="Navigation Property" Bounds="427.335,135.96,55.3633333333333,25.96" Dependent="" Field="" Inverse="TagJobs" Label="Job (1)" Name="Job" Principal="JobScoutJobs" PropertyAccessMode="PropertyAccessMode.Default" Type="JobScoutJobs" />
+    <Node Id="JobScoutTagJob.JobId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="427.335,191.92,72.9166666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="JobId (int)" MaxLength="None" Name="JobId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="JobScoutTagJob.Tag" Category="Navigation Property" Bounds="511.885,80,55.1099999999999,25.96" Dependent="" Field="" Inverse="TagJobs" Label="Tag (1)" Name="Tag" Principal="JobScoutTags" PropertyAccessMode="PropertyAccessMode.Default" Type="JobScoutTags" />
+    <Node Id="JobScoutTagJob.TagId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="512.698333333333,135.96,72.6633333333334,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="TagId (int)" MaxLength="None" Name="TagId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="JobScoutTags" Category="EntityType" Annotations="" BaseClass="" Bounds="481.521666666667,367.78,201.653333333333,141.92" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="JobScoutTags" Name="JobScoutTags" />
+    <Node Id="JobScoutTags.Id" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="501.521666666667,407.78,54.5500000000001,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Id (int)" MaxLength="None" Name="Id" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="JobScoutTags.Name" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="501.521666666667,463.74,92.3200000000001,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Name (string)" MaxLength="None" Name="Name" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="JobScoutTags.TagJobs" Category="Navigation Collection" Bounds="586.071666666667,407.78,77.1033333333334,25.96" Dependent="JobScoutTagJob" Field="" Inverse="Tag" Label="TagJobs (*)" Name="TagJobs" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="List&lt;JobScoutTagJob&gt;" />
+  </Nodes>
+  <Links>
+    <Link Source="IModel" Target="JobScoutCompany" Category="Contains" />
+    <Link Source="IModel" Target="JobScoutContacts" Category="Contains" />
+    <Link Source="IModel" Target="JobScoutJobs" Category="Contains" />
+    <Link Source="IModel" Target="JobScoutTagJob" Category="Contains" />
+    <Link Source="IModel" Target="JobScoutTags" Category="Contains" />
+    <Link Source="JobScoutCompany" Target="JobScoutCompany.Excluded" Category="Contains" />
+    <Link Source="JobScoutCompany" Target="JobScoutCompany.Id" Category="Contains" />
+    <Link Source="JobScoutCompany" Target="JobScoutCompany.Jobs" Category="Contains" />
+    <Link Source="JobScoutCompany" Target="JobScoutCompany.Name" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.Email" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.Id" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.Job" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.JobId" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.Name" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutContacts.PhoneNumber" Category="Contains" />
+    <Link Source="JobScoutContacts" Target="JobScoutJobs" Category="Foreign Key" Annotations="" Bounds="235.348327636719,237.880004882813,0,36.9599914550781" From="JobScoutContacts.JobId" IsUnique="False" Label="1:*" LabelBounds="221.275,252.88,14.0733333333334,15.96" Name="JobScoutContacts -&gt; JobScoutJobs" To="JobScoutJobs.Id" />
+    <Link Source="JobScoutJobs" Target="JobScoutCompany" Category="Foreign Key" Annotations="" Bounds="235.348327636719,593.640014648438,0,36.9599609375" From="JobScoutJobs.CompanyId" IsUnique="False" Label="1:*" LabelBounds="221.275,608.64,14.0733333333334,15.96" Name="JobScoutJobs -&gt; JobScoutCompany" To="JobScoutCompany.Id" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Company" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.CompanyId" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Contacts" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Description" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Favorite" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Id" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Municipality" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.PostDate" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Provider" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.ProviderUniqueId" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Role" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.TagJobs" Category="Contains" />
+    <Link Source="JobScoutJobs" Target="JobScoutJobs.Url" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutJobs" Category="Foreign Key" Annotations="" Bounds="381.403198242188,237.880004882813,35.5097045898438,39.2834167480469" From="JobScoutTagJob.JobId" IsUnique="False" Label="1:*" LabelBounds="396.140461418724,252.88,14.0733333333334,15.96" Name="JobScoutTagJob -&gt; JobScoutJobs" To="JobScoutJobs.Id" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTagJob.Id" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTagJob.Job" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTagJob.JobId" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTagJob.Tag" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTagJob.TagId" Category="Contains" />
+    <Link Source="JobScoutTagJob" Target="JobScoutTags" Category="Foreign Key" Annotations="" Bounds="531.429870605469,237.880004882813,30.7183837890625,121.175964355469" From="JobScoutTagJob.TagId" IsUnique="False" Label="1:*" LabelBounds="537.255338003113,252.88,14.0733333333334,15.96" Name="JobScoutTagJob -&gt; JobScoutTags" To="JobScoutTags.Id" />
+    <Link Source="JobScoutTags" Target="JobScoutTags.Id" Category="Contains" />
+    <Link Source="JobScoutTags" Target="JobScoutTags.Name" Category="Contains" />
+    <Link Source="JobScoutTags" Target="JobScoutTags.TagJobs" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="EntityType" />
+    <Category Id="Foreign Key" />
+    <Category Id="Model" />
+    <Category Id="Navigation Collection" />
+    <Category Id="Navigation Property" />
+    <Category Id="Property Foreign" />
+    <Category Id="Property Optional" />
+    <Category Id="Property Primary" />
+    <Category Id="Property Required" />
+  </Categories>
+  <Properties>
+    <Property Id="AfterSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="Annotations" Description="Annotations" Group="Model Properties" DataType="System.String" />
+    <Property Id="BaseClass" Description="Base class" Group="Model Properties" DataType="System.String" />
+    <Property Id="BeforeSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="ChangeTrackingStrategy" Description="Change tracking strategy" Group="Model Properties" DataType="System.String" />
+    <Property Id="Dependent" Description="Dependent entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="Field" Description="Backing field" Group="Model Properties" DataType="System.String" />
+    <Property Id="From" Description="Target property" Group="Model Properties" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="Inverse" Description="Inverse entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="IsAbstract" Label="IsAbstract" Description="IsAbstract" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="IsAlternateKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsConcurrencyToken" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsForeignKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsIndexed" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsPrimaryKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsRequired" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsShadow" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsUnicode" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsUnique" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="MaxLength" DataType="System.String" />
+    <Property Id="Name" Group="Model Properties" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="Principal" Description="Principal entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="ProductVersion" Label="Product Version" Description="EF Core product version" Group="Model Properties" DataType="System.String" />
+    <Property Id="PropertyAccessMode" Group="Property Flags" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="To" Description="Source property" Group="Model Properties" DataType="System.String" />
+    <Property Id="Type" Description="CLR data type" Group="Model Properties" DataType="System.String" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueGenerated" Group="Property Flags" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="EntityType" ValueLabel="True">
+      <Condition Expression="HasCategory('EntityType')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Required" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Required')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Property" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Property')" />
+      <Setter Property="Background" Value="#FF990000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Collection" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Collection')" />
+      <Setter Property="Background" Value="#FFFF3232" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Model" ValueLabel="True">
+      <Condition Expression="HasCategory('Model')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+</DirectedGraph>
