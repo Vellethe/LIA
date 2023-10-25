@@ -12,6 +12,10 @@ thead {
     width: 100%;
 }
 
+th{
+    color:white;
+}
+
 thead tr th:first-child {
     border-top-left-radius: 10px;
 }
