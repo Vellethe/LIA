@@ -8,8 +8,8 @@ export class Table2 extends Component{
         super(props);
         this.state = {
             data: [
-                { name: "batman", role: "Hero", contactName: "Bruce Wane", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true },
-                { name: "joker", role: "Vilan", contactName: " The rideler", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true }
+                { id:1,name: "batman", role: "Hero", contactName: "Bruce Wane", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true },
+                { id:2,name: "joker", role: "Vilan", contactName: " The rideler", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true }
             ]
         };
     }
@@ -30,7 +30,7 @@ export class Table2 extends Component{
                 </thead>
                 <tbody>
                     {data.map(job =>
-                        <TableEntry job={job} />
+                        <TableEntry key={job.id } job={job} />
                     )}
                 </tbody>
             </table>
