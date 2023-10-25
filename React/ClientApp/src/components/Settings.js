@@ -47,6 +47,7 @@ export const SettingsPage = () => {
     }
     return (
         <div>
+        <div id="SettingsSearchForm">
             <form onSubmit={handleAddFormSubmit}>
                 <input
                     id="SettingsAddTags"
@@ -64,7 +65,8 @@ export const SettingsPage = () => {
                     type="text"
                     name="searchTags"
                     placeholder="Free search"/>
-            </form>
+                </form>
+        </div>
         <table>
             <thead>
                 <tr>
