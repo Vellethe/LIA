@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import { NavBar } from "./Navbar";
 import "./SettingsPage.css";
 import data from "./testingtags.json";
 
