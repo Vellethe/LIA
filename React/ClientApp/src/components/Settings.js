@@ -1,20 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
 import { NavBar } from "./Navbar";
 import "./SettingsPage.css";
+import data from "./testingtags.json";
 
 export const SettingsPage2 = () => {
+
+    const [tags, setTags] = useState(data);
+    const [addFormData, setAddFormData] = useState({
+        tags: ""
+    })
+        
+    
+
+    const handleAddFormChange = (event) => {
+        event.preventDefault();
+
+        const fieldTags = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = { ...addFormData };
+        newFormData[fieldTags] = fieldValue;
+
+        setAddFormData(newFormData);
+    };
+
+    const handleAddFormSubmit = (event) => {
+        event.preventDefault();
+
+        const newTag = {
+            id: nanoid(),
+            tags: addFormData.tags
+        }
+
+        const newTags = [...tags, newTag];
+        setTags(newTags);
+    }
     return (
         <div>
-        <div className="settings-text-wrapper">
-              <div>Free text search</div>
-              </div>
+            <h2>Add tags</h2>
+            <form onSubmit={handleAddFormSubmit}>
+                <input
+                    type="text"
+                    name="tags"
+                    placeholder="Enter a new tag"
+                    onChange={handleAddFormChange}
+                />
+            <button type="submit">Add</button>    
+            </form>
         <table>
             <thead>
                 <tr>
-                    <th classname="text">Searchword</th>
                     <th className="text">Tags</th>
                 </tr>
                 </thead>
+                <tbody>
+                    {tags.map((tag, index) => (
+                        <tr key={index}>
+                            <td>{tag.tags}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         </div>
     )
