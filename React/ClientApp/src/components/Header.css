@@ -1,0 +1,19 @@
+﻿.grid{
+    display:grid;
+    grid-template: "auto auto auto";
+    justify-content: space-between;
+    background-color:white;
+}
+
+.links{
+    margin:0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.link{
+    padding: 5px;
+    margin:auto;
+}
+

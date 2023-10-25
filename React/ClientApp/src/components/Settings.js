@@ -1,19 +1,18 @@
 import React from "react";
-import { NavBar } from "./Navbar";
 import "./SettingsPage.css";
 
 export const SettingsPage2 = () => {
     return (
         <div>
-        <div className="settings-text-wrapper">
-              <div>Free text search</div>
-              </div>
-        <table>
-            <thead>
-                <tr>
-                    <th classname="text">Searchword</th>
-                    <th className="text">Tags</th>
-                </tr>
+            <div className="settings-text-wrapper">
+                <div>Free text search</div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th classname="text">Searchword</th>
+                        <th className="text">Tags</th>
+                    </tr>
                 </thead>
             </table>
         </div>
