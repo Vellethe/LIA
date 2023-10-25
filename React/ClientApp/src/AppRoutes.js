@@ -1,6 +1,7 @@
 import { NavBar } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
-import { HomePage } from "./components/Home";
+//import { HomePage } from "./components/Home";
+import { HomePage2 } from "./components/Home";
 import { TableEntry } from "./components/TableEntry"
 import { Table2 } from "./components/Table"
 import { SettingsPage } from "./components/Settings";
@@ -9,7 +10,7 @@ import { SettingsPage } from "./components/Settings";
 const AppRoutes = [
   {
         index: true,
-        element: <HomePage />
+        element: <HomePage2 />
   },
   {
     path: '/settings',

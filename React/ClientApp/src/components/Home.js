@@ -7,7 +7,23 @@ import "./HomePageStyle.css";
 //import "./Testingstyle.css";
 import "./Table.css";
 
-
+export const HomePage2 = () => {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Tags</th>
+                    <th>Favorite</th>
+                </tr>
+            </thead>
+        </table>
+    );
+};
 
 export const HomePage = () => {
     return (
@@ -19,9 +35,6 @@ export const HomePage = () => {
                         <div className="text-wrapper-2">1000</div>
                     </div>
                     <div className="overlap-group">
-                        <header className="header">
-                            <div className="text-wrapper-6">Logout</div>
-                        </header>
                         <div className="group-2">
                             <div className="star">
                                 {/*<img className="vector" alt="Vector" src="vector.svg" />*/}
