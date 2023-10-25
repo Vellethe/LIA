@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import "./SettingsPage.css";
 import data from "./testingtags.json";
 
-export const SettingsPage2 = () => {
+export const SettingsPage = () => {
 
     const [tags, setTags] = useState(data);
     const [addFormData, setAddFormData] = useState({
@@ -88,7 +88,7 @@ export const SettingsPage2 = () => {
     )
 }
 
-export const SettingsPage = () => {
+export const SettingsPage2 = () => {
     return (
         <div className="settings-page">
             <div className="div-2">

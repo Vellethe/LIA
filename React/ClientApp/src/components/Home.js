@@ -20,18 +20,6 @@ export const HomePage = () => {
                     </div>
                     <div className="overlap-group">
                         <header className="header">
-                            {/*<img className="image" alt="Image" src="image-28.png" />*/}
-                            <div className="nav-bar">
-                                <div className="about-button">
-                                    <div className="text-wrapper-3">Excluded</div>
-                                </div>
-                                <div className="overlap-group-2">
-                                    <div className="div-wrapper">
-                                        <div className="text-wrapper-4">Settings</div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/*<img className="img" alt="Group" src="group.png" />*/}
                             <div className="text-wrapper-6">Logout</div>
                         </header>
                         <div className="group-2">
