@@ -3,7 +3,9 @@ import { FetchData } from "./components/FetchData";
 import { HomePage } from "./components/Home";
 import { TableEntry } from "./components/TableEntry"
 import { Table2 } from "./components/Table"
-import { SettingsPage } from "./components/Settings";
+//import { SettingsPage } from "./components/Settings";
+import { SettingsPage2 } from "./components/Settings";
+//import { } from "./components/";
 
 const AppRoutes = [
   {
@@ -11,8 +13,8 @@ const AppRoutes = [
         element: <HomePage />
   },
   {
-    path: '/a',
-    element: <SettingsPage />
+    path: '/counter',
+    element: <SettingsPage2 />
   },
   {
       path: '/fetch-data',
