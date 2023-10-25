@@ -2,6 +2,7 @@
     display:grid;
     grid-template: "a b c"/ 1fr auto 1fr;
     justify-content: space-between;
+    align-items: center;
     background-color:white;
 }
 
@@ -15,5 +16,19 @@
 .link{
     padding: 5px;
     margin:auto;
+    font-size:36px;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.logout{
+    display:flex;
+    flex-direction:row;
+    height: 35%;
+    justify-content: flex-end;
+    padding-right:20px;
 }
 
