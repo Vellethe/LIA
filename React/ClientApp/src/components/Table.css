@@ -1,13 +1,36 @@
-﻿.name{
-    width:50%;
+﻿html, #root{
+    background-color:#F5F5F5;
+}
+.name {
+    width: 50%;
 }
 
-table .row2:nth-child(odd){
-    background-color:red;
+thead {
+    background-color: #2980b9;
+    box-shadow: 0px 3.01px 12.04px #00000024;
+    height: 76px;
+    width: 100%;
 }
-.table {
-    height: 529px;
-    width: 1907px;
+
+thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table .row2:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+table .row2:nth-child(odd) {
+    background-color: white;
+}
+
+table {
+    height: 2vh;
+    width: 100%;
 }
 
     .table .overlap {

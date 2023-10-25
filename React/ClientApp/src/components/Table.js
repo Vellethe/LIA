@@ -10,9 +10,10 @@ export const Table2 = () => {
                     <th className="name">Name</th>
                     <th className="text">Role</th>
                     <th className="text">Contact name</th>
-                    <th className="text">date</th>
+                    <th className="text">Date</th>
                     <th className="text">Location</th>
-                    <th className="text">tags</th>
+                    <th className="text">Tags</th>
+                    <th className="text">Favorites</th>
                 </tr>
             </thead>
             <tbody>
