@@ -11,8 +11,6 @@ export const SettingsPage2 = () => {
         tags: ""
     })
         
-    
-
     const handleAddFormChange = (event) => {
         event.preventDefault();
 
@@ -36,6 +34,16 @@ export const SettingsPage2 = () => {
         const newTags = [...tags, newTag];
         setTags(newTags);
     }
+
+    const handleDeleteClick = (tagsId) => {
+        const newTags = [...tags];
+
+        const index = tags.findIndex((tag) => tag.id === tagsId)
+
+        newTags.splice(index, 1);
+
+        setTags(newTags);
+    }
     return (
         <div>
             <h2>Add tags</h2>
@@ -51,13 +59,18 @@ export const SettingsPage2 = () => {
         <table>
             <thead>
                 <tr>
-                    <th className="text">Tags</th>
+                        <th className="text">Tags</th>
+                        <th className="deleteButton"></th>
                 </tr>
                 </thead>
                 <tbody>
                     {tags.map((tag, index) => (
                         <tr key={index}>
                             <td>{tag.tags}</td>
+                            <td>
+                                <button type="button"
+                                    onClick={()=> handleDeleteClick(tag.id)}>Delete</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
