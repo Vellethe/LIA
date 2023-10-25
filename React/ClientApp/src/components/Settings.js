@@ -33,6 +33,8 @@ export const SettingsPage2 = () => {
 
         const newTags = [...tags, newTag];
         setTags(newTags);
+
+        setAddFormData({ tags: "" });
     }
 
     const handleDeleteClick = (tagsId) => {
@@ -52,6 +54,7 @@ export const SettingsPage2 = () => {
                     type="text"
                     name="tags"
                     placeholder="Enter a new tag"
+                    value={addFormData.tags}
                     onChange={handleAddFormChange}
                 />
             <button type="submit">Add</button>    
@@ -59,8 +62,8 @@ export const SettingsPage2 = () => {
         <table>
             <thead>
                 <tr>
-                        <th className="text">Tags</th>
-                        <th className="deleteButton"></th>
+                     <th className="text">Tags</th>
+                     <th className="deleteButton"></th>
                 </tr>
                 </thead>
                 <tbody>
