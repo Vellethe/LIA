@@ -25,7 +25,7 @@ export const HomePage2 = () => {
     );
 };
 
-export const HomePage = () => {
+export const HomePage3 = () => {
     return (
         <div className="home-page">
             <div className="div">

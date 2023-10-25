@@ -10,7 +10,7 @@ import { SettingsPage } from "./components/Settings";
 const AppRoutes = [
   {
         index: true,
-        element: <HomePage2 />
+        element: <Table2 />
   },
   {
     path: '/settings',
@@ -18,7 +18,7 @@ const AppRoutes = [
   },
   {
       path: '/excluded',
-      element: <Table2 />
+      element: <HomePage2 />
   }
 ];
 
