@@ -2,6 +2,24 @@ import React from "react";
 import { NavBar } from "./Navbar";
 import "./SettingsPage.css";
 
+export const SettingsPage2 = () => {
+    return (
+        <div>
+        <div className="settings-text-wrapper">
+              <div>Free text search</div>
+              </div>
+        <table>
+            <thead>
+                <tr>
+                    <th classname="text">Searchword</th>
+                    <th className="text">Tags</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    )
+}
+
 export const SettingsPage = () => {
     return (
         <div className="settings-page">
@@ -84,14 +102,14 @@ export const SettingsPage = () => {
                         </div>
                         <div className="group-wrapper">
                             <div className="group-2">
-                                <div className="text-wrapper-9">Sökord</div>
+                                <div className="text-wrapper-9">Free text search</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="group-3">
                     <div className="overlap-8">
-                        <div className="text-wrapper-10">nytt sökord</div>
+                        <div className="text-wrapper-10">New search word</div>
                     </div>
                 </div>
                 <button className="button-primary">
