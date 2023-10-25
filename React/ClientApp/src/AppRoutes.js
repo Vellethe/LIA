@@ -3,6 +3,7 @@ import { FetchData } from "./components/FetchData";
 import { HomePage } from "./components/Home";
 import { TableEntry } from "./components/TableEntry"
 import { Table2 } from "./components/Table"
+import { SettingsPage } from "./components/Settings";
 
 const AppRoutes = [
   {
@@ -10,8 +11,8 @@ const AppRoutes = [
         element: <HomePage />
   },
   {
-    path: '/counter',
-    element: <NavBar />
+    path: '/a',
+    element: <SettingsPage />
   },
   {
       path: '/fetch-data',
