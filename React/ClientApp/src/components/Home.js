@@ -1,11 +1,15 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { Component } from 'react';
 //import React from "react";
-import { Header } from "./Header";
-import { Table } from "./Table";
 import "./HomePageStyle.css";
-//import "./Testingstyle.css";
-import "./Table.css";
+import { Table } from './Table';
+
+export const HomePage = () => {
+    return (<div>
+        <Table />
+    </div>)
+}
+
 
 export const HomePage2 = () => {
     return (
@@ -69,7 +73,7 @@ export const HomePage3 = () => {
                                     </div>
                                 </div>
                                 <div className="python">
-                                   {/* <img className="vector-4" alt="Vector" src="vector-5.svg" />*/}
+                                    {/* <img className="vector-4" alt="Vector" src="vector-5.svg" />*/}
                                     <div className="text-wrapper-14">python</div>
                                 </div>
                                 <div className="overlap-3">
