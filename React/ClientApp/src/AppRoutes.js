@@ -13,11 +13,11 @@ const AppRoutes = [
         element: <HomePage />
   },
   {
-    path: '/counter',
+    path: '/settings',
     element: <SettingsPage2 />
   },
   {
-      path: '/fetch-data',
+      path: '/excluded',
       element: <Table2 />
   }
 ];
