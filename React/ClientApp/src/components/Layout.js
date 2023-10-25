@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import { NavMenu } from './NavMenu';
 import { Header } from "./Header"
+import "./../custom.css"
 export class Layout extends Component {
   static displayName = Layout.name;
 
   render() {
     return (
         <div>
-
             <Header />
-        <Container tag="main">
+        <main class="container">
           {this.props.children}
-        </Container>
+        </main>
       </div>
     );
   }
