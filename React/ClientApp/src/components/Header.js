@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import "./Header.css"
-//import "./style.css";
+import logo from "./../images/consat.png"
 
 export class Header extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export class Header extends Component {
         return (
             <header>
                 <div className="grid">
-                    <img className="brand" alt="ConsatImg" src="image-28.png" />
+                    <img className="brand" alt="ConsatImg" src={logo} />
                     <ul className="links">
                         <li className="link"><Link to="/">Home</Link> </li>
                         <li className="link"><Link to="/settings">Settings</Link></li>
