@@ -17,6 +17,12 @@ function Dropdown() {
                     <li>Developer</li>
                     <li>Software</li>
                     <li>Fullstack</li>
+                    <li>Embedded</li>
+                    <li>Backend</li>
+                    <li>Frontend</li>
+                    <li>Tester</li>
+                    <li>Python</li>
+                    <li>C#</li>
                 </ul>
             )}
         </div>
