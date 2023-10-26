@@ -8,7 +8,7 @@ export const ExcludedPage = () => {
     return (
         <div>
             <div>
-                    <h1>React Dropdown Menu Example</h1>
+                    <h1>React Dropdown Menu</h1>
                     <Dropdown/>
             </div>
         <form>
