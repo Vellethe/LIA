@@ -5,8 +5,12 @@
     width: 50%;
 }
 
-.favorites{
-    
+.ascending{
+    background-color:red;
+}
+
+.descending{
+    background-color:green;
 }
 
 thead {
