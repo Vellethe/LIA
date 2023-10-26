@@ -1,1 +1,14 @@
-﻿
+﻿#SettingsFreeSearch {
+    margin-right: 1000px;
+    height: 40px;
+    width: 350px;
+}
+#SettingsAddTags
+{
+    height:40px;
+    width: 350px;
+}
+#SettingsSearchForm {
+    display: flex;
+    justify-content: space-between;
+}

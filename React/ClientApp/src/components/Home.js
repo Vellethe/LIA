@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import React from "react";
 import "./HomePageStyle.css";
 import { Table } from './Table';
+import data from "./testingtags.json";
 
 export const HomePage = () => {
     return (<div>
@@ -18,13 +19,13 @@ export const HomePage2 = () => {
                 <tr>
                     <th>Company</th>
                     <th>Role</th>
-                    <th>Contact</th>
-                    <th>Date</th>
-                    <th>Location</th>
                     <th>Tags</th>
                     <th>Favorite</th>
                 </tr>
             </thead>
+            <tbody>
+            {/*map something here*/}
+            </tbody>
         </table>
     );
 };
