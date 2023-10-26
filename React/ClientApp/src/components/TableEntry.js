@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import "./TableEntry.css"
 //import "./style.css";
 
 export function TableEntry({ job }) {
@@ -24,7 +25,7 @@ export function TableEntry({ job }) {
             <td className="text">{job.date}</td>
             <td className="text">{job.location}</td>
             <td className="text">{parseTags(job.tags)}</td>
-            <td className="text"><input type="checkbox"></input></td>
+            <td className="favorite"><input type="checkbox"></input></td>
         </tr>
     )
 }
