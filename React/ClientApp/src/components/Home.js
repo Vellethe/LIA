@@ -14,19 +14,31 @@ export const HomePage = () => {
 
 export const HomePage2 = () => {
     return (
+        <div>
+        <form>
+                <input
+                    id="SettingsFreeSearch"
+                    type="text"
+                    name="searchTags"
+                    placeholder="Free search"/>
+                </form>
         <table>
             <thead>
                 <tr>
                     <th>Company</th>
                     <th>Role</th>
                     <th>Tags</th>
-                    <th>Favorite</th>
+                    <th>Excluded</th>
                 </tr>
             </thead>
             <tbody>
-            {/*map something here*/}
+                <td>Power</td>
+                <td>Software Engineer</td>
+                <td>Developer</td>
+                <td><input type="checkbox"></input></td>
             </tbody>
-        </table>
+            </table>
+        </div>
     );
 };
 
