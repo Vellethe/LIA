@@ -72,7 +72,7 @@ export const SettingsPage = () => {
             <table>
                 <thead>
                     <tr>
-                        <th className="text">Tags</th>
+                        <th className="text">{/*Sökord*/}Tags</th>
                         <th className="deleteButton"></th>
                     </tr>
                 </thead>
