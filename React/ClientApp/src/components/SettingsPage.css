@@ -1,5 +1,5 @@
 ﻿#SettingsFreeSearch {
-    margin-right: 800px;
+    margin-right: 400px;
     height: 40px;
     width: 350px;
 }
@@ -20,14 +20,15 @@
 }
 #SettingsDeleteButton
 {
-    margin-inline: 1000px;
+    margin-right: 50px;
 }
 #AddTagAndButton
 {
-    margin-inline: 200px;
+    margin-inline: 400px;
 }
-table tbody tr
-{
-    margin: 50px;
-    font-size: 20px;
+table {
+    text-align: center;
+}
+td {
+    vertical-align: middle;
 }
