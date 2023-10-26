@@ -25,7 +25,7 @@ export const Table = () => {
             <button onClick={() => sortDate(true)}>flase</button>
             <thead>
                 <tr>
-                    <th className="name">Name</th>
+                    <th className="name">Company</th>
                     <th className="text">Role</th>
                     <th className="text">Contact name</th>
                     <th className="text">Date</th>

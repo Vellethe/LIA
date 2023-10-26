@@ -2,7 +2,20 @@ import PropTypes from "prop-types";
 import React from "react";
 //import "./style.css";
 
-export function TableEntry({job}){
+export function TableEntry({ job }) {
+
+    const parseTags = (input) => {
+        var output = "";
+        for (let i = 0; i < input.length; i++) {
+            output += input[i];
+            if (i < input.length-1) {
+                output += ", "
+            }
+        }
+        return output;
+    }
+
+
     return (
         <tr className="row2">
             <td className="text">{ job.name}</td>
@@ -10,7 +23,7 @@ export function TableEntry({job}){
             <td className="text">{job.contactName}</td>
             <td className="text">{job.date}</td>
             <td className="text">{job.location}</td>
-            <td className="text">{job.tags}</td>
+            <td className="text">{parseTags(job.tags)}</td>
             <td className="text"><input type="checkbox"></input></td>
         </tr>
     )
