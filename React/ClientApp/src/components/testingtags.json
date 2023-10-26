@@ -10,5 +10,25 @@
   {
     "id": 3,
     "tags": "Developer"
+  },
+  {
+    "id": 4,
+    "tags": "Embedded"
+  },
+  {
+    "id": 5,
+    "tags": "Backend"
+  },
+  {
+    "id": 6,
+    "tags": "Frontend"
+  },
+  {
+    "id": 7,
+    "tags": "Tester"
+  },
+  {
+    "id": 8,
+    "tags": "Fullstack"
   }
 ]

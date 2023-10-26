@@ -47,7 +47,8 @@ export const SettingsPage = () => {
     }
     return (
         <div>
-        <div id="SettingsSearchForm">
+            <div id="SettingsSearchForm">
+                <div id="AddTagAndButton">
             <form onSubmit={handleAddFormSubmit}>
                 <input
                     id="SettingsAddTags"
@@ -58,7 +59,8 @@ export const SettingsPage = () => {
                     onChange={handleAddFormChange}
                 />
             <button id="AddSettings" type="submit">Add</button>    
-            </form>
+                    </form>
+                </div>
             <form>
                 <input
                     id="SettingsFreeSearch"
@@ -79,7 +81,7 @@ export const SettingsPage = () => {
                         <tr key={index}>
                             <td>{tag.tags}</td>
                             <td>
-                                <button type="button"
+                                <button type="button" id="SettingsDeleteButton"
                                     onClick={()=> handleDeleteClick(tag.id)}>Delete</button>
                             </td>
                         </tr>
