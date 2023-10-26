@@ -17,12 +17,11 @@ export const Table = () => {
             return new Date(b.date) - new Date(a.date);
         });
         setData([...newData]);
-        console.log(newData);
     }
     return (<div>
 
+        <button onClick={() => sortDate(true)}>flase</button>
         <table>
-            <button onClick={() => sortDate(true)}>flase</button>
             <thead>
                 <tr>
                     <th className="name">Company</th>
