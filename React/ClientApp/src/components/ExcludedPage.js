@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
-import React, { Component } from 'react';
+import React from 'react';
 //import React from "react";
 import "./HomePageStyle.css";
 
