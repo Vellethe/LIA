@@ -57,7 +57,7 @@ export const SettingsPage = () => {
                     value={addFormData.tags}
                     onChange={handleAddFormChange}
                 />
-            <button type="submit">Add</button>    
+            <button id="AddSettings" type="submit">Add</button>    
             </form>
             <form>
                 <input
