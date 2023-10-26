@@ -1,10 +1,7 @@
-import { NavBar } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
 //import { HomePage } from "./components/Home";
 import { HomePage2, HomePage } from "./components/Home";
-import { TableEntry } from "./components/TableEntry"
-import { Table } from "./components/Table"
 import { SettingsPage } from "./components/Settings";
+import { ExcludedPage } from "./components/ExcludedPage"
 //import { } from "./components/";
 
 const AppRoutes = [
@@ -18,7 +15,7 @@ const AppRoutes = [
   },
   {
       path: '/excluded',
-      element: <HomePage2 />
+      element: <ExcludedPage />
   }
 ];
 
