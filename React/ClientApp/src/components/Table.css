@@ -5,12 +5,14 @@
     width: 15%;
 }
 
-.ascending{
-    background-color:red;
+.ascending {
+    background-color: red;
+    cursor: pointer;
 }
 
-.descending{
-    background-color:green;
+.descending {
+    background-color: green;
+    cursor: pointer;
 }
 
 thead {
@@ -43,4 +45,8 @@ table .row2:nth-child(odd) {
 table {
     height: 2vh;
     width: 100%;
+}
+.text
+{
+    cursor: pointer;
 }
