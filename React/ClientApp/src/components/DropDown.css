@@ -7,9 +7,13 @@
 {
     background-color: darkorange;
     color: white;
-    height: 20px;
     width: 100px;
+    height: 30px;
     cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    margin-inline: 250px;
+    margin-top: 15px;
 }
 
 .dropdown-list 

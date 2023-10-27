@@ -10,8 +10,7 @@ function Dropdown() {
 
     return (
         <div className="dropdown">
-            <button onClick={toggleDropdown} className="dropdown-button">
-            </button>
+            <button onClick={toggleDropdown} className="dropdown-button">Skills</button>
             {isOpen && (
                 <ul className="dropdown-list">
                     <li>Developer</li>
