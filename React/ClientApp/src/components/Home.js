@@ -25,6 +25,10 @@ export const HomePage = () => {
                         <button id="homeSearchButton" type="submit">Search</button>
                 </form>
             </div>
+            <div id="dates">
+                <input type="date" />
+                <input type="date" />
+            </div>
             <div>
                 <Dropdown />
             </div>
