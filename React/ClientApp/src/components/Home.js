@@ -8,8 +8,23 @@ import Dropdown from './DropDownMeny';
 export const HomePage = () => {
     return (
         <div>
+            <div id="homeSearchFields">
+                <form>
+                    <input
+                        id="homeSearchJobs"
+                        type="text"
+                        name="searchJobs"
+                        placeholder="Search for title or keywords" />
+                </form>
+                <form>
+                    <input
+                        id="homeSearchLocation"
+                        type="text"
+                        name="searchLocation"
+                        placeholder="Location" />
+                </form>
+            </div>
             <div>
-                <h1>React Dropdown Menu</h1>
                 <Dropdown />
             </div>
             <div>

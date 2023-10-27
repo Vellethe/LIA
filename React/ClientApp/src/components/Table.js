@@ -40,24 +40,8 @@ export const Table = () => {
         setJobData([...newData]);
     }
     return (<div>
-        <div id="homeSearchFields">
-        <form>
-            <input
-                id="homeSearchJobs"
-                type="text"
-                name="searchJobs"
-                placeholder="Search for title or keywords" />
-        </form>
-        <form>
-            <input
-                id="homeSearchLocation"
-                type="text"
-                name="searchLocation"
-                placeholder="Location" />
-            </form>
-        </div>
 
-        <button onClick={() => sortDate(isAscending)}>flase</button>
+        <button onClick={() => sortDate(isAscending)}>false</button>
         <table>
             <thead>
                 <tr>
