@@ -41,6 +41,21 @@ export const Table = () => {
     }
     return (<div>
 
+        <form>
+            <input
+                id="homeSearchJobs"
+                type="text"
+                name="searchJobs"
+                placeholder="Search for title or keywords" />
+        </form>
+        <form>
+            <input
+                id="homeSearchLocation"
+                type="text"
+                name="searchLocation"
+                placeholder="Location" />
+        </form>
+
         <button onClick={() => sortDate(isAscending)}>flase</button>
         <table>
             <thead>
