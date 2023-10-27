@@ -22,12 +22,14 @@ export const ExcludedPage = () => {
                     <th>Excluded</th>
                 </tr>
             </thead>
-            <tbody>
-                <td>Power</td>
-                <td>Software Engineer</td>
-                <td>Developer</td>
-                <td><input type="checkbox"></input></td>
-            </tbody>
+                <tbody>
+                    <tr>
+                        <td>Power</td>
+                        <td>Software Engineer</td>
+                        <td>Developer</td>
+                        <td><input type="checkbox"></input></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );
