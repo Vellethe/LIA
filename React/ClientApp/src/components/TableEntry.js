@@ -19,14 +19,20 @@ export function TableEntry({ job }) {
 
     return (
         <tr className="row2">
-            <td className="text">{ job.name}</td>
-            <td className="text">{job.role}</td>
-            <td className="text">{job.contactName}</td>
-            <td className="text">{job.location}</td>
-            <td className="text"><input type="checkbox"></input></td>
-            <td className="text"><input type="checkbox"></input></td>
-            <td className="text">{job.date}</td>
+            <td className="text">
+                <div className="job-name">{job.name}</div>
+                <div className="job-details">
+                    <span className="job-location">{job.location}</span>
+                    <span className="job-checkboxes">
+                        <input type="checkbox"></input>
+                        <input type="checkbox"></input>
+                    </span>
+                    <span className="job-date">{job.date}</span>
+                </div>
+            </td>
         </tr>
+
+
     )
 }
 

@@ -1,14 +1,14 @@
 ﻿#homeSearchLocation {
     position: absolute;
-    left: 621px;
+    left: 721px;
     height: 40px;
-    width: 400px;
+    width: 500px;
 }
 
 #homeSearchJobs {
     margin-inline: 250px;
     height: 40px;
-    width: 350px;
+    width: 450px;
 }
 
 #homeSearchFields {
@@ -18,7 +18,7 @@
 #homeSearchButton
 {
     position: absolute;
-    right: 902px;
+    right: 702px;
     top: 118px;
 }
 #dates {

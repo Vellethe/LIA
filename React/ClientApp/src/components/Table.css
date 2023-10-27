@@ -26,13 +26,13 @@ th{
     color:white;
 }
 
-thead tr th:first-child {
+/*thead tr th:first-child {
     border-top-left-radius: 10px;
 }
 
 thead tr th:last-child {
     border-top-right-radius: 10px;
-}
+}*/
 
 table .row2:nth-child(even) {
     background-color: #F5F5F5;
