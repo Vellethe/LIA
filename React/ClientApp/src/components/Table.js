@@ -47,11 +47,10 @@ export const Table = () => {
                 <tr>
                     <th onClick={() => sortName(isAscending)} className={"name " + (sortColumn === "name" ? (isAscending ? "ascending":"descending"):"")}>Company</th>
                     <th className="text">Role</th>
-                    <th className="text">Contact name</th>
-                    <th className="text">Date</th>
                     <th className="text">Location</th>
-                    <th className="text">Tags</th>
                     <th className="text">Favorites</th>
+                    <th className="text">Excluded</th>
+                    <th className="text">Date</th>
                 </tr>
             </thead>
             <tbody>
