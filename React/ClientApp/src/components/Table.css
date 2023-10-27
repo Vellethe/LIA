@@ -44,18 +44,3 @@ table {
     height: 2vh;
     width: 100%;
 }
-#homeSearchLocation {
-    margin-right: 500px;
-    height: 40px;
-    width: 350px;
-}
-
-#homeSearchJobs {
-    height: 40px;
-    width: 350px;
-}
-
-#homeSearchFields {
-    display: flex;
-    justify-content: space-between;
-}
