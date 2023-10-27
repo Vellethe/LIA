@@ -7,7 +7,7 @@
 {
     background-color: darkorange;
     color: white;
-    width: 100px;
+    width: 150px;
     height: 30px;
     cursor: pointer;
     text-align: center;
@@ -17,10 +17,10 @@
 /*    margin-inline: 250px;*/
 }
 
-.dropdown-list 
-{
+.dropdown-list {
     list-style: none;
-/*    margin-inline: 250px;*/
+    width: 150px;
+    /*    margin-inline: 250px;*/
     padding: 0;
     position: absolute;
     top: 30px;
@@ -29,6 +29,13 @@
     border: 1px solid #ddd;
     border-top: none;
     display: none;
+    max-height: 225px;
+    overflow-y: auto;
+}
+.dropdown-list label
+{
+    margin-inline: 5px;
+    cursor: pointer;
 }
 
     .dropdown-list li 
