@@ -22,10 +22,10 @@ export function TableEntry({ job }) {
             <td className="text">{ job.name}</td>
             <td className="text">{job.role}</td>
             <td className="text">{job.contactName}</td>
-            <td className="text">{job.date}</td>
             <td className="text">{job.location}</td>
-            <td className="text">{parseTags(job.tags)}</td>
-            <td className="favorite"><input type="checkbox"></input></td>
+            <td className="text"><input type="checkbox"></input></td>
+            <td className="text"><input type="checkbox"></input></td>
+            <td className="text">{job.date}</td>
         </tr>
     )
 }
