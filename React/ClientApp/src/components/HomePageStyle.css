@@ -2,7 +2,7 @@
     position: absolute;
     left: 621px;
     height: 40px;
-    width: 350px;
+    width: 400px;
 }
 
 #homeSearchJobs {
@@ -14,4 +14,10 @@
 #homeSearchFields {
     display: flex;
     justify-content: space-between;
+}
+#homeSearchButton
+{
+    position: absolute;
+    right: 902px;
+    top: 118px;
 }

@@ -22,6 +22,7 @@ export const HomePage = () => {
                         type="text"
                         name="searchLocation"
                         placeholder="Location" />
+                        <button id="homeSearchButton" type="submit">Search</button>
                 </form>
             </div>
             <div>
