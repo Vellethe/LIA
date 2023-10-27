@@ -40,7 +40,7 @@ export const Table = () => {
         setJobData([...newData]);
     }
     return (<div>
-
+        <div id="homeSearchFields">
         <form>
             <input
                 id="homeSearchJobs"
@@ -54,7 +54,8 @@ export const Table = () => {
                 type="text"
                 name="searchLocation"
                 placeholder="Location" />
-        </form>
+            </form>
+        </div>
 
         <button onClick={() => sortDate(isAscending)}>flase</button>
         <table>
