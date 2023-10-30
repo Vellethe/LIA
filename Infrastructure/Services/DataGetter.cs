@@ -17,7 +17,16 @@ namespace Infrastructure.Services
         public void GetData()
         {
             var x = JobParse.Parse();
-            context.JobScoutJobs.AddRange(x);
+            foreach(var job in x)
+            {
+                if(context.JobScoutJobs.Any(x=>x.ProviderUniqueId == job.ProviderUniqueId&&x.Provider == job.Provider)){
+                    //Already exists in db
+                    //TODO maybe update values
+                    continue;
+                }
+                context.JobScoutJobs.Add(job);
+            }
+            context.SaveChanges();
         }
     }
 }

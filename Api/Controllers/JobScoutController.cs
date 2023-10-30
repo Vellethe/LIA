@@ -31,7 +31,7 @@ namespace Api.Controllers
         public string Test()
         {
             var x = new PlatsbankenGetterService();
-            DataGetterService y = new DataGetterService(x);
+            DataGetterService y = new DataGetterService(context,x);
             y.GetData();
             return "hello world";
         }
