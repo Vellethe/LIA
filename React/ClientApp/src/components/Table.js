@@ -44,7 +44,9 @@ export const Table = () => {
     }
     return (<div>
 
-        <button onClick={() => sortDate(isAscending)}>false</button>
+        <button onClick={sortDate} className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}>
+            {isAscending ? "Oldest" : "Newest"}
+        </button>
         <table>
             <thead>
                 <tr>
