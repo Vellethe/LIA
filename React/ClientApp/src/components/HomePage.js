@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
 //import React from "react";
-import "./HomePageStyle.css";
+import "./HomePage.css";
 import { Table } from './Table';
-import Dropdown from './DropDownMeny';
+import Dropdown from './DropDown';
 
 export const HomePage = () => {
     return (

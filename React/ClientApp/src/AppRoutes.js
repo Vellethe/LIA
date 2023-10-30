@@ -1,6 +1,6 @@
 //import { HomePage } from "./components/Home";
-import { HomePage2, HomePage } from "./components/Home";
-import { SettingsPage } from "./components/Settings";
+import { HomePage } from "./components/HomePage";
+import { SettingsPage } from "./components/SettingsPage";
 import { ExcludedPage } from "./components/ExcludedPage"
 //import { } from "./components/";
 
