@@ -19,6 +19,7 @@ namespace Domain
         //public List<JobScoutTags> Tags { get; set; }
         public List<JobScoutContact> Contacts { get; set; }
 
+        public JobScoutJob() { }
         public JobScoutJob(PlatsbankenHit hit)
         {
             Role = hit.Headline;
