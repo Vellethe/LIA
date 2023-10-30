@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class JobScoutContext:DbContext
+    public class JobScoutContext : DbContext
     {
-        public JobScoutContext(DbContextOptions<JobScoutContext> options):base(options)
+        public JobScoutContext(DbContextOptions<JobScoutContext> options) : base(options)
         {
 
         }
