@@ -15,9 +15,9 @@ namespace Data
         }
 
         public DbSet<JobScoutCompany> JobScoutCompanies { get; set; }
-        public DbSet<JobScoutContacts> JobScoutContacts { get; set; }
-        public DbSet<JobScoutJobs> JobScoutJobs { get; set; }
+        public DbSet<JobScoutContact> JobScoutContacts { get; set; }
+        public DbSet<JobScoutJob> JobScoutJobs { get; set; }
         public DbSet<JobScoutTagJob> JobScoutTagJobs { get; set; }
-        public DbSet<JobScoutTags> JobScoutTags { get; set; }
+        public DbSet<JobScoutTag> JobScoutTags { get; set; }
     }
 }

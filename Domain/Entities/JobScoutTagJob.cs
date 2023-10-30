@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public int JobId { get; set; }
         public int TagId { get; set; }
-        public JobScoutTags Tag { get; set; }
-        public JobScoutJobs Job { get; set; }
+        public JobScoutTag Tag { get; set; }
+        public JobScoutJob Job { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Data;
 using Domain;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,13 +18,22 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public List<JobScoutJobs> GetJobs()
+        public List<JobScoutJob> GetJobs()
         {
             return context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag).ToList();
             //TODO limit amount
+        }
+
+        [HttpPost("/test")]
+        public string Test()
+        {
+            var x = new PlatsbankenGetterService();
+            DataGetterService y = new DataGetterService(x);
+            y.GetData();
+            return "hello world";
         }
 
     }

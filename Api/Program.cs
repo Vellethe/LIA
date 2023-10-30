@@ -1,6 +1,5 @@
 using Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace Api
 {
@@ -19,10 +18,10 @@ namespace Api
 
             builder.Services.AddDbContext<JobScoutContext>(options =>
             {
-                //options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=JobScout;Integrated Security=True;MultipleActiveResultSets=true"); //TODO add string
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=JobScout;Integrated Security=True;MultipleActiveResultSets=true");
 
                 //Allan
-                options.UseSqlServer(@"Server=MSI\SQLEXPRESS;Database=Jobscout;Integrated Security=true;TrustServerCertificate=true;");
+                //options.UseSqlServer(@"Server=MSI\SQLEXPRESS;Database=Jobscout;Integrated Security=true;TrustServerCertificate=true;");
             });
 
             var app = builder.Build();

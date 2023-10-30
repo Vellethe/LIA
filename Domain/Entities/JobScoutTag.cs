@@ -1,6 +1,6 @@
 ﻿namespace Domain
 {
-    public class JobScoutTags
+    public class JobScoutTag
     {
         public int Id { get; set; }
         public string Name { get; set; }
