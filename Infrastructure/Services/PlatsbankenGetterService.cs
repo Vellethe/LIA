@@ -13,7 +13,7 @@ namespace Infrastructure.Services
         {
             PlatsBankenJsonObjectBinding jobs = JsonConvert.DeserializeObject<PlatsBankenJsonObjectBinding>(Data);
             List<JobScoutJob> output = new();
-            foreach(var hit in jobs.Hits)
+            foreach (var hit in jobs.Hits)
             {
                 output.Add(new JobScoutJob(hit));
             }

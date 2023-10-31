@@ -38,28 +38,26 @@ export const HomePage = () => {
                         type="text"
                         name="searchJobs"
                         placeholder="Search for title or keywords" />
-                </form>
-                <form>
                     <input
                         id="homeSearchLocation"
                         type="text"
                         name="searchLocation"
                         placeholder="Location" />
                     <button id="homeSearchButton" type="submit">Search</button>
+                    <div id="dates">
+                        <input
+                            type="date"
+                            value={startDate}
+                            onChange={handleStartDateChange}
+                        />
+                        <input
+                            type="date"
+                            value={endDate}
+                            onChange={handleEndDateChange}
+                        />
+                        <button onClick={filterDataByDate}>Date filter</button>
+                    </div>
                 </form>
-            </div>
-            <div id="dates">
-                <input
-                    type="date"
-                    value={startDate}
-                    onChange={handleStartDateChange}
-                />
-                <input
-                    type="date"
-                    value={endDate}
-                    onChange={handleEndDateChange}
-                />
-                <button onClick={filterDataByDate}>Date filter</button>
             </div>
             <div>
                 <Dropdown />
