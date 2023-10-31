@@ -18,13 +18,13 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public List<JobScoutJob> GetJobs()
+        public List<JobScoutJob> GetJobs(int page = 0)
         {
+            int pageSize = 1;
             return context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
-                .Include(j => j.TagJobs).ThenInclude(j => j.Tag).ToList();
-            //TODO limit amount
+                .Include(j => j.TagJobs).ThenInclude(j => j.Tag).Skip(pageSize*page).Take(pageSize).ToList();
         }
 
         [HttpPost("/test")]
