@@ -2,11 +2,14 @@
     width: 450px;
 }
 
-form .{
+form{
     height: 40px;
 }
 
 #homeSearchFields {
     display: flex;
     justify-content: center;
+}
+#searchStuff{
+    display:flex;
 }

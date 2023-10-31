@@ -31,33 +31,35 @@ export const HomePage = () => {
 
     return (
         <div>
-            <div id="homeSearchFields">
-                <form>
-                    <input
-                        id="homeSearchJobs"
-                        type="text"
-                        name="searchJobs"
-                        placeholder="Search for title or keywords" />
-                    <input
-                        id="homeSearchLocation"
-                        type="text"
-                        name="searchLocation"
-                        placeholder="Location" />
-                    <button id="homeSearchButton" type="submit">Search</button>
-                    <div id="dates">
+            <div id="searchStuff">
+                <div id="homeSearchFields">
+                    <form>
                         <input
-                            type="date"
-                            value={startDate}
-                            onChange={handleStartDateChange}
-                        />
+                            id="homeSearchJobs"
+                            type="text"
+                            name="searchJobs"
+                            placeholder="Search for title or keywords" />
                         <input
-                            type="date"
-                            value={endDate}
-                            onChange={handleEndDateChange}
-                        />
-                        <button onClick={filterDataByDate}>Date filter</button>
-                    </div>
-                </form>
+                            id="homeSearchLocation"
+                            type="text"
+                            name="searchLocation"
+                            placeholder="Location" />
+                        <button id="homeSearchButton" type="submit">Search</button>
+                    </form>
+                </div>
+                <div id="dates">
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={handleStartDateChange}
+                    />
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={handleEndDateChange}
+                    />
+                    <button onClick={filterDataByDate}>Date filter</button>
+                </div>
             </div>
             <div>
                 <Dropdown />
