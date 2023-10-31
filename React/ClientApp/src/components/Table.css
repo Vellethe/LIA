@@ -42,13 +42,26 @@
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
 }
 
-.row {
+.row1 {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
     align-items: center;
     padding: 5px;
     border: 1px solid #ccc;
 }
+
+.row2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+/*.textLocation, .boxFavorite, .boxExcluded, .textDate
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+}*/
 
 .cell {
     padding: 5px;
@@ -67,9 +80,3 @@ input[type="checkbox"] {
     display: block;
     margin: 0 auto;
 }
-
-
-
-
-
-
