@@ -12,19 +12,15 @@
     cursor: pointer;
     text-align: center;
     font-weight: bold;
-    position: absolute;
-    left: 250px;
 /*    margin-inline: 250px;*/
 }
 
 .dropdown-list {
     list-style: none;
-    width: 200px;
+    width: auto;
     /*    margin-inline: 250px;*/
     padding: 0;
     position: absolute;
-    top: 30px;
-    left: 250px;
     background-color: #f1f1f1;
     border: 1px solid #ddd;
     border-top: none;
@@ -35,11 +31,16 @@
     -ms-user-select: none;
     user-select: none;
 }
-.dropdown-list label
+.dropdown-list li
 {
-    margin-inline: 5px;
-    cursor: pointer;
+    display: flex;
+    justify-content:space-between;
 }
+
+.dropdown-list li label{
+    padding-right: 20px;
+}
+
 
     .dropdown-list li 
     {

@@ -6,10 +6,13 @@ form{
     height: 40px;
 }
 
-#homeSearchFields {
-    display: flex;
-    justify-content: center;
-}
 #searchStuff{
-    display:flex;
+    width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+#searchStuff > div{
+    display: flex;
 }

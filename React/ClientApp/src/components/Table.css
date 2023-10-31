@@ -80,7 +80,6 @@
 
 input[type="checkbox"] {
     display: block;
-    margin: 0 auto;
 }
 
 /*Needed for settings and excluded page, dont remove the css under */
