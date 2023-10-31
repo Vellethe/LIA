@@ -50,3 +50,80 @@ table {
 {
     cursor: pointer;
 }
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr; /* Adjust the widths as needed */
+    background-color: #2980b9;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.grid-header-cell {
+    padding: 8px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+    .grid-header-cell:last-child {
+        border-right: none; /* Remove border for the last cell */
+    }
+
+    .grid-header-cell.text {
+        flex: 1;
+    }
+
+    .grid-header-cell.name {
+        flex: 2;
+        cursor: pointer;
+    }
+
+.grid-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr; /* Adjust the widths as needed */
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr; /* Adjust the widths as needed */
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.cell {
+    padding: 5px;
+    text-align: center;
+}
+
+.row:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.row:nth-child(even) {
+    background-color: #fff;
+}
+
+input[type="checkbox"] {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
