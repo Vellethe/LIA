@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-//import React from "react";
 import "./HomePage.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';

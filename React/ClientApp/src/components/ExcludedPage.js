@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-undef */
 import React from 'react';
-//import React from "react";
 import "./HomePage.css";
 
 export const ExcludedPage = () => {
