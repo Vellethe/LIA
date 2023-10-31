@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./Table.css";
 import { TableEntry } from "./TableEntry"
 
@@ -16,13 +16,6 @@ export const Table = () => {
     const [isAscending, setAscending] = useState(true);
     const [sortColumn, setSortColumn] = useState("date");
 
-    const getMinutesAgo = (date) => {
-        const now = new Date();
-        const postDate = new Date(date);
-        const diff = Math.floor((now - postDate) / (1000 * 60)); // Convert milliseconds to minutes
-        return diff;
-    }
-
     const sortDate = () => {
         setSortColumn("date")
         setAscending(!isAscending);
@@ -37,23 +30,6 @@ export const Table = () => {
         });
         setJobData(newData);
     }
-
-    //const sortDate = () => {
-    //    setSortColumn("date");
-    //    setAscending(!isAscending);
-    //    const newData = [...jobData];
-    //    newData.sort((a, b) => {
-    //        const diffA = getMinutesAgo(a.date);
-    //        const diffB = getMinutesAgo(b.date);
-
-    //        if (isAscending) {
-    //            return diffA - diffB;
-    //        } else {
-    //            return diffB - diffA;
-    //        }
-    //    });
-    //    setJobData(newData);
-    //}
 
     const sortName = () => {
         setSortColumn("date")
