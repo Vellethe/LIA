@@ -20,7 +20,7 @@ namespace Api.Controllers
         [HttpGet]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
-            int pageSize = 1;
+            int pageSize = 20;
             return context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
