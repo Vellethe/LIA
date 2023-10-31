@@ -30,6 +30,6 @@ export class Header extends Component {
 
                 </div>
             </header>
-        )
+        );
     }
-};
+}

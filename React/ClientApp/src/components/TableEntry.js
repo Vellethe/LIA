@@ -30,9 +30,7 @@ export function TableEntry({ job }) {
             </tr>
         </table>
 
-
-
-    )
+    );
 }
 
 

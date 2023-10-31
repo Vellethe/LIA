@@ -69,26 +69,28 @@ export const Table = () => {
         });
         setJobData(newData);
     }
-    return (<div>
+    return (
+        <div>
 
-        <button onClick={sortDate} className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}>
-            {isAscending ? "Oldest" : "Newest"}
-        </button>
-        <table>
-            <thead>
-                <tr>
-                    <th className="text">Company</th>
-                    <th></th>
-                    <th className="text">Favorites</th>
-                    <th className="text">Excluded</th>
-                    <th onClick={() => sortName(isAscending)} className={"name " + (sortColumn === "name" ? (isAscending ? "ascending" : "descending") : "")}>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {jobData.map(job =>
-                    <TableEntry key={job.id} job={job} />
-                )}
-            </tbody>
-        </table>
-    </div>)
+            <button onClick={sortDate} className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}>
+                {isAscending ? "Oldest" : "Newest"}
+            </button>
+            <table>
+                <thead>
+                    <tr>
+                        <th className="text">Company</th>
+                        <th></th>
+                        <th className="text">Favorites</th>
+                        <th className="text">Excluded</th>
+                        <th onClick={() => sortName(isAscending)} className={"name " + (sortColumn === "name" ? (isAscending ? "ascending" : "descending") : "")}>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {jobData.map(job =>
+                        <TableEntry key={job.id} job={job} />
+                    )}
+                </tbody>
+            </table>
+        </div>
+    );
 }
