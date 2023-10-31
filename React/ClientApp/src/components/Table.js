@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./Table.css";
-import { TableEntry } from "./TableEntry"
+//import { TableEntry } from "./TableEntry"
 
 var dataArray = [
     { id: 1, name: "batman", role: "Hero", contactName: "Bruce Wane", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true },
@@ -16,13 +16,6 @@ export const Table = () => {
     const [isAscending, setAscending] = useState(true);
     const [sortColumn, setSortColumn] = useState("date");
 
-    const getMinutesAgo = (date) => {
-        const now = new Date();
-        const postDate = new Date(date);
-        const diff = Math.floor((now - postDate) / (1000 * 60)); // Convert milliseconds to minutes
-        return diff;
-    }
-
     const sortDate = () => {
         setSortColumn("date")
         setAscending(!isAscending);
@@ -37,23 +30,6 @@ export const Table = () => {
         });
         setJobData(newData);
     }
-
-    //const sortDate = () => {
-    //    setSortColumn("date");
-    //    setAscending(!isAscending);
-    //    const newData = [...jobData];
-    //    newData.sort((a, b) => {
-    //        const diffA = getMinutesAgo(a.date);
-    //        const diffB = getMinutesAgo(b.date);
-
-    //        if (isAscending) {
-    //            return diffA - diffB;
-    //        } else {
-    //            return diffB - diffA;
-    //        }
-    //    });
-    //    setJobData(newData);
-    //}
 
     const sortName = () => {
         setSortColumn("date")
@@ -71,26 +47,36 @@ export const Table = () => {
     }
     return (
         <div>
-
-            <button onClick={sortDate} className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}>
+            <button
+                onClick={sortDate}
+                className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}
+            >
                 {isAscending ? "Oldest" : "Newest"}
             </button>
-            <table>
-                <thead>
-                    <tr>
-                        <th className="text">Company</th>
-                        <th></th>
-                        <th className="text">Favorites</th>
-                        <th className="text">Excluded</th>
-                        <th onClick={() => sortName(isAscending)} className={"name " + (sortColumn === "name" ? (isAscending ? "ascending" : "descending") : "")}>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {jobData.map(job =>
-                        <TableEntry key={job.id} job={job} />
-                    )}
-                </tbody>
-            </table>
+            <div class="grid-container">
+                <div class="grid-header">
+                    <div class="grid-header-cell text">Company</div>
+                    <div class="grid-header-cell"></div>
+                    <div class="grid-header-cell text">Favorites</div>
+                    <div class="grid-header-cell text">Excluded</div>
+                    <div class="grid-header-cell name" onClick={() => sortName(isAscending)}>Date</div>
+                </div>
+                <div class="grid-body">
+                    {jobData.map(job => (
+                        <div class="grid" key={job.id}>
+                            <div class="row row1">
+                                <div class="cell text">{job.name}</div>
+                            </div>
+                            <div class="row row2">
+                                <div class="cell text">{job.location}</div>
+                                <div class="cell text"><input type="checkbox" /></div>
+                                <div class="cell text"><input type="checkbox" /></div>
+                                <div class="cell text">{job.date}</div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
