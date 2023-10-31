@@ -56,7 +56,6 @@ export const Table = () => {
             <div class="grid-container">
                 <div class="grid-header">
                     <div class="grid-header-cell text">Company</div>
-                    <div class="grid-header-cell"></div>
                     <div class="grid-header-cell text">Favorites</div>
                     <div class="grid-header-cell text">Excluded</div>
                     <div class="grid-header-cell name" onClick={() => sortName(isAscending)}>Date</div>
