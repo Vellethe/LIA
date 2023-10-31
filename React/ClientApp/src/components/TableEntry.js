@@ -1,6 +1,5 @@
 import React from "react";
 import "./TableEntry.css"
-//import "./style.css";
 
 export function TableEntry({ job }) {
 

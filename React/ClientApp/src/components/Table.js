@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Table.css";
-//import { TableEntry } from "./TableEntry"
 
 var dataArray = [
     { id: 1, name: "batman", role: "Hero", contactName: "Bruce Wane", date: "2023-10-25", location: "Gotham City", tags: ["crime", "hero", "stuff"], favorit: true },

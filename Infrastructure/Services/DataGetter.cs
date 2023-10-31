@@ -1,6 +1,5 @@
-﻿using Domain;
+﻿using Data;
 using Infrastructure.Interfaces;
-using Data;
 
 namespace Infrastructure.Services
 {
@@ -17,9 +16,10 @@ namespace Infrastructure.Services
         public void GetData()
         {
             var x = JobParse.Parse();
-            foreach(var job in x)
+            foreach (var job in x)
             {
-                if(context.JobScoutJobs.Any(x=>x.ProviderUniqueId == job.ProviderUniqueId&&x.Provider == job.Provider)){
+                if (context.JobScoutJobs.Any(x => x.ProviderUniqueId == job.ProviderUniqueId && x.Provider == job.Provider))
+                {
                     //Already exists in db
                     //TODO maybe update values
                     continue;
