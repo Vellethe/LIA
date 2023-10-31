@@ -44,9 +44,10 @@
 
 .row1 {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
+   /* grid-template-columns: 2fr 1fr 1fr 1fr;*/ /* Adjust the widths as needed */
     align-items: center;
     padding: 5px;
+    width: 750px;
     border: 1px solid #ccc;
 }
 
@@ -55,6 +56,7 @@
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
     align-items: center;
     padding: 5px;
+    width: 1128px;
     border: 1px solid #ccc;
 }
 /*.textLocation, .boxFavorite, .boxExcluded, .textDate
@@ -81,7 +83,7 @@ input[type="checkbox"] {
     margin: 0 auto;
 }
 
-/*Needed for settings and excluded page, dont remove the css under*/
+/*Needed for settings and excluded page, dont remove the css under */
 
 html, #root {
     background-color: #F5F5F5;

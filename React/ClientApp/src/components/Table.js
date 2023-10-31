@@ -52,24 +52,24 @@ export const Table = () => {
             >
                 {isAscending ? "Oldest" : "Newest"}
             </button>
-            <div class="grid-container">
-                <div class="grid-header">
-                    <div class="grid-header-cell text">Company</div>
-                    <div class="grid-header-cell text">Favorites</div>
-                    <div class="grid-header-cell text">Excluded</div>
-                    <div class="grid-header-cell name" onClick={() => sortName(isAscending)}>Date</div>
+            <div className="grid-container">
+                <div className="grid-header">
+                    <div className="grid-header-cell text">Company</div>
+                    <div className="grid-header-cell text">Favorites</div>
+                    <div className="grid-header-cell text">Excluded</div>
+                    <div className="grid-header-cell name" onClick={() => sortName(isAscending)}>Date</div>
                 </div>
-                <div class="grid-body">
+                <div className="grid-body">
                     {jobData.map(job => (
-                        <div class="grid" key={job.id}>
-                            <div class="row1">
-                                <div class="textName">{job.name}</div>
+                        <div className="grid" key={job.id}>
+                            <div className="row1">
+                                <div className="textName">{job.name}</div>
                             </div>
-                            <div class="row2">
-                                <div class="textLocation">{job.location}</div>
-                                <div class="boxFavorite"><input type="checkbox" /></div>
-                                <div class="boxExcluded"><input type="checkbox" /></div>
-                                <div class="textDate">{job.date}</div>
+                            <div className="row2">
+                                <div className="textLocation">{job.location}</div>
+                                <div className="box"><input type="checkbox" /></div>
+                                <div className="box"><input type="checkbox" /></div>
+                                <div className="textDate">{job.date}</div>
                             </div>
                         </div>
                     ))}
