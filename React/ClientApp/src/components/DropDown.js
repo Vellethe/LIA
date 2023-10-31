@@ -19,7 +19,7 @@ function Dropdown() {
         }
     }
 
-
+    var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
 
     return (
         <div className="dropdown">
@@ -27,42 +27,12 @@ function Dropdown() {
             {isOpen && (
                 <div className="scrollMenu" onMouseLeave={() => setIsOpen(false)}>
                     <ul className="dropdown-list">
-                        <li>
-                            <input defaultChecked={selectedTags.includes("developer")} onChange={() => handleDropdownTick("developer")} type="checkbox" id="developer" />
-                            <label htmlFor="developer">Developer</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("software")} onChange={() => handleDropdownTick("software")} type="checkbox" id="software" />
-                            <label htmlFor="software">Software</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("fullstack")} onChange={() => handleDropdownTick("fullstack")} type="checkbox" id="fullstack" />
-                            <label htmlFor="fullstack">Fullstack</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("embedded")} onChange={() => handleDropdownTick("embedded")} type="checkbox" id="embedded" />
-                            <label htmlFor="embedded">Embedded</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("backend")} onChange={() => handleDropdownTick("backend")} type="checkbox" id="backend" />
-                            <label htmlFor="backend">Backend</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("frontend")} onChange={() => handleDropdownTick("frontend")} type="checkbox" id="frontend" />
-                            <label htmlFor="frontend">Frontend</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("tester")} onChange={() => handleDropdownTick("tester")} type="checkbox" id="tester" />
-                            <label htmlFor="tester">Tester</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("python")} onChange={() => handleDropdownTick("python")} type="checkbox" id="python" />
-                            <label htmlFor="python">Python</label>
-                        </li>
-                        <li>
-                            <input defaultChecked={selectedTags.includes("csharp")} onChange={() => handleDropdownTick("csharp")} type="checkbox" id="csharp" />
-                            <label htmlFor="csharp">C#</label>
-                        </li>
+                        {tags.map(tag => (
+                            <li key={tag}>
+                                <label htmlFor={tag}>{tag}</label>
+                                <input defaultChecked={selectedTags.includes( tag )} onChange={() => handleDropdownTick( tag )} type="checkbox" id={tag} />
+                            </li>
+                        ))}
                     </ul>
                 </div>
             )}
