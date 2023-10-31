@@ -62,14 +62,14 @@ export const Table = () => {
                 <div class="grid-body">
                     {jobData.map(job => (
                         <div class="grid" key={job.id}>
-                            <div class="row row1">
-                                <div class="cell text">{job.name}</div>
+                            <div class="row1">
+                                <div class="textName">{job.name}</div>
                             </div>
-                            <div class="row row2">
-                                <div class="cell text">{job.location}</div>
-                                <div class="cell text"><input type="checkbox" /></div>
-                                <div class="cell text"><input type="checkbox" /></div>
-                                <div class="cell text">{job.date}</div>
+                            <div class="row2">
+                                <div class="textLocation">{job.location}</div>
+                                <div class="boxFavorite"><input type="checkbox" /></div>
+                                <div class="boxExcluded"><input type="checkbox" /></div>
+                                <div class="textDate">{job.date}</div>
                             </div>
                         </div>
                     ))}

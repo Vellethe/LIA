@@ -42,13 +42,26 @@
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
 }
 
-.row {
+.row1 {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
     align-items: center;
     padding: 5px;
     border: 1px solid #ccc;
 }
+
+.row2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+/*.textLocation, .boxFavorite, .boxExcluded, .textDate
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+}*/
 
 .cell {
     padding: 5px;
@@ -67,8 +80,52 @@ input[type="checkbox"] {
     display: block;
 }
 
+/*Needed for settings and excluded page, dont remove the css under*/
 
+html, #root {
+    background-color: #F5F5F5;
+}
 
+.name {
+    width: 50%;
+}
 
+.ascending {
+    background-color: red;
+}
 
+.descending {
+    background-color: green;
+}
 
+thead {
+    background-color: #2980b9;
+    box-shadow: 0px 3.01px 12.04px #00000024;
+    height: 45px;
+    width: 100%;
+}
+
+th {
+    color: white;
+}
+
+thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table .row2:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+table .row2:nth-child(odd) {
+    background-color: white;
+}
+
+table {
+    height: 2vh;
+    width: 100%;
+}
