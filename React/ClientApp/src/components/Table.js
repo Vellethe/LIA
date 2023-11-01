@@ -40,6 +40,16 @@ export function Table({ data }) {
         setJobData(newData);
         
     }
+
+    const formatDate = (input) => {
+        var date = new Date(input);
+        var output = `
+        ${date.getFullYear()}-
+        ${("0" + date.getMonth()).slice(-2)}-
+        ${("0" + date.getDay()).slice(-2)}`;
+        return output;
+    }
+
     return (
         <div>
             <button
@@ -67,7 +77,7 @@ export function Table({ data }) {
                             <div className={`${styles.box} ${styles.star}`}>
                                 <input type="checkbox" />
                             </div>
-                            <div className={styles.textDate}>{job.date}</div>
+                            <div className={styles.textDate}>{formatDate(job.postDate)}</div>
                         </div>
                     ))}
                 </div>

@@ -20,19 +20,6 @@
     border-right: 1px solid #ccc;
 }
 
-    .grid-header-cell:last-child {
-        border-right: none; /* Remove border for the last cell */
-    }
-
-    .grid-header-cell.text {
-        flex: 1;
-    }
-
-    .grid-header-cell.name {
-        flex: 2;
-        cursor: pointer;
-    }
-
 .body {
     display: flex;
     flex-direction: column;
