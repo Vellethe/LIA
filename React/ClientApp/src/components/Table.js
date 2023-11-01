@@ -4,7 +4,7 @@ import styles from "./Table.module.css";
 import { dataArray } from "./JobData"
 
 
-export const Table = () => {
+export function Table({ data }) {
     const [jobData, setJobData] = useState(dataArray);
     const [isAscending, setAscending] = useState(true);
     const [sortColumn, setSortColumn] = useState("date");
@@ -56,13 +56,13 @@ export const Table = () => {
                     <div className={styles.name} onClick={() => sortName(isAscending)}>Date</div>
                 </div>
                 <div className={styles.body} >
-                    {jobData.map(job => (
+                    {data.map(job => (
                         <div className={styles.gridHome} key={job.id}>
-                            <div className={styles.jobTitle}> Cool job </div>
+                            <div className={styles.jobTitle}> {job.role}</div>
                             <div className={styles.desciptionGrid}>
-                                <div className={styles.textName}>{job.name}</div>
+                                <div className={styles.textName}>{job.company.name}</div>
                                 <button className={`${styles.box} ${styles.exclude}`} onClick={() => console.log("tignsnagn")}><img src={x} alt="X" /></button>
-                                <div className={styles.textLocation}>{job.location}</div>
+                                <div className={styles.textLocation}>{job.municipality}</div>
                             </div>
                             <div className={`${styles.box} ${styles.star}`}>
                                 <input type="checkbox" />
