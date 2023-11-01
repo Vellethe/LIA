@@ -50,6 +50,10 @@ export const DescriptionPage = () => {
                                 <div className={styles.label}>Contacts:</div>
                                 <div className={styles.value}>{job.contactName}</div>
                             </div>
+                            <div className={styles.row}>
+                                <div className={styles.label}>Description</div>
+                                <div className={styles.desc}>{job.description}</div>
+                            </div>
                         </div>
                     </div>
                 ))}
