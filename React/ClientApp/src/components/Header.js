@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import "./Header.module.css"
+import styles from "./Header.module.css"
 import logo from "./../images/consat.png"
 import logout from "./../images/logout.png"
 
@@ -15,17 +15,17 @@ export class Header extends Component {
     render() {
         return (
             <header>
-                <div className="grid">
-                    <img className="brand" alt="ConsatImg" src={logo} />
-                    <ul className="links">
-                        <li className="link"><Link to="/">Home</Link> </li>
-                        <li className="link"><Link to="/settings">Settings</Link></li>
-                        <li className="link"><Link to="/excluded">Excluded</Link></li>
-                        <li className="link"><Link to="/description">Description</Link></li>
+                <div className={styles.grid}>
+                    <img className={styles.brand} alt="ConsatImg" src={logo} />
+                    <ul className={styles.links}>
+                        <li className={styles.link}><Link to="/">Home</Link> </li>
+                        <li className={styles.link}><Link to="/settings">Settings</Link></li>
+                        <li className={styles.link}><Link to="/excluded">Excluded</Link></li>
+                        <li className={styles.link}><Link to="/description">Description</Link></li>
                     </ul>
-                    <div className="logout">
-                        <img className="group" alt="Group" src={logout} />
-                        <div className="text-wrapper-3">Logout</div>
+                    <div className={styles.logout}>
+                        <img className={styles.group} alt="Group" src={logout} />
+                        <div>Logout</div>
                     </div>
 
                 </div>
