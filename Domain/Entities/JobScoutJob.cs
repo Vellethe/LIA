@@ -27,7 +27,7 @@
             ProviderUniqueId = hit.Id;
             Url = hit.Webpage_url;
             Description = hit.Description.Text;
-            Company = new JobScoutCompany { Name = hit.Employer.Name };
+            Company = new JobScoutCompany { Name = hit.Employer.Name };//TODO make sure that it references the right company
             Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name, PhoneNumber = x.Telephone }).ToList();
             TagJobs = new();
         }

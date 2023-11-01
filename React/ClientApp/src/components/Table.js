@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import x from "./../images/Red_X.png"
 import "./Table.css";
 
 var dataArray = [
@@ -61,16 +62,15 @@ export const Table = () => {
                 </div>
                 <div className="grid-body">
                     {jobData.map(job => (
-                        <div className="grid" key={job.id}>
-                            <div className="row1">
+                        <div className="gridHome" key={job.id}>
+                            <div className="jobTitle"> Cool job </div>
+                            <div className="desciptionGrid">
                                 <div className="textName">{job.name}</div>
-                            </div>
-                            <div className="row2">
+                                <button className="box exclude" onClick={() => console.log("tignsnagn")}><img src={x}></img></button>
                                 <div className="textLocation">{job.location}</div>
-                                <div className="box"><input type="checkbox" /></div>
-                                <div className="box"><input type="checkbox" /></div>
-                                <div className="textDate">{job.date}</div>
                             </div>
+                            <div className="box star"><input type="checkbox" /></div>
+                            <div className="textDate">{job.date}</div>
                         </div>
                     ))}
                 </div>
