@@ -50,12 +50,12 @@ export const HomePage = () => {
                     <div id={styles.homeSearchFields}>
                         <form>
                             <input
-                                id={styles.homeSearchJob}s
+                                id={styles.homeSearchJobs}
                                 type="text"
                                 name="searchJobs"
                                 placeholder="Search for title or keywords" />
                             <input
-                                id={styles.homeSearchLocatio}n
+                                id={styles.homeSearchLocation}
                                 type="text"
                                 name="searchLocation"
                                 placeholder="Location" />

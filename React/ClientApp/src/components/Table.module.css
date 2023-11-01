@@ -11,9 +11,10 @@
     background-color: #2980b9;
     border-bottom: 1px solid #ccc;
     font-weight: bold;
+    color: white;
 }
 
-.grid-header-cell {
+.text, .name {
     padding: 8px;
     text-align: center;
     border-right: 1px solid #ccc;
@@ -32,7 +33,7 @@
         cursor: pointer;
     }
 
-.grid-body {
+.body {
     display: flex;
     flex-direction: column;
 }
