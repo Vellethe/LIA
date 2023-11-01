@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import "./SettingsPage.css";
+import styles from "./SettingsPage.module.css";
 import data from "./testingtags.json";
 
 export const SettingsPage = () => {
@@ -47,33 +47,34 @@ export const SettingsPage = () => {
     }
     return (
         <div>
-            <div id="SettingsSearchForm">
-                <div id="AddTagAndButton">
+            <div id={styles.SettingsSearchForm}>
+                <div id={styles.AddTagAndButton}>
                     <form onSubmit={handleAddFormSubmit}>
                         <input
-                            id="SettingsAddTags"
+                            id={styles.SettingsAddTags}
                             type="text"
                             name="tags"
                             placeholder="Enter a new tag"
                             value={addFormData.tags}
                             onChange={handleAddFormChange}
                         />
-                        <button id="AddSettings" type="submit">Add</button>
+                        <button id={styles.AddSettings} type="submit">Add</button>
                     </form>
                 </div>
                 <form>
                     <input
-                        id="SettingsFreeSearch"
+                        id={styles.SettingsFreeSearch}
                         type="text"
                         name="searchTags"
-                        placeholder="Free search" />
+                        placeholder="Free search"
+                    />
                 </form>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th className="text">{/*Sökord*/}Tags</th>
-                        <th className="deleteButton"></th>
+                        <th className={styles.text}>{/*Sökord*/}Tags</th>
+                        <th className={styles.deleteButton}></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,8 +82,13 @@ export const SettingsPage = () => {
                         <tr key={index}>
                             <td>{tag.tags}</td>
                             <td>
-                                <button type="button" id="SettingsDeleteButton"
-                                    onClick={() => handleDeleteClick(tag.id)}>Delete</button>
+                                <button
+                                    type="button"
+                                    id={styles.SettingsDeleteButton}
+                                    onClick={() => handleDeleteClick(tag.id)}
+                                >
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     ))}

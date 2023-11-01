@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import x from "./../images/Red_X.png"
-import "./Table.css";
+import styles from "./Table.module.css";
 import { dataArray } from "./JobData"
 
 
@@ -48,24 +48,26 @@ export const Table = () => {
             >
                 {isAscending ? "Oldest" : "Newest"}
             </button>
-            <div className="grid-container">
-                <div className="grid-header">
-                    <div className="grid-header-cell text">Company</div>
-                    <div className="grid-header-cell text">Favorites</div>
-                    <div className="grid-header-cell text">Excluded</div>
-                    <div className="grid-header-cell name" onClick={() => sortName(isAscending)}>Date</div>
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <div className={styles.text}>Company</div>
+                    <div className={styles.text}>Favorites</div>
+                    <div className={styles.text}>Excluded</div>
+                    <div className={styles.name} onClick={() => sortName(isAscending)}>Date</div>
                 </div>
-                <div className="grid-body">
+                <div className={styles.body} >
                     {jobData.map(job => (
-                        <div className="gridHome" key={job.id}>
-                            <div className="jobTitle"> Cool job </div>
-                            <div className="desciptionGrid">
-                                <div className="textName">{job.name}</div>
-                                <button className="box exclude" onClick={() => console.log("tignsnagn")}><img src={x}></img></button>
-                                <div className="textLocation">{job.location}</div>
+                        <div className={styles.gridHome} key={job.id}>
+                            <div className={styles.jobTitle}> Cool job </div>
+                            <div className={styles.desciptionGrid}>
+                                <div className={styles.textName}>{job.name}</div>
+                                <button className={`${styles.box} ${styles.exclude}`} onClick={() => console.log("tignsnagn")}><img src={x} alt="X" /></button>
+                                <div className={styles.textLocation}>{job.location}</div>
                             </div>
-                            <div className="box star"><input type="checkbox" /></div>
-                            <div className="textDate">{job.date}</div>
+                            <div className={`${styles.box} ${styles.star}`}>
+                                <input type="checkbox" />
+                            </div>
+                            <div className={styles.textDate}>{job.date}</div>
                         </div>
                     ))}
                 </div>
