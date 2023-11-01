@@ -3,9 +3,22 @@ import "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
+var url = "https://localhost:7273/api?page=0";
+
+async function GetData() {
+    var response = await fetch(url, {
+        method: "GET",
+    })
+    const data = await response.json()
+    return data
+}
 
 export const HomePage = () => {
 
+    const [serverData,setServerData] = useState({});
+
+    GetData().then(x => setServerData(x))
+    
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
@@ -26,12 +39,15 @@ export const HomePage = () => {
             return jobDate >= filterStartDate && jobDate <= filterEndDate;
         });
     };
+    const test = () => {
+        console.log(serverData);
+    }
 
     return (
         <div>
             <div id="searchStuff">
                 <div>
-
+                    <button onClick={() => test()}>testing</button>
                     <div id="homeSearchFields">
                         <form>
                             <input

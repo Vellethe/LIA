@@ -9,8 +9,7 @@ namespace Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
+            builder.Services.AddCors();
 
             //stops serialization loop when getting data from db 2 way navigation
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
@@ -42,6 +41,7 @@ namespace Api
 
             app.UseAuthorization();
 
+            app.UseCors(x => x.AllowAnyOrigin());
 
             app.MapControllers();
 

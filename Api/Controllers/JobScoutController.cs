@@ -1,6 +1,7 @@
 ﻿using Data;
 using Domain;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,6 @@ namespace Api.Controllers
         {
             this.context = context;
         }
-
         [HttpGet]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
