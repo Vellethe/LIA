@@ -37,6 +37,16 @@
 .desciptionGrid{
     grid-area:test;
     display:flex;
+    align-items:center;
+}
+
+.desciptionGrid button{
+
+    background-color:white;
+}
+
+img{
+    vertical-align:top;
 }
 
 .textName{
