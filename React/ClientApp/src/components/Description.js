@@ -50,6 +50,8 @@ export const DescriptionPage = () => {
                                 <div className={styles.label}>Contacts:</div>
                                 <div className={styles.value}>{job.contactName}</div>
                             </div>
+                        </div>
+                        <div className={styles.grid2}>
                             <div className={styles.row}>
                                 <div className={styles.label}>Description</div>
                                 <div className={styles.desc}>{job.description}</div>
@@ -57,6 +59,22 @@ export const DescriptionPage = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className={styles['body2']}>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
+                <p>Tasty Cookies</p>
             </div>
         </div>
     );
