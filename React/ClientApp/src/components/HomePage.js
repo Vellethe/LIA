@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
@@ -15,10 +15,11 @@ async function GetData() {
 
 export const HomePage = () => {
 
-    const [serverData,setServerData] = useState({});
+    const [serverData, setServerData] = useState([]);
+    useEffect(() => {
+        GetData().then(x => setServerData(x))
+    },[]);
 
-    GetData().then(x => setServerData(x))
-    
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
@@ -82,7 +83,7 @@ export const HomePage = () => {
                 </div>
             </div>
             <div>
-                <Table />
+                <Table data={serverData} />
             </div>
         </div>
     );
