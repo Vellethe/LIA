@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.grid-header {
+.header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust the widths as needed */
     background-color: #2980b9;

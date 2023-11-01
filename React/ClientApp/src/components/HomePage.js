@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./HomePage.module.css";
+import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
@@ -45,25 +45,24 @@ export const HomePage = () => {
 
     return (
         <div>
-            <div id="searchStuff">
+            <div id={styles.searchStuff}>
                 <div>
-                    <button onClick={() => test()}>testing</button>
-                    <div id="homeSearchFields">
+                    <div id={styles.homeSearchFields}>
                         <form>
                             <input
-                                id="homeSearchJobs"
+                                id={styles.homeSearchJob}s
                                 type="text"
                                 name="searchJobs"
                                 placeholder="Search for title or keywords" />
                             <input
-                                id="homeSearchLocation"
+                                id={styles.homeSearchLocatio}n
                                 type="text"
                                 name="searchLocation"
                                 placeholder="Location" />
                             <button id="homeSearchButton" type="submit">Search</button>
                         </form>
                     </div>
-                    <div id="dates">
+                    <div id={styles.dates}>
                         <input
                             type="date"
                             value={startDate}
