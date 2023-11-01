@@ -1,4 +1,5 @@
-﻿.container {
+﻿/* Your existing CSS */
+.container {
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -7,19 +8,19 @@
 
 .body {
     margin-top: 10px;
-    grid-template-columns: 2fr 2fr;
 }
 
 .grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equally sized columns for the grid */
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
 .row {
-    flex: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* First column takes 1/3, second takes 2/3 of the row width */
     align-items: center;
     padding: 10px;
 }
