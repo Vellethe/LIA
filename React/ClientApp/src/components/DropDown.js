@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './DropDown.css';
+import styles from './DropDown.module.css';
 
 function Dropdown() {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,15 +22,15 @@ function Dropdown() {
     var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
 
     return (
-        <div className="dropdown">
-            <button onClick={toggleDropdown} className="dropdown-button">Skills</button>
+        <div className={styles.dropdown}>
+            <button onClick={toggleDropdown} className={styles['dropdown-button']}>Skills</button>
             {isOpen && (
-                <div className="scrollMenu" onMouseLeave={() => setIsOpen(false)}>
-                    <ul className="dropdown-list">
+                <div className={styles.scrollMenu} onMouseLeave={() => setIsOpen(false)}>
+                    <ul className={styles['dropdown-list']}>
                         {tags.map(tag => (
                             <li key={tag}>
                                 <label htmlFor={tag}>{tag}</label>
-                                <input defaultChecked={selectedTags.includes( tag )} onChange={() => handleDropdownTick( tag )} type="checkbox" id={tag} />
+                                <input defaultChecked={selectedTags.includes(tag)} onChange={() => handleDropdownTick(tag)} type="checkbox" id={tag} />
                             </li>
                         ))}
                     </ul>
