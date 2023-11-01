@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./HomePage.css";
+import "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
