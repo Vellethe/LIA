@@ -17,7 +17,7 @@ namespace Api.Controllers
         {
             this.context = context;
         }
-        [HttpGet("/jobs")]
+        [HttpGet("jobs")]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
             int pageSize = 1000;
