@@ -21,40 +21,40 @@ export const DescriptionPage = () => {
                     <div key={job.id}>
                         <div className={styles.grid}>
                             <div className={styles.row}>
-                                <div className={styles.label}>Name:</div>
-                                <div className={styles.value}>{job.name}</div>
+                                <p className={styles.label}>Name:</p>
+                                <p className={styles.value}>{job.name}</p>
                             </div>
                             <div className={styles.row}>
-                                <div className={styles.label2}>Location:</div>
-                                <div className={styles.value2}>{job.location}</div>
-                            </div>
-                        </div>
-
-                        <div className={styles.grid}>
-                            <div className={styles.row}>
-                                <div className={styles.label}>Date:</div>
-                                <div className={styles.value}>{job.date}</div>
-                            </div>
-                            <div className={styles.row}>
-                                <div className={styles.label2}>Role:</div>
-                                <div className={styles.value2}>{job.role}</div>
+                                <p className={styles.label2}>Location:</p>
+                                <p className={styles.value2}>{job.location}</p>
                             </div>
                         </div>
 
                         <div className={styles.grid}>
                             <div className={styles.row}>
-                                <div className={styles.label}>Tags:</div>
-                                <div className={styles.value}>{parseTags(job.tags)}</div>
+                                <p className={styles.label}>Date:</p>
+                                <p className={styles.value}>{job.date}</p>
                             </div>
                             <div className={styles.row}>
-                                <div className={styles.label2}>Contacts:</div>
-                                <div className={styles.value2}>{job.contactName}</div>
+                                <p className={styles.label2}>Role:</p>
+                                <p className={styles.value2}>{job.role}</p>
+                            </div>
+                        </div>
+
+                        <div className={styles.grid}>
+                            <div className={styles.row}>
+                                <p className={styles.label}>Tags:</p>
+                                <p className={styles.value}>{parseTags(job.tags)}</p>
+                            </div>
+                            <div className={styles.row}>
+                                <p className={styles.label2}>Contacts:</p>
+                                <p className={styles.value2}>{job.contactName}</p>
                             </div>
                         </div>
                         <div className={styles.grid2}>
                             <div className={styles.row}>
-                                <div className={styles.labelDesc}>Description</div>
-                                <div className={styles.desc}>{job.description}</div>
+                                <p className={styles.labelDesc}>Description</p>
+                                <p className={styles.desc}>{job.description}</p>
                             </div>
                         </div>
                     </div>
