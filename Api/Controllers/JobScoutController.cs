@@ -23,7 +23,9 @@ namespace Api.Controllers
             return context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
-                .Include(j => j.TagJobs).ThenInclude(j => j.Tag).Skip(pageSize * page).Take(pageSize).ToList();
+                .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
+                .OrderByDescending(j=> j.PostDate)
+                .Skip(pageSize * page).Take(pageSize).ToList();
         }
 
         [HttpPost("/test")]
