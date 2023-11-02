@@ -28,7 +28,7 @@ export const HomePage = () => {
 
     const filterDataByDate = () => {
         const filteredData = serverData.filter((job) => {
-            const jobDate = new Date(job.date);
+            const jobDate = new Date(job.postDate);
             const filterStartDate = new Date(startDate);
             return jobDate >= filterStartDate;
         });
