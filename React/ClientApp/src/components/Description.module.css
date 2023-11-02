@@ -36,31 +36,32 @@
     /*font-family:*/
 }
 
-.label 
-{
+.label {
     margin-left: 50px;
     font-size: 25px;
     font-weight: bold;
+    font-family: "work sans";
 }
 .label2 {
     margin-left: 100px;
     font-size: 25px;
     font-weight: bold;
+    font-family: "work sans";
 }
 .labelDesc {
     font-size: 25px;
     font-weight: bold;
 }
 
-.value 
-{
+.value {
     margin-left: 50px;
     font-size: 20px;
+    font-family: "work sans", sans-serif;
 }
-.value2 
-{
+.value2 {
     margin-left: 100px;
     font-size: 20px;
+    font-family: "work sans", sans-serif;
 }
 
 .desc

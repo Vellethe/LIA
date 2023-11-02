@@ -34,12 +34,34 @@ export const HomePage = () => {
         });
 
         setServerData(filteredData);
+
     };
+
+    const [isAscending, setAscending] = useState(true);
+
+    const sortDate = () => {
+        setAscending(!isAscending);
+        const newData = [...serverData];
+        newData.sort((a, b) => {
+            if (isAscending) {
+                return new Date(b.postDate) - new Date(a.postDate);
+            }
+            else {
+                return new Date(a.postDate) - new Date(b.postDate);
+            }
+        });
+        setServerData(newData);
+    }
 
     return (
         <div>
             <div id={styles.searchStuff}>
                 <div>
+                    <button
+                        onClick={sortDate}
+                        className={(isAscending ? "ascending" : "descending")}>
+                        {isAscending ? "Oldest" : "Newest"}
+                    </button>
                     <div id={styles.homeSearchFields}>
                         <form>
                             <input

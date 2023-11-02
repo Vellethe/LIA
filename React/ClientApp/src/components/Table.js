@@ -1,46 +1,8 @@
-import React, { useState } from "react";
 import x from "./../images/Red_X.png"
-import styles from "./Table.module.css";
-import { dataArray } from "./JobData"
-
+import styles from "./Table.module.css"
 
 export function Table({ data }) {
-    const [jobData, setJobData] = useState(dataArray);
-    const [isAscending, setAscending] = useState(true);
-    const [sortColumn, setSortColumn] = useState("date");
     
-
-    const sortDate = () => {
-        setSortColumn("date")
-        setAscending(!isAscending);
-        const newData = [...jobData];
-        newData.sort((a, b) => {
-            if (isAscending) {
-                return new Date(b.date) - new Date(a.date);
-            }
-            else {
-                return new Date(a.date) - new Date(b.date);
-            }
-        });
-        setJobData(newData);
-    }
-
-    const sortName = () => {
-        setSortColumn("date")
-        setAscending(!isAscending);
-        const newData = [...jobData];
-        newData.sort((a, b) => {
-            if (isAscending) {
-                return a.date.localeCompare(b.date, undefined, { sensitivity: "base" });
-            }
-            else {
-                return b.date.localeCompare(a.date, undefined, { sensitivity: "base" });
-            }
-        });
-        setJobData(newData);
-        
-    }
-
     const formatDate = (input) => {
         var date = new Date(input);
         var output = `
@@ -52,12 +14,6 @@ export function Table({ data }) {
 
     return (
         <div>
-            <button
-                onClick={sortDate}
-                className={sortColumn === "date" ? (isAscending ? "ascending" : "descending") : ""}
-            >
-                {isAscending ? "Oldest" : "Newest"}
-            </button>
                 <div className={styles.body} >
                     {data.map(job => (
                         <div className={styles.gridHome} key={job.id}>
