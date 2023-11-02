@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
-var url = "https://localhost:7273/api?page=0";
+var url = "https://localhost:7273/jobs?page=0";
 
 async function GetData() {
     var response = await fetch(url, {
