@@ -58,13 +58,6 @@ export function Table({ data }) {
             >
                 {isAscending ? "Oldest" : "Newest"}
             </button>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <div className={styles.text}>Company</div>
-                    <div className={styles.text}>Favorites</div>
-                    <div className={styles.text}>Excluded</div>
-                    <div className={styles.name} onClick={() => sortName(isAscending)}>Date</div>
-                </div>
                 <div className={styles.body} >
                     {data.map(job => (
                         <div className={styles.gridHome} key={job.id}>
@@ -81,7 +74,6 @@ export function Table({ data }) {
                         </div>
                     ))}
                 </div>
-            </div>
         </div>
     );
 }
