@@ -16,7 +16,7 @@ namespace Api.Controllers
         {
             this.context = context;
         }
-        [HttpGet]
+        [HttpGet("/jobs")]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
             int pageSize = 1000;
@@ -27,6 +27,14 @@ namespace Api.Controllers
                 .OrderByDescending(j=> j.PostDate)
                 .Skip(pageSize * page).Take(pageSize).ToList();
         }
+
+        [HttpGet("/tags")]
+        public List<JobScoutTag> GetTags()
+        {
+            return context.JobScoutTags.ToList();
+
+        }
+
 
         [HttpPost("/test")]
         public string Test()
