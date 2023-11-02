@@ -29,14 +29,14 @@ namespace Api.Controllers
                 .Skip(pageSize * page).Take(pageSize).ToList();
         }
 
-        [HttpGet("/tags")]
+        [HttpGet("tags")]
         public List<JobScoutTag> GetTags()
         {
             return context.JobScoutTags.ToList();
 
         }
 
-        [HttpPost("/tags")]
+        [HttpPost("tags")]
         public void Post(string name) {
             bool exists = context.JobScoutTags.Any(x => x.Name == name);
             if(exists)
@@ -48,7 +48,7 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost("/test")]
+        [HttpPost("test")]
         public string Test()
         {
             var x = new PlatsbankenGetterService();
