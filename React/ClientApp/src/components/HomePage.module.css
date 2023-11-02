@@ -1,5 +1,16 @@
 ﻿#homeSearchJobs {
+    width: 350px;
+    /*justify-content: space-between;*/
+    margin-right: 5px;
+}
+#homeSearchLocation
+{
+    margin-right: 10px;
     width: 450px;
+}
+#homeSearchButton
+{
+    margin-right: 10px;
 }
 
 form{
