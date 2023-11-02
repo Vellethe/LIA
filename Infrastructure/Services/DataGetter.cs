@@ -24,9 +24,12 @@ namespace Infrastructure.Services
                     //TODO maybe update values
                     continue;
                 }
+                //Makes sure that it is referensing a already created company in db
+                var dbCompany = context.JobScoutCompanies.FirstOrDefault(x => x.Name == job.Company.Name) ?? job.Company;
+                job.Company = dbCompany;
                 context.JobScoutJobs.Add(job);
+                context.SaveChanges();
             }
-            context.SaveChanges();
         }
     }
 }

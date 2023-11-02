@@ -4,6 +4,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Api.Controllers
 {
@@ -33,6 +34,17 @@ namespace Api.Controllers
         {
             return context.JobScoutTags.ToList();
 
+        }
+
+        [HttpPost("/tags")]
+        public void Post(string name) {
+            bool exists = context.JobScoutTags.Any(x => x.Name == name);
+            if(exists)
+            {
+                return;
+            }
+            context.JobScoutTags.Add(new JobScoutTag { Name = name });
+            context.SaveChanges();
         }
 
 
