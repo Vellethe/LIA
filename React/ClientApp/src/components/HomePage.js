@@ -40,9 +40,6 @@ export const HomePage = () => {
             return jobDate >= filterStartDate && jobDate <= filterEndDate;
         });
     };
-    const test = () => {
-        console.log(serverData);
-    }
 
     return (
         <div>
