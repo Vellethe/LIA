@@ -25,7 +25,7 @@ export function Table({ data }) {
                             </div>
                             <div className={`${styles.box} ${styles.star}`}>
                                 <input type="checkbox" />
-                                <p>Favorite</p>
+                                <label htmlFor="favorite">Favorite</label>
                             </div>
                             <div className={styles.textDate}>{formatDate(job.postDate)}</div>
                         </div>

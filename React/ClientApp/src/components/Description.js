@@ -25,9 +25,10 @@ export const DescriptionPage = () => {
                                 <p className={styles.value}>{job.name}</p>
                             </div>
                             <div className={styles.row}>
-                                <p className={styles.label2}>Location:</p>
-                                <p className={styles.value2}>{job.location}</p>
+                                <p className={styles.label2}>Tags:</p>
+                                <p className={styles.value2}>{parseTags(job.tags)}</p>
                             </div>
+                            
                         </div>
 
                         <div className={styles.grid}>
@@ -43,8 +44,8 @@ export const DescriptionPage = () => {
 
                         <div className={styles.grid}>
                             <div className={styles.row}>
-                                <p className={styles.label}>Tags:</p>
-                                <p className={styles.value}>{parseTags(job.tags)}</p>
+                                <p className={styles.label}>Location:</p>
+                                <p className={styles.value}>{job.location}</p>
                             </div>
                             <div className={styles.row}>
                                 <p className={styles.label2}>Contacts:</p>
