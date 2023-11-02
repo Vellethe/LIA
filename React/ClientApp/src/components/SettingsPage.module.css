@@ -1,5 +1,4 @@
 ﻿#SettingsFreeSearch {
-    margin-right: 500px;
     height: 40px;
     width: 350px;
 }
@@ -24,7 +23,6 @@
 }
 #AddTagAndButton
 {
-    margin-inline: 300px;
 }
 table {
     text-align: center;
