@@ -2,28 +2,34 @@
     height: 40px;
     width: 350px;
 }
+
 #SettingsAddTags
 {
     height:40px;
     width: 350px;
 }
+
 #SettingsSearchForm {
     display: flex;
     justify-content: space-between;
 }
+
 #AddSettings
 {
     margin-inline: 4px;
     height: 30px;
     width: 50px;
 }
+
 #SettingsDeleteButton
 {
     margin-right: 50px;
 }
+
 #AddTagAndButton
 {
 }
+
 table {
     text-align: center;
 }

@@ -63,7 +63,7 @@ export const HomePage = () => {
                         {isAscending ? "Oldest" : "Newest"}
                     </button>
                     <div id={styles.homeSearchFields}>
-                        <form>
+                        <form id={styles.test}>
                             <input
                                 id={styles.homeSearchJobs}
                                 type="text"

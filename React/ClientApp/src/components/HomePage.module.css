@@ -7,10 +7,20 @@
 {
     margin-right: 10px;
     width: 450px;
+    border-left:2px solid blue;
+}
+#homeSearchFields{
 }
 #homeSearchButton
 {
     margin-right: 10px;
+}
+
+#test{
+
+    display:grid;
+    border: 2px solid red;
+    grid-template-columns: 5fr 5fr 2fr;
 }
 
 form{
