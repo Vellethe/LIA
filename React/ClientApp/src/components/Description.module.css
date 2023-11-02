@@ -2,13 +2,15 @@
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     border-radius: 5px;
     padding: 10px;
 }
 
 .body {
-    width: 70%;
+    margin-left: 15%;
+    width: 55%;
+    border: 1px solid #ccc;
 }
 .body2 {
     width: 30%;
@@ -18,35 +20,50 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
 }
 .grid2 {
     display: grid;
     grid-template-columns: 1fr;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+/*    border: 1px solid #ccc;
+    border-radius: 5px;*/
+    margin-bottom: 5px;
 }
 
 .row {
     display: grid;
     align-items: center;
     padding: 10px;
+    /*font-family:*/
 }
 
 .label 
 {
-    font-size: 30px;
+    margin-left: 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.label2 {
+    margin-left: 100px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.labelDesc {
+    font-size: 25px;
     font-weight: bold;
 }
 
 .value 
 {
-    font-size: 25px;
+    margin-left: 50px;
+    font-size: 20px;
 }
+.value2 
+{
+    margin-left: 100px;
+    font-size: 20px;
+}
+
 .desc
 {
-    font-size: 20px;
+    font-size: 16px;
 }

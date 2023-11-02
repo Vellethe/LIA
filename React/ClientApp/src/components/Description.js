@@ -25,8 +25,8 @@ export const DescriptionPage = () => {
                                 <div className={styles.value}>{job.name}</div>
                             </div>
                             <div className={styles.row}>
-                                <div className={styles.label}>Location:</div>
-                                <div className={styles.value}>{job.location}</div>
+                                <div className={styles.label2}>Location:</div>
+                                <div className={styles.value2}>{job.location}</div>
                             </div>
                         </div>
 
@@ -36,8 +36,8 @@ export const DescriptionPage = () => {
                                 <div className={styles.value}>{job.date}</div>
                             </div>
                             <div className={styles.row}>
-                                <div className={styles.label}>Role:</div>
-                                <div className={styles.value}>{job.role}</div>
+                                <div className={styles.label2}>Role:</div>
+                                <div className={styles.value2}>{job.role}</div>
                             </div>
                         </div>
 
@@ -47,13 +47,13 @@ export const DescriptionPage = () => {
                                 <div className={styles.value}>{parseTags(job.tags)}</div>
                             </div>
                             <div className={styles.row}>
-                                <div className={styles.label}>Contacts:</div>
-                                <div className={styles.value}>{job.contactName}</div>
+                                <div className={styles.label2}>Contacts:</div>
+                                <div className={styles.value2}>{job.contactName}</div>
                             </div>
                         </div>
                         <div className={styles.grid2}>
                             <div className={styles.row}>
-                                <div className={styles.label}>Description</div>
+                                <div className={styles.labelDesc}>Description</div>
                                 <div className={styles.desc}>{job.description}</div>
                             </div>
                         </div>
