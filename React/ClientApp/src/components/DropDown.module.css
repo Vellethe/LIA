@@ -13,13 +13,12 @@
     cursor: pointer;
     text-align: center;
     font-weight: bold;
-/*    margin-inline: 250px;*/
+    margin-left: 60px;
 }
 
 .dropdown-list {
     list-style: none;
     width: auto;
-    /*    margin-inline: 250px;*/
     padding: 0;
     position: absolute;
     background-color: #f1f1f1;
