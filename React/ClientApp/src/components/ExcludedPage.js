@@ -1,4 +1,5 @@
 import React from 'react';
+import commonStylesTable from "./CommonTable.module.css"
 import "./HomePage.module.css";
 
 export const ExcludedPage = () => {
@@ -10,9 +11,9 @@ export const ExcludedPage = () => {
                     type="text"
                     name="searchTags"
                     placeholder="Free search"/>
-                </form>
-        <table>
-            <thead>
+            </form>
+            <table className={commonStylesTable.table}>
+                <thead className={commonStylesTable.thead}>
                 <tr>
                     <th>Company</th>
                     <th>Role</th>
