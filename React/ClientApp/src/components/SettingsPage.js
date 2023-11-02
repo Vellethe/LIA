@@ -4,8 +4,8 @@ import styles from "./SettingsPage.module.css";
 import data from "./testingtags.json";
 
 export const SettingsPage = () => {
-
-    const [tags, setTags] = useState(data);
+    const allTags = data;
+    const [showTags, setShowTags] = useState(allTags);
     const [addFormData, setAddFormData] = useState({
         tags: ""
     })
@@ -30,21 +30,29 @@ export const SettingsPage = () => {
             tags: addFormData.tags
         }
 
-        const newTags = [...tags, newTag];
-        setTags(newTags);
+        const newTags = [...showTags, newTag];
+        setShowTags(newTags);
 
         setAddFormData({ tags: "" });
     }
 
     const handleDeleteClick = (tagsId) => {
-        const newTags = [...tags];
+        const newTags = [...showTags];
 
-        const index = tags.findIndex((tag) => tag.id === tagsId)
+        const index = showTags.findIndex((tag) => tag.id === tagsId)
 
         newTags.splice(index, 1);
 
-        setTags(newTags);
+        setShowTags(newTags);
     }
+
+    const searchChange = (event) => {
+        var searchWord = event.target.value;
+        var newTaglist = allTags.filter((tag) => tag.tags.toLowerCase().includes(searchWord.toLowerCase()))
+        setShowTags(newTaglist);
+    }
+
+
     return (
         <div>
             <div id={styles.SettingsSearchForm}>
@@ -67,6 +75,7 @@ export const SettingsPage = () => {
                         type="text"
                         name="searchTags"
                         placeholder="Free search"
+                        onChange={searchChange}
                     />
                 </form>
             </div>
@@ -78,7 +87,7 @@ export const SettingsPage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {tags.map((tag, index) => (
+                    {showTags.map((tag, index) => (
                         <tr key={index}>
                             <td>{tag.tags}</td>
                             <td>
