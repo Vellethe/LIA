@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
+import commonStylesTable from "./CommonTable.module.css"
 import data from "./testingtags.json";
 
 export const SettingsPage = () => {
@@ -79,8 +80,8 @@ export const SettingsPage = () => {
                     />
                 </form>
             </div>
-            <table>
-                <thead>
+            <table className={commonStylesTable.table}>
+                <thead className={commonStylesTable.thead}>
                     <tr>
                         <th className={styles.text}>{/*Sökord*/}Tags</th>
                         <th className={styles.deleteButton}></th>
