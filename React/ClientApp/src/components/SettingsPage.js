@@ -87,7 +87,7 @@ export const SettingsPage = () => {
                         <th className={styles.deleteButton}></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className={commonStylesTable.tbody}>
                     {showTags.map((tag, index) => (
                         <tr key={index}>
                             <td>{tag.tags}</td>

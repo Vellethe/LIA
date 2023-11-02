@@ -34,10 +34,10 @@
     width: 100%;
 }
 
-.row:nth-child(odd) {
+.tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
-.row:nth-child(even) {
+.tbody tr:nth-child(even) {
     background-color: #fff;
 }

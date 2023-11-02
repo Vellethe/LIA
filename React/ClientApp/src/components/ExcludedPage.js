@@ -20,8 +20,8 @@ export const ExcludedPage = () => {
                     <th>Tags</th>
                     <th>Excluded</th>
                 </tr>
-            </thead>
-                <tbody>
+                </thead>
+                <tbody className={commonStylesTable.tbody}>
                     <tr>
                         <td>Power</td>
                         <td>Software Engineer</td>
