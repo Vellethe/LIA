@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
-import data from "./testingtags.json";
 
 export const SettingsPage = () => {
     let allData = useRef([]);
