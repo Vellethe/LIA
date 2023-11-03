@@ -51,6 +51,20 @@ export const HomePage = () => {
 
     };
 
+    const [searchLocation, setSearchLocation] = useState("");
+
+    const handleLocationChange = (e) => {
+        setSearchLocation(e.target.value);
+    };
+
+    const searchByLocation = (e) => {
+        e.preventDefault();
+        const filteredData = allData.current.filter((job) => {
+            return job.location.toLowerCase().includes(searchLocation.toLowerCase());
+        });
+        setServerData(filteredData)
+    };
+
     const [isAscending, setAscending] = useState(true);
 
     const sortDate = () => {
@@ -98,7 +112,7 @@ export const HomePage = () => {
                         {isAscending ? "Oldest" : "Newest"}
                     </button>
                     <div id={styles.homeSearchFields}>
-                        <form id={styles.test}>
+                        <form id={styles.test} onSubmit={searchByLocation}>
                             <input
                                 id={styles.homeSearchJobs}
                                 type="text"
