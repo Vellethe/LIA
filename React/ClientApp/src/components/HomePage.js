@@ -58,6 +58,12 @@ export const HomePage = () => {
         setServerData(newData);
     }
 
+    const filterDataByFavorite = () => {
+        const filterdData = allData.current.filter((job) => {
+            //TODO implement favorite save behavior
+        })
+    }
+
     return (
         <div>
             <div id={styles.searchStuff}>
