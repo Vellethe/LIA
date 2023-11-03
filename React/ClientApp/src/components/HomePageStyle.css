@@ -1,0 +1,28 @@
+﻿#homeSearchLocation {
+    position: absolute;
+    left: 721px;
+    height: 40px;
+    width: 500px;
+}
+
+#homeSearchJobs {
+    margin-inline: 250px;
+    height: 40px;
+    width: 450px;
+}
+
+#homeSearchFields {
+    display: flex;
+    justify-content: space-between;
+}
+#homeSearchButton
+{
+    position: absolute;
+    right: 702px;
+    top: 118px;
+}
+#dates {
+    position: absolute;
+    right: 200px;
+    top: 118px;
+}
