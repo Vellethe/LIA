@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
 import data from "./testingtags.json";
 
 export const SettingsPage = () => {
-    const allTags = data;
+    let allData = useRef([]);
     const [reloadTrigger,setReloadTrigger] = useState({});
-    const [showTags, setShowTags] = useState(allTags);
+    const [showTags, setShowTags] = useState([]);
     const [addFormData, setAddFormData] = useState({
         tags: ""
     })
@@ -32,6 +32,7 @@ export const SettingsPage = () => {
     useEffect(() => {
         getTags().then(x => {
             setShowTags(x);
+            allData.current = x;
         }
         )
     }, [reloadTrigger]);
@@ -69,7 +70,7 @@ export const SettingsPage = () => {
 
     const searchChange = (event) => {
         var searchWord = event.target.value;
-        var newTaglist = allTags.filter((tag) => tag.tags.toLowerCase().includes(searchWord.toLowerCase()))
+        var newTaglist = allData.current.filter((tag) => tag.name.toLowerCase().includes(searchWord.toLowerCase()))
         setShowTags(newTaglist);
     }
 

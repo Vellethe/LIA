@@ -16,6 +16,7 @@ async function getData() {
 export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
+
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
@@ -60,7 +61,6 @@ export const HomePage = () => {
 
     const filterDataByFavorite = () => {
         const filterdData = allData.current.filter((job) => {
-            //TODO implement favorite save behavior
         })
     }
 
