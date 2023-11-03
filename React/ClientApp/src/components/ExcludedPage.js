@@ -6,7 +6,7 @@ export const ExcludedPage = () => {
 
     const [searchText, setSearchText] = useState("");
     const tableData = [
-        ["Power", "Software Engineer", "Developer"],
+        ["Power", "Cookies Engineer", "MonsterFactory"],
         ["Puff", "Software Engineer", "Developer"],
         ["Pinglor", "Software Engineer", "Developer"],
         ["Med", "Software Engineer", "Developer"],
