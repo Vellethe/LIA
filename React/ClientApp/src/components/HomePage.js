@@ -15,6 +15,7 @@ async function getData() {
 async function updateFavorite(id, state) {
 
     var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
+    console.log(id, state);
     var response = await fetch(url, {
         method: "PUT",
     })
@@ -68,6 +69,8 @@ export const HomePage = () => {
 
     const handleFavoriteCheckbox = (event) => {
         var x = "a";
+        //TODO checks not saved in ref
+        allData.current.find(x => x.id == event.currentTarget.id).favorite = event.currentTarget.checked;
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
