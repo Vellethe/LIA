@@ -3,14 +3,21 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
-var url = "https://localhost:7273/api/jobs?page=0";
 
 async function getData() {
+    var url = "https://localhost:7273/api/jobs?page=0";
     var response = await fetch(url, {
         method: "GET",
     })
     const data = await response.json()
     return data
+}
+async function updateFavorite(id, state) {
+
+    var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
+    var response = await fetch(url, {
+        method: "PUT",
+    })
 }
 
 export const HomePage = () => {
@@ -59,15 +66,29 @@ export const HomePage = () => {
         setServerData(newData);
     }
 
-    const filterDataByFavorite = () => {
-        const filterdData = allData.current.filter((job) => {
-        })
+    const handleFavoriteCheckbox = (event) => {
+        var x = "a";
+        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
+
+    const filterDataByFavorite = (state) => {
+        var filteredData = allData.current;
+        if (state.currentTarget.checked === true) {
+
+            filteredData = allData.current.filter((job) => {
+                return job.favorite === true;
+            });
+        }
+
+        setServerData(filteredData);
+    }
+
 
     return (
         <div>
             <div id={styles.searchStuff}>
                 <div>
+                    <input type="checkbox" onChange={filterDataByFavorite}></input>
                     <button
                         onClick={sortDate}
                         className={(isAscending ? "ascending" : "descending")}>
@@ -103,7 +124,7 @@ export const HomePage = () => {
                 </div>
             </div>
             <div>
-                <Table data={serverData} />
+                <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} />
             </div>
         </div>
     );
