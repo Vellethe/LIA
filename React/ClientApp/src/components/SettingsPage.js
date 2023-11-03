@@ -70,10 +70,9 @@ export const SettingsPage = () => {
             method: "DELETE",
         })
             .then((response) => {
-                if (response.status === 200)
+                if (response.status === 204)
                 {
-                    const updatedTags = showTags.filter((tag) => tag.id !== tagsId);
-                    setShowTags(updatedTags);
+                    setReloadTrigger({});
                 } else
                 {
                     <p>This delete did not work</p>
