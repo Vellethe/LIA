@@ -12,18 +12,18 @@ async function getData() {
     const data = await response.json()
     return data
 }
+async function updateFavorite(id, state) {
+
+    var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
+    var response = await fetch(url, {
+        method: "PUT",
+    })
+}
 
 export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
 
-    async function updateFavorite(id, state) {
-
-        var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
-        var response = await fetch(url, {
-            method: "PUT",
-        })
-    }
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
