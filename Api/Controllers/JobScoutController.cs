@@ -10,6 +10,7 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("/api")]
+    [EnableCors("MyPolicy")]
     public class JobScoutController
     {
         private JobScoutContext context { get; set; }
@@ -55,6 +56,22 @@ namespace Api.Controllers
             DataGetterService y = new DataGetterService(context, x);
             y.GetData();
             return "hello world";
+        }
+
+        [HttpDelete("tags/{tagId}")]
+        public IActionResult DeleteTag(int tagId)
+        {
+            var tag = context.JobScoutTags.Find(tagId);
+
+            if (tag == null)
+            {
+                return new NotFoundResult();
+            }
+
+            context.JobScoutTags.Remove(tag);
+            context.SaveChanges();
+
+            return new NoContentResult();
         }
 
         //[HttpPost("favorite")]

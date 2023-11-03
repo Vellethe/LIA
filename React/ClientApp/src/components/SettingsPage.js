@@ -64,7 +64,24 @@ export const SettingsPage = () => {
     }
 
     const handleDeleteClick = (tagsId) => {
-        //TODO implement delete
+        // Send a DELETE request to the server to delete the tag by its ID
+        const url = `https://localhost:7273/api/tags${tagsId}`;
+        fetch(url, {
+            method: "DELETE",
+        })
+            .then((response) => {
+                if (response.status === 200)
+                {
+                    const updatedTags = showTags.filter((tag) => tag.id !== tagsId);
+                    setShowTags(updatedTags);
+                } else
+                {
+                    <p>This delete did not work</p>
+                }
+            })
+            .catch((error) => {
+                console.error("Error deleting tag:", error);
+            });
     }
 
     const searchChange = (event) => {
