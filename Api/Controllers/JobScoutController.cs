@@ -25,22 +25,25 @@ namespace Api.Controllers
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
-                .OrderByDescending(j=> j.PostDate)
+                .OrderByDescending(j => j.PostDate)
                 .Skip(pageSize * page).Take(pageSize).ToList();
         }
 
         [HttpGet("tags")]
         public List<JobScoutTag> GetTags()
         {
-            return context.JobScoutTags.ToList();
+            return context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
 
         }
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name) {
-            bool exists = context.JobScoutTags.Any(x => x.Name == name);
-            if(exists)
+        public void CreateNewTag(string name)
+        {
+            var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
+            if (toFind is not null)
             {
+                toFind.IsDisabled = false;
+                context.SaveChanges();
                 return;
             }
             context.JobScoutTags.Add(new JobScoutTag { Name = name });
@@ -67,7 +70,7 @@ namespace Api.Controllers
                 return new NotFoundResult();
             }
 
-            context.JobScoutTags.Remove(tag);
+            tag.IsDisabled = true;
             context.SaveChanges();
 
             return new NoContentResult();
@@ -78,7 +81,7 @@ namespace Api.Controllers
         {
             //TODO status codes
             var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
-            if(toFind is null)
+            if (toFind is null)
             {
                 return;
             }
