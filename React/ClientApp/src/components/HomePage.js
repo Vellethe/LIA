@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
@@ -14,11 +14,16 @@ async function GetData() {
 }
 
 export const HomePage = () => {
-
+    let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
     useEffect(() => {
-        GetData().then(x => setServerData(x))
-    },[]);
+        GetData().then(x => {
+            setServerData(x);
+            allData.current = x;
+
+        }
+        )
+    }, []);
 
     const [startDate, setStartDate] = useState('');
 
@@ -27,7 +32,7 @@ export const HomePage = () => {
     };
 
     const filterDataByDate = () => {
-        const filteredData = serverData.filter((job) => {
+        const filteredData = allData.current.filter((job) => {
             const jobDate = new Date(job.postDate);
             const filterStartDate = new Date(startDate);
             return jobDate >= filterStartDate;
@@ -51,6 +56,12 @@ export const HomePage = () => {
             }
         });
         setServerData(newData);
+    }
+
+    const filterDataByFavorite = () => {
+        const filterdData = allData.current.filter((job) => {
+            //TODO implement favorite save behavior
+        })
     }
 
     return (
