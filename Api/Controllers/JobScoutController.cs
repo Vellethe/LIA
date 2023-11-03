@@ -57,7 +57,18 @@ namespace Api.Controllers
             return "hello world";
         }
 
-        //[HttpPost("favorite")]
+        [HttpPut("favorite")]
+        public void SetFavorite(int id, bool isFavorite)
+        {
+            //TODO status codes
+            var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
+            if(toFind is null)
+            {
+                return;
+            }
+            toFind.Favorite = isFavorite;
+            context.SaveChanges();
+        }
 
     }
 }

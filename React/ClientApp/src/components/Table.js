@@ -1,7 +1,7 @@
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 
-export function Table({ data }) {
+export function Table({ data, checkBoxFunc}) {
     
     const formatDate = (input) => {
         var date = new Date(input);
@@ -24,7 +24,7 @@ export function Table({ data }) {
                                 <div className={styles.textLocation}>{job.municipality}</div>
                             </div>
                             <div className={`${styles.box} ${styles.star}`}>
-                                <input type="checkbox" />
+                                <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorite } />
                                 <label htmlFor="favorite">Favorite</label>
                             </div>
                             <div className={styles.textDate}>{formatDate(job.postDate)}</div>

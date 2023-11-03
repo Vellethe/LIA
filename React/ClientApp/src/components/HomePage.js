@@ -3,9 +3,9 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 
-var url = "https://localhost:7273/api/jobs?page=0";
 
 async function getData() {
+    var url = "https://localhost:7273/api/jobs?page=0";
     var response = await fetch(url, {
         method: "GET",
     })
@@ -17,6 +17,13 @@ export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
 
+    async function updateFavorite(id, state) {
+
+        var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
+        var response = await fetch(url, {
+            method: "PUT",
+        })
+    }
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
@@ -59,10 +66,16 @@ export const HomePage = () => {
         setServerData(newData);
     }
 
+    const handleFavoriteCheckbox = (event) => {
+        var x = "a";
+        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
+    }
+
     const filterDataByFavorite = () => {
         const filterdData = allData.current.filter((job) => {
         })
     }
+
 
     return (
         <div>
@@ -103,7 +116,7 @@ export const HomePage = () => {
                 </div>
             </div>
             <div>
-                <Table data={serverData} />
+                <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} />
             </div>
         </div>
     );
