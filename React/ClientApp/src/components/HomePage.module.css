@@ -6,7 +6,6 @@
 #homeSearchLocation
 {
     margin-right: 10px;
-    width: 250px;
     border-left:2px solid blue;
 }
 #homeSearchFields
@@ -21,6 +20,10 @@
     display:grid;
     border: 2px solid red;
     grid-template-columns: 5fr 5fr 2fr;
+}
+#dates
+{
+    margin-left: 25px;
 }
 
 form{
