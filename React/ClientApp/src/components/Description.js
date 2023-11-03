@@ -54,7 +54,7 @@ export const DescriptionPage = () => {
                         </div>
                         <div className={styles.grid2}>
                             <div className={styles.row}>
-                                <p className={styles.labelDesc}>Description</p>
+                                <p className={styles.label}>Description</p>
                                 <p className={styles.desc}>{job.description}</p>
                             </div>
                         </div>
