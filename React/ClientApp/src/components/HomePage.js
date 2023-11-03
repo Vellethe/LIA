@@ -71,9 +71,16 @@ export const HomePage = () => {
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
-    const filterDataByFavorite = () => {
-        const filterdData = allData.current.filter((job) => {
-        })
+    const filterDataByFavorite = (state) => {
+        var filteredData = allData.current;
+        if (state.currentTarget.checked === true) {
+
+            filteredData = allData.current.filter((job) => {
+                return job.favorite === true;
+            });
+        }
+
+        setServerData(filteredData);
     }
 
 
@@ -81,6 +88,7 @@ export const HomePage = () => {
         <div>
             <div id={styles.searchStuff}>
                 <div>
+                    <input type="checkbox" onChange={filterDataByFavorite}></input>
                     <button
                         onClick={sortDate}
                         className={(isAscending ? "ascending" : "descending")}>
