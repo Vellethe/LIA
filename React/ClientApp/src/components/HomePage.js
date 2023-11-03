@@ -5,7 +5,7 @@ import Dropdown from './DropDown';
 
 var url = "https://localhost:7273/api/jobs?page=0";
 
-async function GetData() {
+async function getData() {
     var response = await fetch(url, {
         method: "GET",
     })
@@ -17,7 +17,7 @@ export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
     useEffect(() => {
-        GetData().then(x => {
+        getData().then(x => {
             setServerData(x);
             allData.current = x;
 

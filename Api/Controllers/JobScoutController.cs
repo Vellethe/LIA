@@ -37,7 +37,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("tags")]
-        public void Post(string name) {
+        public void CreateNewTag(string name) {
             bool exists = context.JobScoutTags.Any(x => x.Name == name);
             if(exists)
             {

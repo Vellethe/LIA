@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
@@ -6,10 +6,35 @@ import data from "./testingtags.json";
 
 export const SettingsPage = () => {
     const allTags = data;
+    const [reloadTrigger,setReloadTrigger] = useState({});
     const [showTags, setShowTags] = useState(allTags);
     const [addFormData, setAddFormData] = useState({
         tags: ""
     })
+
+    async function getTags(){
+        var url = "https://localhost:7273/api/tags"; 
+        var response = await fetch(url, {
+            method: "GET",
+        })
+        const data = await response.json()
+        return data
+    }
+
+    async function postTag(name) {
+        var url = "https://localhost:7273/api/tags?name="+name; 
+        var response = await fetch(url, {
+            method: "POST",
+        })
+        setReloadTrigger({});
+    }
+
+    useEffect(() => {
+        getTags().then(x => {
+            setShowTags(x);
+        }
+        )
+    }, [reloadTrigger]);
 
     const handleAddFormChange = (event) => {
         event.preventDefault();
@@ -32,19 +57,14 @@ export const SettingsPage = () => {
         }
 
         const newTags = [...showTags, newTag];
-        setShowTags(newTags);
+        postTag(addFormData.tags);
+        //setShowTags(newTags);
 
         setAddFormData({ tags: "" });
     }
 
     const handleDeleteClick = (tagsId) => {
-        const newTags = [...showTags];
-
-        const index = showTags.findIndex((tag) => tag.id === tagsId)
-
-        newTags.splice(index, 1);
-
-        setShowTags(newTags);
+        //TODO implement delete
     }
 
     const searchChange = (event) => {
@@ -88,9 +108,9 @@ export const SettingsPage = () => {
                     </tr>
                 </thead>
                 <tbody className={commonStylesTable.tbody}>
-                    {showTags.map((tag, index) => (
-                        <tr key={index}>
-                            <td>{tag.tags}</td>
+                    {showTags.map((tag) => (
+                        <tr key={tag.id}>
+                            <td>{tag.name}</td>
                             <td>
                                 <button
                                     type="button"
