@@ -6,14 +6,15 @@
 #homeSearchLocation
 {
     margin-right: 10px;
-    width: 450px;
+    width: 250px;
     border-left:2px solid blue;
 }
-#homeSearchFields{
+#homeSearchFields
+{
 }
 #homeSearchButton
 {
-    margin-right: 10px;
+
 }
 
 #test{
