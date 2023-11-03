@@ -9,16 +9,7 @@ namespace Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("MyPolicy", builder =>
-                    {
-                        builder.WithOrigins("https://localhost:44448")
-                               .AllowAnyHeader()
-                               .AllowAnyMethod();
-                    });
-            });
-
+            builder.Services.AddCors();
             //stops serialization loop when getting data from db 2 way navigation
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

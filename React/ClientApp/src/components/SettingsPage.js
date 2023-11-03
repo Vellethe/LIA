@@ -65,7 +65,7 @@ export const SettingsPage = () => {
 
     const handleDeleteClick = (tagsId) => {
         // Send a DELETE request to the server to delete the tag by its ID
-        const url = `https://localhost:7273/api/tags${tagsId}`;
+        const url = `https://localhost:7273/api/tags?tagId=${tagsId}`;
         fetch(url, {
             method: "DELETE",
         })

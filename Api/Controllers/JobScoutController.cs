@@ -10,7 +10,6 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("/api")]
-    [EnableCors("MyPolicy")]
     public class JobScoutController
     {
         private JobScoutContext context { get; set; }
@@ -58,7 +57,7 @@ namespace Api.Controllers
             return "hello world";
         }
 
-        [HttpDelete("tags/{tagId}")]
+        [HttpDelete("tags")]
         public IActionResult DeleteTag(int tagId)
         {
             var tag = context.JobScoutTags.Find(tagId);
