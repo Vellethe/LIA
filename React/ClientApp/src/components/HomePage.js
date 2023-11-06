@@ -53,18 +53,17 @@ export const HomePage = () => {
 
     const [searchLocation, setSearchLocation] = useState("");
 
-    const handleLocationChange = (e) => {
-        setSearchLocation(e.target.value);
-    };
-
     const searchByLocation = (e) => {
         e.preventDefault();
+        const location = e.target.searchLocation.value;
+        setSearchLocation(location);
         const filteredData = allData.current.filter((job) => {
             if (job.municipality && typeof job.municipality === "string") {
-                return job.municipality.includes(searchLocation);
+                return job.municipality.includes(location);
             }
             return false;
         });
+        console.log(filteredData);
         setServerData(filteredData)
     };
    
