@@ -60,12 +60,11 @@ export const HomePage = () => {
     const searchByLocation = (e) => {
         e.preventDefault();
         const filteredData = allData.current.filter((job) => {
-            if (job.location && typeof job.location === "string") {
-                return job.location.toLowerCase().includes(searchLocation.toLowerCase());
+            if (job.municipality && typeof job.municipality === "string") {
+                return job.municipality.includes(searchLocation);
             }
             return false;
         });
-        console.log(filteredData);
         setServerData(filteredData)
     };
    
