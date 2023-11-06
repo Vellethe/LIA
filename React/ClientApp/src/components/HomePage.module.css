@@ -40,3 +40,9 @@ form{
 #searchStuff > div{
     display: flex;
 }
+
+button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton 
+{
+    border-radius: 10px;
+    padding: 5px;
+}
