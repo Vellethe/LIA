@@ -60,10 +60,15 @@ export const HomePage = () => {
     const searchByLocation = (e) => {
         e.preventDefault();
         const filteredData = allData.current.filter((job) => {
-            return job.location.toLowerCase().includes(searchLocation.toLowerCase());
+            if (job.location && typeof job.location === "string") {
+                return job.location.toLowerCase().includes(searchLocation.toLowerCase());
+            }
+            return false;
         });
+        console.log(filteredData);
         setServerData(filteredData)
     };
+   
 
     const [isAscending, setAscending] = useState(true);
 
