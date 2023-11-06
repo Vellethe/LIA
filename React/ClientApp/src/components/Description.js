@@ -2,7 +2,7 @@ import React from 'react';
 import { dataArray } from './JobData'
 import styles from './Description.module.css';
 
-export const DescriptionPage = () => {
+export const DescriptionPage = ({ job, favorite, onFavoriteChange }) => {
 
     const parseTags = (input) => {
         var output = "";
@@ -14,6 +14,12 @@ export const DescriptionPage = () => {
         }
         return output;
     }
+
+    const handleFavoriteChange = () => {
+        const updatedFavorite = !favorite;
+        onFavoriteChange(updatedFavorite);
+    }
+
     return (
         <div className={styles['container']}>
             <div className={styles['body']}>
@@ -62,7 +68,14 @@ export const DescriptionPage = () => {
                 ))}
             </div>
             <div className={styles['body2']}>
-                <p>Tasty Cookies</p>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={favorite}
+                        onChange={handleFavoriteChange}
+                    />
+                    Favorite: {favorite ? 'Yes' : 'No'}
+                </label>
                 <p>Tasty Cookies</p>
                 <p>Tasty Cookies</p>
                 <p>Tasty Cookies</p>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
+import { DescriptionPage } from './Description';
 
 
 async function getData() {
@@ -35,6 +36,16 @@ export const HomePage = () => {
     }, []);
 
     const [startDate, setStartDate] = useState('');
+
+    const handleFavoriteChange = (jobId, newFavoriteValue) => {
+        const updatedServerData = serverData.map(job => {
+            if (job.id === jobId) {
+                return { ...job, favorite: newFavoriteValue };
+            }
+            return job;
+        });
+        setServerData(updatedServerData);
+    };
 
     const handleStartDateChange = (e) => {
         setStartDate(e.target.value);
@@ -145,6 +156,17 @@ export const HomePage = () => {
             </div>
             <div>
                 <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} />
+            </div>
+            <div>
+                {/* Render a Description component for each job in serverData */}
+                {serverData.map((jobData) => (
+                    <DescriptionPage
+                        key={jobData.id}
+                        job={jobData}
+                        favorite={jobData.favorite}
+                        onFavoriteChange={(newFavoriteValue) => handleFavoriteChange(jobData.id, newFavoriteValue)}
+                    />
+                ))}
             </div>
         </div>
     );
