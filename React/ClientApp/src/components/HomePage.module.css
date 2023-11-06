@@ -5,21 +5,22 @@
 }
 #homeSearchLocation
 {
-    margin-right: 10px;
+    margin-left: 20px;
     border-left:2px solid blue;
 }
 #homeSearchFields
 {
+    display: flex;
 }
 #homeSearchButton
 {
-
 }
 
 #test{
     display:grid;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     grid-template-columns: 5fr 5fr 2fr;
+    padding-left: 5px;
 }
 #dates
 {
@@ -41,8 +42,13 @@ form{
     display: flex;
 }
 
-button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton 
-{
+button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton {
     border-radius: 10px;
     padding: 5px;
+    outline: none;
+}
+
+#favoriteCheckBox
+{
+   /*Checkboxen vägrar flytta sig*/
 }

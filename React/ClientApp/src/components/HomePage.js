@@ -119,12 +119,6 @@ export const HomePage = () => {
         <div>
             <div id={styles.searchStuff}>
                 <div>
-                    <input type="checkbox" onChange={filterDataByFavorite}></input>
-                    <button
-                        onClick={sortDate}
-                        className={(isAscending ? "ascending" : "descending")}>
-                        {isAscending ? "Oldest" : "Newest"}
-                    </button>
                     <div id={styles.homeSearchFields}>
                         <form id={styles.test} onSubmit={searchByLocation}>
                             <input
@@ -152,6 +146,12 @@ export const HomePage = () => {
 
                 <div>
                     <Dropdown />
+                    <button id="Sorting"
+                        onClick={sortDate}
+                        className={(isAscending ? "ascending" : "descending")}>
+                        {isAscending ? "Oldest" : "Newest"}
+                    </button>
+                    <input type="checkbox" id="favoriteCheckBox" onChange={filterDataByFavorite}></input>
                 </div>
             </div>
             <div>
