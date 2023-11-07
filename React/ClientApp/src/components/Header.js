@@ -21,7 +21,6 @@ export class Header extends Component {
                         <li className={styles.link}><Link to="/">Home</Link> </li>
                         <li className={styles.link}><Link to="/settings">Settings</Link></li>
                         <li className={styles.link}><Link to="/excluded">Excluded</Link></li>
-                        <li className={styles.link}><Link to="/description">Description</Link></li>
                     </ul>
                     <div className={styles.logout}>
                         <img className={styles.group} alt="Group" src={logout} />

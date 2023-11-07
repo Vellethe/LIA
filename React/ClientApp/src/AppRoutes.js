@@ -19,10 +19,6 @@ const AppRoutes = [
       path: '/excluded',
       element: <ExcludedPage />
   },
-  {
-      path: '/description',
-      element: <DescriptionPage />
-  }
 ];
 
 export default AppRoutes;

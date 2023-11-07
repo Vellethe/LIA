@@ -1,7 +1,7 @@
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 
-export function Table({ data, checkBoxFunc, updateExluded }) {
+export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc}) {
     
     const formatDate = (input) => {
         var date = new Date(input);
@@ -19,6 +19,7 @@ export function Table({ data, checkBoxFunc, updateExluded }) {
             <div className={styles.body} >
                 {data.map(job => (
                     <div className={styles.gridHome} key={job.id}>
+                        <button onClick={() => selectForShowFunc(job)}>temp button for select show description</button>
                         <div className={styles.jobTitle}> {job.role}</div>
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>

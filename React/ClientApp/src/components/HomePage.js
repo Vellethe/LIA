@@ -28,6 +28,7 @@ export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
     const [reloadTrigger, setReloadTrigger] = useState({});
+    const [selectedJob, setSelectedJob] = useState(null);
 
     useEffect(() => {
         getData().then(x => {
@@ -133,9 +134,21 @@ export const HomePage = () => {
         setServerData(filteredData);
     }
 
+    function showTable(show) {
+        if (show) {
+            return <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} selectForShowFunc={(job) => { setSelectedJob(job) }} />
+        }
+        else {
+            return null;
+        }
+    }
+
 
     return (
         <div>
+
+            <DescriptionPage job={selectedJob} backButtonFunc={() => { setSelectedJob(null) }} />
+
             <div id={styles.searchStuff}>
                 <div>
                     <div id={styles.homeSearchFields}>
@@ -178,7 +191,7 @@ export const HomePage = () => {
                 </div>
             </div>
             <div>
-                <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} />
+                {showTable(selectedJob == null)}
             </div>
             {/*<div>*/}
             {/* Render a Description component for each job in serverData */}
@@ -189,7 +202,7 @@ export const HomePage = () => {
             {/*        favorite={jobData.favorite}*/}
             {/*        onFavoriteChange={(newFavoriteValue) => handleFavoriteChange(jobData.id, newFavoriteValue)}*/}
             {/*    />*/}
-                ))}
+                {/*))}*/}
             {/*</div>*/}
         </div>
     );
