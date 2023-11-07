@@ -1,18 +1,23 @@
-﻿#homeSearchJobs {
-    width: 300px;
-    margin-left: 35px;
+﻿﻿#homeSearchJobs {
+    width: 350px;
+    border: none;
 }
-#homeSearchLocation
-{
-    border-left:5px solid blue;
+
+#homeSearchLocation {
+    border: none;
+    border-left: 2px solid blue;
     width: 350px;
 }
-#homeSearchFields
+#homeSearchFields 
 {
     display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
 }
-#homeSearchButton
-{
+#homeSearchButton {
+    border: none;
+    outline: none;
 }
 
 #test{
