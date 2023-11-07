@@ -63,3 +63,8 @@ img{
     font-size:40px;
 }
 
+label[for]
+{
+    margin-left: 5px;
+}
+
