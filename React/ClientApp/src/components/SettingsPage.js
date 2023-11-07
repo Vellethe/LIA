@@ -51,13 +51,16 @@ export const SettingsPage = () => {
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
 
+        const inputTag = addFormData.tags.trim(); 
+        const formattedTag = inputTag.charAt(0).toUpperCase() + inputTag.slice(1).toLowerCase();
+
         const newTag = {
             id: nanoid(),
-            tags: addFormData.tags
+            tags: formattedTag
         }
 
         const newTags = [...showTags, newTag];
-        postTag(addFormData.tags);
+        postTag(formattedTag);
         //setShowTags(newTags);
 
         setAddFormData({ tags: "" });
