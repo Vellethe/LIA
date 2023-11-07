@@ -15,6 +15,19 @@ export const ExcludedPage = () => {
         const data = await response.json()
         return data
     }
+
+    async function updateExluded(id, state) {
+
+        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
+        console.log(id, state);
+        var response = await fetch(url, {
+            method: "PUT",
+        })
+    }
+
+
+
+
     const [exludedCompanies, setExludedCompanies] = useState([]);
     useEffect(() => {
         getExclueded().then(x => {
@@ -59,6 +72,9 @@ export const ExcludedPage = () => {
                         <tr key={index}>
                             <td>
                                 {row.name}
+                            </td>
+                            <td>
+                                <button onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
                             </td>
                         </tr>
                     ))}
