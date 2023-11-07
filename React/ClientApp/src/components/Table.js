@@ -1,7 +1,7 @@
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 
-export function Table({ data, checkBoxFunc}) {
+export function Table({ data, checkBoxFunc, updateExluded }) {
     
     const formatDate = (input) => {
         var date = new Date(input);
@@ -11,22 +11,8 @@ export function Table({ data, checkBoxFunc}) {
         ${("0" + date.getDate()).slice(-2)}`;
         return output;
     }
-    async function addExclued(companyId) {
-        var url = `https://localhost:7273/api/excluded?id=${companyId}&isExcluded=true`;
-        var response = await fetch(url, {
-            method: "Patch",
-        })
-    }
 
 
-    async function updateExluded(id, state) {
-
-        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
-        console.log(id, state);
-        var response = await fetch(url, {
-            method: "PUT",
-        })
-    }
 
     return (
         <div>

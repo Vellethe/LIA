@@ -22,9 +22,12 @@ async function updateFavorite(id, state) {
     })
 }
 
+
+
 export const HomePage = () => {
     let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
+    const [reloadTrigger, setReloadTrigger] = useState({});
 
     useEffect(() => {
         getData().then(x => {
@@ -33,7 +36,7 @@ export const HomePage = () => {
 
         }
         )
-    }, []);
+    }, [reloadTrigger]);
 
     const [startDate, setStartDate] = useState('');
 
@@ -46,6 +49,16 @@ export const HomePage = () => {
         });
         setServerData(updatedServerData);
     };
+
+    async function updateExluded(id, state) {
+
+        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
+        console.log(id, state);
+        var response = await fetch(url, {
+            method: "PUT",
+        })
+        setReloadTrigger({});
+    }
 
     const handleStartDateChange = (e) => {
         setStartDate(e.target.value);
@@ -77,7 +90,7 @@ export const HomePage = () => {
         console.log(filteredData);
         setServerData(filteredData)
     };
-   
+
 
     const [isAscending, setAscending] = useState(true);
 
@@ -159,17 +172,17 @@ export const HomePage = () => {
                 </div>
             </div>
             <div>
-                <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} />
+                <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} />
             </div>
             {/*<div>*/}
-                {/* Render a Description component for each job in serverData */}
-                {/*{serverData.map((jobData) => (*/}
-                {/*    <DescriptionPage*/}
-                {/*        key={jobData.id}*/}
-                {/*        job={jobData}*/}
-                {/*        favorite={jobData.favorite}*/}
-                {/*        onFavoriteChange={(newFavoriteValue) => handleFavoriteChange(jobData.id, newFavoriteValue)}*/}
-                {/*    />*/}
+            {/* Render a Description component for each job in serverData */}
+            {/*{serverData.map((jobData) => (*/}
+            {/*    <DescriptionPage*/}
+            {/*        key={jobData.id}*/}
+            {/*        job={jobData}*/}
+            {/*        favorite={jobData.favorite}*/}
+            {/*        onFavoriteChange={(newFavoriteValue) => handleFavoriteChange(jobData.id, newFavoriteValue)}*/}
+            {/*    />*/}
                 ))}
             {/*</div>*/}
         </div>

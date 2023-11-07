@@ -7,6 +7,8 @@ import "./ExcludedPage.module.css"
 
 export const ExcludedPage = () => {
 
+    const [reloadTrigger,setReloadTrigger] = useState({});
+
     async function getExclueded() {
         var url = "https://localhost:7273/api/companies?onlyExcluded=true";
         var response = await fetch(url, {
@@ -23,6 +25,7 @@ export const ExcludedPage = () => {
         var response = await fetch(url, {
             method: "PUT",
         })
+        setReloadTrigger({});
     }
 
 
@@ -34,7 +37,7 @@ export const ExcludedPage = () => {
             setExludedCompanies(x);
         }
         )
-    }, []);
+    }, [reloadTrigger]);
 
     const [searchText, setSearchText] = useState("");
     const tableData = [
