@@ -97,6 +97,6 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
         );
     }
     else {
-        return (<p>empty</p>)
+        return null;
     }
 };
