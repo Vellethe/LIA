@@ -6,7 +6,8 @@
 #homeSearchLocation
 {
     margin-left: 20px;
-    border-left:2px solid blue;
+    border-left:5px solid blue;
+    outline: none;
 }
 #homeSearchFields
 {
@@ -18,7 +19,6 @@
 
 #test{
     display:grid;
-    /*border: 2px solid red;*/
     grid-template-columns: 5fr 5fr 2fr;
     padding-left: 5px;
 }
@@ -42,7 +42,7 @@ form{
     display: flex;
 }
 
-button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton {
+button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSearch {
     border-radius: 10px;
     padding: 5px;
 }

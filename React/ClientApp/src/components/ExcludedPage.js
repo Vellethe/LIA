@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import commonStylesTable from "./CommonTable.module.css"
-import "./HomePage.module.css";
+import styles from "./HomePage.module.css";
 import "./ExcludedPage.module.css"
 
 export const ExcludedPage = () => {
@@ -20,7 +20,7 @@ export const ExcludedPage = () => {
     return (
         <div>
             <input
-                id="SettingsFreeSearch"
+                id={styles.settingsFreeSearch}
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
