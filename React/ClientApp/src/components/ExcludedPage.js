@@ -1,9 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import commonStylesTable from "./CommonTable.module.css"
 import styles from "./HomePage.module.css";
 import "./ExcludedPage.module.css"
 
+
+
 export const ExcludedPage = () => {
+
+    async function getExclueded() {
+        var url = "https://localhost:7273/api/companies?onlyExcluded=true";
+        var response = await fetch(url, {
+            method: "GET",
+        })
+        const data = await response.json()
+        return data
+    }
+
+    async function updateExluded(id, state) {
+
+        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
+        console.log(id, state);
+        var response = await fetch(url, {
+            method: "PUT",
+        })
+    }
+
+
+
+
+    const [exludedCompanies, setExludedCompanies] = useState([]);
+    useEffect(() => {
+        getExclueded().then(x => {
+            setExludedCompanies(x);
+        }
+        )
+    }, []);
 
     const [searchText, setSearchText] = useState("");
     const tableData = [
@@ -37,11 +68,14 @@ export const ExcludedPage = () => {
                     </tr>
                 </thead>
                 <tbody className={commonStylesTable.tbody}>
-                    {filteredData.map((row, index) => (
+                    {exludedCompanies.map((row, index) => (
                         <tr key={index}>
-                            {row.map((cell, cellIndex) => (
-                                <td key={cellIndex}>{cell}</td>
-                            ))}
+                            <td>
+                                {row.name}
+                            </td>
+                            <td>
+                                <button onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
