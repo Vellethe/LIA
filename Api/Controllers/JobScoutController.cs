@@ -17,6 +17,13 @@ namespace Api.Controllers
         {
             this.context = context;
         }
+
+        /// <summary>
+        ///  Gets jobs form database and returns them sorted based on decending date.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+
         [HttpGet("jobs")]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
@@ -29,12 +36,22 @@ namespace Api.Controllers
                 .Skip(pageSize * page).Take(pageSize).ToList();
         }
 
+        /// <summary>
+        /// Gets all the tags that are not disabled.
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet("tags")]
         public List<JobScoutTag> GetTags()
         {
             return context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
 
         }
+
+        /// <summary>
+        /// Creation or reactivation of tags.
+        /// </summary>
+        /// <param name="name"></param>
 
         [HttpPost("tags")]
         public void CreateNewTag(string name)
@@ -50,7 +67,10 @@ namespace Api.Controllers
             context.SaveChanges();
         }
 
-
+        /// <summary>
+        /// Creates seed data in database
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("test")]
         public string Test()
         {
@@ -59,6 +79,12 @@ namespace Api.Controllers
             y.GetData();
             return "hello world";
         }
+
+        /// <summary>
+        /// Used to remove tags from database "note that tags are not deleted only set to disabled".
+        /// </summary>
+        /// <param name="tagId"></param>
+        /// <returns></returns>
 
         [HttpDelete("tags")]
         public IActionResult DeleteTag(int tagId)
@@ -76,6 +102,11 @@ namespace Api.Controllers
             return new NoContentResult();
         }
 
+        /// <summary>
+        /// Used to toggle favorites in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isFavorite"></param>
         [HttpPut("favorite")]
         public void SetFavorite(int id, bool isFavorite)
         {

@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
+    using Microsoft.OpenApi.Models;
+    using System.Reflection;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -17,7 +20,18 @@ namespace Api
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "JobScoutApi",
+                    Description = "Api for interfacing with jobscout backend"
+                });
+
+                var xmlFilemame = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilemame));
+            });
 
             builder.Services.AddDbContext<JobScoutContext>(options =>
             {
