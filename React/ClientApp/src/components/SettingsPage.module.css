@@ -1,12 +1,15 @@
 ﻿#SettingsFreeSearch {
     height: 40px;
     width: 350px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
-#SettingsAddTags
-{
-    height:40px;
+#SettingsAddTags {
+    height: 40px;
     width: 350px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #SettingsSearchForm {

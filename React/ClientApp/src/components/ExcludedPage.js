@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import commonStylesTable from "./CommonTable.module.css"
 import "./HomePage.module.css";
+import "./ExcludedPage.module.css"
 
 export const ExcludedPage = () => {
 
