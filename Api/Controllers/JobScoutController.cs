@@ -19,7 +19,7 @@ namespace Api.Controllers
         }
 
         /// <summary>
-        ///  Gets jobs form database and returns them sorted based on decending date.
+        ///  Gets jobs that are from non excluded compaines form database and returns them sorted based on decending date.
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
@@ -32,6 +32,7 @@ namespace Api.Controllers
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
+                .Where(x=>x.Company.Excluded == false)
                 .OrderByDescending(j => j.PostDate)
                 .Skip(pageSize * page).Take(pageSize).ToList();
         }
@@ -103,7 +104,7 @@ namespace Api.Controllers
         }
 
         /// <summary>
-        /// Used to toggle favorites in the database
+        /// Used to set favorites in the database
         /// </summary>
         /// <param name="id"></param>
         /// <param name="isFavorite"></param>
@@ -118,6 +119,35 @@ namespace Api.Controllers
             }
             toFind.Favorite = isFavorite;
             context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Used to set exclueded in the database
+        /// </summary>
+        /// <param name="CompanyId"></param>
+        /// <param name="isExcluded"></param>
+
+        [HttpPut("excluded")]
+        public void SetExcluded(int id, bool isExcluded)
+        {
+            var toFind = context.JobScoutCompanies.FirstOrDefault(x => x.Id == id);
+            if(toFind is null)
+            {
+                return;
+            }
+            toFind.Excluded = isExcluded;
+            context.SaveChanges();
+        }
+
+        [HttpGet("companies")]
+        public List<JobScoutCompany> GetCompanies(bool onlyExcluded = false)
+        {
+            if (onlyExcluded)
+            {
+                var data = context.JobScoutCompanies.Where(x=>x.Excluded == true).ToList();
+                return data;
+            }
+            return context.JobScoutCompanies.ToList();
         }
 
     }
