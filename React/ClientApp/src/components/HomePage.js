@@ -146,12 +146,16 @@ export const HomePage = () => {
 
                 <div>
                     <Dropdown />
-                    <button id="Sorting"
+                    <button id={styles.sorting}
                         onClick={sortDate}
                         className={(isAscending ? "ascending" : "descending")}>
                         {isAscending ? "Oldest" : "Newest"}
                     </button>
-                    <input type="checkbox" id="favoriteCheckBox" onChange={filterDataByFavorite}></input>
+                    <label for={styles.favoriteCheckBox}>
+                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
+                        <span>Filter by favorites</span>
+                    </label>
+
                 </div>
             </div>
             <div>
