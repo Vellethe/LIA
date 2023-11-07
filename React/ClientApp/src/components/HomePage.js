@@ -65,13 +65,19 @@ export const HomePage = () => {
     };
 
     const filterDataByDate = () => {
-        const filteredData = allData.current.filter((job) => {
-            const jobDate = new Date(job.postDate);
-            const filterStartDate = new Date(startDate);
-            return jobDate >= filterStartDate;
-        });
+        if (startDate) {
+            const filteredData = allData.current.filter((job) => {
+                const jobDate = new Date(job.postDate);
+                const filterStartDate = new Date(startDate);
+                return jobDate >= filterStartDate;
+            });
 
-        setServerData(filteredData);
+            setServerData(filteredData);
+        }
+        else
+        {
+            setServerData(allData.current);
+        }
 
     };
 
