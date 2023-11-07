@@ -71,3 +71,7 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
     margin-left: 5px;
     margin-top: 2px;
 }
+#settingsFreeSearch
+{
+    margin-bottom: 2px;
+}
