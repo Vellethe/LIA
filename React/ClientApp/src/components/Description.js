@@ -25,7 +25,7 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
         return (
             <div className={styles['container']}>
                 <div>
-                    <button onClick={backButtonFunc}>back button temp</button>
+                    <button id={styles.backButton} onClick={backButtonFunc}>back button temp</button>
                 </div>
                 <div className={styles['body']}>
                         <div key={job.id}>
