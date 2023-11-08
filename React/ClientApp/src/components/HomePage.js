@@ -87,10 +87,12 @@ export const HomePage = () => {
     const searchByLocation = (e) => {
         e.preventDefault();
         const location = e.target.searchLocation.value;
-        setSearchLocation(location);
+        const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
+        setSearchLocation(capitalLocation);
+
         const filteredData = allData.current.filter((job) => {
             if (job.municipality && typeof job.municipality === "string") {
-                return job.municipality.includes(location);
+                return job.municipality.includes(capitalLocation);
             }
             return false;
         });
