@@ -84,16 +84,6 @@ export const DescriptionPage = ({ job, favorite, updateFavoriteFunc, backButtonF
                     <p>Tasty Cookies</p>
                     <p>Tasty Cookies</p>
                     <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
                 </div>
             </div>
         );
