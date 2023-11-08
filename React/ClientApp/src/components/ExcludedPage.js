@@ -77,7 +77,7 @@ export const ExcludedPage = () => {
                                 {row.name}
                             </td>
                             <td>
-                                <button onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
+                                <button id={styles.removeExcluded} onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
                             </td>
                         </tr>
                     ))}

@@ -60,9 +60,8 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
     margin-left: 5px;
 }
 
-#sorting 
-{
-    background-color: darkorange;
+#sorting {
+    background-color: deepskyblue;
     color: white;
     width: 100px;
     height: 30px;
@@ -76,4 +75,14 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
 #settingsFreeSearch
 {
     margin-bottom: 2px;
+}
+#removeExcluded {
+    background-color: deepskyblue;
+    color: white;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 10px;
+    font-weight: bold;
 }

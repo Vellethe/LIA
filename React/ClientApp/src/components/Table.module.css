@@ -68,16 +68,15 @@ label[for]
     margin-left: 5px;
 }
 
-#descButton 
-{
-    background-color: darkorange;
+#descButton {
+    background-color: deepskyblue;
     color: white;
-    width: 500px;
+    width: 150px;
     height: 50px;
     cursor: pointer;
     text-align: center;
     line-height: 10px;
     font-weight: bold;
-    margin-left: 800px;
-    margin-top: 2px;
+    margin-left: 1000px;
+    margin-bottom: 2px;
 }
