@@ -1,8 +1,7 @@
 import React from 'react';
-import { dataArray } from './JobData'
 import styles from './Description.module.css';
 
-export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFunc }) => {
+export const DescriptionPage = ({ job, favorite, updateFavoriteFunc, backButtonFunc }) => {
 
     const parseTags = (input) => {
         return;
@@ -16,10 +15,6 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
         return output;
     }
 
-    const handleFavoriteChange = () => {
-        const updatedFavorite = !favorite;
-        onFavoriteChange(updatedFavorite);
-    }
     if (job != null) {
 
         return (
@@ -75,7 +70,7 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
                         <input
                             type="checkbox"
                             checked={favorite}
-                            onChange={handleFavoriteChange}
+                            onChange={updateFavoriteFunc}
                         />
                         Favorite: {favorite ? 'Yes' : 'No'}
                     </label>
