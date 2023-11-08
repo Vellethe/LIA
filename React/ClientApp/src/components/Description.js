@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { dataArray } from './JobData'
 import styles from './Description.module.css';
 
-export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFunc}) => {
+export const DescriptionPage = ({ job, favorite, updateFavoriteFunc, backButtonFunc }) => {
 
     const parseTags = (input) => {
         return;
@@ -15,21 +14,20 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
         }
         return output;
     }
-
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     })
 
     const handleFavoriteChange = () => {
         const updatedFavorite = !favorite;
-        onFavoriteChange(updatedFavorite);
+        updateFavoriteFunc(updatedFavorite);
     }
     if (job != null) {
 
         return (
             <div className={styles['container']}>
                 <div>
-                    <button onClick={backButtonFunc}>back button temp</button>
+                    <button id={styles.backButton} onClick={backButtonFunc}>back button temp</button>
                 </div>
                 <div className={styles['body']}>
                         <div key={job.id}>
@@ -79,7 +77,7 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
                         <input
                             type="checkbox"
                             checked={favorite}
-                            onChange={handleFavoriteChange}
+                            onChange={updateFavoriteFunc}
                         />
                         Favorite: {favorite ? 'Yes' : 'No'}
                     </label>

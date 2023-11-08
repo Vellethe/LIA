@@ -133,6 +133,22 @@ export const HomePage = () => {
 
         setServerData(filteredData);
     }
+    const updateFavoriteFunc = (event) => {
+        if (selectedJob) {
+            
+            const selectedJobID = selectedJob.id;
+
+            const updatedServerData = serverData.map((job) => {
+                if (job.id === selectedJobID) {
+                    
+                    return { ...job, favorite: event.target.checked };
+                }
+                return job;
+            });
+
+            setServerData(updatedServerData);
+        }
+    };
 
     function showTable(show) {
         if (show) {
@@ -157,7 +173,8 @@ export const HomePage = () => {
     return (
         <div>
 
-            <DescriptionPage job={selectedJob} backButtonFunc={() => { setSelectedJob(null) }} />
+            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
+
 
             <div id={styles.searchStuff}>
                 <div>
