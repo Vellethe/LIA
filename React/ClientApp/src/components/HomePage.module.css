@@ -6,7 +6,7 @@
 
 #homeSearchLocation {
     border: none;
-    border-left: 2px solid blue;
+    border-left: 2px solid deepskyblue;
     width: 350px;
     outline: none;
 }
@@ -29,6 +29,7 @@
 }
 #dates
 {
+    margin-top: 8px;
     margin-left: 25px;
 }
 
