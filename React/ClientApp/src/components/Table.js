@@ -25,8 +25,6 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, se
                 {data.map(job => (
                     <div className={styles.gridHome} key={job.id}>
 
-                        <button id={styles.descButton} onClick={() => selectForShowFunc(job)}>Show description</button>
-                        <div className={styles.jobTitle}> {job.role}</div>
                         <div className={styles.jobTitle} onClick={() => selectForShowFunc(job)}> {job.role}</div>
 
                         <div className={styles.desciptionGrid}>
