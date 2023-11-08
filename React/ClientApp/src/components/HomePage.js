@@ -165,8 +165,9 @@ export const HomePage = () => {
     }
 
     function loadScrollPos() {
-        let scrollValue = sessionStorage.getItem("scroll")
+        let scrollValue = sessionStorage.getItem("scroll");
         window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
+        sessionStorage.removeItem("scroll");
     }
 
 
