@@ -136,11 +136,21 @@ export const HomePage = () => {
 
     function showTable(show) {
         if (show) {
-            return <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} selectForShowFunc={(job) => { setSelectedJob(job) }} />
+            return <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} selectForShowFunc={(job) => { setSelectedJob(job) }} setScroll={loadScrollPos} />
         }
         else {
+            saveScrollPos();
             return null;
         }
+    }
+
+    function saveScrollPos() {
+        sessionStorage.setItem("scroll", window.pageYOffset);
+    }
+
+    function loadScrollPos() {
+        let scrollValue = sessionStorage.getItem("scroll")
+        window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
     }
 
 

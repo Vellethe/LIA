@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 
-export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc}) {
+export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, setScroll}) {
     
     const formatDate = (input) => {
         var date = new Date(input);
@@ -11,6 +12,10 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc}) {
         ${("0" + date.getDate()).slice(-2)}`;
         return output;
     }
+
+    useEffect(() => {
+        setScroll();
+    })
 
 
 

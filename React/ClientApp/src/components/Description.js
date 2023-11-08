@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { dataArray } from './JobData'
 import styles from './Description.module.css';
 
-export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFunc }) => {
+export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFunc}) => {
 
     const parseTags = (input) => {
         return;
@@ -15,6 +15,10 @@ export const DescriptionPage = ({ job, favorite, onFavoriteChange, backButtonFun
         }
         return output;
     }
+
+    useEffect(() => {
+        window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+    })
 
     const handleFavoriteChange = () => {
         const updatedFavorite = !favorite;
