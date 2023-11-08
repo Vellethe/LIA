@@ -221,17 +221,6 @@ export const HomePage = () => {
             <div>
                 {showTable(selectedJob == null)}
             </div>
-            {/*<div>*/}
-            {/* Render a Description component for each job in serverData */}
-            {/*{serverData.map((jobData) => (*/}
-            {/*    <DescriptionPage*/}
-            {/*        key={jobData.id}*/}
-            {/*        job={jobData}*/}
-            {/*        favorite={jobData.favorite}*/}
-            {/*        onFavoriteChange={(newFavoriteValue) => handleFavoriteChange(jobData.id, newFavoriteValue)}*/}
-            {/*    />*/}
-                {/*))}*/}
-            {/*</div>*/}
         </div>
     );
 }
