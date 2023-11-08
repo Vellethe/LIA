@@ -23,18 +23,18 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, lo
         <div>
             <div className={styles.body} >
                 {data.map(job => (
-                    <div className={styles.gridHome} key={job.id}>
+                    <div className={styles.gridHome} key={job.id}onClick={() => selectForShowFunc(job)} >
 
-                        <div className={styles.jobTitle} onClick={() => selectForShowFunc(job)}> {job.role}</div>
+                        <div className={styles.jobTitle} > {job.role}</div>
 
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>
-                            <button className={`${styles.box} ${styles.exclude}`} onClick={() => { saveScroll(); updateExluded(job.company.id, true); }}><img src={x} alt="X" /></button>
+                            <button className={`${styles.box} ${styles.exclude}`} onClick={(e) => { e.stopPropagation(); saveScroll(); updateExluded(job.company.id, true); }}><img src={x} alt="X" /></button>
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
-                        <div className={`${styles.box} ${styles.star}`}>
-                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorite} />
-                            <label htmlFor="favorite">Favorite</label>
+                        <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
+                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorite}  />
+                            <label htmlFor={job.id }>Favorite</label>
                         </div>
                         <div className={styles.textDate}>{formatDate(job.postDate)}</div>
                     </div>
