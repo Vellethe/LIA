@@ -21,7 +21,7 @@ export const SettingsPage = () => {
     }
 
     async function postTag(name) {
-        var url = "https://localhost:7273/api/tags?name="+name; 
+        var url = "https://localhost:7273/api/tags?name=" + encodeURIComponent(name); 
         var response = await fetch(url, {
             method: "POST",
         })
