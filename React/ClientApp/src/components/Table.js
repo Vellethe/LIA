@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 
-export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, setScroll}) {
-    
+export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, loadScroll,saveScroll}) {
+    const [updateTrigger, setUppdateTrigger] = useState({});
     const formatDate = (input) => {
         var date = new Date(input);
         var output = `
@@ -14,8 +14,8 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, se
     }
 
     useEffect(() => {
-        setScroll();
-    }, [])
+        loadScroll();
+    }, [data])
 
 
 
@@ -27,7 +27,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, se
                         <div className={styles.jobTitle} onClick={() => selectForShowFunc(job)}> {job.role}</div>
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>
-                            <button className={`${styles.box} ${styles.exclude}`} onClick={() => updateExluded(job.company.id,true)}><img src={x} alt="X" /></button>
+                            <button className={`${styles.box} ${styles.exclude}`} onClick={() => { saveScroll(); updateExluded(job.company.id, true); }}><img src={x} alt="X" /></button>
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div className={`${styles.box} ${styles.star}`}>

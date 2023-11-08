@@ -34,7 +34,6 @@ export const HomePage = () => {
         getData().then(x => {
             setServerData(x);
             allData.current = x;
-
         }
         )
     }, [reloadTrigger]);
@@ -152,7 +151,14 @@ export const HomePage = () => {
 
     function showTable(show) {
         if (show) {
-            return <Table checkBoxFunc={handleFavoriteCheckbox} data={serverData} updateExluded={updateExluded} selectForShowFunc={(job) => { setSelectedJob(job) }} setScroll={loadScrollPos} />
+            return <Table
+                checkBoxFunc={handleFavoriteCheckbox}
+                data={serverData}
+                updateExluded={updateExluded}
+                selectForShowFunc={(job) => { setSelectedJob(job) }}
+                loadScroll={loadScrollPos}
+                saveScroll={saveScrollPos}
+            />
         }
         else {
             saveScrollPos();
