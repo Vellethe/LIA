@@ -18,9 +18,8 @@
     margin-bottom: 2px;
 }
 
-#AddSettings 
-{
-    background-color: darkorange;
+#AddSettings {
+    background-color: deepskyblue;
     color: white;
     width: 70px;
     height: 30px;
@@ -32,8 +31,9 @@
     margin-top: 2px;
 }
 
-#SettingsDeleteButton
-{
+#SettingsDeleteButton {
+    background-color: deepskyblue;
+    color: white;
     margin-right: 50px;
 }
 

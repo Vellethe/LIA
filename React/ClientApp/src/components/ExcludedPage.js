@@ -65,9 +65,7 @@ export const ExcludedPage = () => {
                 <thead className={commonStylesTable.thead}>
                     <tr>
                         <th>Company</th>
-                        <th>Role</th>
-                        <th>Tags</th>
-                        <th>Excluded</th>
+                        <th>Include</th>
                     </tr>
                 </thead>
                 <tbody className={commonStylesTable.tbody}>
@@ -77,7 +75,7 @@ export const ExcludedPage = () => {
                                 {row.name}
                             </td>
                             <td>
-                                <button onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
+                                <button id={styles.removeExcluded} onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
                             </td>
                         </tr>
                     ))}
