@@ -15,7 +15,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, se
 
     useEffect(() => {
         setScroll();
-    })
+    }, [])
 
 
 
@@ -24,8 +24,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, se
             <div className={styles.body} >
                 {data.map(job => (
                     <div className={styles.gridHome} key={job.id}>
-                        <button id={styles.descButton} onClick={() => selectForShowFunc(job)}>temp button for select show description</button>
-                        <div className={styles.jobTitle}> {job.role}</div>
+                        <div className={styles.jobTitle} onClick={() => selectForShowFunc(job)}> {job.role}</div>
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>
                             <button className={`${styles.box} ${styles.exclude}`} onClick={() => updateExluded(job.company.id,true)}><img src={x} alt="X" /></button>

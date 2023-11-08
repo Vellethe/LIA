@@ -61,6 +61,8 @@ img{
 .jobTitle{
     grid-area:jobTitle;
     font-size:40px;
+    text-decoration:underline;
+    cursor:pointer;
 }
 
 label[for]
