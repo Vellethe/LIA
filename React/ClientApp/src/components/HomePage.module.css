@@ -1,12 +1,14 @@
 ﻿﻿#homeSearchJobs {
     width: 350px;
     border: none;
+    outline: none;
 }
 
 #homeSearchLocation {
     border: none;
     border-left: 2px solid blue;
     width: 350px;
+    outline: none;
 }
 #homeSearchFields 
 {

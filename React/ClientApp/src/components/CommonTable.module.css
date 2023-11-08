@@ -41,3 +41,7 @@
 .tbody tr:nth-child(even) {
     background-color: #fff;
 }
+td
+{
+    width: 500px;
+}
