@@ -16,6 +16,7 @@
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
+    margin-left: 150px;
 }
 #homeSearchButton {
     border: none;
