@@ -28,13 +28,14 @@ namespace Api.Controllers
         public List<JobScoutJob> GetJobs(int page = 0)
         {
             int pageSize = 1000;
-            return context.JobScoutJobs
+            var x = context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
                 .Where(x=>x.Company.Excluded == false)
                 .OrderByDescending(j => j.PostDate)
                 .Skip(pageSize * page).Take(pageSize).ToList();
+            return x;
         }
 
         /// <summary>
@@ -139,6 +140,11 @@ namespace Api.Controllers
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Returns a list of comapanies
+        /// </summary>
+        /// <param name="onlyExcluded"></param>
+        /// <returns></returns>
         [HttpGet("companies")]
         public List<JobScoutCompany> GetCompanies(bool onlyExcluded = false)
         {

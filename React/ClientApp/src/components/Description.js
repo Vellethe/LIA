@@ -4,7 +4,7 @@ import styles from './Description.module.css';
 export const DescriptionPage = ({ job, favorite, updateFavoriteFunc, backButtonFunc }) => {
 
     const parseTags = (input) => {
-        return;
+        input = input.map(x => x.tag.name);
         var output = "";
         for (let i = 0; i < input.length; i++) {
             output += input[i];
@@ -38,7 +38,7 @@ export const DescriptionPage = ({ job, favorite, updateFavoriteFunc, backButtonF
                                 </div>
                                 <div className={styles.row}>
                                     <p className={styles.label2}>Tags:</p>
-                                    <p className={styles.value2}>{parseTags(job.tags)}</p>
+                                    <p className={styles.value2}>{parseTags(job.tagJobs)}</p>
                                 </div>
 
                             </div>

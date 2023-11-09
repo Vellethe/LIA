@@ -1,4 +1,5 @@
 ﻿using Data;
+using Domain;
 using Infrastructure.Interfaces;
 
 namespace Infrastructure.Services
@@ -29,7 +30,50 @@ namespace Infrastructure.Services
                 job.Company = dbCompany;
                 context.JobScoutJobs.Add(job);
                 context.SaveChanges();
+
+                NewJobTagging(job);
+                
             }
         }
+
+        private void NewJobTagging(JobScoutJob newJob)
+        {
+            var allTags = context.JobScoutTags.ToList();
+            foreach (var tag in allTags)
+            {
+                if(CheckForTag(newJob, tag))
+                {
+                    newJob.TagJobs.Add(new JobScoutTagJob { Tag = tag });
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public void NewTagTagging(JobScoutTag newTag)
+        {
+            var allJobs = context.JobScoutJobs.ToList();
+            foreach (var job in allJobs)
+            {
+                if( CheckForTag(job, newTag))
+                {
+                    job.TagJobs.Add( new JobScoutTagJob { Tag =  newTag });
+                }
+            }
+            
+            context.SaveChanges();
+        }
+
+        private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
+        {
+            //the indexOf is used as a case insensitive contains
+            if (job.Role.IndexOf(tagToFind.Name,StringComparison.OrdinalIgnoreCase) != -1 ||
+                job.Description.IndexOf(tagToFind.Name,StringComparison.OrdinalIgnoreCase) !=-1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
