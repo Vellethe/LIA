@@ -67,7 +67,7 @@ export const HomePage = () => {
 
     const filterDataByDate = () => {
         if (startDate) {
-            const filteredData = serverData.filter((job) => {
+            const filteredData = allData.current.filter((job) => {
                 const jobDate = new Date(job.postDate);
                 const filterStartDate = new Date(startDate);
                 return jobDate >= filterStartDate;
@@ -186,6 +186,11 @@ export const HomePage = () => {
         sessionStorage.removeItem("scroll");
     }
 
+    //const handleSearch = () => {
+    //    searchByLocation();
+    //    filterDataByDate();
+    //};
+
 
     return (
         <div>
@@ -196,7 +201,7 @@ export const HomePage = () => {
             <div id={styles.searchStuff}>
                 <div>
                     <div id={styles.homeSearchFields}>
-                        <form id={styles.test} onSubmit={searchByLocation}>
+                        <form id={styles.test} onSubmit={searchByLocation}/*{(e) => { e.preventDefault(); handleSearch(); }}*/>
                             <input
                                 id={styles.homeSearchJobs}
                                 type="text"
