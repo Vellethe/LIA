@@ -40,17 +40,7 @@ export const ExcludedPage = () => {
     }, [reloadTrigger]);
 
     const [searchText, setSearchText] = useState("");
-    const tableData = [
-        ["Power", "Cookies Engineer", "MonsterFactory"],
-        ["Puff", "Software Engineer", "Developer"],
-        ["Pinglor", "Software Engineer", "Developer"],
-        ["Med", "Software Engineer", "Developer"],
-        ["Kakor", "Software Engineer", "Developer"],
-    ];
-
-    const filteredData = tableData.filter((row) =>
-        row.some((cell) => cell.toLowerCase().includes(searchText.toLowerCase())
-        ));
+    
     return (
         <div>
             <input

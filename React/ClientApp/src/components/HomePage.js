@@ -29,6 +29,7 @@ export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
+    const [filteredData, setFilteredData] = useState(allData.current);
 
     useEffect(() => {
         getData().then(x => {
@@ -66,7 +67,7 @@ export const HomePage = () => {
 
     const filterDataByDate = () => {
         if (startDate) {
-            const filteredData = allData.current.filter((job) => {
+            const filteredData = serverData.filter((job) => {
                 const jobDate = new Date(job.postDate);
                 const filterStartDate = new Date(startDate);
                 return jobDate >= filterStartDate;
@@ -127,13 +128,20 @@ export const HomePage = () => {
         var filteredData = allData.current;
         if (state.currentTarget.checked === true) {
 
-            filteredData = allData.current.filter((job) => {
-                return job.favorite === true;
+            filteredData = serverData.filter((job) => job.favorite === true);
+        }
+
+        if (searchLocation !== "") {
+            filteredData = filteredData.filter((job) => {
+                if (job.municipality && typeof job.municipality === "string") {
+                    return job.municipality.includes(searchLocation);
+                }
+                return false;
             });
         }
 
         setServerData(filteredData);
-    }
+    };
     const updateFavoriteFunc = (event) => {
         if (selectedJob) {
             
