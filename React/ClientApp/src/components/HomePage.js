@@ -29,6 +29,7 @@ export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
+    const [filteredData, setFilteredData] = useState(allData.current);
 
     useEffect(() => {
         getData().then(x => {
@@ -66,7 +67,7 @@ export const HomePage = () => {
 
     const filterDataByDate = () => {
         if (startDate) {
-            const filteredData = allData.current.filter((job) => {
+            const filteredData = serverData.filter((job) => {
                 const jobDate = new Date(job.postDate);
                 const filterStartDate = new Date(startDate);
                 return jobDate >= filterStartDate;
