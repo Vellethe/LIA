@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
+    using Infrastructure.Services;
     using Microsoft.OpenApi.Models;
     using System.Reflection;
 
@@ -17,6 +18,8 @@ namespace Api
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
+
+            builder.Services.AddSingleton<DataGetterService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

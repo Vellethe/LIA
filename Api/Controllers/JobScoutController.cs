@@ -56,7 +56,7 @@ namespace Api.Controllers
         /// <param name="name"></param>
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name)
+        public void CreateNewTag(string name, JobScoutContext context,DataGetterService dataGetter)
         {
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
@@ -65,8 +65,11 @@ namespace Api.Controllers
                 context.SaveChanges();
                 return;
             }
-            context.JobScoutTags.Add(new JobScoutTag { Name = name });
+            var newTag = new JobScoutTag { Name = name };
+            context.JobScoutTags.Add(newTag);
             context.SaveChanges();
+
+            dataGetter.NewTagTagging(newTag, context);
         }
 
         /// <summary>
@@ -74,11 +77,10 @@ namespace Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("test")]
-        public string Test()
+        public string Test(DataGetterService dataGetter, JobScoutContext context)
         {
             var x = new PlatsbankenGetterService();
-            DataGetterService y = new DataGetterService(context, x);
-            y.GetData();
+            dataGetter.GetData(x,context);
             return "hello world";
         }
 

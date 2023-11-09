@@ -1,22 +1,19 @@
 ﻿using Data;
 using Domain;
 using Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
 {
     public class DataGetterService
     {
-        private IJobParse JobParse { get; set; }
-        private JobScoutContext context { get; set; }
-        public DataGetterService(JobScoutContext context, IJobParse jobParse)
+        public DataGetterService()
         {
-            JobParse = jobParse;
-            this.context = context;
         }
 
-        public void GetData()
+        public void GetData(IJobParse IJobParse,JobScoutContext context)
         {
-            var x = JobParse.Parse();
+            var x = IJobParse.Parse();
             foreach (var job in x)
             {
                 if (context.JobScoutJobs.Any(x => x.ProviderUniqueId == job.ProviderUniqueId && x.Provider == job.Provider))
@@ -31,12 +28,12 @@ namespace Infrastructure.Services
                 context.JobScoutJobs.Add(job);
                 context.SaveChanges();
 
-                NewJobTagging(job);
+                NewJobTagging(job, context);
                 
             }
         }
 
-        private void NewJobTagging(JobScoutJob newJob)
+        private void NewJobTagging(JobScoutJob newJob, JobScoutContext context)
         {
             var allTags = context.JobScoutTags.ToList();
             foreach (var tag in allTags)
@@ -49,9 +46,9 @@ namespace Infrastructure.Services
             context.SaveChanges();
         }
 
-        public void NewTagTagging(JobScoutTag newTag)
+        public void NewTagTagging(JobScoutTag newTag, JobScoutContext context)
         {
-            var allJobs = context.JobScoutJobs.ToList();
+            var allJobs = context.JobScoutJobs.Include(x=>x.TagJobs).ToList();
             foreach (var job in allJobs)
             {
                 if( CheckForTag(job, newTag))
@@ -65,14 +62,19 @@ namespace Infrastructure.Services
 
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
         {
-            //the indexOf is used as a case insensitive contains
-            if (job.Role.IndexOf(tagToFind.Name,StringComparison.OrdinalIgnoreCase) != -1 ||
-                job.Description.IndexOf(tagToFind.Name,StringComparison.OrdinalIgnoreCase) !=-1)
+            if (CaseInsesitiveContains(job.Role,tagToFind.Name) || CaseInsesitiveContains(job.Description, tagToFind.Name))
             {
                 return true;
             }
 
             return false;
+        }
+
+
+        private bool CaseInsesitiveContains(string str1,string str2)
+        {
+            //the indexOf is used as a case insensitive contains
+            return str1.IndexOf(str2, StringComparison.OrdinalIgnoreCase) != -1;
         }
 
     }
