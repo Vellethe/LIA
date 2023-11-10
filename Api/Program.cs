@@ -20,6 +20,7 @@ namespace Api
             );
 
             builder.Services.AddSingleton<DataGetterService>();
+            builder.Services.AddSingleton<TaggerService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

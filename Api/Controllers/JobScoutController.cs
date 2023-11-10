@@ -34,7 +34,15 @@ namespace Api.Controllers
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
                 .Where(x=>x.Company.Excluded == false)
                 .OrderByDescending(j => j.PostDate)
-                .Skip(pageSize * page).Take(pageSize).ToList();
+                .Skip(pageSize * page).Take(pageSize)
+                .AsNoTracking()
+                .ToList();
+
+            //code for not sending disabled tags
+            foreach(var job in x)
+            {
+                job.TagJobs = job.TagJobs.Where(x=>x.Tag.IsDisabled == false).ToList();
+            }
             return x;
         }
 
@@ -56,7 +64,7 @@ namespace Api.Controllers
         /// <param name="name"></param>
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name, JobScoutContext context,DataGetterService dataGetter)
+        public void CreateNewTag(string name, JobScoutContext context,TaggerService tagger)
         {
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
@@ -69,7 +77,7 @@ namespace Api.Controllers
             context.JobScoutTags.Add(newTag);
             context.SaveChanges();
 
-            dataGetter.NewTagTagging(newTag, context);
+            tagger.NewTagTagging(newTag, context);
         }
 
         /// <summary>
@@ -77,10 +85,10 @@ namespace Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("test")]
-        public string Test(DataGetterService dataGetter, JobScoutContext context)
+        public string Test(DataGetterService dataGetter, JobScoutContext context,TaggerService tagger)
         {
             var x = new PlatsbankenGetterService();
-            dataGetter.GetData(x,context);
+            dataGetter.GetData(x,context,tagger);
             return "hello world";
         }
 
