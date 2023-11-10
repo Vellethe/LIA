@@ -10,14 +10,14 @@
     width: 350px;
     outline: none;
 }
-#homeSearchFields 
-{
+#homeSearchFields {
     display: flex;
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
     margin-left: 150px;
     height: 54px;
+    background-color: #e0e0e0;
 }
 #homeSearchButton {
     border: none;
@@ -91,3 +91,13 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
     line-height: 10px;
     font-weight: bold;
 }
+
+#breadcrumbs
+{
+    background-color: deepskyblue;
+    font-size: 20px;
+}
+
+/*#pageContainer {
+    background-color: #e0e0e0;
+}*/
