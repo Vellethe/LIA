@@ -30,6 +30,8 @@ export const HomePage = () => {
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
     const [filteredData, setFilteredData] = useState(allData.current);
+    const [currentLocation, setCurrentLocation] = useState("Home");
+    const updateLocation = (location) => { setCurrentLocation(location); };
 
     useEffect(() => {
         getData().then(x => {
@@ -194,6 +196,13 @@ export const HomePage = () => {
 
     return (
         <div>
+                {/* Breadcrumb Trail */}
+                <div>
+                    <span onClick={() => updateLocation('Home')}>Home</span>
+                    {selectedJob && (
+                        <span onClick={() => updateLocation('Description')}> > Description</span>
+                    )}
+                </div>
 
             <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
 
