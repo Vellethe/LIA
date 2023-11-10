@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import styles from "./Header.module.css"
 import logo from "./../images/consat.png"
-import logout from "./../images/logout.png"
 
 export class Header extends Component {
     constructor(props) {
