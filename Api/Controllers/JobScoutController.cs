@@ -54,7 +54,10 @@ namespace Api.Controllers
         [HttpGet("tags")]
         public List<JobScoutTag> GetTags()
         {
-            return context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
+            return context.JobScoutTags
+                .Where(x => x.IsDisabled == false)
+                .AsNoTracking()
+                .ToList();
 
         }
 
@@ -85,10 +88,10 @@ namespace Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("test")]
-        public string Test(DataGetterService dataGetter, JobScoutContext context,TaggerService tagger)
+        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context,TaggerService tagger)
         {
             var x = new PlatsbankenGetterService();
-            dataGetter.GetData(x,context,tagger);
+            await dataGetter.GetData(x,context,tagger);
             return "hello world";
         }
 
@@ -135,7 +138,7 @@ namespace Api.Controllers
         /// <summary>
         /// Used to set exclueded in the database
         /// </summary>
-        /// <param name="CompanyId"></param>
+        /// <param name="id"></param>
         /// <param name="isExcluded"></param>
 
         [HttpPut("excluded")]
@@ -160,7 +163,10 @@ namespace Api.Controllers
         {
             if (onlyExcluded)
             {
-                var data = context.JobScoutCompanies.Where(x=>x.Excluded == true).ToList();
+                var data = context.JobScoutCompanies
+                    .Where(x=>x.Excluded == true)
+                    .AsNoTracking()
+                    .ToList();
                 return data;
             }
             return context.JobScoutCompanies.ToList();

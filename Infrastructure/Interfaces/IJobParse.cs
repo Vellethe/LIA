@@ -4,6 +4,6 @@ namespace Infrastructure.Interfaces
 {
     public interface IJobParse
     {
-        List<JobScoutJob> Parse();
+        Task<List<JobScoutJob>> GetData();
     }
 }
