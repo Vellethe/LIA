@@ -217,16 +217,15 @@ export const HomePage = () => {
 
                 <div>
                     <Dropdown tags={tags} />
+                    <label for={styles.favoriteCheckBox}>
+                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
+                        <span>Filter by favorites</span>
+                    </label>
                     <button id={styles.sorting}
                         onClick={sortDate}
                         className={(isAscending ? "ascending" : "descending")}>
                         {isAscending ? "Oldest" : "Newest"}
                     </button>
-                    <label for={styles.favoriteCheckBox}>
-                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
-                        <span>Filter by favorites</span>
-                    </label>
-
                 </div>
                     <Table
                         checkBoxFunc={handleFavoriteCheckbox}
@@ -260,8 +259,10 @@ export const HomePage = () => {
             {/* Breadcrumb Trail */}
             <div id={styles.breadcrumbs}>
                 <span onClick={() => updateLocation('Home')}>Home</span>
-                {selectedJob && (
+                {selectedJob && ( <>
+                    <span>&nbsp;&gt;&nbsp;</span>
                     <span onClick={() => updateLocation('Description')}> Description</span>
+                </>
                 )}
             </div>
 
