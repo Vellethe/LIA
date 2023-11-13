@@ -8,9 +8,10 @@ namespace Infrastructure.Services
 {
     public class PlatsbankenGetterService : IJobParse
     {
-        public async Task<List<JobScoutJob>> GetData()
+        public async Task<List<JobScoutJob>> GetData( List<JobScoutTag> tags)
         {
-            var jobs = await GetDataFromApi();
+            //TODO split searches if above 2000 items in search
+            var jobs = await GetDataFromApi(tags);
             List<JobScoutJob> output = new();
             foreach (var hit in jobs)
             {
@@ -18,10 +19,9 @@ namespace Infrastructure.Services
             }
 
             return output;
-
         }
 
-        private async Task<List<PlatsbankenHit>> GetDataFromApi()
+        private async Task<List<PlatsbankenHit>> GetDataFromApi(List<JobScoutTag> tags)
         {
             HttpClient httpClient = new HttpClient();
             //turns of some smart search that makes the searching harder
@@ -30,12 +30,15 @@ namespace Infrastructure.Services
             httpClient.DefaultRequestHeaders.Add("X-Fields", "total{value}, hits{id,webpage_url,application_contacts,publication_date, headline, workplace_address{municipality}, employer{name}, description{text}}");
 
             NameValueCollection baseQueryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            var splitTags = "";
+            foreach (var tag in tags)
+            {
+                splitTags += tag.Name+" ";
+            }
 
-            baseQueryString.Add("q", "python");
+            baseQueryString.Add("q", $"{splitTags}");
             baseQueryString.Add("region", "zdoY_6u5_Krt");//region code for västa götaland
             baseQueryString.Add("limit", "100");
-
-
 
 
             //Note theoretical limit at 2100 jobs per search becouse of platsbanken api limitation
@@ -45,7 +48,6 @@ namespace Infrastructure.Services
 
             while (readArticles < availibleArticles)
             {
-
                 NameValueCollection currentQueryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
                 currentQueryString.Add("offset", $"{readArticles}");
 
@@ -66,7 +68,6 @@ namespace Infrastructure.Services
                 readArticles += 100;
                 output.AddRange(jobs.Hits);
             }
-
 
             return output;
         }
