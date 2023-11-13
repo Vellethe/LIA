@@ -12,12 +12,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: 700px;
+    margin-left: 300px;
 }
 
 .link{
-    padding: 5px;
-    margin:auto;
+    padding-right: 100px;
+    margin: auto;
     font-size:36px;
 }
 
