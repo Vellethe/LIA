@@ -188,45 +188,49 @@ export const HomePage = () => {
 
     function ShowTableOrDescription(show) {
         if (show) {
-            return <div id={styles.searchStuff}>
-                <div>
-                    <div id={styles.homeSearchFields}>
-                        <form id={styles.test} onSubmit={handleSearch}>
+            return <div>
+
+                <div id={styles.searchStuff}>
+                    <div>
+                        <div id={styles.homeSearchFields}>
+                            <form id={styles.test} onSubmit={handleSearch}>
+                                <input
+                                    id={styles.homeSearchJobs}
+                                    type="text"
+                                    name="searchJobs"
+                                    placeholder="Search for title or keywords" />
+                                <input
+                                    id={styles.homeSearchLocation}
+                                    type="text"
+                                    name="searchLocation"
+                                    placeholder="Location" />
+                                <button id="homeSearchButton" type="submit">Search</button>
+                            </form>
+                        </div>
+                        <div id={styles.dates}>
                             <input
-                                id={styles.homeSearchJobs}
-                                type="text"
-                                name="searchJobs"
-                                placeholder="Search for title or keywords" />
-                            <input
-                                id={styles.homeSearchLocation}
-                                type="text"
-                                name="searchLocation"
-                                placeholder="Location" />
-                            <button id="homeSearchButton" type="submit">Search</button>
-                        </form>
+                                type="month"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                            />
+                            <button onClick={filterDataByDate}>Date filter</button>
+                        </div>
                     </div>
-                    <div id={styles.dates}>
-                        <input
-                            type="month"
-                            value={startDate}
-                            onChange={handleStartDateChange}
-                        />
-                        <button onClick={filterDataByDate}>Date filter</button>
+
+                    <div>
+                        <Dropdown tags={tags} />
+                        <label for={styles.favoriteCheckBox}>
+                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
+                            <span>Filter by favorites</span>
+                        </label>
+                        <button id={styles.sorting}
+                            onClick={sortDate}
+                            className={(isAscending ? "ascending" : "descending")}>
+                            {isAscending ? "Oldest" : "Newest"}
+                        </button>
                     </div>
                 </div>
 
-                <div>
-                    <Dropdown tags={tags} />
-                    <label for={styles.favoriteCheckBox}>
-                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
-                        <span>Filter by favorites</span>
-                    </label>
-                    <button id={styles.sorting}
-                        onClick={sortDate}
-                        className={(isAscending ? "ascending" : "descending")}>
-                        {isAscending ? "Oldest" : "Newest"}
-                    </button>
-                </div>
                     <Table
                         checkBoxFunc={handleFavoriteCheckbox}
                         data={serverData}
@@ -235,6 +239,7 @@ export const HomePage = () => {
                         loadScroll={loadScrollPos}
                         saveScroll={saveScrollPos}
                     />
+
             </div>
         }
         else {
@@ -259,7 +264,7 @@ export const HomePage = () => {
             {/* Breadcrumb Trail */}
             <div id={styles.breadcrumbs}>
                 <span onClick={() => updateLocation('Home')}>Home</span>
-                {selectedJob && ( <>
+                {selectedJob && (<>
                     <span>&nbsp;&gt;&nbsp;</span>
                     <span onClick={() => updateLocation('Description')}> Description</span>
                 </>
@@ -269,9 +274,7 @@ export const HomePage = () => {
             <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
 
 
-            <div>
-                {ShowTableOrDescription(selectedJob == null)}
-            </div>
+            {ShowTableOrDescription(selectedJob == null)}
         </div>
     );
 }
