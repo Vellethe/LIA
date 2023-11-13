@@ -32,6 +32,25 @@ export const HomePage = () => {
     const [filteredData, setFilteredData] = useState(allData.current);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
+    const [tags, setTags] = useState([]);
+
+
+
+    async function getTags(){
+        var url = "https://localhost:7273/api/tags"; 
+        var response = await fetch(url, {
+            method: "GET",
+        })
+        const data = await response.json()
+        return data
+    }
+
+    useEffect(() => {
+        getTags().then(x => {
+            setTags(x);
+        }
+        )
+    }, []);
 
     useEffect(() => {
         getData().then(x => {
@@ -197,7 +216,7 @@ export const HomePage = () => {
                 </div>
 
                 <div>
-                    <Dropdown />
+                    <Dropdown tags={tags} />
                     <button id={styles.sorting}
                         onClick={sortDate}
                         className={(isAscending ? "ascending" : "descending")}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './DropDown.module.css';
 
-function Dropdown() {
+function Dropdown({ tags }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
 
@@ -19,7 +19,7 @@ function Dropdown() {
         }
     }
 
-    var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
+    //var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
 
     return (
         <div className={styles.dropdown}>
@@ -29,8 +29,8 @@ function Dropdown() {
                     <ul className={styles['dropdown-list']}>
                         {tags.map(tag => (
                             <li key={tag}>
-                                <label htmlFor={tag}>{tag}</label>
-                                <input defaultChecked={selectedTags.includes(tag)} onChange={() => handleDropdownTick(tag)} type="checkbox" id={tag} />
+                                <label htmlFor={tag.name}>{tag.name}</label>
+                                <input defaultChecked={selectedTags.includes(tag.name)} onChange={() => handleDropdownTick(tag.name)} type="checkbox" id={tag.name} />
                             </li>
                         ))}
                     </ul>
