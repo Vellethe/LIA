@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Description.module.css';
 
-export const DescriptionPage = ({ job, backButtonFunc }) => {
+export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc }) => {
 
     const parseTags = (input) => {
         input = input.map(x => x.tag.name);
@@ -17,12 +17,6 @@ export const DescriptionPage = ({ job, backButtonFunc }) => {
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     })
-
-    const [favorite, setFavorite] = useState(false);
-
-    const updateFavoriteFunc = (updatedFavorite) => {
-        setFavorite(updatedFavorite);
-    };
 
     const handleFavoriteChange = () => {
         const updatedFavorite = !favorite;
@@ -83,7 +77,7 @@ export const DescriptionPage = ({ job, backButtonFunc }) => {
                         <input
                             type="checkbox"
                             checked={favorite}
-                            onChange={handleFavoriteChange}
+                            onChange={updateFavoriteFunc}
                         />
                         Favorite: {favorite ? 'Yes' : 'No'}
                     </label>
