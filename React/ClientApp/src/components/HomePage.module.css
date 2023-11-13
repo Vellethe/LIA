@@ -56,14 +56,18 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
 
 #favoriteCheckBox
 {
-    margin-left: 170px;
+    margin-left: 10px;
     margin-top: 15px;
+    
 }
 
-#favoriteCheckBox + span
-{
-    margin-left: 5px;
-}
+    #favoriteCheckBox + span 
+    {
+        margin-left: 5px;
+        background-color: deepskyblue;
+        cursor: pointer;
+        user-select: none;
+    }
 
 #sorting {
     background-color: deepskyblue;
@@ -74,7 +78,7 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
     text-align: center;
     line-height: 10px;
     font-weight: bold;
-    margin-left: 1000px;
+    margin-left: 1150px;
     margin-top: 2px;
 }
 #settingsFreeSearch
@@ -96,6 +100,7 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
 {
     background-color: deepskyblue;
     font-size: 20px;
+    font-weight: bold;
 }
 
 /*#pageContainer {
