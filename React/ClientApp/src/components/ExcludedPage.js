@@ -2,34 +2,12 @@ import React, { useState, useEffect } from 'react';
 import commonStylesTable from "./CommonTable.module.css"
 import styles from "./HomePage.module.css";
 import "./ExcludedPage.module.css"
-
+import { getExclueded, updateExluded } from './../Helpers/apiCalls'
 
 
 export const ExcludedPage = () => {
 
     const [reloadTrigger,setReloadTrigger] = useState({});
-
-    async function getExclueded() {
-        var url = "https://localhost:7273/api/companies?onlyExcluded=true";
-        var response = await fetch(url, {
-            method: "GET",
-        })
-        const data = await response.json()
-        return data
-    }
-
-    async function updateExluded(id, state) {
-
-        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
-        console.log(id, state);
-        var response = await fetch(url, {
-            method: "PUT",
-        })
-        setReloadTrigger({});
-    }
-
-
-
 
     const [exludedCompanies, setExludedCompanies] = useState([]);
     useEffect(() => {
@@ -65,7 +43,7 @@ export const ExcludedPage = () => {
                                 {row.name}
                             </td>
                             <td>
-                                <button id={styles.removeExcluded} onClick={() => updateExluded(row.id,false)}>Remove exclueded</button>
+                                <button id={styles.removeExcluded} onClick={async () => { await updateExluded(row.id, false); setReloadTrigger({}); }}>Remove exclueded</button>
                             </td>
                         </tr>
                     ))}

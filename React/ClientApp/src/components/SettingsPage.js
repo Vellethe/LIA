@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
+import { getTags, postTag } from "./../Helpers/apiCalls"
 
 export const SettingsPage = () => {
     let allData = useRef([]);
@@ -11,22 +12,6 @@ export const SettingsPage = () => {
         tags: ""
     })
 
-    async function getTags(){
-        var url = "https://localhost:7273/api/tags"; 
-        var response = await fetch(url, {
-            method: "GET",
-        })
-        const data = await response.json()
-        return data
-    }
-
-    async function postTag(name) {
-        var url = "https://localhost:7273/api/tags?name=" + encodeURIComponent(name); 
-        var response = await fetch(url, {
-            method: "POST",
-        })
-        setReloadTrigger({});
-    }
 
     useEffect(() => {
         getTags().then(x => {
@@ -48,7 +33,7 @@ export const SettingsPage = () => {
         setAddFormData(newFormData);
     };
 
-    const handleAddFormSubmit = (event) => {
+    const handleAddFormSubmit = async (event) => {
         event.preventDefault();
 
         const inputTag = addFormData.tags.trim(); 
@@ -60,7 +45,8 @@ export const SettingsPage = () => {
         }
 
         const newTags = [...showTags, newTag];
-        postTag(formattedTag);
+        await postTag(formattedTag);
+        setReloadTrigger({});
         //setShowTags(newTags);
 
         setAddFormData({ tags: "" });

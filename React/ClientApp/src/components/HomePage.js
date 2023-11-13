@@ -3,26 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-
-
-async function getData() {
-    var url = "https://localhost:7273/api/jobs?page=0";
-    var response = await fetch(url, {
-        method: "GET",
-    })
-    const data = await response.json()
-    return data
-}
-async function updateFavorite(id, state) {
-
-    var url = `https://localhost:7273/api/favorite?id=${id}&isFavorite=${state}`;
-    console.log(id, state);
-    var response = await fetch(url, {
-        method: "PUT",
-    })
-}
-
-
+import { getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     let allData = useRef([]);
@@ -34,16 +15,6 @@ export const HomePage = () => {
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
 
-
-
-    async function getTags(){
-        var url = "https://localhost:7273/api/tags"; 
-        var response = await fetch(url, {
-            method: "GET",
-        })
-        const data = await response.json()
-        return data
-    }
 
     useEffect(() => {
         getTags().then(x => {
@@ -72,15 +43,6 @@ export const HomePage = () => {
         setServerData(updatedServerData);
     };
 
-    async function updateExluded(id, state) {
-
-        var url = `https://localhost:7273/api/excluded?id=${id}&isExcluded=${state}`;
-        console.log(id, state);
-        var response = await fetch(url, {
-            method: "PUT",
-        })
-        setReloadTrigger({});
-    }
 
     const handleStartDateChange = (e) => {
         setStartDate(e.target.value);
@@ -231,14 +193,14 @@ export const HomePage = () => {
                     </div>
                 </div>
 
-                    <Table
-                        checkBoxFunc={handleFavoriteCheckbox}
-                        data={serverData}
-                        updateExluded={updateExluded}
-                        selectForShowFunc={(job) => { setSelectedJob(job) }}
-                        loadScroll={loadScrollPos}
-                        saveScroll={saveScrollPos}
-                    />
+                <Table
+                    checkBoxFunc={handleFavoriteCheckbox}
+                    data={serverData}
+                    updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
+                    selectForShowFunc={(job) => { setSelectedJob(job) }}
+                    loadScroll={loadScrollPos}
+                    saveScroll={saveScrollPos}
+                />
 
             </div>
         }
