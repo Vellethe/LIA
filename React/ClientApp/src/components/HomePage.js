@@ -48,19 +48,18 @@ export const HomePage = () => {
         setStartDate(e.target.value);
     };
 
-    const filterDataByDate = () => {
-        if (startDate) {
-            const filteredData = allData.current.filter((job) => {
+    const filterDataByDate = (listToSort,date) => {
+        if (date) {
+            const filteredData = listToSort.filter((job) => {
                 const jobDate = new Date(job.postDate);
-                const filterStartDate = new Date(startDate);
+                const filterStartDate = new Date(date);
                 return jobDate >= filterStartDate;
             });
-
-            setServerData(filteredData);
+            return filteredData;
         }
         else
         {
-            setServerData(allData.current);
+            return listToSort;
         }
 
     };
@@ -68,25 +67,30 @@ export const HomePage = () => {
 
     const [searchLocation, setSearchLocation] = useState("");
 
-    const searchByLocation = (location) => {
+    const searchByLocation = (listToSort,location) => {
         const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
-        setSearchLocation(capitalLocation);
 
-        const filteredData = allData.current.filter((job) => {
+        const filteredData = listToSort.filter((job) => {
             if (job.municipality && typeof job.municipality === "string") {
                 return job.municipality.includes(capitalLocation);
             }
             return false;
         });
         console.log(filteredData);
-        setServerData(filteredData)
+        return filteredData;
     };
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const location = e.target.searchLocation.value;
-        searchByLocation(location);
-       /* filterDataByDate();*/ /*Not working function yet*/
+        var formFields = e.target.elements;
+        var location = formFields.searchLocation.value;
+        var date = formFields.test.value;
+
+        var retainSort = allData.current;
+        retainSort = searchByLocation(retainSort,location);
+        retainSort = filterDataByDate(retainSort,date);
+        /* filterDataByDate();*/ /*Not working function yet*/
+        setServerData(retainSort);
     };
 
 
@@ -133,12 +137,12 @@ export const HomePage = () => {
     };
     const updateFavoriteFunc = (event) => {
         if (selectedJob) {
-            
+
             const selectedJobID = selectedJob.id;
 
             const updatedServerData = serverData.map((job) => {
                 if (job.id === selectedJobID) {
-                    
+
                     return { ...job, favorite: event.target.checked };
                 }
                 return job;
@@ -166,16 +170,14 @@ export const HomePage = () => {
                                     type="text"
                                     name="searchLocation"
                                     placeholder="Location" />
+                                <input
+                                    name="test"
+                                        type="month"
+                                        value={startDate}
+                                        onChange={handleStartDateChange}
+                                    />
                                 <button id="homeSearchButton" type="submit">Search</button>
                             </form>
-                        </div>
-                        <div id={styles.dates}>
-                            <input
-                                type="month"
-                                value={startDate}
-                                onChange={handleStartDateChange}
-                            />
-                            <button onClick={filterDataByDate}>Date filter</button>
                         </div>
                     </div>
 
