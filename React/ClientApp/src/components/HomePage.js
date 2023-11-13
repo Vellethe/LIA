@@ -195,9 +195,9 @@ export const HomePage = () => {
 
 
     return (
-        <div>
+        <div id={styles.pageContainer}>
                 {/* Breadcrumb Trail */}
-                <div>
+            <div id={styles.breadcrumbs}>
                     <span onClick={() => updateLocation('Home')}>Home</span>
                     {selectedJob && (
                         <span onClick={() => updateLocation('Description')}> > Description</span>
@@ -250,7 +250,7 @@ export const HomePage = () => {
             </div>
             <div>
                 {showTable(selectedJob == null)}
-            </div>
+                </div>
         </div>
     );
 }

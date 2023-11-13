@@ -1,17 +1,18 @@
 ﻿.gridHome {
     display: grid;
-    align-items:end;
+    align-items: end;
     grid-template-areas:
         "jobTitle jobTitle star"
         "test null date";
     grid-template-columns: auto auto 10%;
-    grid-template-rows:auto 40px;
+    grid-template-rows: auto 40px;
     border: 3px solid #f0f0f0;
-    border-radius:9px;
-    margin-top:10px;
-    padding-left:5px;
-    border-width:5px;
-    cursor:pointer;
+    border-radius: 9px;
+    margin-top: 10px;
+    padding-left: 5px;
+    border-width: 5px;
+    cursor: pointer;
+    /*background-color: #e0e0e0;*/
 }
 
 .desciptionGrid{
