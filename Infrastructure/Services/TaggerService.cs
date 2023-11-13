@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Data;
 using Domain;
@@ -40,7 +41,7 @@ namespace Infrastructure.Services
 
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
         {
-            if (CaseInsesitiveContains(job.Role,tagToFind.Name) || CaseInsesitiveContains(job.Description, tagToFind.Name))
+            if (ContainsRegex(job.Role,tagToFind.Name) || ContainsRegex(job.Description, tagToFind.Name))
             {
                 return true;
             }
@@ -49,10 +50,13 @@ namespace Infrastructure.Services
         }
 
 
-        private bool CaseInsesitiveContains(string str1,string str2)
+        private bool ContainsRegex(string str1,string tagName)
         {
+            string escapedTag = Regex.Escape(tagName);
+            //\b word boundry
+            var regex = new Regex(@$"\b{escapedTag}.?(\s+|$|\/)",RegexOptions.IgnoreCase);
             //the indexOf is used as a case insensitive contains
-            return str1.IndexOf(str2, StringComparison.OrdinalIgnoreCase) != -1;
+            return regex.IsMatch(str1);
         }
 
     }
