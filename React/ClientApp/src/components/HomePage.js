@@ -167,48 +167,9 @@ export const HomePage = () => {
         }
     };
 
-    function showTable(show) {
+    function ShowTableOrDescription(show) {
         if (show) {
-            return <Table
-                checkBoxFunc={handleFavoriteCheckbox}
-                data={serverData}
-                updateExluded={updateExluded}
-                selectForShowFunc={(job) => { setSelectedJob(job) }}
-                loadScroll={loadScrollPos}
-                saveScroll={saveScrollPos}
-            />
-        }
-        else {
-            saveScrollPos();
-            return null;
-        }
-    }
-
-    function saveScrollPos() {
-        sessionStorage.setItem("scroll", window.pageYOffset);
-    }
-
-    function loadScrollPos() {
-        let scrollValue = sessionStorage.getItem("scroll");
-        window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
-        sessionStorage.removeItem("scroll");
-    }
-
-
-    return (
-        <div id={styles.pageContainer}>
-                {/* Breadcrumb Trail */}
-            <div id={styles.breadcrumbs}>
-                    <span onClick={() => updateLocation('Home')}>Home</span>
-                    {selectedJob && (
-                        <span onClick={() => updateLocation('Description')}> Description</span>
-                    )}
-                </div>
-
-            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
-
-
-            <div id={styles.searchStuff}>
+            return <div id={styles.searchStuff}>
                 <div>
                     <div id={styles.homeSearchFields}>
                         <form id={styles.test} onSubmit={handleSearch}>
@@ -248,10 +209,49 @@ export const HomePage = () => {
                     </label>
 
                 </div>
+                    <Table
+                        checkBoxFunc={handleFavoriteCheckbox}
+                        data={serverData}
+                        updateExluded={updateExluded}
+                        selectForShowFunc={(job) => { setSelectedJob(job) }}
+                        loadScroll={loadScrollPos}
+                        saveScroll={saveScrollPos}
+                    />
             </div>
+        }
+        else {
+            saveScrollPos();
+            return null;
+        }
+    }
+
+    function saveScrollPos() {
+        sessionStorage.setItem("scroll", window.pageYOffset);
+    }
+
+    function loadScrollPos() {
+        let scrollValue = sessionStorage.getItem("scroll");
+        window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
+        sessionStorage.removeItem("scroll");
+    }
+
+
+    return (
+        <div id={styles.pageContainer}>
+            {/* Breadcrumb Trail */}
+            <div id={styles.breadcrumbs}>
+                <span onClick={() => updateLocation('Home')}>Home</span>
+                {selectedJob && (
+                    <span onClick={() => updateLocation('Description')}> Description</span>
+                )}
+            </div>
+
+            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
+
+
             <div>
-                {showTable(selectedJob == null)}
-                </div>
+                {ShowTableOrDescription(selectedJob == null)}
+            </div>
         </div>
     );
 }
