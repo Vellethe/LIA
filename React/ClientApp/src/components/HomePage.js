@@ -84,11 +84,10 @@ export const HomePage = () => {
 
     };
 
+
     const [searchLocation, setSearchLocation] = useState("");
 
-    const searchByLocation = (e) => {
-        e.preventDefault();
-        const location = e.target.searchLocation.value;
+    const searchByLocation = (location) => {
         const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
         setSearchLocation(capitalLocation);
 
@@ -100,6 +99,13 @@ export const HomePage = () => {
         });
         console.log(filteredData);
         setServerData(filteredData)
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const location = e.target.searchLocation.value;
+        searchByLocation(location);
+       /* filterDataByDate();*/ /*Not working function yet*/
     };
 
 
@@ -188,11 +194,6 @@ export const HomePage = () => {
         sessionStorage.removeItem("scroll");
     }
 
-    //const handleSearch = () => {
-    //    searchByLocation();
-    //    filterDataByDate();
-    //};
-
 
     return (
         <div id={styles.pageContainer}>
@@ -200,7 +201,7 @@ export const HomePage = () => {
             <div id={styles.breadcrumbs}>
                     <span onClick={() => updateLocation('Home')}>Home</span>
                     {selectedJob && (
-                        <span onClick={() => updateLocation('Description')}> > Description</span>
+                        <span onClick={() => updateLocation('Description')}> Description</span>
                     )}
                 </div>
 
@@ -210,7 +211,7 @@ export const HomePage = () => {
             <div id={styles.searchStuff}>
                 <div>
                     <div id={styles.homeSearchFields}>
-                        <form id={styles.test} onSubmit={searchByLocation}/*{(e) => { e.preventDefault(); handleSearch(); }}*/>
+                        <form id={styles.test} onSubmit={handleSearch}>
                             <input
                                 id={styles.homeSearchJobs}
                                 type="text"
