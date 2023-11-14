@@ -27,10 +27,15 @@ namespace Infrastructure.Services
                 //Makes sure that it is referensing a already created company in db
                 var dbCompany = context.JobScoutCompanies.FirstOrDefault(x => x.Name == job.Company.Name) ?? job.Company;
                 job.Company = dbCompany;
-                context.JobScoutJobs.Add(job);
+                tagger.NewJobTagging(job, context);
+
+                if(job.TagJobs.Count() != 0)
+                {
+                    context.JobScoutJobs.Add(job);
+                }
+
                 context.SaveChanges();
 
-                tagger.NewJobTagging(job, context);
 
             }
 
