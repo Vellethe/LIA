@@ -102,7 +102,7 @@ export const HomePage = () => {
 
     const filterFavoriteBox = async (event) => {
         favoriteState.current = (event.currentTarget.checked);
-        document.getElementById("homeSearchButton").click();
+        document.getElementById("searchButtonHome").click();
         handleSearch();
     }
 
@@ -125,7 +125,7 @@ export const HomePage = () => {
             return <div>
 
                 <div id={styles.searchStuff}>
-                    <div>
+                    <div className={styles.area}>
                         <div id={styles.homeSearchFields}>
                             <form id={styles.test} onSubmit={handleSearch}>
                                 <input
@@ -138,18 +138,18 @@ export const HomePage = () => {
                                     type="text"
                                     name="searchLocation"
                                     placeholder="Location" />
-                                <input
-                                    name="test"
+                                <input id={styles.dates}
+                                        name="test"
                                         type="month"
                                         value={startDate}
                                         onChange={handleStartDateChange}
                                     />
-                                <button id="homeSearchButton" type="submit">Search</button>
+                                <button id="searchButtonHome" type="submit">Search</button>
                             </form>
                         </div>
                     </div>
 
-                    <div>
+                    <div className={styles.area}>
                         <Dropdown tags={tags} />
                         <label for={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>

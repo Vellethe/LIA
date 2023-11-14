@@ -1,4 +1,8 @@
-﻿﻿#homeSearchJobs {
+﻿body {
+    background-color: #e0e0e0;
+}
+﻿
+#homeSearchJobs {
     width: 350px;
     border: none;
     outline: none;
@@ -19,19 +23,19 @@
     height: 54px;
     background-color: #e0e0e0;
 }
-#homeSearchButton {
+#searchButtonHome {
     border: none;
     outline: none;
+    margin-left: 10px;
 }
 
 #test{
     display:grid;
-    grid-template-columns: 5fr 5fr 2fr 1fr;
+    grid-template-columns: 4fr 4fr 2fr 1fr;
 }
 #dates
 {
-    margin-top: 8px;
-    margin-left: 25px;
+    margin-left: 10px;
 }
 
 form{
@@ -101,6 +105,9 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
     background-color: deepskyblue;
     font-size: 20px;
     font-weight: bold;
+}
+.area {
+    background-color: #e0e0e0;
 }
 
 /*#pageContainer {
