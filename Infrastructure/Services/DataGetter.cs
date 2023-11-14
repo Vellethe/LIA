@@ -24,7 +24,8 @@ namespace Infrastructure.Services
                     //TODO maybe update values
                     continue;
                 }
-                //Makes sure that it is referensing a already created company in db
+
+                //prevenets duplicate companies from being created
                 var dbCompany = context.JobScoutCompanies.FirstOrDefault(x => x.Name == job.Company.Name) ?? job.Company;
                 job.Company = dbCompany;
                 tagger.NewJobTagging(job, context);
