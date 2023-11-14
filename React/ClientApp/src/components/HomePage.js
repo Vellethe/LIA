@@ -12,6 +12,7 @@ export const HomePage = () => {
     const [selectedJob, setSelectedJob] = useState(null);
     const favoriteState = useRef(false);
     const selectedTags = useRef([]);
+    const andMode = useRef(false);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
@@ -77,17 +78,26 @@ export const HomePage = () => {
         retainSort = searchByLocation(retainSort,location);
         retainSort = filterDataByDate(retainSort, date);
 
-        retainSort = filterByTags(retainSort, selectedTags.current);
+        retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
         /* filterDataByDate();*/ /*Not working function yet*/
         retainSort = filterByFavorite(retainSort, favoriteState.current);
         setServerData(retainSort);
     };
 
-    function filterByTags(listToSort,tags) {
-        //TODO and/or search 
+    function filterByTags(listToSort, tags, andMode) {
+
+        if (tags.length === 0) {
+            return listToSort;
+        }
+
         var output = listToSort.filter(x => {
             var tagsOnJob = x.tagJobs.map(y => y.tag.name);
-            return tagsOnJob.some(z => tags.includes(z));
+            if (andMode) {
+                return tags.every(z => tagsOnJob.includes(z));
+            }
+            else {
+                return tagsOnJob.some(z => tags.includes(z));
+            }
         });
         return output;
     }
@@ -110,7 +120,7 @@ export const HomePage = () => {
 
     const filterFavoriteBox = async (event) => {
         favoriteState.current = (event.currentTarget.checked);
-        document.getElementById("searchButtonHome").click();
+        submitForm();
     }
 
     const handleFavoriteCheckbox = async (event) => {
@@ -126,8 +136,12 @@ export const HomePage = () => {
         return toSort;
     };
 
-    function tagFilterCallback(value){
+    function tagFilterCallback(value) {
         selectedTags.current = value;
+        submitForm();
+    }
+
+    function submitForm() {
         document.getElementById("searchButtonHome").click();
     }
 
@@ -151,18 +165,22 @@ export const HomePage = () => {
                                     name="searchLocation"
                                     placeholder="Location" />
                                 <input id={styles.dates}
-                                        name="test"
-                                        type="month"
-                                        value={startDate}
-                                        onChange={handleStartDateChange}
-                                    />
+                                    name="test"
+                                    type="month"
+                                    value={startDate}
+                                    onChange={handleStartDateChange}
+                                />
                                 <button id="searchButtonHome" type="submit">Search</button>
                             </form>
                         </div>
                     </div>
 
                     <div className={styles.area}>
-                        <Dropdown tags={tags} chosenTagsCallback={ tagFilterCallback } />
+                        <input type="checkbox" onChange={(e) => {
+                            andMode.current = e.currentTarget.checked;
+                            submitForm();
+                        }}></input>
+                        <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
                         <label for={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
                             <span>Filter by favorites</span>
