@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './DropDown.module.css';
 
-function Dropdown({ tags }) {
+function Dropdown({ tags, chosenTagsCallback }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
 
@@ -10,13 +10,16 @@ function Dropdown({ tags }) {
     };
 
     const handleDropdownTick = (name) => {
+        var output = [];
         if (selectedTags.includes(name)) {
             var newTable = selectedTags.filter((word) => word !== name);
-            setSelectedTags([...newTable])
+            output = [...newTable];
         }
         else {
-            setSelectedTags([...selectedTags, name])
+            output = [...selectedTags, name]
         }
+        setSelectedTags(output);
+        chosenTagsCallback(output); 
     }
 
     //var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]

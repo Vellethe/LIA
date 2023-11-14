@@ -11,6 +11,7 @@ export const HomePage = () => {
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
     const favoriteState = useRef(false);
+    const selectedTags = useRef([]);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
@@ -53,9 +54,6 @@ export const HomePage = () => {
 
     };
 
-
-    const [searchLocation, setSearchLocation] = useState("");
-
     const searchByLocation = (listToSort,location) => {
         const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
 
@@ -77,12 +75,22 @@ export const HomePage = () => {
 
         var retainSort = allData.current;
         retainSort = searchByLocation(retainSort,location);
-        retainSort = filterDataByDate(retainSort,date);
+        retainSort = filterDataByDate(retainSort, date);
+
+        retainSort = filterByTags(retainSort, selectedTags.current);
         /* filterDataByDate();*/ /*Not working function yet*/
         retainSort = filterByFavorite(retainSort, favoriteState.current);
         setServerData(retainSort);
     };
 
+    function filterByTags(listToSort,tags) {
+        //TODO and/or search 
+        var output = listToSort.filter(x => {
+            var tagsOnJob = x.tagJobs.map(y => y.tag.name);
+            return tagsOnJob.some(z => tags.includes(z));
+        });
+        return output;
+    }
 
     const [isAscending, setAscending] = useState(true);
 
@@ -103,7 +111,6 @@ export const HomePage = () => {
     const filterFavoriteBox = async (event) => {
         favoriteState.current = (event.currentTarget.checked);
         document.getElementById("searchButtonHome").click();
-        handleSearch();
     }
 
     const handleFavoriteCheckbox = async (event) => {
@@ -118,6 +125,11 @@ export const HomePage = () => {
         }
         return toSort;
     };
+
+    function test(value){
+        selectedTags.current = value;
+        document.getElementById("searchButtonHome").click();
+    }
 
 
     function ShowTableOrDescription(show) {
@@ -150,7 +162,7 @@ export const HomePage = () => {
                     </div>
 
                     <div className={styles.area}>
-                        <Dropdown tags={tags} />
+                        <Dropdown tags={tags} chosenTagsCallback={ test } />
                         <label for={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
                             <span>Filter by favorites</span>
