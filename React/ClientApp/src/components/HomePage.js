@@ -126,7 +126,7 @@ export const HomePage = () => {
         return toSort;
     };
 
-    function test(value){
+    function tagFilterCallback(value){
         selectedTags.current = value;
         document.getElementById("searchButtonHome").click();
     }
@@ -162,7 +162,7 @@ export const HomePage = () => {
                     </div>
 
                     <div className={styles.area}>
-                        <Dropdown tags={tags} chosenTagsCallback={ test } />
+                        <Dropdown tags={tags} chosenTagsCallback={ tagFilterCallback } />
                         <label for={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
                             <span>Filter by favorites</span>
