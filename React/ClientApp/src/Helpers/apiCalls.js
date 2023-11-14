@@ -8,6 +8,19 @@ export async function getData() {
     return data
 }
 
+// Function to fetch data automaticly from the API
+//export async function fetchData() {
+//    try {
+//        const response = await fetch("https://localhost:7273/api/jobs?page=0");
+//        const data = await response.json();
+//        console.log(data);
+//    } catch (error) {
+//        console.error("Error fetching data:", error);
+//    }
+//};
+
+//const fetchDataInterval = setInterval(fetchData, 10000);
+
 
 export async function getTags() {
     var url = "https://localhost:7273/api/tags";

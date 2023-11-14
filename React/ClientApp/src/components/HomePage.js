@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-import { getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     let allData = useRef([]);
