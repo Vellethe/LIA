@@ -12,10 +12,12 @@
     margin-left: 5%;
     width: 55%;
     border: 1px solid #ccc;
+    background-color: white;
 }
 .body2 {
     width: 30%;
     text-align: center;
+    font-weight: bold;
 }
 
 .grid {

@@ -79,9 +79,6 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         />
                         Favorite: {favorite ? 'Yes' : 'No'}
                     </label>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
-                    <p>Tasty Cookies</p>
                 </div>
             </div>
         );
