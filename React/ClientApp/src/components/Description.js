@@ -30,7 +30,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         <div key={job.id}>
                             <div className={styles.grid}>
                                 <div className={styles.row}>
-                                    <p className={styles.label}>Name:</p>
+                                    <p className={styles.label}>Company:</p>
                                     <p className={styles.value}>{job.company.name}</p>
                                 </div>
                                 <div className={styles.row}>
@@ -41,13 +41,13 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                             </div>
 
                             <div className={styles.grid}>
-                                <div className={styles.row}>
-                                <p className={styles.label}>Date:</p>
-                                <p className={styles.value}>{formatDate(job.postDate)}</p>
+                            <div className={styles.row}>
+                                <p className={styles.label}>Role:</p>
+                                <p className={styles.value}>{job.role}</p>
                                 </div>
                                 <div className={styles.row}>
-                                    <p className={styles.label2}>Role:</p>
-                                    <p className={styles.value2}>{job.role}</p>
+                                <p className={styles.label2}>Date:</p>
+                                <p className={styles.value2}>{formatDate(job.postDate)}</p>
                                 </div>
                             </div>
 
