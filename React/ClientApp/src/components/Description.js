@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Description.module.css';
+import { formatDate } from "./../Helpers/formating"
 
 export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc }) => {
 
@@ -41,8 +42,8 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
 
                             <div className={styles.grid}>
                                 <div className={styles.row}>
-                                    <p className={styles.label}>Date:</p>
-                                    <p className={styles.value}>{job.postDate}</p>
+                                <p className={styles.label}>Date:</p>
+                                <p className={styles.value}>{formatDate(job.postDate)}</p>
                                 </div>
                                 <div className={styles.row}>
                                     <p className={styles.label2}>Role:</p>
