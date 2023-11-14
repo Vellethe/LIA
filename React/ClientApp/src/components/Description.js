@@ -18,10 +18,6 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
 
-    const handleFavoriteChange = () => {
-        updateFavoriteFunc({ target: { checked: !favorite } });
-    }
-
     if (job != null) {
 
         return (
@@ -76,8 +72,9 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                     <label>
                         <input
                             type="checkbox"
-                            checked={favorite}
-                            onChange={handleFavoriteChange}
+                            defaultChecked={job.favorite}
+                            onChange={updateFavoriteFunc}
+                            id={job.id}
                         />
                         Favorite: {favorite ? 'Yes' : 'No'}
                     </label>

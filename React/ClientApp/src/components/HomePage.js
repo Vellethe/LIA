@@ -10,7 +10,7 @@ export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
-    const [filteredData, setFilteredData] = useState(allData.current);
+    const favoriteState = useRef(false);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
@@ -32,17 +32,6 @@ export const HomePage = () => {
     }, [reloadTrigger]);
 
     const [startDate, setStartDate] = useState('');
-
-    const handleFavoriteChange = (jobId, newFavoriteValue) => {
-        const updatedServerData = serverData.map(job => {
-            if (job.id === jobId) {
-                return { ...job, favorite: newFavoriteValue };
-            }
-            return job;
-        });
-        setServerData(updatedServerData);
-    };
-
 
     const handleStartDateChange = (e) => {
         setStartDate(e.target.value);
@@ -90,6 +79,7 @@ export const HomePage = () => {
         retainSort = searchByLocation(retainSort,location);
         retainSort = filterDataByDate(retainSort,date);
         /* filterDataByDate();*/ /*Not working function yet*/
+        retainSort = filterByFavorite(retainSort, favoriteState.current);
         setServerData(retainSort);
     };
 
@@ -110,47 +100,25 @@ export const HomePage = () => {
         setServerData(newData);
     }
 
-    const handleFavoriteCheckbox = (event) => {
-        var x = "a";
-        //TODO checks not saved in ref
-        allData.current.find(x => x.id == event.currentTarget.id).favorite = event.currentTarget.checked;
+    const filterFavoriteBox = async (event) => {
+        favoriteState.current = (event.currentTarget.checked);
+        document.getElementById("homeSearchButton").click();
+        handleSearch();
+    }
+
+    const handleFavoriteCheckbox = async (event) => {
+        allData.current.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
-    const filterDataByFavorite = (state) => {
-        var filteredData = allData.current;
-        if (state.currentTarget.checked === true) {
-
-            filteredData = serverData.filter((job) => job.favorite === true);
+    const filterByFavorite = (toSort, sort) => {
+        if (sort) {
+            var output = toSort.filter((job) => job.favorite === true);
+            return output;
         }
-
-        if (searchLocation !== "") {
-            filteredData = filteredData.filter((job) => {
-                if (job.municipality && typeof job.municipality === "string") {
-                    return job.municipality.includes(searchLocation);
-                }
-                return false;
-            });
-        }
-
-        setServerData(filteredData);
+        return toSort;
     };
-    const updateFavoriteFunc = (event) => {
-        if (selectedJob) {
 
-            const selectedJobID = selectedJob.id;
-
-            const updatedServerData = serverData.map((job) => {
-                if (job.id === selectedJobID) {
-
-                    return { ...job, favorite: event.target.checked };
-                }
-                return job;
-            });
-
-            setServerData(updatedServerData);
-        }
-    };
 
     function ShowTableOrDescription(show) {
         if (show) {
@@ -184,7 +152,7 @@ export const HomePage = () => {
                     <div>
                         <Dropdown tags={tags} />
                         <label for={styles.favoriteCheckBox}>
-                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterDataByFavorite}></input>
+                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
                             <span>Filter by favorites</span>
                         </label>
                         <button id={styles.sorting}
@@ -235,7 +203,7 @@ export const HomePage = () => {
                 )}
             </div>
 
-            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={updateFavoriteFunc} backButtonFunc={() => { setSelectedJob(null) }} />
+            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={handleFavoriteCheckbox} backButtonFunc={() => { setSelectedJob(null) }} />
 
 
             {ShowTableOrDescription(selectedJob == null)}

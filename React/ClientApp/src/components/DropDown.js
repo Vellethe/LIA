@@ -28,7 +28,7 @@ function Dropdown({ tags }) {
                 <div className={styles.scrollMenu} onMouseLeave={() => setIsOpen(false)}>
                     <ul className={styles['dropdown-list']}>
                         {tags.map(tag => (
-                            <li key={tag}>
+                            <li key={tag.name}>
                                 <label htmlFor={tag.name}>{tag.name}</label>
                                 <input defaultChecked={selectedTags.includes(tag.name)} onChange={() => handleDropdownTick(tag.name)} type="checkbox" id={tag.name} />
                             </li>
