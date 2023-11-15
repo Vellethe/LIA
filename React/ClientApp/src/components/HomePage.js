@@ -60,6 +60,8 @@ export const HomePage = () => {
 
         retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
         retainSort = filterByFavorite(retainSort, favoriteState.current);
+
+        setCompanyCount(retainSort.length);
         setServerData(retainSort);
     };
 
