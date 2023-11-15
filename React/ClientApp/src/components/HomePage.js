@@ -3,8 +3,8 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
 import { filterAll } from './../Helpers/sorting'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded, getCompanyCount } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
@@ -37,8 +37,8 @@ export const HomePage = () => {
         getData().then(x => {
             setServerData(x);
         });
+        //getCompanyCount().then(count => setCompanyCount(count));
     }, [reloadTrigger]);
-
 
     function ShowTableOrDescription(show) {
         if (show) {

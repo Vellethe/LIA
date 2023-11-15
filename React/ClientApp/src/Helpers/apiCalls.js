@@ -68,3 +68,16 @@ export async function postTag(name) {
     })
 }
 
+export async function getCompanyCount() {
+    try {
+        const response = await fetch("https://localhost:7273/api/companies");
+        const data = await response.json();
+        return data.count;
+    }
+    catch (error) {
+        console.error("Error fetching companies", error)
+        return 0;
+    }
+
+}
+
