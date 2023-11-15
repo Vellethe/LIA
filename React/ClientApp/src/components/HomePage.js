@@ -3,7 +3,8 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded} from './../Helpers/apiCalls'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
+import { filterByFavorite, filterByTags, filterDataByDate, searchByLocation } from "./../Helpers/sorting"
 
 export const HomePage = () => {
     let allData = useRef([]);
@@ -42,34 +43,7 @@ export const HomePage = () => {
         setStartDate(e.target.value);
     };
 
-    const filterDataByDate = (listToSort,date) => {
-        if (date) {
-            const filteredData = listToSort.filter((job) => {
-                const jobDate = new Date(job.postDate);
-                const filterStartDate = new Date(date);
-                return jobDate >= filterStartDate;
-            });
-            return filteredData;
-        }
-        else
-        {
-            return listToSort;
-        }
 
-    };
-
-    const searchByLocation = (listToSort,location) => {
-        const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
-
-        const filteredData = listToSort.filter((job) => {
-            if (job.municipality && typeof job.municipality === "string") {
-                return job.municipality.includes(capitalLocation);
-            }
-            return false;
-        });
-        console.log(filteredData);
-        return filteredData;
-    };
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -88,23 +62,6 @@ export const HomePage = () => {
         setServerData(retainSort);
     };
 
-    function filterByTags(listToSort, tags, andMode) {
-
-        if (tags.length === 0) {
-            return listToSort;
-        }
-
-        var output = listToSort.filter(x => {
-            var tagsOnJob = x.tagJobs.map(y => y.tag.name);
-            if (andMode) {
-                return tags.every(z => tagsOnJob.includes(z));
-            }
-            else {
-                return tagsOnJob.some(z => tags.includes(z));
-            }
-        });
-        return output;
-    }
 
     const [isAscending, setAscending] = useState(true);
 
@@ -132,13 +89,6 @@ export const HomePage = () => {
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
-    const filterByFavorite = (toSort, sort) => {
-        if (sort) {
-            var output = toSort.filter((job) => job.favorite === true);
-            return output;
-        }
-        return toSort;
-    };
 
     function tagFilterCallback(value) {
         selectedTags.current = value;
