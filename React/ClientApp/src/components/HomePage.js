@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded} from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     let allData = useRef([]);
@@ -16,21 +16,24 @@ export const HomePage = () => {
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
+    const [companyCount, setCompanyCount] = useState(0);
 
 
     useEffect(() => {
         getTags().then(x => {
             setTags(x);
+
         }
         )
     }, []);
 
     useEffect(() => {
+        getTags().then(x => setTags(x));
         getData().then(x => {
             setServerData(x);
             allData.current = x;
-        }
-        )
+            
+        });
     }, [reloadTrigger]);
 
     const [startDate, setStartDate] = useState('');
@@ -78,8 +81,9 @@ export const HomePage = () => {
         retainSort = searchByLocation(retainSort,location);
         retainSort = filterDataByDate(retainSort, date);
 
+        setCompanyCount(retainSort.length);
+
         retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
-        /* filterDataByDate();*/ /*Not working function yet*/
         retainSort = filterByFavorite(retainSort, favoriteState.current);
         setServerData(retainSort);
     };
@@ -185,6 +189,7 @@ export const HomePage = () => {
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
                             <span>Filter by favorites</span>
                         </label>
+                        <span id={styles.companies}>Amount of companies: {companyCount}</span>
                         <button id={styles.sorting}
                             onClick={sortDate}
                             className={(isAscending ? "ascending" : "descending")}>
