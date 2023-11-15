@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded, getCompanyCount } from './../Helpers/apiCalls'
 import { filterByFavorite, filterByTags, filterDataByDate, searchByLocation } from "./../Helpers/sorting"
 
 export const HomePage = () => {
@@ -33,8 +33,9 @@ export const HomePage = () => {
         getData().then(x => {
             setServerData(x);
             allData.current = x;
-            
+            setCompanyCount(x.length)
         });
+        getCompanyCount().then(count => setCompanyCount(count));
     }, [reloadTrigger]);
 
     const [startDate, setStartDate] = useState('');
