@@ -109,6 +109,11 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
 .area {
     background-color: #e0e0e0;
 }
+#companies
+{
+    font-weight: bold;
+    margin-left: 150px;
+}
 
 /*#pageContainer {
     background-color: #e0e0e0;

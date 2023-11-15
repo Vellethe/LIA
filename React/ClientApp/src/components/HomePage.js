@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import Dropdown from './DropDown';
 import { DescriptionPage } from './Description';
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, getTags, updateFavorite, updateExluded} from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     let allData = useRef([]);
@@ -16,21 +16,24 @@ export const HomePage = () => {
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
     const [tags, setTags] = useState([]);
+    const [companyCount, setCompanyCount] = useState(0);
 
 
     useEffect(() => {
         getTags().then(x => {
             setTags(x);
+
         }
         )
     }, []);
 
     useEffect(() => {
+        getTags().then(x => setTags(x));
         getData().then(x => {
             setServerData(x);
             allData.current = x;
-        }
-        )
+            
+        });
     }, [reloadTrigger]);
 
     useEffect(() => {
@@ -82,8 +85,9 @@ export const HomePage = () => {
         retainSort = searchByLocation(retainSort,location);
         retainSort = filterDataByDate(retainSort, date);
 
+        setCompanyCount(retainSort.length);
+
         retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
-        /* filterDataByDate();*/ /*Not working function yet*/
         retainSort = filterByFavorite(retainSort, favoriteState.current);
         setServerData(retainSort);
     };
@@ -221,23 +225,24 @@ export const HomePage = () => {
                     </div>
                 </div>
 
-                <div className={styles.area}>
-                    <input type="checkbox" onChange={(e) => {
-                        andMode.current = e.currentTarget.checked;
-                        submitForm();
-                    }}></input>
-                    <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
-                    <label for={styles.favoriteCheckBox}>
-                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
-                        <span>Filter by favorites</span>
-                    </label>
-                    <button id={styles.sorting}
-                        onClick={sortDate}
-                        className={(isAscending ? "ascending" : "descending")}>
-                        {isAscending ? "Oldest" : "Newest"}
-                    </button>
+                    <div className={styles.area}>
+                        <input type="checkbox" onChange={(e) => {
+                            andMode.current = e.currentTarget.checked;
+                            submitForm();
+                        }}></input>
+                        <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
+                        <label for={styles.favoriteCheckBox}>
+                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
+                            <span>Filter by favorites</span>
+                        </label>
+                        <span id={styles.companies}>Amount of companies: {companyCount}</span>
+                        <button id={styles.sorting}
+                            onClick={sortDate}
+                            className={(isAscending ? "ascending" : "descending")}>
+                            {isAscending ? "Oldest" : "Newest"}
+                        </button>
+                    </div>
                 </div>
-            </div>
 
             <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={handleFavoriteCheckbox} backButtonFunc={() => { setSelectedJob(null) }} />
 
