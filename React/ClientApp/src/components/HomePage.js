@@ -4,7 +4,7 @@ import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { filterAll } from './../Helpers/sorting'
-import { /*fetchData*/getData, updateExluded, getCompanyCount } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
@@ -42,9 +42,16 @@ export const HomePage = () => {
     });
 
     function dataToShow() {
+        //TODO add use memo
         var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode));
-        //setCompanyCount(result.length);
         return result;
+    }
+
+    const handleFavoriteCheckbox = async (event) => {
+        var jobs = [...serverData];
+        jobs.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
+        setServerData(jobs);
+        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
     function ShowTableOrDescription(show) {
@@ -58,8 +65,8 @@ export const HomePage = () => {
                     selectForShowFunc={(job) => { setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
                     saveScroll={saveScrollPos}
+                    checkBoxFunc={handleFavoriteCheckbox}
                 />
-                    {/*checkBoxFunc={handleFavoriteCheckbox}*/}
             </div>
         }
         else {
@@ -96,9 +103,9 @@ export const HomePage = () => {
                 job={selectedJob}
                 favorite={selectedJob ? selectedJob.favorite : false}
                 backButtonFunc={() => { setSelectedJob(null) }}
+                updateFavoriteFunc={handleFavoriteCheckbox}
             />
 
-                {/*updateFavoriteFunc={handleFavoriteCheckbox}*/}
 
             {ShowTableOrDescription(selectedJob == null)}
         </div>
