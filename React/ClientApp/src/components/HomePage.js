@@ -36,10 +36,6 @@ export const HomePage = () => {
         });
     }, [reloadTrigger]);
 
-    useEffect(() => {
-        submitForm();
-    }, [selectedTags.current])
-
     const [startDate, setStartDate] = useState('');
 
     const handleStartDateChange = (e) => {
