@@ -33,6 +33,10 @@ export const HomePage = () => {
         )
     }, [reloadTrigger]);
 
+    useEffect(() => {
+        submitForm();
+    }, [selectedTags.current])
+
     const [startDate, setStartDate] = useState('');
 
     const handleStartDateChange = (e) => {
@@ -150,48 +154,6 @@ export const HomePage = () => {
         if (show) {
             return <div>
 
-                <div id={styles.searchStuff}>
-                    <div className={styles.area}>
-                        <div id={styles.homeSearchFields}>
-                            <form id={styles.test} onSubmit={handleSearch}>
-                                <input
-                                    id={styles.homeSearchJobs}
-                                    type="text"
-                                    name="searchJobs"
-                                    placeholder="Search for title or keywords" />
-                                <input
-                                    id={styles.homeSearchLocation}
-                                    type="text"
-                                    name="searchLocation"
-                                    placeholder="Location" />
-                                <input id={styles.dates}
-                                    name="test"
-                                    type="month"
-                                    value={startDate}
-                                    onChange={handleStartDateChange}
-                                />
-                                <button id="searchButtonHome" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div className={styles.area}>
-                        <input type="checkbox" onChange={(e) => {
-                            andMode.current = e.currentTarget.checked;
-                            submitForm();
-                        }}></input>
-                        <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
-                        <label for={styles.favoriteCheckBox}>
-                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
-                            <span>Filter by favorites</span>
-                        </label>
-                        <button id={styles.sorting}
-                            onClick={sortDate}
-                            className={(isAscending ? "ascending" : "descending")}>
-                            {isAscending ? "Oldest" : "Newest"}
-                        </button>
-                    </div>
-                </div>
 
                 <Table
                     checkBoxFunc={handleFavoriteCheckbox}
@@ -231,6 +193,50 @@ export const HomePage = () => {
                     <span onClick={() => updateLocation('Description')}> Description</span>
                 </>
                 )}
+            </div>
+
+
+            <div id={styles.searchStuff} style={selectedJob === null ? {} : { display: 'none' }}>
+                <div className={styles.area}>
+                    <div id={styles.homeSearchFields}>
+                        <form id={styles.test} onSubmit={handleSearch}>
+                            <input
+                                id={styles.homeSearchJobs}
+                                type="text"
+                                name="searchJobs"
+                                placeholder="Search for title or keywords" />
+                            <input
+                                id={styles.homeSearchLocation}
+                                type="text"
+                                name="searchLocation"
+                                placeholder="Location" />
+                            <input id={styles.dates}
+                                name="test"
+                                type="month"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                            />
+                            <button id="searchButtonHome" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div className={styles.area}>
+                    <input type="checkbox" onChange={(e) => {
+                        andMode.current = e.currentTarget.checked;
+                        submitForm();
+                    }}></input>
+                    <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
+                    <label for={styles.favoriteCheckBox}>
+                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
+                        <span>Filter by favorites</span>
+                    </label>
+                    <button id={styles.sorting}
+                        onClick={sortDate}
+                        className={(isAscending ? "ascending" : "descending")}>
+                        {isAscending ? "Oldest" : "Newest"}
+                    </button>
+                </div>
             </div>
 
             <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={handleFavoriteCheckbox} backButtonFunc={() => { setSelectedJob(null) }} />
