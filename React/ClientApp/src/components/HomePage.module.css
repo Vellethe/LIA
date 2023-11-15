@@ -118,3 +118,8 @@ button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSe
 /*#pageContainer {
     background-color: #e0e0e0;
 }*/
+
+.test2{
+    height:fit-content;
+    width:fit-content;
+}

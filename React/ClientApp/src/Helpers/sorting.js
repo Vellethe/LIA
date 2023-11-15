@@ -1,52 +1,56 @@
-﻿export function filterByFavorite(toSort, sort) {
-    if (sort) {
-        var output = toSort.filter((job) => job.favorite === true);
-        return output;
-    }
-    return toSort;
-};
-
-export function filterByTags(listToSort, tags, andMode) {
-
-    if (tags.length === 0) {
-        return listToSort;
+﻿function filterByFavorite(item, filterFavorite) {
+    if (!filterFavorite) {
+        return true;
     }
 
-    var output = listToSort.filter(x => {
-        var tagsOnJob = x.tagJobs.map(y => y.tag.name);
-        if (andMode) {
-            return tags.every(z => tagsOnJob.includes(z));
-        }
-        else {
-            return tagsOnJob.some(z => tags.includes(z));
-        }
-    });
-    return output;
-}
-
-export function searchByLocation(listToSort, location) {
-    const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
-
-    const filteredData = listToSort.filter((job) => {
-        if (job.municipality && typeof job.municipality === "string") {
-            return job.municipality.includes(capitalLocation);
-        }
-        return false;
-    });
-    return filteredData;
+    return item.favorite === true;
 };
 
-export function filterDataByDate(listToSort, date) {
-    if (date) {
-        const filteredData = listToSort.filter((job) => {
-            const jobDate = new Date(job.postDate);
-            const filterStartDate = new Date(date);
-            return jobDate >= filterStartDate;
-        });
-        return filteredData;
+function filterByTags(item, searchTags, andMode) {
+
+    if (searchTags.length === 0) {
+        return true;
+    }
+
+    var tagsOnJob = item.tagJobs.map(y => y.tag.name);
+    if (andMode) {
+        return searchTags.every(searchTag => tagsOnJob.includes(searchTag));
     }
     else {
-        return listToSort;
+        return tagsOnJob.some(z => searchTags.includes(z));
+    }
+}
+
+function searchByLocation(item, location) {
+    if (location === null) {
+        return true;
+    }
+    const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
+
+    if (item.municipality && typeof item.municipality === "string") {
+        return item.municipality.includes(capitalLocation);
     }
 
+    return false
 };
+
+function filterDataByDate(item, startShowDate) {
+    if (startShowDate === null) {
+        return true;
+    }
+    if (new Date(item.postDate) >= new Date(startShowDate)) {
+        return true;
+    }
+    return false;
+
+};
+
+export function filterAll(item, startShowDate, location, doFavoriteSort, searchTags, andMode) {
+    var x = "a";
+    return (
+        filterByFavorite(item, doFavoriteSort) &&
+        filterDataByDate(item, startShowDate) &&
+        filterByTags(item, searchTags, andMode) &&
+        searchByLocation(item, location)
+    );
+}

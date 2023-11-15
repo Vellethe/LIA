@@ -1,119 +1,57 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
-import Dropdown from './DropDown';
+import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { /*fetchData*/getData, getTags, updateFavorite, updateExluded } from './../Helpers/apiCalls'
-import { filterByFavorite, filterByTags, filterDataByDate, searchByLocation } from "./../Helpers/sorting"
+import { filterAll } from './../Helpers/sorting'
 
 export const HomePage = () => {
-    let allData = useRef([]);
     const [serverData, setServerData] = useState([]);
     const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
-    const favoriteState = useRef(false);
-    const selectedTags = useRef([]);
-    const andMode = useRef(false);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
-    const [tags, setTags] = useState([]);
-    const [companyCount, setCompanyCount] = useState(0);
+
+
+
+    const [startDate, setStartDate] = useState(null);
+    const [andMode,setAndMode] = useState(false);
+    const [selectedTags,setSelectedTags] = useState([]);
+    const [favoriteState,setFavoriteState]  = useState(false);
+    const [location,setLocation]  = useState("");
+
+
+    function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
+        setStartDate(startDate);
+        setLocation(location);
+        setFavoriteState(favoriteState);
+        setSelectedTags(selectedTags);
+        setAndMode(andMode);
+    }
+
+
 
 
     useEffect(() => {
-        getTags().then(x => {
-            setTags(x);
-
-        }
-        )
-    }, []);
-
-    useEffect(() => {
-        getTags().then(x => setTags(x));
         getData().then(x => {
             setServerData(x);
-            allData.current = x;
-            
         });
     }, [reloadTrigger]);
-
-    const [startDate, setStartDate] = useState('');
-
-    const handleStartDateChange = (e) => {
-        setStartDate(e.target.value);
-    };
-
-
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        var formFields = e.target.elements;
-        var location = formFields.searchLocation.value;
-        var date = formFields.test.value;
-
-        var retainSort = allData.current;
-        retainSort = searchByLocation(retainSort,location);
-        retainSort = filterDataByDate(retainSort, date);
-
-        setCompanyCount(retainSort.length);
-
-        retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
-        retainSort = filterByFavorite(retainSort, favoriteState.current);
-        setServerData(retainSort);
-    };
-
-
-    const [isAscending, setAscending] = useState(true);
-
-    const sortDate = () => {
-        setAscending(!isAscending);
-        const newData = [...serverData];
-        newData.sort((a, b) => {
-            if (isAscending) {
-                return new Date(b.postDate) - new Date(a.postDate);
-            }
-            else {
-                return new Date(a.postDate) - new Date(b.postDate);
-            }
-        });
-        setServerData(newData);
-    }
-
-    const filterFavoriteBox = async (event) => {
-        favoriteState.current = (event.currentTarget.checked);
-        submitForm();
-    }
-
-    const handleFavoriteCheckbox = async (event) => {
-        allData.current.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
-        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
-    }
-
-
-    function tagFilterCallback(value) {
-        selectedTags.current = value;
-        submitForm();
-    }
-
-    function submitForm() {
-        document.getElementById("searchButtonHome").click();
-    }
 
 
     function ShowTableOrDescription(show) {
         if (show) {
+/*TODO make favorite work again*/
             return <div>
-
-
                 <Table
-                    checkBoxFunc={handleFavoriteCheckbox}
-                    data={serverData}
+                    data={serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode))}
                     updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
                     selectForShowFunc={(job) => { setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
                     saveScroll={saveScrollPos}
                 />
-
+                    {/*checkBoxFunc={handleFavoriteCheckbox}*/}
             </div>
         }
         else {
@@ -144,54 +82,15 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
+            <SearchAndFilters updateFilter={setFilters} hidden={false} />
+{/*TODO make favorite work again*/}
+            <DescriptionPage
+                job={selectedJob}
+                favorite={selectedJob ? selectedJob.favorite : false}
+                backButtonFunc={() => { setSelectedJob(null) }}
+            />
 
-
-            <div id={styles.searchStuff} style={selectedJob === null ? {} : { display: 'none' }}>
-                <div className={styles.area}>
-                    <div id={styles.homeSearchFields}>
-                        <form id={styles.test} onSubmit={handleSearch}>
-                            <input
-                                id={styles.homeSearchJobs}
-                                type="text"
-                                name="searchJobs"
-                                placeholder="Search for title or keywords" />
-                            <input
-                                id={styles.homeSearchLocation}
-                                type="text"
-                                name="searchLocation"
-                                placeholder="Location" />
-                            <input id={styles.dates}
-                                name="test"
-                                type="month"
-                                value={startDate}
-                                onChange={handleStartDateChange}
-                            />
-                            <button id="searchButtonHome" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-
-                    <div className={styles.area}>
-                        <input type="checkbox" onChange={(e) => {
-                            andMode.current = e.currentTarget.checked;
-                            submitForm();
-                        }}></input>
-                        <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
-                        <label for={styles.favoriteCheckBox}>
-                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox}></input>
-                            <span>Filter by favorites</span>
-                        </label>
-                        <span id={styles.companies}>Amount of companies: {companyCount}</span>
-                        <button id={styles.sorting}
-                            onClick={sortDate}
-                            className={(isAscending ? "ascending" : "descending")}>
-                            {isAscending ? "Oldest" : "Newest"}
-                        </button>
-                    </div>
-                </div>
-
-            <DescriptionPage job={selectedJob} favorite={selectedJob ? selectedJob.favorite : false} updateFavoriteFunc={handleFavoriteCheckbox} backButtonFunc={() => { setSelectedJob(null) }} />
-
+                {/*updateFavoriteFunc={handleFavoriteCheckbox}*/}
 
             {ShowTableOrDescription(selectedJob == null)}
         </div>
