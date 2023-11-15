@@ -4,7 +4,7 @@ import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { filterAll } from './../Helpers/sorting'
-import { /*fetchData*/getData, getTags, updateFavorite, updateExluded, getCompanyCount } from './../Helpers/apiCalls'
+import { /*fetchData*/getData, updateExluded, getCompanyCount } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
@@ -13,7 +13,7 @@ export const HomePage = () => {
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
 
-
+    const [companyCount, setCompanyCount] = useState(0);
 
     const [startDate, setStartDate] = useState(null);
     const [andMode,setAndMode] = useState(false);
@@ -30,22 +30,30 @@ export const HomePage = () => {
         setAndMode(andMode);
     }
 
-
-
-
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
+            getCompanyCount().then(count => setCompanyCount(count));
         });
-        //getCompanyCount().then(count => setCompanyCount(count));
     }, [reloadTrigger]);
+
+    useEffect(() => {
+        setCompanyCount(dataToShow().length);
+    });
+
+    function dataToShow() {
+        var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode));
+        //setCompanyCount(result.length);
+        return result;
+    }
 
     function ShowTableOrDescription(show) {
         if (show) {
 /*TODO make favorite work again*/
             return <div>
+
                 <Table
-                    data={serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode))}
+                    data={dataToShow(serverData)}
                     updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
                     selectForShowFunc={(job) => { setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
@@ -82,7 +90,7 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
-            <SearchAndFilters updateFilter={setFilters} hidden={false} />
+            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} />
 {/*TODO make favorite work again*/}
             <DescriptionPage
                 job={selectedJob}

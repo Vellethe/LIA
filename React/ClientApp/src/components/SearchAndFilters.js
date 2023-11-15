@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 //TODO move css to own file
 import styles from './HomePage.module.css';
-import { filterByFavorite, filterByTags, filterDataByDate, searchByLocation } from "./../Helpers/sorting"
-import { updateFavorite, getTags } from "./../Helpers/apiCalls"
+import { updateFavorite, getTags, getCompanyCount } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, allData, hidden }) => {
-    const [companyCount, setCompanyCount] = useState(0);
+export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
     const [tags, setTags] = useState([]);
     const [isAscending, setAscending] = useState(true);
 
@@ -48,7 +46,7 @@ export const SearchAndFilters = ({ updateFilter, allData, hidden }) => {
     }
 
     const handleFavoriteCheckbox = async (event) => {
-        allData.current.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
+        //allData.current.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
@@ -59,15 +57,6 @@ export const SearchAndFilters = ({ updateFilter, allData, hidden }) => {
         var date = formFields.test.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
-
-        //retainSort = searchByLocation(retainSort,location);
-        //retainSort = filterDataByDate(retainSort, date);
-
-        //setCompanyCount(retainSort.length);
-
-//        retainSort = filterByTags(retainSort, selectedTags.current, andMode.current);
- //       retainSort = filterByFavorite(retainSort, favoriteState.current);
-
 
         location = location === '' ? null : location;
         date = date === '' ? null : date;
