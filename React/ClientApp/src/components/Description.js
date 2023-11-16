@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './Description.module.css';
-import { formatDate } from "./../Helpers/formating"
+import { formatDate, parseTags } from "./../Helpers/formating"
 
 export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc }) => {
 
-    const parseTags = (input) => {
-        input = input.map(x => x.tag.name);
-        var output = "";
-        for (let i = 0; i < input.length; i++) {
-            output += input[i];
-            if (i < input.length - 1) {
-                output += ", "
-            }
-        }
-        return output;
-    }
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
