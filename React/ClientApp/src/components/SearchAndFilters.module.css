@@ -55,7 +55,7 @@
     display: flex;
 }
 
-button, #homeSearchJobs, #homeSearchLocation, #settingsFreeSearch {
+button, #homeSearchJobs, #homeSearchLocation, #settingsFreeSearch, #dates {
     border-radius: 10px;
     padding: 5px;
 }
@@ -68,7 +68,6 @@ button
 #favoriteCheckBox + span {
     margin-left: 5px;
     font-weight: bold;
-    background-color: deepskyblue;
     cursor: pointer;
     user-select: none;
     line-height: 35px;
