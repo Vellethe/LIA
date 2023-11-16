@@ -13,14 +13,6 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
         )
     }, []);
 
-    function tagFilterCallback(value) {
-        //selectedTags.current = value;
-        submitForm();
-    }
-    const filterFavoriteBox = async (event) => {
-        //favoriteState.current = (event.currentTarget.checked);
-        submitForm();
-    }
     function submitForm() {
         document.getElementById("searchButtonHome").click();
     }
@@ -71,7 +63,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                     <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <label for={styles.favoriteCheckBox}>
-                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox} name="favorite"></input>
+                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
                     </label>
                     <span id={styles.companies}>Amount of companies: {companyCount}</span>

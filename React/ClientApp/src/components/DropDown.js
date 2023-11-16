@@ -27,8 +27,7 @@ function Dropdown({ tags, submitForm }) {
     return (
         <div className={styles.dropdown}>
             <button onClick={toggleDropdown} className={styles['dropdown-button']}>Skills</button>
-            {isOpen && (
-                <div className={styles.scrollMenu} onMouseLeave={() => setIsOpen(false)}>
+            <div className={styles.scrollMenu} style={isOpen ? {} : { display: 'none' }} onMouseLeave={() => setIsOpen(false)}>
                     <ul className={styles['dropdown-list']}>
                         {tags.map(tag => (
                             <li key={tag.name}>
@@ -38,7 +37,6 @@ function Dropdown({ tags, submitForm }) {
                         ))}
                     </ul>
                 </div>
-            )}
         </div>
     );
 }

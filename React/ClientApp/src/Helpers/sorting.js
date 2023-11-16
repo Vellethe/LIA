@@ -46,7 +46,6 @@ function filterDataByDate(item, startShowDate) {
 };
 
 export function filterAll(item, startShowDate, location, doFavoriteSort, searchTags, andMode) {
-    var x = "a";
     return (
         filterByFavorite(item, doFavoriteSort) &&
         filterDataByDate(item, startShowDate) &&
