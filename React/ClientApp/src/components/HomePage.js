@@ -57,7 +57,6 @@ export const HomePage = () => {
 
     function ShowTableOrDescription(show) {
         if (show) {
-/*TODO make favorite work again*/
             return <div>
 
                 <Table

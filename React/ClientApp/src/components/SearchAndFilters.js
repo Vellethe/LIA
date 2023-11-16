@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//TODO move css to own file
 import styles from './SearchAndFilters.module.css';
 import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
