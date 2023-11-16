@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 //TODO move css to own file
-import styles from './HomePage.module.css';
+import styles from './SearchAndFilters.module.css';
 import { updateFavorite, getTags, getCompanyCount } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
 export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
@@ -45,10 +45,6 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
         document.getElementById("searchButtonHome").click();
     }
 
-    const handleFavoriteCheckbox = async (event) => {
-        //allData.current.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
-        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
-    }
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -57,12 +53,13 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
         var date = formFields.test.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
+        var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x=>x.value);
 
         location = location === '' ? null : location;
         date = date === '' ? null : date;
 
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
-        updateFilter(date, location, favorite, [], andMode);
+        updateFilter(date, location, favorite, tags, andMode);
     };
     return (
 
@@ -92,7 +89,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
 
                 <div className={styles.area}>
                     <input type="checkbox" onChange={submitForm} name="andMode"></input>
-                    <Dropdown tags={tags} chosenTagsCallback={tagFilterCallback} />
+                    <Dropdown tags={tags} submitForm={submitForm} />
                     <label for={styles.favoriteCheckBox}>
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox} name="favorite"></input>
                         <span>Filter by favorites</span>

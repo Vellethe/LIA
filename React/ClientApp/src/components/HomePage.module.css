@@ -1,125 +1,12 @@
-﻿body {
-    background-color: #e0e0e0;
-}
-﻿
-#homeSearchJobs {
-    width: 350px;
-    border: none;
-    outline: none;
-}
+﻿﻿
 
-#homeSearchLocation {
-    border: none;
-    border-left: 2px solid deepskyblue;
-    width: 350px;
-    outline: none;
-}
-#homeSearchFields {
-    display: flex;
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    margin-left: 150px;
-    height: 54px;
-    background-color: #e0e0e0;
-}
-#searchButtonHome {
-    border: none;
-    outline: none;
-    margin-left: 10px;
-}
-
-#test{
-    display:grid;
-    grid-template-columns: 4fr 4fr 2fr 1fr;
-}
-#dates
-{
-    margin-left: 10px;
-}
-
-form{
-    height: 40px;
-}
-
-#searchStuff{
-    width:fit-content;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-
-#searchStuff > div{
-    display: flex;
-}
-
-button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSearch {
-    border-radius: 10px;
-    padding: 5px;
-}
-
-#favoriteCheckBox
-{
-    margin-left: 10px;
-    margin-top: 15px;
-    
-}
-
-    #favoriteCheckBox + span 
-    {
-        margin-left: 5px;
-        background-color: deepskyblue;
-        cursor: pointer;
-        user-select: none;
-    }
-
-#sorting {
-    background-color: deepskyblue;
-    color: white;
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 10px;
-    font-weight: bold;
-    margin-left: 1150px;
-    margin-top: 2px;
-}
-#settingsFreeSearch
-{
-    margin-bottom: 2px;
-}
-#removeExcluded {
-    background-color: deepskyblue;
-    color: white;
-    width: 100px;
-    height: 50px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 10px;
-    font-weight: bold;
-}
-
-#breadcrumbs
+.breadcrumbs
 {
     background-color: deepskyblue;
     font-size: 20px;
     font-weight: bold;
 }
-.area {
-    background-color: #e0e0e0;
-}
-#companies
-{
-    font-weight: bold;
-    margin-left: 150px;
-}
 
 /*#pageContainer {
     background-color: #e0e0e0;
 }*/
-
-.test2{
-    height:fit-content;
-    width:fit-content;
-}
