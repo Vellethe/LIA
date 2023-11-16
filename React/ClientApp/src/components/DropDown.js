@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './DropDown.module.css';
 
-function Dropdown({ tags, chosenTagsCallback }) {
+function Dropdown({ tags, submitForm }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
 
@@ -19,7 +19,7 @@ function Dropdown({ tags, chosenTagsCallback }) {
             output = [...selectedTags, name]
         }
         setSelectedTags(output);
-        chosenTagsCallback(output); 
+        submitForm();
     }
 
     //var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
@@ -33,7 +33,7 @@ function Dropdown({ tags, chosenTagsCallback }) {
                         {tags.map(tag => (
                             <li key={tag.name}>
                                 <label htmlFor={tag.name}>{tag.name}</label>
-                                <input defaultChecked={selectedTags.includes(tag.name)} onChange={() => handleDropdownTick(tag.name)} type="checkbox" id={tag.name} />
+                                <input defaultChecked={selectedTags.includes(tag.name)} onChange={() => handleDropdownTick(tag.name)} type="checkbox" id={tag.name} name="selectedTags" value={tag.name} />
                             </li>
                         ))}
                     </ul>
