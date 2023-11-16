@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './Description.module.css';
 import { formatDate } from "./../Helpers/formating"
 

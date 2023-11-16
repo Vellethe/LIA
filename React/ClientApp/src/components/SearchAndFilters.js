@@ -1,29 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 //TODO move css to own file
 import styles from './SearchAndFilters.module.css';
-import { updateFavorite, getTags, getCompanyCount } from "./../Helpers/apiCalls"
+import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
+export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setIsAscending, hidden }) => {
     const [tags, setTags] = useState([]);
-    const [isAscending, setAscending] = useState(true);
-
-
-
-    //const sortDate = () => {
-    //    //TODO rewrite to sort
-    //    setAscending(!isAscending);
-    //    const newData = [...serverData];
-    //    newData.sort((a, b) => {
-    //        if (isAscending) {
-    //            return new Date(b.postDate) - new Date(a.postDate);
-    //        }
-    //        else {
-    //            return new Date(a.postDate) - new Date(b.postDate);
-    //        }
-    //    });
-    //    updateServerData(newData);
-    //}
-
 
     useEffect(() => {
         getTags().then(x => {
@@ -31,7 +12,6 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
         }
         )
     }, []);
-
 
     function tagFilterCallback(value) {
         //selectedTags.current = value;
@@ -44,7 +24,6 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
     function submitForm() {
         document.getElementById("searchButtonHome").click();
     }
-
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -61,6 +40,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
         updateFilter(date, location, favorite, tags, andMode);
     };
+
     return (
 
         <div id={styles.searchStuff} style={hidden ? { display: 'none' } : {}}>
@@ -96,6 +76,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
                     </label>
                     <span id={styles.companies}>Amount of companies: {companyCount}</span>
                     <button id={styles.sorting}
+                        onClick={() => { setIsAscending(!isAscending) }}
                         className={(isAscending ? "ascending" : "descending")}>
                         {isAscending ? "Oldest" : "Newest"}
                     </button>

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
-import { filterAll } from './../Helpers/sorting'
+import { filterAll, sortDate } from './../Helpers/sorting'
 import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
@@ -21,6 +21,7 @@ export const HomePage = () => {
     const [favoriteState,setFavoriteState]  = useState(false);
     const [location,setLocation]  = useState("");
 
+    const [isAscending, setIsAscending] = useState(true);
 
     function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
         setStartDate(startDate);
@@ -60,7 +61,7 @@ export const HomePage = () => {
             return <div>
 
                 <Table
-                    data={dataToShow(serverData)}
+                    data={dataToShow(serverData).sort((a, b) => { return sortDate(a, b, isAscending) })}
                     updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
                     selectForShowFunc={(job) => { setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
@@ -97,15 +98,14 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
-            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} />
-{/*TODO make favorite work again*/}
+            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} isAscending={isAscending} setIsAscending={setIsAscending} />
+
             <DescriptionPage
                 job={selectedJob}
                 favorite={selectedJob ? selectedJob.favorite : false}
                 backButtonFunc={() => { setSelectedJob(null) }}
                 updateFavoriteFunc={handleFavoriteCheckbox}
             />
-
 
             {ShowTableOrDescription(selectedJob == null)}
         </div>

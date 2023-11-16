@@ -54,3 +54,16 @@ export function filterAll(item, startShowDate, location, doFavoriteSort, searchT
         searchByLocation(item, location)
     );
 }
+
+
+
+
+
+export function sortDate(item1, item2, isAscending) {
+    if (isAscending) {
+        return new Date(item1.postDate) - new Date(item2.postDate);
+    }
+    else {
+        return new Date(item2.postDate) - new Date(item1.postDate);
+    }
+}
