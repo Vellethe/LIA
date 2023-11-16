@@ -21,7 +21,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
         e.preventDefault();
         var formFields = e.target.elements;
         var location = formFields.searchLocation.value;
-        var date = formFields.test.value;
+        var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
         var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x=>x.value);
@@ -51,7 +51,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                                 name="searchLocation"
                                 placeholder="Location" />
                             <input id={styles.dates}
-                                name="test"
+                                name="startDate"
                                 type="month"
                             />
                             <button id="searchButtonHome" type="submit">Search</button>
