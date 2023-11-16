@@ -4,7 +4,7 @@ import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { filterAll } from './../Helpers/sorting'
-import { /*fetchData*/getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
+import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
