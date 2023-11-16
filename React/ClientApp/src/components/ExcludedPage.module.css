@@ -1,7 +1,10 @@
-﻿.excluded-page {
-    background-color: #eeeeee;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+﻿#removeExcluded {
+    background-color: deepskyblue;
+    color: white;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
 }

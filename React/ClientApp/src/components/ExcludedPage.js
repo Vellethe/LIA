@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import commonStylesTable from "./CommonTable.module.css"
-import styles from "./HomePage.module.css";
-import "./ExcludedPage.module.css"
+import styles from "./ExcludedPage.module.css"
 import { getExclueded, updateExluded } from './../Helpers/apiCalls'
 
 
