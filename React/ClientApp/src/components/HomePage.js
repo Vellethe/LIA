@@ -21,7 +21,7 @@ export const HomePage = () => {
     const [favoriteState,setFavoriteState]  = useState(false);
     const [location,setLocation]  = useState("");
 
-    const [isAscending, setIsAscending] = useState(true);
+    const [isAscending, setIsAscending] = useState(false);
 
     function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
         setStartDate(startDate);
