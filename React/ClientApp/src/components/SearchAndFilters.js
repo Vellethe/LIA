@@ -64,10 +64,10 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
     return (
 
         <div id={styles.searchStuff} style={hidden ? { display: 'none' } : {}}>
-            <form onSubmit={handleSearch} className={styles.test2}>
+            <form onSubmit={handleSearch}>
                 <div className={styles.area}>
                     <div id={styles.homeSearchFields}>
-                        <div id={styles.test} >
+                        <div id={styles.searchRow} >
                             <input
                                 id={styles.homeSearchJobs}
                                 type="text"
@@ -88,7 +88,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
                 </div>
 
                 <div className={styles.area}>
-                    <input type="checkbox" onChange={submitForm} name="andMode"></input>
+                    <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <label for={styles.favoriteCheckBox}>
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={filterFavoriteBox} name="favorite"></input>
@@ -99,10 +99,8 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
                         className={(isAscending ? "ascending" : "descending")}>
                         {isAscending ? "Oldest" : "Newest"}
                     </button>
-                    {/*onClick={sortDate}*/}
                 </div>
             </form>
         </div>
-
     );
 };
