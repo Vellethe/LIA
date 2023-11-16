@@ -54,7 +54,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                                 name="startDate"
                                 type="month"
                             />
-                            <button id="searchButtonHome" type="submit">Search</button>
+                            <button type="submit">Search</button>
                         </div>
                     </div>
                 </div>

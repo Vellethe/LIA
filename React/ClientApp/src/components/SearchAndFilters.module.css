@@ -40,7 +40,7 @@
 .area {
     background-color: #e0e0e0;
     display: flex;
-    margin-top: 10px;
+    margin-top: 5px;
     width: 100%;
     justify-content: space-around;
 }
@@ -48,45 +48,39 @@
 #companies
 {
     font-weight: bold;
-    margin-left: 150px;
-}
-
-#searchButtonHome {
-    border: none;
-    outline: none;
-    margin-left: 10px;
+    line-height: 35px;
 }
 
 #searchStuff > div{
     display: flex;
 }
 
-button, #homeSearchJobs, #homeSearchLocation, #homeSearchButton, #settingsFreeSearch {
+button, #homeSearchJobs, #homeSearchLocation, #settingsFreeSearch {
     border-radius: 10px;
     padding: 5px;
 }
 
-#favoriteCheckBox {
-    margin-left: 10px;
-    margin-top: 15px;
+button
+{
+    margin-left: 5px;
 }
 
-    #favoriteCheckBox + span {
-        margin-left: 5px;
-        background-color: deepskyblue;
-        cursor: pointer;
-        user-select: none;
-    }
+#favoriteCheckBox + span {
+    margin-left: 5px;
+    font-weight: bold;
+    background-color: deepskyblue;
+    cursor: pointer;
+    user-select: none;
+    line-height: 35px;
+}
 
 #sorting {
     background-color: deepskyblue;
     color: white;
     width: 100px;
-    height: 30px;
+    height: 35px;
     cursor: pointer;
     text-align: center;
     line-height: 10px;
     font-weight: bold;
-    /*margin-left: 650px;*/
-    margin-top: 5px;
 }
