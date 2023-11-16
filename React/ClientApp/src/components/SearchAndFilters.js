@@ -61,13 +61,13 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                 </div>
 
                 <div className={styles.area}>
-                    <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
-                    <Dropdown tags={tags} submitForm={submitForm} />
+                    <span id={styles.companies}>Amount of companies: {companyCount}</span>
                     <label for={styles.favoriteCheckBox}>
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
                     </label>
-                    <span id={styles.companies}>Amount of companies: {companyCount}</span>
+                    <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
+                    <Dropdown tags={tags} submitForm={submitForm} />
                     <button id={styles.sorting}
                         onClick={() => { setIsAscending(!isAscending) }}
                         className={(isAscending ? "ascending" : "descending")}>
