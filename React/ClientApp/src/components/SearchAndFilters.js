@@ -82,7 +82,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
                                 name="test"
                                 type="month"
                             />
-                            <button id="searchButtonHome" type="submit">Search</button>
+                            <button type="submit">Search</button>
                         </div>
                     </div>
                 </div>
