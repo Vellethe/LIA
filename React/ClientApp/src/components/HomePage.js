@@ -89,7 +89,7 @@ export const HomePage = () => {
     return (
         <div id={styles.pageContainer}>
             {/* Breadcrumb Trail */}
-            <div id={styles.breadcrumbs}>
+            <div className={styles.breadcrumbs}>
                 <span onClick={() => updateLocation('Home')}>Home</span>
                 {selectedJob && (<>
                     <span>&nbsp;&gt;&nbsp;</span>

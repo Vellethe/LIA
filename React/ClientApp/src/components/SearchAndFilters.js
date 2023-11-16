@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 //TODO move css to own file
-import styles from './HomePage.module.css';
+import styles from './SearchAndFilters.module.css';
 import { updateFavorite, getTags, getCompanyCount } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
 export const SearchAndFilters = ({ updateFilter, companyCount, hidden }) => {
