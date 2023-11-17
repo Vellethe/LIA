@@ -85,7 +85,7 @@ namespace Api.Controllers
         }
 
         /// <summary>
-        /// Creates seed data in database
+        /// Triggers data loading from providers
         /// </summary>
         /// <returns></returns>
         [HttpPost("test")]

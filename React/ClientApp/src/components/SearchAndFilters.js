@@ -60,7 +60,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                 </div>
 
                 <div className={styles.area}>
-                    <span id={styles.companies}>Amount of companies: {companyCount}</span>
+                    <span id={styles.companies}>Amount of shown job ads: {companyCount}</span>
                     <label for={styles.favoriteCheckBox}>
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
