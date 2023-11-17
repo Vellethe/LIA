@@ -12,8 +12,7 @@
     background-color: white;
 }
 .body2 {
-    width: 30%;
-    text-align: center;
+    margin-left: 5px;
     font-weight: bold;
 }
 
@@ -84,4 +83,15 @@ p{
     text-align: center;
     line-height: 10px;
     font-weight: bold;
+}
+
+.checkBox
+{
+    margin-right: 5px;
+}
+
+.webUrl
+{
+    text-decoration: underline;
+    margin-top: 100px;
 }

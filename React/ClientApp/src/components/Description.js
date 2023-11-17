@@ -53,7 +53,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                             <div className={styles.grid2}>
                                 <div className={styles.row}>
                                     <p className={styles.label}>Description</p>
-                                    <p className={styles.desc}>{job.description}</p>
+                                <p className={styles.desc}>{job.description}</p>
                                 </div>
                             </div>
                         </div>
@@ -61,13 +61,15 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                 <div className={styles['body2']}>
                     <label>
                         <input
+                            className={styles.checkBox}
                             type="checkbox"
                             defaultChecked={job.favorite}
                             onChange={updateFavoriteFunc}
                             id={job.id}
                         />
-                        Favorite: {favorite ? 'Yes' : 'No'}
+                     Favorite: {favorite ? 'Yes' : 'No'}
                     </label>
+                    <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">{job.url}</a>
                 </div>
             </div>
         );
