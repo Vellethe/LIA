@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Text.RegularExpressions;
+
+namespace Domain
 {
     public class JobScoutJob
     {
@@ -30,6 +32,23 @@
             Company = new JobScoutCompany { Name = hit.Employer.Name };
             Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name, PhoneNumber = x.Telephone }).ToList();
             TagJobs = new();
+        }
+        public string FindEmailAddress()
+        {
+            // Define the regex pattern for an email address
+            string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
+
+            // Use Regex.Match to find the first occurrence of the pattern in the Description
+            Match match = Regex.Match(Description, pattern);
+
+            if (match.Success)
+            {
+                return match.Value;
+            }
+            else
+            {
+                return string.Empty; //Can also be null
+            }
         }
     }
 }

@@ -8,7 +8,9 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
 
+
     if (job != null) {
+    /*const emailAddress = job.FindEmailAddress();*/
 
         return (
             <div className={styles['container']}>

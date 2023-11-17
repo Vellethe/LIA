@@ -3,6 +3,7 @@ using Domain;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
 
@@ -171,6 +172,24 @@ namespace Api.Controllers
                 return data;
             }
             return context.JobScoutCompanies.ToList();
+        }
+
+        [HttpGet("jobs/{jobId}/email")]
+        public IActionResult GetJobEmailAddress(int jobId)
+        {
+            var job = context.JobScoutJobs.FirstOrDefault(j => j.Id == jobId);
+
+            if (job == null)
+            {
+                return new NotFoundResult();
+            }
+            string emailAddress = job.FindEmailAddress();
+            if (string.IsNullOrEmpty(emailAddress))
+            {
+                return new NotFoundResult();
+            }
+
+            return new OkObjectResult(emailAddress);
         }
 
     }
