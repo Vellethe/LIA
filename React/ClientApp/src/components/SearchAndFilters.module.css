@@ -88,6 +88,12 @@ button
     font-weight: bold;
 }
 
+.andMode
+{
+    font-weight: bold;
+    line-height: 35px;
+}
+
 /*#sortingContainer
 {
     margin-left: auto;

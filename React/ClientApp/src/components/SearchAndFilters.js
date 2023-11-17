@@ -65,9 +65,9 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
                     </label>
-                    <input className={styles.andMode} type="checkbox"
+                    <input type="checkbox"
                     onChange={submitForm} name="andMode"></input>
-                    <span>{andMode ? 'And' : 'Or'}</span>
+                    <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <div id={styles.sortingContainer}>
                     <button id={styles.sorting}
