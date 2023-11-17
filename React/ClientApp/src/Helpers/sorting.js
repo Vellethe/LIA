@@ -55,11 +55,34 @@ export function filterAll(item, startShowDate, location, doFavoriteSort, searchT
 }
 
 
-export function sortDate(item1, item2, isAscending) {
+function sortDate(date1, date2 ) {
+        return new Date(date2) - new Date(date1);
+}
+
+function companySort(item1, item2) {
+    item1 = item1.toLowerCase();
+    item2 = item2.toLowerCase();
+
+    if (item1 < item2) {
+        return -1;
+    }
+    else if (item1 > item2) {
+        return 1;
+    }
+    return 0;
+}
+
+export function sortAll(item1, item2, isAscending, sortType) {
+    var output = 0;
+    if (sortType === "date") {
+        output = sortDate(item1.postDate, item2.postDate);
+    }
+    else if (sortType === "company") {
+        output = companySort(item1.company.name, item2.company.name);
+    }
+
     if (isAscending) {
-        return new Date(item1.postDate) - new Date(item2.postDate);
+        output = output * -1;
     }
-    else {
-        return new Date(item2.postDate) - new Date(item1.postDate);
-    }
+    return output;
 }
