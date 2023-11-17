@@ -97,7 +97,7 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
-            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} isAscending={isAscending} setIsAscending={setIsAscending} />
+            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} isAscending={isAscending} setIsAscending={setIsAscending} andMode={andMode} />
 
             <DescriptionPage
                 job={selectedJob}
