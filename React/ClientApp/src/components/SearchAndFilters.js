@@ -19,13 +19,14 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
     const handleSearch = (e) => {
         e.preventDefault();
         var formFields = e.target.elements;
-        var location = formFields.searchLocation.value;
+        const locationInput = formFields.searchLocation.value;
         var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
         var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x => x.value);
 
-        location = location === '' ? null : location;
+        let location = locationInput.split(/[, ]+/).map(location => location.trim());
+        location = location.map(location => location === '' ? null : location);
         date = date === '' ? null : date;
 
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
