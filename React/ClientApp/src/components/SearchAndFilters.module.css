@@ -1,7 +1,10 @@
 ﻿#searchStuff{
-    width:fit-content;
-    margin-left:auto;
-    margin-right:auto;
+    display: flex;
+    justify-content: center;
+    /*width:fit-content;*/
+    /*margin-left:auto;*/
+    /*margin-right:auto;*/
+
 }
 
 #searchRow{
@@ -11,7 +14,8 @@
 
 #dates
 {
-    margin-left: 10px;
+    border: none;
+    outline: none;
 }
 
 #homeSearchJobs {
@@ -83,3 +87,8 @@ button
     line-height: 10px;
     font-weight: bold;
 }
+
+/*#sortingContainer
+{
+    margin-left: auto;
+}*/
