@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
-import { filterAll, sortDate } from './../Helpers/sorting'
+import { filterAll, sortAll } from './../Helpers/sorting'
 import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
@@ -22,6 +22,17 @@ export const HomePage = () => {
     const [location,setLocation]  = useState("");
 
     const [isAscending, setIsAscending] = useState(false);
+    const [sortType, setSortType] = useState("date");
+
+    function setSort(name) {
+        if (sortType === name) {
+            setIsAscending(!isAscending);
+        }
+        else {
+            setSortType(name);
+            setIsAscending(false);
+        }
+    }
 
     function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
         setStartDate(startDate);
@@ -60,7 +71,7 @@ export const HomePage = () => {
             return <div>
 
                 <Table
-                    data={dataToShow(serverData).sort((a, b) => { return sortDate(a, b, isAscending) })}
+                    data={dataToShow(serverData).sort((a, b) => { return sortAll(a, b, isAscending, sortType) })}
                     updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
                     selectForShowFunc={(job) => { setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
@@ -97,7 +108,15 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
-            <SearchAndFilters updateFilter={setFilters} hidden={false} companyCount={companyCount} isAscending={isAscending} setIsAscending={setIsAscending} />
+            <SearchAndFilters
+                updateFilter={setFilters}
+                hidden={false}
+                companyCount={companyCount}
+                isAscending={isAscending}
+                setIsAscending={setIsAscending}
+                updateSort={setSort}
+                sortType={sortType}
+            />
 
             <DescriptionPage
                 job={selectedJob}

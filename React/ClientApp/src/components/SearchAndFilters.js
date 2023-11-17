@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchAndFilters.module.css';
 import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setIsAscending, hidden }) => {
+export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setIsAscending, hidden, updateSort, sortType }) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
         var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
-        var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x=>x.value);
+        var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x => x.value);
 
         location = location === '' ? null : location;
         date = date === '' ? null : date;
@@ -31,6 +31,19 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
         updateFilter(date, location, favorite, tags, andMode);
     };
+
+    function arrowStateClass(name) {
+        if (sortType !== name) {
+            return styles.rightArrow;
+        }
+
+        if (isAscending) {
+            return styles.downArrow
+        }
+        else {
+            return styles.upArrow;
+        }
+    }
 
     return (
 
@@ -68,11 +81,13 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                     <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <div id={styles.sortingContainer}>
-                    <button id={styles.sorting}
-                        onClick={() => { setIsAscending(!isAscending) }}
-                        className={(isAscending ? "ascending" : "descending")}>
-                        {isAscending ? "Oldest" : "Newest"}
+
+                        <button id={styles.sorting}
+                            onClick={() => { updateSort("date") }}
+                            className={(isAscending ? "ascending" : "descending")}>
+                            {isAscending ? "Oldest" : "Newest"}
                         </button>
+                        <div id={"nameSort"} className={arrowStateClass("company")} onClick={() => { updateSort("company") }}></div>
                     </div>
                 </div>
             </form>
