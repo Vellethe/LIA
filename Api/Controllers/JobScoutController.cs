@@ -14,9 +14,11 @@ namespace Api.Controllers
     public class JobScoutController
     {
         private JobScoutContext context { get; set; }
-        public JobScoutController(JobScoutContext context)
+        private ILogger<JobScoutController> logger { get; set; }
+        public JobScoutController(JobScoutContext context,ILogger<JobScoutController> logger)
         {
             this.context = context;
+            this.logger = logger;
         }
 
         // <summary>
@@ -45,6 +47,8 @@ namespace Api.Controllers
             {
                 job.TagJobs = job.TagJobs.Where(x=>x.Tag.IsDisabled == false).ToList();
             }
+            logger.LogInformation("testing");
+
             return x;
         }
 

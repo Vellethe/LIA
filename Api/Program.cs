@@ -1,10 +1,12 @@
 using Data;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace Api
 {
     using Infrastructure.Services;
     using Microsoft.OpenApi.Models;
+    using Serilog.Events;
     using System.Reflection;
 
     public class Program
@@ -12,6 +14,7 @@ namespace Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
 
             builder.Services.AddCors();
             //stops serialization loop when getting data from db 2 way navigation
@@ -22,6 +25,18 @@ namespace Api
             builder.Services.AddSingleton<DataGetterService>();
             builder.Services.AddSingleton<TaggerService>();
 
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .WriteTo.Console()
+                .WriteTo.File(builder.Configuration["Path:LogPath"], rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            builder.Services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSerilog();
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
@@ -45,6 +60,7 @@ namespace Api
                 //options.UseSqlServer(@"Server=MSI\SQLEXPRESS;Database=Jobscout;Integrated Security=true;TrustServerCertificate=true;");
             });
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -63,6 +79,8 @@ namespace Api
             app.MapControllers();
 
             app.Run();
+
+            Log.CloseAndFlush();
         }
     }
 }
