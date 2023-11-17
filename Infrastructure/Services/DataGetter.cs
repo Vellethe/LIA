@@ -2,6 +2,7 @@
 using Domain;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Infrastructure.Services
 {
@@ -34,6 +35,10 @@ namespace Infrastructure.Services
                 {
                     context.JobScoutJobs.Add(job);
                 }
+
+
+                // limit consecutive \n to 2
+                job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
 
                 context.SaveChanges();
 
