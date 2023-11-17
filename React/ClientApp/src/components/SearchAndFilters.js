@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchAndFilters.module.css';
 import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setIsAscending, hidden, updateSort, sortType }) => {
+export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidden, updateSort, sortType, andMode }) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -78,7 +78,9 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, setI
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
                     </label>
-                    <input className={styles.andMode} type="checkbox" onChange={submitForm} name="andMode"></input>
+                    <input className={styles.andMode} type="checkbox"
+                    onChange={submitForm} name="andMode"></input>
+                    <span>{andMode ? 'And' : 'Or'}</span>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <div id={styles.sortingContainer}>
 

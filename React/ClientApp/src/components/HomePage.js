@@ -116,6 +116,7 @@ export const HomePage = () => {
                 setIsAscending={setIsAscending}
                 updateSort={setSort}
                 sortType={sortType}
+                andMode={andMode }
             />
 
             <DescriptionPage
