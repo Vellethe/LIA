@@ -19,11 +19,11 @@ namespace Api.Controllers
             this.context = context;
         }
 
-        /// <summary>
-        ///  Gets jobs that are from non excluded compaines form database and returns them sorted based on decending date.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <returns></returns>
+        // <summary>
+        //  Gets jobs that are from non excluded compaines form database and returns them sorted based on decending date.
+        // </summary>
+        // <param name="page"></param>
+        // <returns></returns>
 
         [HttpGet("jobs")]
         public List<JobScoutJob> GetJobs(int page = 0)
@@ -48,10 +48,10 @@ namespace Api.Controllers
             return x;
         }
 
-        /// <summary>
-        /// Gets all the tags that are not disabled.
-        /// </summary>
-        /// <returns></returns>
+        // <summary>
+        // Gets all the tags that are not disabled.
+        // </summary>
+        // <returns></returns>
 
         [HttpGet("tags")]
         public List<JobScoutTag> GetTags()
@@ -63,10 +63,10 @@ namespace Api.Controllers
 
         }
 
-        /// <summary>
-        /// Creation or reactivation of tags.
-        /// </summary>
-        /// <param name="name"></param>
+        // <summary>
+        // Creation or reactivation of tags.
+        // </summary>
+        // <param name="name"></param>
 
         [HttpPost("tags")]
         public void CreateNewTag(string name, JobScoutContext context,TaggerService tagger)
@@ -85,10 +85,10 @@ namespace Api.Controllers
             tagger.NewTagTagging(newTag, context);
         }
 
-        /// <summary>
-        /// Triggers data loading from providers
-        /// </summary>
-        /// <returns></returns>
+        // <summary>
+        // Triggers data loading from providers
+        // </summary>
+        // <returns></returns>
         [HttpPost("test")]
         public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context,TaggerService tagger)
         {
@@ -97,11 +97,11 @@ namespace Api.Controllers
             return "hello world";
         }
 
-        /// <summary>
-        /// Used to remove tags from database "note that tags are not deleted only set to disabled".
-        /// </summary>
-        /// <param name="tagId"></param>
-        /// <returns></returns>
+        // <summary>
+        // Used to remove tags from database "note that tags are not deleted only set to disabled".
+        // </summary>
+        // <param name="tagId"></param>
+        // <returns></returns>
 
         [HttpDelete("tags")]
         public IActionResult DeleteTag(int tagId)
@@ -119,11 +119,11 @@ namespace Api.Controllers
             return new NoContentResult();
         }
 
-        /// <summary>
-        /// Used to set favorites in the database
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="isFavorite"></param>
+        // <summary>
+        // Used to set favorites in the database
+        // </summary>
+        // <param name="id"></param>
+        // <param name="isFavorite"></param>
         [HttpPut("favorite")]
         public void SetFavorite(int id, bool isFavorite)
         {
@@ -137,11 +137,11 @@ namespace Api.Controllers
             context.SaveChanges();
         }
 
-        /// <summary>
-        /// Used to set exclueded in the database
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="isExcluded"></param>
+        // <summary>
+        // Used to set exclueded in the database
+        // </summary>
+        // <param name="id"></param>
+        // <param name="isExcluded"></param>
 
         [HttpPut("excluded")]
         public void SetExcluded(int id, bool isExcluded)
@@ -155,11 +155,11 @@ namespace Api.Controllers
             context.SaveChanges();
         }
 
-        /// <summary>
-        /// Returns a list of comapanies
-        /// </summary>
-        /// <param name="onlyExcluded"></param>
-        /// <returns></returns>
+        // <summary>
+        // Returns a list of comapanies
+        // </summary>
+        // <param name="onlyExcluded"></param>
+        // <returns></returns>
         [HttpGet("companies")]
         public List<JobScoutCompany> GetCompanies(bool onlyExcluded = false)
         {
@@ -174,7 +174,7 @@ namespace Api.Controllers
             return context.JobScoutCompanies.ToList();
         }
 
-        [HttpGet("jobs/{jobId}/email")]
+        [HttpGet("jobs/{jobId}/email")] //testing to see if regex gathering is working
         public IActionResult GetJobEmailAddress(int jobId)
         {
             var job = context.JobScoutJobs.FirstOrDefault(j => j.Id == jobId);
