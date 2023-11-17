@@ -78,12 +78,13 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                         <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                         <span>Filter by favorites</span>
                     </label>
+                    <label>
                     <input type="checkbox"
                     onChange={submitForm} name="andMode"></input>
                     <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
+                    </label>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <div id={styles.sortingContainer}>
-
                         <button id={styles.sorting}
                             onClick={() => { updateSort("date") }}
                             className={(isAscending ? "ascending" : "descending")}>
