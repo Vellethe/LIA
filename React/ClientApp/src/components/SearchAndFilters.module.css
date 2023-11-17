@@ -129,3 +129,12 @@ button
 
     border-left: 12px solid black;
 }
+
+.arrowSort{
+    display:flex;
+    align-items:center;
+}
+
+.arrowSort > span{
+    margin-left:4px;
+}

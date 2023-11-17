@@ -90,7 +90,11 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                             className={(isAscending ? "ascending" : "descending")}>
                             {isAscending ? "Oldest" : "Newest"}
                         </button>
+                    </div>
+                    <div className={styles.arrowSort}>
+                        {/*arrow*/}
                         <div id={"nameSort"} className={arrowStateClass("company")} onClick={() => { updateSort("company") }}></div>
+                        <span>Company name</span>
                     </div>
                 </div>
             </form>
