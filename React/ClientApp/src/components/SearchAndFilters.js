@@ -107,8 +107,8 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                 </div>
                     <button id={styles.sorting}
                         onClick={() => { updateSort("date") }}
-                        className={(isAscending ? "ascending" : "descending")}>
-                        {isAscending ? "Oldest" : "Newest"}
+                    className={(isAscending ? "ascending" : "descending")}>
+                    {sortType === "date"? (isAscending ? "Oldest" : "Newest"):"Date sort"}
                     </button>
             </div>
         </form>
