@@ -71,7 +71,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         />
                      Favorite: {favorite ? 'Yes' : 'No'}
                     </label>
-                    <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">{job.url}</a>
+                    <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">{`Link to ${job.provider}`}</a>
                 </div>
             </div>
         );
