@@ -76,9 +76,9 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                                 type="month"
                                 onChange={submitForm}
                             />
-                            {/*dont remove or rename id from button*/}
-                            <button id="searchButtonHome" type="submit" hidden>Search</button>
                         </div>
+                        {/*dont remove or rename id from button*/}
+                        <button id="searchButtonHome" type="submit" hidden>Search</button>
                     </div>
                 </div>
 
@@ -89,9 +89,9 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                         <span>Filter by favorites</span>
                     </label>
                     <label>
-                    <input type="checkbox"
-                    onChange={submitForm} name="andMode"></input>
-                    <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
+                        <input type="checkbox"
+                            onChange={submitForm} name="andMode"></input>
+                        <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
                     </label>
                     <Dropdown tags={tags} submitForm={submitForm} />
                     <div id={styles.sortingContainer}>

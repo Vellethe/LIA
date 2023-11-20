@@ -12,6 +12,14 @@
     grid-template-columns: 4fr 4fr 2fr;
 }
 
+#searchRow input:first-child{
+    border-radius: 10px 0 0 10px;
+}
+
+#searchRow input:last-child{
+    border-radius: 0 10px 10px 0;
+}
+
 #dates
 {
     border: none;
@@ -26,7 +34,8 @@
 
 #homeSearchLocation {
     border: none;
-    border-left: 2px solid deepskyblue;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
     width: 350px;
     outline: none;
 }
@@ -35,7 +44,6 @@
     display: flex;
     border: 2px solid black;
     border-radius: 10px;
-    padding: 5px;
     height: 54px;
     background-color: #e0e0e0;
     width: fit-content;
@@ -59,7 +67,7 @@
     display: flex;
 }
 
-button, #homeSearchJobs, #homeSearchLocation, #settingsFreeSearch, #dates {
+button {
     border-radius: 10px;
     padding: 5px;
 }
