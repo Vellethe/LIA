@@ -96,8 +96,8 @@ button
     font-weight: bold;
 }
 
-.andMode
-{
+.andMode {
+    user-select: none;
     margin-left: 5px;
     font-weight: bold;
     line-height: 35px;
