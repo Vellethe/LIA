@@ -34,7 +34,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
     const handleSearch = (e) => {
         e.preventDefault();
         var formFields = e.target.elements;
-        var locations = formFields.searchLocation.value.split(',').map(location => location.trim());
+        var locations = formFields.searchLocation.value.split(/,|\s+/).map(location => location.trim());
         var keyword = formFields.searchJobs.value;
         var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
