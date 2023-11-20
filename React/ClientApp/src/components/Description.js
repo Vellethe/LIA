@@ -10,7 +10,6 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
 
 
     if (job != null) {
-    /*const emailAddress = job.FindEmailAddress();*/
 
         return (
             <div className={styles['container']}>

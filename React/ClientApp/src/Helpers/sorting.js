@@ -21,18 +21,6 @@ function filterByTags(item, searchTags, andMode) {
     }
 }
 
-//function searchByLocation(item, locations) {
-//    if (locations === null) {
-//        return true;
-//    }
-//    const capitalLocation = locations.charAt(0).toUpperCase() + locations.slice(1);
-
-//    if (item.municipality && typeof item.municipality === "string") {
-//        return item.municipality.includes(capitalLocation);
-//    }
-
-//    return false;
-//}
 function searchByLocation(item, locations) {
     if (locations === null || locations.length === 0) {
         return true; // If no locations specified, consider it a match
