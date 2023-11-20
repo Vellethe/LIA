@@ -33,9 +33,8 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
         //location = location.map(location => location === '' ? null : location);
         date = date === '' ? null : date;
 
-        //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
-        updateFilter(date, locations, favorite, tags, andMode);
-        updateFilter(date, location, favorite, tags, andMode, keyword);
+        //function setFilters(startDate, location, favoriteState, selectedTags, andMode,keyword) {
+        updateFilter(date, locations, favorite, tags, andMode, keyword);
     };
 
     function arrowStateClass(name) {
@@ -62,18 +61,23 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                                 id={styles.homeSearchJobs}
                                 type="text"
                                 name="searchJobs"
-                                placeholder="Search for title or keywords" />
+                                placeholder="Search for title or keywords"
+                                onChange={submitForm}
+                            />
                             <input
                                 id={styles.homeSearchLocation}
                                 type="text"
                                 name="searchLocation"
-                                placeholder="Location" />
+                                placeholder="Location"
+                                onChange={submitForm}
+                            />
                             <input id={styles.dates}
                                 name="startDate"
                                 type="month"
+                                onChange={submitForm}
                             />
                             {/*dont remove or rename id from button*/}
-                            <button id="searchButtonHome" type="submit">Search</button>
+                            <button id="searchButtonHome" type="submit" hidden>Search</button>
                         </div>
                     </div>
                 </div>
