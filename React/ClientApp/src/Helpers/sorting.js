@@ -22,22 +22,34 @@ function filterByTags(item, searchTags, andMode) {
 }
 
 function searchByLocation(item, locations) {
-    if (!locations || locations.length === 0) {
+    if (locations === null) {
         return true;
     }
-
-    const capitalLocations = locations.map(location =>
-        location.charAt(0).toUpperCase() + location.slice(1)
-    );
+    const capitalLocation = locations.charAt(0).toUpperCase() + locations.slice(1);
 
     if (item.municipality && typeof item.municipality === "string") {
-        return capitalLocations.some(capitalLocation =>
-            item.municipality.includes(capitalLocation)
-        );
+        return item.municipality.includes(capitalLocation);
     }
 
     return false;
 }
+
+    //if (!locations || locations.length === 0) {
+    //    return true;
+    //}
+
+    //const capitalLocations = locations.map(location =>
+    //    location.charAt(0).toUpperCase() + location.slice(1)
+    //);
+
+    //if (item.municipality && typeof item.municipality === "string") {
+    //    return capitalLocations.some(capitalLocation =>
+    //        item.municipality.includes(capitalLocation)
+    //    );
+    //}
+
+/*    return false;*/
+/*}*/
 
 function filterDataByDate(item, startShowDate) {
     if (startShowDate === null) {
@@ -50,12 +62,12 @@ function filterDataByDate(item, startShowDate) {
 
 };
 
-export function filterAll(item, startShowDate, location, doFavoriteSort, searchTags, andMode) {
+export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode) {
     return (
         filterByFavorite(item, doFavoriteSort) &&
         filterDataByDate(item, startShowDate) &&
         filterByTags(item, searchTags, andMode) &&
-        searchByLocation(item, location)
+        searchByLocation(item, locations)
     );
 }
 
