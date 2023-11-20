@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns:1fr 5fr 1fr;
     margin: 20px;
-    /*border: 1px solid #ccc;*/
     border-radius: 5px;
     padding: 10px;
 }
@@ -25,8 +24,6 @@
 .grid2 {
     display: grid;
     grid-template-columns: 1fr;
-/*    border: 1px solid #ccc;
-    border-radius: 5px;*/
     margin-bottom: 5px;
 }
 
@@ -34,7 +31,6 @@
     display: grid;
     align-items: center;
     padding: 10px;
-    /*font-family:*/
 }
 
 .label {

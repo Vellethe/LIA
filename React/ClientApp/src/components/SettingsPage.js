@@ -47,7 +47,6 @@ export const SettingsPage = () => {
         const newTags = [...showTags, newTag];
         await postTag(formattedTag);
         setReloadTrigger({});
-        //setShowTags(newTags);
 
         setAddFormData({ tags: "" });
     }

@@ -56,7 +56,6 @@ export const HomePage = () => {
     });
 
     function dataToShow() {
-        //TODO add use memo
         var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword));
         return result;
     }
