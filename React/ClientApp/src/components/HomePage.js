@@ -74,7 +74,7 @@ export const HomePage = () => {
                 <Table
                     data={dataToShow(serverData).sort((a, b) => { return sortAll(a, b, isAscending, sortType) })}
                     updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
-                    selectForShowFunc={(job) => { setSelectedJob(job) }}
+                    selectForShowFunc={(job) => { saveScrollPos(); setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
                     saveScroll={saveScrollPos}
                     checkBoxFunc={handleFavoriteCheckbox}
@@ -82,7 +82,6 @@ export const HomePage = () => {
             </div>
         }
         else {
-            saveScrollPos();
             return null;
         }
     }
