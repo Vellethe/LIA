@@ -21,7 +21,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, lo
 
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>
-                            <button className={`${styles.box} ${styles.exclude}`} onClick={(e) => { e.stopPropagation(); saveScroll(); updateExluded(job.company.id, true); }}><img src={x} alt="X" /></button>
+                            <button className={`${styles.box} ${styles.exclude}`} onClick={(e) => {  saveScroll(); updateExluded(job.company.id, true); e.stopPropagation();}}><img src={x} alt="X" /></button>
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
