@@ -21,18 +21,23 @@ function filterByTags(item, searchTags, andMode) {
     }
 }
 
-function searchByLocation(item, location) {
-    if (location === null) {
+function searchByLocation(item, locations) {
+    if (!locations || locations.length === 0) {
         return true;
     }
-    const capitalLocation = location.charAt(0).toUpperCase() + location.slice(1);
+
+    const capitalLocations = locations.map(location =>
+        location.charAt(0).toUpperCase() + location.slice(1)
+    );
 
     if (item.municipality && typeof item.municipality === "string") {
-        return item.municipality.includes(capitalLocation);
+        return capitalLocations.some(capitalLocation =>
+            item.municipality.includes(capitalLocation)
+        );
     }
 
-    return false
-};
+    return false;
+}
 
 function filterDataByDate(item, startShowDate) {
     if (startShowDate === null) {
