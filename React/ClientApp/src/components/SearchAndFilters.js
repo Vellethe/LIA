@@ -20,6 +20,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
         e.preventDefault();
         var formFields = e.target.elements;
         var location = formFields.searchLocation.value;
+        var keyword = formFields.searchJobs.value;
         var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
@@ -29,7 +30,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
         date = date === '' ? null : date;
 
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
-        updateFilter(date, location, favorite, tags, andMode);
+        updateFilter(date, location, favorite, tags, andMode, keyword);
     };
 
     function arrowStateClass(name) {
