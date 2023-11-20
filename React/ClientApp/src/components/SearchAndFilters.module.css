@@ -1,10 +1,8 @@
 ﻿#searchStuff{
-    display: flex;
-    justify-content: center;
-    /*width:fit-content;*/
-    /*margin-left:auto;*/
-    /*margin-right:auto;*/
-
+    width:100%;
+    display:grid;
+    grid-template:"w1 row1 aa" "auto row2 newest "/1fr auto 1fr ;
+    justify-items:end;
 }
 
 #searchRow{
@@ -47,14 +45,26 @@
     height: 54px;
     background-color: #e0e0e0;
     width: fit-content;
+    grid-area:search;
 }
 
 .area {
     background-color: #e0e0e0;
-    display: flex;
     margin-top: 5px;
-    width: 100%;
-    justify-content: space-around;
+    width: fit-content;
+    grid-area:row2;
+    width:100%;
+}
+
+.row1{
+    display:flex;
+    grid-area:row1;
+}
+
+.searchGroup1{
+    display:flex;
+    justify-content: space-evenly;
+    
 }
 
 #companies
@@ -63,9 +73,6 @@
     line-height: 35px;
 }
 
-#searchStuff > div{
-    display: flex;
-}
 
 button {
     border-radius: 10px;
@@ -94,6 +101,8 @@ button
     text-align: center;
     line-height: 10px;
     font-weight: bold;
+    grid-area:newest;
+    margin-right:20%;
 }
 
 .andMode

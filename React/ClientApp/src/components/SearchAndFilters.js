@@ -64,9 +64,9 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
 
     return (
 
-        <div id={styles.searchStuff} style={hidden ? { display: 'none' } : {}}>
-            <form onSubmit={handleSearch}>
-                <div className={styles.area}>
+        <form onSubmit={handleSearch}>
+            <div id={styles.searchStuff} style={hidden ? { display: 'none' } : {}}>
+                <div className={styles.row1}>
                     <div id={styles.homeSearchFields}>
                         <div id={styles.searchRow} >
                             <input
@@ -95,31 +95,37 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                 </div>
 
                 <div className={styles.area}>
-                    <span id={styles.companies}>Amount of jobs: {companyCount}</span>
-                    <label for={styles.favoriteCheckBox}>
-                        <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
-                        <span>Filter by favorites</span>
-                    </label>
-                    <label>
-                        <input type="checkbox"
-                            onChange={submitForm} name="andMode"></input>
-                        <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
-                    </label>
-                    <Dropdown tags={tags} submitForm={submitForm} />
-                    <div id={styles.sortingContainer}>
-                        <button id={styles.sorting}
-                            onClick={() => { updateSort("date") }}
-                            className={(isAscending ? "ascending" : "descending")}>
-                            {isAscending ? "Oldest" : "Newest"}
-                        </button>
-                    </div>
-                    <div className={styles.arrowSort}>
-                        {/*arrow*/}
-                        <div id={"nameSort"} className={arrowStateClass("company")} onClick={() => { updateSort("company") }}></div>
-                        <span>Company name</span>
+                    <div className={styles.searchGroup1}>
+
+                        <span id={styles.companies}>Amount of jobs: {companyCount}</span>
+
+                        <label for={styles.favoriteCheckBox}>
+                            <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
+                            <span>Filter by favorites</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                onChange={submitForm} name="andMode"></input>
+                            <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
+                        </label>
+
+                        <Dropdown tags={tags} submitForm={submitForm} />
+
+                        <div className={styles.arrowSort}>
+                            {/*arrow*/}
+                            <div id={"nameSort"} className={arrowStateClass("company")} onClick={() => { updateSort("company") }}></div>
+                            <span>Company name</span>
+                        </div>
+
                     </div>
                 </div>
-            </form>
-        </div>
+                    <button id={styles.sorting}
+                        onClick={() => { updateSort("date") }}
+                        className={(isAscending ? "ascending" : "descending")}>
+                        {isAscending ? "Oldest" : "Newest"}
+                    </button>
+            </div>
+        </form>
     );
 };
