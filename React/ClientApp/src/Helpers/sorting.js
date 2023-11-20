@@ -63,17 +63,28 @@ function filterDataByDate(item, startShowDate) {
 };
 
 export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode) {
+function filterByKeyword(item, keyword) {
+    if (keyword.length === 0) {
+        return true;
+    }
+
+    return item.description.includes(keyword) || item.role.includes(keyword);
+}
+
+export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode,keyword) {
     return (
         filterByFavorite(item, doFavoriteSort) &&
         filterDataByDate(item, startShowDate) &&
         filterByTags(item, searchTags, andMode) &&
         searchByLocation(item, locations)
+        searchByLocation(item, locations) &&
+        filterByKeyword(item,keyword)
     );
 }
 
 
-function sortDate(date1, date2 ) {
-        return new Date(date2) - new Date(date1);
+function sortDate(date1, date2) {
+    return new Date(date2) - new Date(date1);
 }
 
 function companySort(item1, item2) {

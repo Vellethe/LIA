@@ -30,8 +30,7 @@ namespace Api.Controllers
         [HttpGet("jobs")]
         public List<JobScoutJob> GetJobs(int page = 0)
         {
-            //TODO consider moving description to it own table so that you can send the description when it is needed
-            int pageSize = 1000;
+            int pageSize = 1_000_000;
             var x = context.JobScoutJobs
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)

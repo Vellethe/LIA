@@ -20,6 +20,7 @@ export const HomePage = () => {
     const [selectedTags,setSelectedTags] = useState([]);
     const [favoriteState,setFavoriteState]  = useState(false);
     const [location,setLocation]  = useState("");
+    const [keyword,setKeyword]  = useState("");
 
     const [isAscending, setIsAscending] = useState(false);
     const [sortType, setSortType] = useState("date");
@@ -34,12 +35,13 @@ export const HomePage = () => {
         }
     }
 
-    function setFilters(startDate, location, favoriteState, selectedTags, andMode) {
+    function setFilters(startDate, location, favoriteState, selectedTags, andMode, keyword) {
         setStartDate(startDate);
         setLocation(location);
         setFavoriteState(favoriteState);
         setSelectedTags(selectedTags);
         setAndMode(andMode);
+        setKeyword(keyword);
     }
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export const HomePage = () => {
 
     function dataToShow() {
         //TODO add use memo
-        var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode));
+        var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword));
         return result;
     }
 
