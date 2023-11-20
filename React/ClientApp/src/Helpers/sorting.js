@@ -61,8 +61,6 @@ function filterDataByDate(item, startShowDate) {
     return false;
 
 };
-
-export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode) {
 function filterByKeyword(item, keyword) {
     if (keyword.length === 0) {
         return true;
@@ -76,7 +74,6 @@ export function filterAll(item, startShowDate, locations, doFavoriteSort, search
         filterByFavorite(item, doFavoriteSort) &&
         filterDataByDate(item, startShowDate) &&
         filterByTags(item, searchTags, andMode) &&
-        searchByLocation(item, locations)
         searchByLocation(item, locations) &&
         filterByKeyword(item,keyword)
     );
