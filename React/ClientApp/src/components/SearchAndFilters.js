@@ -16,26 +16,41 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
         document.getElementById("searchButtonHome").click();
     }
 
+    //const handleSearch = (e) => {
+    //    e.preventDefault();
+    //    var formFields = e.target.elements;
+    //    var locations = formFields.searchLocation.value;
+    //    var keyword = formFields.searchJobs.value;
+    //    var date = formFields.startDate.value;
+    //    var andMode = formFields.andMode.checked;
+    //    var favorite = formFields.favorite.checked;
+    //    var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x => x.value);
+
+    //    locations = locations === '' ? null : locations;
+    //    date = date === '' ? null : date;
+
+    //    updateFilter(date, locations, favorite, tags, andMode, keyword);
+    //};
     const handleSearch = (e) => {
         e.preventDefault();
         var formFields = e.target.elements;
-        //const locationInput = formFields.searchLocation.value;
-        var locations = formFields.searchLocation.value;
+        var locations = formFields.searchLocation.value.split(',').map(location => location.trim());
         var keyword = formFields.searchJobs.value;
-        const locationInput = formFields.searchLocation.value;
         var date = formFields.startDate.value;
         var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
         var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x => x.value);
 
-        locations = locations === '' ? null : locations;
-        //let location = locationInput.split(/[, ]+/).map(location => location.trim());
-        //location = location.map(location => location === '' ? null : location);
+        locations = locations.length === 0 ? null : locations;
         date = date === '' ? null : date;
 
+<<<<<<< Updated upstream
         //function setFilters(startDate, location, favoriteState, selectedTags, andMode,keyword) {
+=======
+>>>>>>> Stashed changes
         updateFilter(date, locations, favorite, tags, andMode, keyword);
     };
+
 
     function arrowStateClass(name) {
         if (sortType !== name) {

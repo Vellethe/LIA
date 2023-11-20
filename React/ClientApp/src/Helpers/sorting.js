@@ -21,35 +21,37 @@ function filterByTags(item, searchTags, andMode) {
     }
 }
 
+//function searchByLocation(item, locations) {
+//    if (locations === null) {
+//        return true;
+//    }
+//    const capitalLocation = locations.charAt(0).toUpperCase() + locations.slice(1);
+
+//    if (item.municipality && typeof item.municipality === "string") {
+//        return item.municipality.includes(capitalLocation);
+//    }
+
+//    return false;
+//}
 function searchByLocation(item, locations) {
-    if (locations === null) {
-        return true;
+    if (locations === null || locations.length === 0) {
+        return true; // If no locations specified, consider it a match
     }
-    const capitalLocation = locations.charAt(0).toUpperCase() + locations.slice(1);
+
+    // Convert the first letter of each location to uppercase
+    const capitalizedLocations = locations.map(location =>
+        location.charAt(0).toUpperCase() + location.slice(1)
+    );
 
     if (item.municipality && typeof item.municipality === "string") {
-        return item.municipality.includes(capitalLocation);
+        // Check if item's municipality includes any of the specified locations
+        return capitalizedLocations.some(location =>
+            item.municipality.includes(location)
+        );
     }
 
     return false;
 }
-
-    //if (!locations || locations.length === 0) {
-    //    return true;
-    //}
-
-    //const capitalLocations = locations.map(location =>
-    //    location.charAt(0).toUpperCase() + location.slice(1)
-    //);
-
-    //if (item.municipality && typeof item.municipality === "string") {
-    //    return capitalLocations.some(capitalLocation =>
-    //        item.municipality.includes(capitalLocation)
-    //    );
-    //}
-
-/*    return false;*/
-/*}*/
 
 function filterDataByDate(item, startShowDate) {
     if (startShowDate === null) {
