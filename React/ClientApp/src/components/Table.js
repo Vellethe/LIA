@@ -6,7 +6,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, lo
     const [updateTrigger, setUppdateTrigger] = useState({});
 
     useEffect(() => {
-        loadScroll();
+        //loadScroll();
     }, [])
 
 
