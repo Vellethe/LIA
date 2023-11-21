@@ -27,13 +27,10 @@ function searchByLocation(item, locations) {
     }
 
     // Convert the first letter of each location to uppercase
-    const capitalizedLocations = locations.map(location =>
-        location.charAt(0).toUpperCase() + location.slice(1)
-    );
 
     if (item.municipality && typeof item.municipality === "string") {
-        return capitalizedLocations.some(location =>
-            item.municipality.includes(location)
+        return locations.some(location =>
+            caseInsensitiveContains( item.municipality,location)
         );
     }
 
@@ -54,8 +51,7 @@ function filterByKeyword(item, keyword) {
     if (keyword.length === 0) {
         return true;
     }
-
-    return item.description.includes(keyword) || item.role.includes(keyword);
+    return caseInsensitiveContains(item.description, keyword) || caseInsensitiveContains(item.role, keyword) || caseInsensitiveContains( item.company.name, keyword);
 }
 
 export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode,keyword) {
@@ -106,4 +102,9 @@ export function sortAll(item1, item2, isAscending, sortType) {
 export function removeCompany(list, companyId) {
     var output = list.filter(item => item.company.id !== companyId);
     return output;
+}
+
+
+function caseInsensitiveContains(findIn, toFind) {
+    return findIn.toLowerCase().includes(toFind.toLowerCase());
 }
