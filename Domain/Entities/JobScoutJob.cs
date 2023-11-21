@@ -33,22 +33,27 @@ namespace Domain
             Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name ?? x.Description, PhoneNumber = x.Telephone }).ToList();
             TagJobs = new();
         }
-        public string FindEmailAddress()
-        {
-            // Define the regex pattern for an email address
-            string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
 
-            // Use Regex.Match to find the first occurrence of the pattern in the Description
-            Match match = Regex.Match(Description, pattern);
-
-            if (match.Success)
-            {
-                return match.Value;
-            }
-            else
-            {
-                return string.Empty; //Can also be null
-            }
         }
+        public class EmailAccess
+        {
+            public static List<string> FindEmailAddress(string Description)
+            {
+                // Define the regex pattern for an email address
+                string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
+
+                // Use Regex.Match to find the first occurrence of the pattern in the Description
+                MatchCollection matches = Regex.Matches(Description, pattern);
+
+                List<string> emailAddresses = new List<string>();
+
+                // Iterate through the matches and add each value to the list
+                foreach (Match match in matches)
+                {
+                    emailAddresses.Add(match.Value);
+                }
+
+                return emailAddresses;
+            }
     }
 }

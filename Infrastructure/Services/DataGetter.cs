@@ -36,9 +36,25 @@ namespace Infrastructure.Services
                     context.JobScoutJobs.Add(job);
                 }
 
-
                 // limit consecutive \n to 2
                 job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
+
+                List<string> emailAddresses = EmailAccess.FindEmailAddress(job.Description);
+
+                // Save email addresses to the database under contact.email
+                foreach (string emailAddress in emailAddresses)
+                {
+                    // Assuming there is a Contact entity associated with JobScoutJobs
+                    var contact = new JobScoutContact
+                    {
+                        Email = emailAddress,
+                        // Add any other relevant contact information here
+                    };
+
+                    // Associate the contact with the job and save to the database
+                    job.Contacts.Add(contact);
+                    context.JobScoutContacts.Add(contact);
+                }
 
                 context.SaveChanges();
 
