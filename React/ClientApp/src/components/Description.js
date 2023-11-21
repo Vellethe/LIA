@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Description.module.css';
-import { getEmailAddress } from './../Helpers/apiCalls'
+import {getEmailAddress, getContacts} from './../Helpers/apiCalls'
 import { formatDate, parseTags } from "./../Helpers/formating"
 
 export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc, /*jobId*/ }) => {
 
+    const [contacts, setContacts] = useState();
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
+
+    useEffect(() => {
+        const fetchContacts = async () => {
+            try {
+                const fetchedContacts = await getContacts();
+                setContacts(fetchedContacts);
+            } catch (error) {
+                console.error('Error fetching contacts:', error);
+            }
+        };
+
+        fetchContacts();
+    }, []);
 
         //const [email, setEmail] = useState(null);
 
@@ -64,9 +78,17 @@ if (job != null) {
                             <p className={styles.value}>{job.municipality}</p>
                         </div>
                         <div className={styles.row}>
-                            <p className={styles.label2}>Contacts:</p>
-                            <p className={styles.value2}>{job.contactName}</p>
-                        </div>
+                                <p className={styles.label2}>Contacts:</p>
+                                <ul className={styles.value2}>
+                                    {contacts.map(contact => (
+                                        <li key={contact.id}>
+                                            <p>Name: {contact.name}</p>
+                                            <p>Email: {contact.email}</p>
+                                            <p>Phone Number: {contact.phonenumber}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                     </div>
 
                     <div className={styles.grid2}>

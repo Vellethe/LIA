@@ -202,5 +202,13 @@ namespace Api.Controllers
             return new OkObjectResult(emailAddress);
         }
 
+        [HttpGet("contacts")]
+        public IActionResult GetContacts()
+        {
+            var contacts = context.JobScoutContacts.ToList();
+            return new OkObjectResult(contacts);
+        }
+
+
     }
 }

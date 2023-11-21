@@ -39,7 +39,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("JobScoutCompanies");
+                    b.ToTable("JobScoutCompanies", (string)null);
                 });
 
             modelBuilder.Entity("Domain.JobScoutContact", b =>
@@ -66,7 +66,7 @@ namespace Data.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("JobScoutContacts");
+                    b.ToTable("JobScoutContacts", (string)null);
                 });
 
             modelBuilder.Entity("Domain.JobScoutJob", b =>
@@ -114,7 +114,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("JobScoutJobs");
+                    b.ToTable("JobScoutJobs", (string)null);
                 });
 
             modelBuilder.Entity("Domain.JobScoutTag", b =>
@@ -134,7 +134,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("JobScoutTags");
+                    b.ToTable("JobScoutTags", (string)null);
                 });
 
             modelBuilder.Entity("Domain.JobScoutTagJob", b =>
@@ -157,7 +157,7 @@ namespace Data.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("JobScoutTagJobs");
+                    b.ToTable("JobScoutTagJobs", (string)null);
                 });
 
             modelBuilder.Entity("Domain.JobScoutContact", b =>

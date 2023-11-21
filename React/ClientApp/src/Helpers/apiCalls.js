@@ -80,6 +80,17 @@ export async function getCompanyCount() {
 
 }
 
+export async function getContacts() {
+    try {
+        const response = await fetch("https://localhost:7273/api/contacts");
+        const contacts = await response.json();
+        return contacts;
+    } catch (error) {
+        console.error("Error fetching contacts:", error);
+        return null;
+    }
+}
+
 //export async function getEmailAddress() {
 //    try {
 //        const response = await fetch("https://localhost:7273/api/jobs/${jobId}/email");
