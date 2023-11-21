@@ -58,7 +58,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                                 id={styles.homeSearchJobs}
                                 type="text"
                                 name="searchJobs"
-                                placeholder="Search for title or keywords"
+                                placeholder="Search for title, company or keywords"
                                 onChange={submitForm}
                             />
                             <input
