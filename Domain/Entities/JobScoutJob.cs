@@ -30,7 +30,7 @@ namespace Domain
             Url = hit.Webpage_url;
             Description = hit.Description.Text;
             Company = new JobScoutCompany { Name = hit.Employer.Name };
-            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name, PhoneNumber = x.Telephone }).ToList();
+            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name ?? x.Description, PhoneNumber = x.Telephone }).ToList();
             TagJobs = new();
         }
         public string FindEmailAddress()
