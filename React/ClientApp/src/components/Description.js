@@ -77,17 +77,17 @@ if (job != null) {
                             <p className={styles.label}>Location:</p>
                             <p className={styles.value}>{job.municipality}</p>
                         </div>
-                        <div className={styles.row}>
+                             <div className={styles.row}>
                                 <p className={styles.label2}>Contacts:</p>
-                                <ul className={styles.value2}>
-                                    {contacts.map(contact => (
-                                        <li key={contact.id}>
+                                <p className={styles.value2}>
+                                    {job.contacts.map(contact => (
+                                        <p key={contact.id}>
                                             <p>Name: {contact.name}</p>
                                             <p>Email: {contact.email}</p>
                                             <p>Phone Number: {contact.phonenumber}</p>
-                                        </li>
+                                        </p>
                                     ))}
-                                </ul>
+                                </p>
                             </div>
                     </div>
 
