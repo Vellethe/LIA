@@ -80,12 +80,12 @@ if (job != null) {
                              <div className={styles.row}>
                                 <p className={styles.label2}>Contacts:</p>
                                 <p className={styles.value2}>
-                                    {job.contacts.map(contact => (
-                                        <p key={contact.id}>
+                                {job.contacts.map(contact => (
+                                    <li key={contact.id}>
                                             <p>Name: {contact.name}</p>
                                             <p>Email: {contact.email}</p>
                                             <p>Phone Number: {contact.phonenumber}</p>
-                                        </p>
+                                        </li>
                                     ))}
                                 </p>
                             </div>

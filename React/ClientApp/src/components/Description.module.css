@@ -93,6 +93,7 @@ p{
     text-decoration: underline;
 }
 
-ul {
-    list-style-type: none; /* Remove the default list item marker */
+li 
+{
+    list-style-type: none;
 }
