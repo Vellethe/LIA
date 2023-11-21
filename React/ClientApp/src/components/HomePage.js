@@ -27,7 +27,6 @@ export const HomePage = () => {
 
     const test = useRef(0);
 
-    const [scrollTrigger, setScrollTrigger] = useState({});
 
     function setSort(name) {
         if (sortType === name) {
@@ -76,15 +75,9 @@ export const HomePage = () => {
     function excludedHandeling(id,state){
         updateExluded(id, state);
         setServerData(removeCompany(serverData, id));
-        setScrollTrigger({});
     }
 
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
 
-    useEffect(() => {
-        window.scrollTo({ left: 0, top: scrollY, behavior: "instant" });
-    }, [scrollTrigger]);
 
     function ShowTableOrDescription(show) {
         if (show) {
@@ -103,19 +96,29 @@ export const HomePage = () => {
             return null;
         }
     }
-
+    //code for retention of page position between actions
+    const [scrollTrigger, setScrollTrigger] = useState({});
     function saveScrollPos() {
         test.current = window.pageYOffset;
-        //        sessionStorage.setItem("scroll", window.pageYOffset);
     }
 
     function loadScrollPos() {
-        //let scrollValue = sessionStorage.getItem("scroll");
         let scrollValue = test.current;
         window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
         test.current = 0;
-        //sessionStorage.removeItem("scroll");
     }
+
+    const scrollY = window.scrollY;
+    useEffect(() => {
+        if (selectedJob === null) {
+            window.scrollTo({ left: 0, top: scrollY, behavior: "instant" });
+        }
+    } );
+
+    var [x,setX] = useState({});
+    useEffect(() => {
+        loadScrollPos();
+    }, [scrollTrigger])
 
 
     return (
@@ -144,7 +147,7 @@ export const HomePage = () => {
             <DescriptionPage
                 job={selectedJob}
                 favorite={selectedJob ? selectedJob.favorite : false}
-                backButtonFunc={() => { setSelectedJob(null) }}
+                backButtonFunc={() => { setSelectedJob(null); setScrollTrigger({}); }}
                 updateFavoriteFunc={handleFavoriteCheckbox}
             />
 
