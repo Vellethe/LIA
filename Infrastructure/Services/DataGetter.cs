@@ -53,7 +53,6 @@ namespace Infrastructure.Services
 
                     // Associate the contact with the job and save to the database
                     job.Contacts.Add(contact);
-                    context.JobScoutContacts.Add(contact);
                 }
 
                 context.SaveChanges();
