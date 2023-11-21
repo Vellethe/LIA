@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useLayoutEffect} from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
-import { filterAll, sortAll } from './../Helpers/sorting'
+import { filterAll, sortAll, removeCompany } from './../Helpers/sorting'
 import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 
 export const HomePage = () => {
@@ -24,6 +24,10 @@ export const HomePage = () => {
 
     const [isAscending, setIsAscending] = useState(false);
     const [sortType, setSortType] = useState("date");
+
+    const test = useRef(0);
+
+    const [scrollTrigger, setScrollTrigger] = useState({});
 
     function setSort(name) {
         if (sortType === name) {
@@ -57,8 +61,9 @@ export const HomePage = () => {
 
     function dataToShow() {
         //TODO add use memo
-        var result = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword));
-        return result;
+        var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword))
+        var sortedData = filterdData.sort((a, b) => { return sortAll(a, b, isAscending, sortType) });
+        return sortedData;
     }
 
     const handleFavoriteCheckbox = async (event) => {
@@ -68,13 +73,25 @@ export const HomePage = () => {
         updateFavorite(event.currentTarget.id, event.currentTarget.checked);
     }
 
+    function excludedHandeling(id,state){
+        updateExluded(id, state);
+        setServerData(removeCompany(serverData, id));
+        setScrollTrigger({});
+    }
+
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
+    useEffect(() => {
+        window.scrollTo({ left: 0, top: scrollY, behavior: "instant" });
+    }, [scrollTrigger]);
+
     function ShowTableOrDescription(show) {
         if (show) {
             return <div>
-
                 <Table
-                    data={dataToShow(serverData).sort((a, b) => { return sortAll(a, b, isAscending, sortType) })}
-                    updateExluded={(id, state) => { updateExluded(id, state); setReloadTrigger({}); }}
+                    data={dataToShow(serverData)}
+                    updateExluded={(id, state) => { excludedHandeling(id, state); }}
                     selectForShowFunc={(job) => { saveScrollPos(); setSelectedJob(job) }}
                     loadScroll={loadScrollPos}
                     saveScroll={saveScrollPos}
@@ -88,13 +105,16 @@ export const HomePage = () => {
     }
 
     function saveScrollPos() {
-        sessionStorage.setItem("scroll", window.pageYOffset);
+        test.current = window.pageYOffset;
+        //        sessionStorage.setItem("scroll", window.pageYOffset);
     }
 
     function loadScrollPos() {
-        let scrollValue = sessionStorage.getItem("scroll");
+        //let scrollValue = sessionStorage.getItem("scroll");
+        let scrollValue = test.current;
         window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
-        sessionStorage.removeItem("scroll");
+        test.current = 0;
+        //sessionStorage.removeItem("scroll");
     }
 
 
@@ -109,6 +129,7 @@ export const HomePage = () => {
                 </>
                 )}
             </div>
+
             <SearchAndFilters
                 updateFilter={setFilters}
                 hidden={false}
@@ -117,7 +138,7 @@ export const HomePage = () => {
                 setIsAscending={setIsAscending}
                 updateSort={setSort}
                 sortType={sortType}
-                andMode={andMode }
+                andMode={andMode}
             />
 
             <DescriptionPage

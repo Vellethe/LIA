@@ -7,7 +7,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, lo
 
     useEffect(() => {
         loadScroll();
-    }, [data])
+    }, [])
 
 
 
