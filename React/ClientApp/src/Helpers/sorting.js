@@ -32,7 +32,6 @@ function searchByLocation(item, locations) {
     );
 
     if (item.municipality && typeof item.municipality === "string") {
-        // Check if item's municipality includes any of the specified locations
         return capitalizedLocations.some(location =>
             item.municipality.includes(location)
         );

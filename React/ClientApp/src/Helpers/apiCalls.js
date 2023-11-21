@@ -1,5 +1,4 @@
-﻿
-export async function getData() {
+﻿export async function getData() {
     var url = "https://localhost:7273/api/jobs?page=0";
     var response = await fetch(url, {
         method: "GET",
@@ -81,3 +80,25 @@ export async function getCompanyCount() {
 
 }
 
+export async function getContacts() {
+    try {
+        const response = await fetch("https://localhost:7273/api/contacts");
+        const contacts = await response.json();
+        return contacts;
+    } catch (error) {
+        console.error("Error fetching contacts:", error);
+        return null;
+    }
+}
+
+//export async function getEmailAddress() {
+//    try {
+//        const response = await fetch("https://localhost:7273/api/jobs/${jobId}/email");
+//        const email = await response.json();
+//        return email;
+//    }
+//    catch (error) {
+//        console.error("No emails exist", error)
+//        return null;
+//    }
+//}

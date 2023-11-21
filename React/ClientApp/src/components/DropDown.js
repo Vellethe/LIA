@@ -22,8 +22,6 @@ function Dropdown({ tags, submitForm }) {
         submitForm();
     }
 
-    //var tags = ["Developer", "Software", "Fullstack", "Embedded", "Backend", "Frontend", "Tester", "python", "C#"]
-
     return (
         <div className={styles.dropdown}>
             <button onClick={toggleDropdown} className={styles['dropdown-button']}>Skills</button>

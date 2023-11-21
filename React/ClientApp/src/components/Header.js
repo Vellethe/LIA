@@ -2,13 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import styles from "./Header.module.css"
 import logo from "./../images/consat.png"
-
 export class Header extends Component {
-    //constructor(props) {
-    //    super(props)
-    //    this.state = {
-    //        collapsed: false
-    //    };
+
     handleHomeClick = () => {
         const { history } = this.props;
         history.push('/');
@@ -24,11 +19,6 @@ export class Header extends Component {
                         <li className={styles.link}><Link to="/settings">Settings</Link></li>
                         <li className={styles.link}><Link to="/excluded">Excluded</Link></li>
                     </ul>
-                    {/*<div className={styles.logout}>*/}
-                    {/*    <img className={styles.group} alt="Group" src={logout} />*/}
-                    {/*    <div>Logout</div>*/}
-                    {/*</div>*/}
-
                 </div>
             </header>
         );

@@ -1,9 +1,6 @@
-//import { HomePage } from "./components/Home";
 import { HomePage } from "./components/HomePage";
 import { SettingsPage } from "./components/SettingsPage";
 import { ExcludedPage } from "./components/ExcludedPage";
-
-//import { } from "./components/";
 
 const AppRoutes = [
   {

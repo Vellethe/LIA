@@ -177,7 +177,14 @@ namespace Api.Controllers
             return context.JobScoutCompanies.ToList();
         }
 
-        [HttpGet("jobs/{jobId}/email")] //testing to see if regex gathering is working
+        // <summary>
+        // Retrieves the email address associated with a specific job identified by its jobId.
+        // If the job is not found or does not have a valid email address, returns a NotFoundResult.
+        // </summary>
+        // <param name="jobId">The unique identifier of the job.</param>
+        // <returns>An IActionResult containing the job's email address if found, else a NotFoundResult.</returns>
+
+        [HttpGet("jobs/{jobId}/email")]
         public IActionResult GetJobEmailAddress(int jobId)
         {
             var job = context.JobScoutJobs.FirstOrDefault(j => j.Id == jobId);
@@ -194,6 +201,14 @@ namespace Api.Controllers
 
             return new OkObjectResult(emailAddress);
         }
+
+        [HttpGet("contacts")]
+        public IActionResult GetContacts()
+        {
+            var contacts = context.JobScoutContacts.ToList();
+            return new OkObjectResult(contacts);
+        }
+
 
     }
 }
