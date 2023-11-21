@@ -100,3 +100,10 @@ export function sortAll(item1, item2, isAscending, sortType) {
     }
     return output;
 }
+
+
+
+export function removeCompany(list, companyId) {
+    var output = list.filter(item => item.company.id !== companyId);
+    return output;
+}
