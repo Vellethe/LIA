@@ -135,7 +135,7 @@ export const HomePage = () => {
 
             <SearchAndFilters
                 updateFilter={setFilters}
-                hidden={false}
+                hidden={selectedJob !== null}
                 companyCount={companyCount}
                 isAscending={isAscending}
                 setIsAscending={setIsAscending}
