@@ -184,23 +184,23 @@ namespace Api.Controllers
         // <param name="jobId">The unique identifier of the job.</param>
         // <returns>An IActionResult containing the job's email address if found, else a NotFoundResult.</returns>
 
-        [HttpGet("jobs/{jobId}/email")]
-        public IActionResult GetJobEmailAddress(int jobId)
-        {
-            var job = context.JobScoutJobs.FirstOrDefault(j => j.Id == jobId);
+        //[HttpGet("jobs/{jobId}/email")]
+        //public IActionResult GetJobEmailAddress(int jobId)
+        //{
+        //    var job = context.JobScoutJobs.FirstOrDefault(j => j.Id == jobId);
 
-            if (job == null)
-            {
-                return new NotFoundResult();
-            }
-            string emailAddress = job.FindEmailAddress();
-            if (string.IsNullOrEmpty(emailAddress))
-            {
-                return new NotFoundResult();
-            }
+        //    if (job == null)
+        //    {
+        //        return new NotFoundResult();
+        //    }
+        //    string emailAddress = job.FindEmailAddress();
+        //    if (string.IsNullOrEmpty(emailAddress))
+        //    {
+        //        return new NotFoundResult();
+        //    }
 
-            return new OkObjectResult(emailAddress);
-        }
+        //    return new OkObjectResult(emailAddress);
+        //}
 
         [HttpGet("contacts")]
         public IActionResult GetContacts()
