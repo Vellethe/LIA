@@ -23,3 +23,7 @@ code {
     padding-right:20px;
     max-width:10000px;
 }
+
+html{
+    overflow-y:scroll;
+}
