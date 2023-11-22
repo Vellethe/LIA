@@ -82,10 +82,10 @@ if (job != null) {
                             {(job.contacts && job.contacts.length > 0) ? (
                                 <ul className={styles.value2}>
                                     {job.contacts.map(contact => (
-                                        <li key={contact.id}>
-                                            <p>Name: {contact.name}</p>
-                                            <p>Email: {contact.email}</p>
-                                            <p>Phone Number: {contact.phoneNumber}</p>
+                                        <li className={ styles.contact} key={contact.id}>
+                                            {contact.name !== null?<p>Name: {contact.name}</p>:null}
+                                            {contact.email !== null ? <p>Email: {contact.email}</p> : null}
+                                            {contact.phoneNumber !== null ? <p>Phone Number: {contact.phoneNumber}</p> : null}
                                         </li>
                                     ))}
                                 </ul>

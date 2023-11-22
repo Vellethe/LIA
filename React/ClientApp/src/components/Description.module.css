@@ -103,3 +103,9 @@ ul
 {
     padding:0;
 }
+
+.contact{
+    border:1px solid black;
+    border-radius:10px;
+    margin-top:3px;
+}
