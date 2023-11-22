@@ -1,7 +1,6 @@
 ﻿using Data;
 using Domain;
 using Infrastructure.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 namespace Infrastructure.Services
@@ -31,7 +30,7 @@ namespace Infrastructure.Services
                 job.Company = dbCompany;
                 tagger.NewJobTagging(job, context);
 
-                if(job.TagJobs.Count() != 0)
+                if (job.TagJobs.Count() != 0)
                 {
                     context.JobScoutJobs.Add(job);
                 }

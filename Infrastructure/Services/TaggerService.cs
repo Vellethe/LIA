@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Data;
+﻿using Data;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Infrastructure.Services
 {
@@ -17,7 +12,7 @@ namespace Infrastructure.Services
             var allTags = context.JobScoutTags.ToList();
             foreach (var tag in allTags)
             {
-                if(CheckForTag(newJob, tag))
+                if (CheckForTag(newJob, tag))
                 {
                     newJob.TagJobs.Add(new JobScoutTagJob { Tag = tag });
                 }
@@ -27,21 +22,21 @@ namespace Infrastructure.Services
 
         public void NewTagTagging(JobScoutTag newTag, JobScoutContext context)
         {
-            var allJobs = context.JobScoutJobs.Include(x=>x.TagJobs).ToList();
+            var allJobs = context.JobScoutJobs.Include(x => x.TagJobs).ToList();
             foreach (var job in allJobs)
             {
-                if( CheckForTag(job, newTag))
+                if (CheckForTag(job, newTag))
                 {
-                    job.TagJobs.Add( new JobScoutTagJob { Tag =  newTag });
+                    job.TagJobs.Add(new JobScoutTagJob { Tag = newTag });
                 }
             }
-            
+
             context.SaveChanges();
         }
 
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
         {
-            if (ContainsRegex(job.Role,tagToFind.Name) || ContainsRegex(job.Description, tagToFind.Name))
+            if (ContainsRegex(job.Role, tagToFind.Name) || ContainsRegex(job.Description, tagToFind.Name))
             {
                 return true;
             }
@@ -50,12 +45,12 @@ namespace Infrastructure.Services
         }
 
 
-        private bool ContainsRegex(string str1,string tagName)
+        private bool ContainsRegex(string str1, string tagName)
         {
             string escapedTag = Regex.Escape(tagName);
             //\b word boundry
 
-            var regex = new Regex(@$"(\s|^){escapedTag} (\s|\-)",RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            var regex = new Regex(@$"(\s|^){escapedTag} (\s|\-)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             //the indexOf is used as a case insensitive contains
             return regex.IsMatch(str1);
         }

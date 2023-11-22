@@ -15,7 +15,8 @@
             };
 
             var response = httpClient.SendAsync(msg);
-            while(response.IsCompleted == false) {
+            while (response.IsCompleted == false)
+            {
                 Thread.Sleep(500);
             }
             Console.WriteLine(response);

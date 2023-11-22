@@ -34,26 +34,26 @@ namespace Domain
             TagJobs = new();
         }
 
-        }
-        public class EmailAccess
+    }
+    public class EmailAccess
+    {
+        public static List<string> FindEmailAddress(string Description)
         {
-            public static List<string> FindEmailAddress(string Description)
+            // Define the regex pattern for an email address
+            string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
+
+            // Use Regex.Match to find the first occurrence of the pattern in the Description
+            MatchCollection matches = Regex.Matches(Description, pattern);
+
+            List<string> emailAddresses = new List<string>();
+
+            // Iterate through the matches and add each value to the list
+            foreach (Match match in matches)
             {
-                // Define the regex pattern for an email address
-                string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
-
-                // Use Regex.Match to find the first occurrence of the pattern in the Description
-                MatchCollection matches = Regex.Matches(Description, pattern);
-
-                List<string> emailAddresses = new List<string>();
-
-                // Iterate through the matches and add each value to the list
-                foreach (Match match in matches)
-                {
-                    emailAddresses.Add(match.Value);
-                }
-
-                return emailAddresses;
+                emailAddresses.Add(match.Value);
             }
+
+            return emailAddresses;
+        }
     }
 }

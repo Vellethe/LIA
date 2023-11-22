@@ -2,13 +2,12 @@
 using Infrastructure.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Specialized;
-using System.Reflection;
 
 namespace Infrastructure.Services
 {
     public class PlatsbankenGetterService : IJobParse
     {
-        public async Task<List<JobScoutJob>> GetData( List<JobScoutTag> tags)
+        public async Task<List<JobScoutJob>> GetData(List<JobScoutTag> tags)
         {
             //TODO split searches if above 2000 items in search
             var jobs = await GetDataFromApi(tags);
@@ -33,7 +32,7 @@ namespace Infrastructure.Services
             var splitTags = "";
             foreach (var tag in tags)
             {
-                splitTags += tag.Name+" ";
+                splitTags += tag.Name + " ";
             }
 
             baseQueryString.Add("q", $"{splitTags}");
@@ -56,7 +55,7 @@ namespace Infrastructure.Services
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage
                 {
                     Method = HttpMethod.Get,
-                    RequestUri =  urlToSend 
+                    RequestUri = urlToSend
                 };
 
                 var respone = await httpClient.SendAsync(httpRequestMessage);

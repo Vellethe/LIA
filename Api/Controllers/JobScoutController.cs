@@ -1,11 +1,8 @@
 ﻿using Data;
 using Domain;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Api.Controllers
 {
@@ -15,7 +12,7 @@ namespace Api.Controllers
     {
         private JobScoutContext context { get; set; }
         private ILogger<JobScoutController> logger { get; set; }
-        public JobScoutController(JobScoutContext context,ILogger<JobScoutController> logger)
+        public JobScoutController(JobScoutContext context, ILogger<JobScoutController> logger)
         {
             this.context = context;
             this.logger = logger;
@@ -35,16 +32,16 @@ namespace Api.Controllers
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
-                .Where(x=>x.Company.Excluded == false)
+                .Where(x => x.Company.Excluded == false)
                 .OrderByDescending(j => j.PostDate)
                 .Skip(pageSize * page).Take(pageSize)
                 .AsNoTracking()
                 .ToList();
 
             //code for not sending disabled tags
-            foreach(var job in x)
+            foreach (var job in x)
             {
-                job.TagJobs = job.TagJobs.Where(x=>x.Tag.IsDisabled == false).ToList();
+                job.TagJobs = job.TagJobs.Where(x => x.Tag.IsDisabled == false).ToList();
             }
             logger.LogInformation("testing");
 
@@ -72,7 +69,7 @@ namespace Api.Controllers
         // <param name="name"></param>
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name, JobScoutContext context,TaggerService tagger)
+        public void CreateNewTag(string name, JobScoutContext context, TaggerService tagger)
         {
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
@@ -93,10 +90,10 @@ namespace Api.Controllers
         // </summary>
         // <returns></returns>
         [HttpPost("test")]
-        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context,TaggerService tagger)
+        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger)
         {
             var x = new PlatsbankenGetterService();
-            await dataGetter.GetData(x,context,tagger);
+            await dataGetter.GetData(x, context, tagger);
             return "hello world";
         }
 
@@ -150,7 +147,7 @@ namespace Api.Controllers
         public void SetExcluded(int id, bool isExcluded)
         {
             var toFind = context.JobScoutCompanies.FirstOrDefault(x => x.Id == id);
-            if(toFind is null)
+            if (toFind is null)
             {
                 return;
             }
@@ -169,7 +166,7 @@ namespace Api.Controllers
             if (onlyExcluded)
             {
                 var data = context.JobScoutCompanies
-                    .Where(x=>x.Excluded == true)
+                    .Where(x => x.Excluded == true)
                     .AsNoTracking()
                     .ToList();
                 return data;
