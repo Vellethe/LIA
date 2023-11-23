@@ -38,10 +38,10 @@ namespace Infrastructure.Services
                 // limit consecutive \n to 2
                 job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
 
-                var foundContacts= EmailAccess.ParseDescription(job.Description);
+                var foundContacts = DescriptionParserService.ParseDescription(job.Description);
 
                 //code for removing already existing contacts
-                foreach(var contact in foundContacts)
+                foreach (var contact in foundContacts)
                 {
                     var oldContact = job.Contacts.Where(x => x.Name == contact.Name);
                     if(oldContact.Count() == 0)
