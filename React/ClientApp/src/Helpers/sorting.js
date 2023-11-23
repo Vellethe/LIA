@@ -47,6 +47,7 @@ function filterDataByDate(item, startShowDate) {
     return false;
 
 };
+
 function filterByKeyword(item, keyword) {
     if (keyword.length === 0) {
         return true;
@@ -63,7 +64,6 @@ export function filterAll(item, startShowDate, locations, doFavoriteSort, search
         filterByKeyword(item,keyword)
     );
 }
-
 
 function sortDate(date1, date2) {
     return new Date(date2) - new Date(date1);
@@ -97,13 +97,10 @@ export function sortAll(item1, item2, isAscending, sortType) {
     return output;
 }
 
-
-
 export function removeCompany(list, companyId) {
     var output = list.filter(item => item.company.id !== companyId);
     return output;
 }
-
 
 function caseInsensitiveContains(findIn, toFind) {
     return findIn.toLowerCase().includes(toFind.toLowerCase());

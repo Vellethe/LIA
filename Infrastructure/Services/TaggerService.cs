@@ -50,7 +50,7 @@ namespace Infrastructure.Services
             string escapedTag = Regex.Escape(tagName);
             //\b word boundry
 
-            var regex = new Regex(@$"(\s|^){escapedTag} (\s|\-)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            var regex = new Regex(@$"(\s|^){escapedTag}(\s|\-|\.|$)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             //the indexOf is used as a case insensitive contains
             return regex.IsMatch(str1);
         }

@@ -37,23 +37,35 @@ namespace Domain
     }
     public class EmailAccess
     {
-        public static List<string> FindEmailAddress(string Description)
+        public static Match FindEmailAddress(string Description)
         {
             // Define the regex pattern for an email address
             string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
 
             // Use Regex.Match to find the first occurrence of the pattern in the Description
-            MatchCollection matches = Regex.Matches(Description, pattern);
+            var match = Regex.Match(Description, pattern);
 
-            List<string> emailAddresses = new List<string>();
 
-            // Iterate through the matches and add each value to the list
-            foreach (Match match in matches)
-            {
-                emailAddresses.Add(match.Value);
-            }
-
-            return emailAddresses;
+            return match;
         }
+
+        public static List<JobScoutContact> ParseDescription(string description)
+        {
+            var possibleNames = Regex.Matches(description, @"(?<name>(?:[A-ZÅÄÖ][a-zåäö]+ ?){2,3})([^ ]+ ?){7}");
+
+            var foundContacs = new List<JobScoutContact>();
+
+            foreach(Match possibleName in possibleNames)
+            {
+                Match email = FindEmailAddress(possibleName.Value);
+                
+                if(email.Success == true)
+                {
+                    foundContacs.Add(new JobScoutContact() { Name = possibleName.Groups["name"].Value, Email = email.Value });
+                }
+            }
+            return foundContacs;
+        }
+
     }
 }
