@@ -37,7 +37,7 @@ namespace Domain
     }
     public class EmailAccess
     {
-        public static Match FindEmailAddress(string Description)
+        private static Match FindEmailAddress(string Description)
         {
             // Define the regex pattern for an email address
             string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
@@ -45,6 +45,16 @@ namespace Domain
             // Use Regex.Match to find the first occurrence of the pattern in the Description
             var match = Regex.Match(Description, pattern);
 
+
+            return match;
+        }
+
+        private static Match FindPhoneNumber(string description)
+        {
+            //remove blankspace from phone number to make it easier to find
+            description = description.Replace(" ", "");
+
+            Match match = Regex.Match(description, @"(?:(?:\+\d{2})|0)\d{2}-?\d{7}");
 
             return match;
         }
@@ -58,11 +68,17 @@ namespace Domain
             foreach(Match possibleName in possibleNames)
             {
                 Match email = FindEmailAddress(possibleName.Value);
+                Match phoneNumber = FindPhoneNumber(possibleName.Value);
                 
-                if(email.Success == true)
+                if(email.Success == false && phoneNumber.Success == false)
                 {
-                    foundContacs.Add(new JobScoutContact() { Name = possibleName.Groups["name"].Value, Email = email.Value });
+                    continue;
                 }
+                foundContacs.Add(new JobScoutContact() { 
+                    Name = possibleName.Groups["name"].Value, 
+                    Email = email.Success? email.Value: null,
+                    PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null
+                });
             }
             return foundContacs;
         }
