@@ -34,6 +34,12 @@ namespace Infrastructure.Services
             context.SaveChanges();
         }
 
+        public void Retag(JobScoutJob jobToRetag, JobScoutContext context)
+        {
+            jobToRetag.TagJobs.Clear();
+            NewJobTagging(jobToRetag, context);
+        }
+
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
         {
             if (ContainsRegex(job.Role, tagToFind.Name) || ContainsRegex(job.Description, tagToFind.Name))

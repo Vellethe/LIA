@@ -30,7 +30,12 @@ namespace Domain
             Url = hit.Webpage_url;
             Description = hit.Description.Text;
             Company = new JobScoutCompany { Name = hit.Employer.Name };
-            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() { Email = x.Email, Name = x.Name ?? x.Description, PhoneNumber = x.Telephone }).ToList();
+            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() {
+                Email = x.Email,
+                Name = x.Name ?? x.Description,
+                PhoneNumber = x.Telephone,
+                IsGenerated = false
+            }).ToList();
             TagJobs = new();
         }
 
@@ -65,19 +70,21 @@ namespace Domain
 
             var foundContacs = new List<JobScoutContact>();
 
-            foreach(Match possibleName in possibleNames)
+            foreach (Match possibleName in possibleNames)
             {
                 Match email = FindEmailAddress(possibleName.Value);
                 Match phoneNumber = FindPhoneNumber(possibleName.Value);
-                
-                if(email.Success == false && phoneNumber.Success == false)
+
+                if (email.Success == false && phoneNumber.Success == false)
                 {
                     continue;
                 }
-                foundContacs.Add(new JobScoutContact() { 
-                    Name = possibleName.Groups["name"].Value, 
-                    Email = email.Success? email.Value: null,
-                    PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null
+                foundContacs.Add(new JobScoutContact()
+                {
+                    Name = possibleName.Groups["name"].Value,
+                    Email = email.Success ? email.Value : null,
+                    PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null,
+                    IsGenerated = true
                 });
             }
             return foundContacs;

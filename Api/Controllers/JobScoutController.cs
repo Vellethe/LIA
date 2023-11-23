@@ -69,7 +69,7 @@ namespace Api.Controllers
         // <param name="name"></param>
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name, JobScoutContext context, TaggerService tagger)
+        public void CreateNewTag(string name, TaggerService tagger )
         {
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
@@ -83,6 +83,18 @@ namespace Api.Controllers
             context.SaveChanges();
 
             tagger.NewTagTagging(newTag, context);
+        }
+
+        [HttpPost("retag")]
+        public void Retag(int id, TaggerService tagger )
+        {
+            var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
+            if(toFind == null)
+            {
+                return;
+            }
+
+            tagger.Retag(toFind,context);
         }
 
         // <summary>
