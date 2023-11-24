@@ -24,6 +24,7 @@ namespace Api
 
             builder.Services.AddSingleton<DataGetterService>();
             builder.Services.AddSingleton<TaggerService>();
+            builder.Services.AddSingleton<DescriptionParserService>();
 
 
             Log.Logger = new LoggerConfiguration()
