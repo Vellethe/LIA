@@ -8,6 +8,7 @@ namespace Domain
         public string Role { get; set; } = string.Empty;
         public string Municipality { get; set; } = string.Empty;
         public DateTime PostDate { get; set; }
+        public DateTime EndDate {  get; set; }
         public bool Favorite { get; set; }
         public string Provider { get; set; }
         public string ProviderUniqueId { get; set; }
@@ -25,6 +26,7 @@ namespace Domain
             Role = hit.Headline;
             Municipality = hit.Workplace_Address.Municipality;
             PostDate = hit.Publication_date;
+            EndDate = hit.Last_publication_date;
             Provider = "platsbanken";
             ProviderUniqueId = hit.Id;
             Url = hit.Webpage_url;

@@ -26,7 +26,7 @@ namespace Infrastructure.Services
             //turns of some smart search that makes the searching harder
             httpClient.DefaultRequestHeaders.Add("x-feature-disable-smart-freetext", "true");
             //only get the feilds we need to reduce network trafic
-            httpClient.DefaultRequestHeaders.Add("X-Fields", "total{value}, hits{id,webpage_url,application_contacts,publication_date, headline, workplace_address{municipality}, employer{name}, description{text}}");
+            httpClient.DefaultRequestHeaders.Add("X-Fields", "total{value}, hits{id,webpage_url,application_contacts, publication_date, last_publication_date, headline, workplace_address{municipality}, employer{name}, description{text}}");
 
             NameValueCollection baseQueryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
             var splitTags = "";

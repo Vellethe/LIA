@@ -22,6 +22,7 @@ namespace Domain
         public string Webpage_url { get; set; }
         public List<PlatsbankenApplicationContacts> Application_Contacts { get; set; }
         public DateTime Publication_date { get; set; }
+        public DateTime Last_publication_date { get; set; }
         public string Headline { get; set; }
         public PlatsbankenWorkplaceAddress Workplace_Address { get; set; }
         public PlatsbankenEmployer Employer { get; set; }
