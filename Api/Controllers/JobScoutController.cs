@@ -84,18 +84,20 @@ namespace Api.Controllers
 
             tagger.NewTagTagging(newTag, context);
         }
-
+        /// <summary>
+        /// used to clear all tags and reasign them. Useful for when you have changed the code
+        /// </summary>
         [HttpPost("retag")]
-        public void Retag(int id, TaggerService tagger )
+        public void Retag(TaggerService tagger )
         {
-            var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
-            if(toFind == null)
-            {
-                return;
-            }
-
-            tagger.Retag(toFind,context);
+            tagger.Retag(context);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        public void ReContact() { }
 
         // <summary>
         // Triggers data loading from providers

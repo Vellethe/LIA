@@ -34,10 +34,18 @@ namespace Infrastructure.Services
             context.SaveChanges();
         }
 
-        public void Retag(JobScoutJob jobToRetag, JobScoutContext context)
+        public void Retag(JobScoutContext context)
         {
-            jobToRetag.TagJobs.Clear();
-            NewJobTagging(jobToRetag, context);
+            //used to quicly remove all links from tags to jobs
+            context.Database.ExecuteSqlRaw("delete from JobScoutTagJobs");
+
+            var allJobs = context.JobScoutJobs.Include(x=>x.TagJobs);
+            foreach (var job in allJobs)
+            {
+                NewJobTagging(job, context);
+            }
+            context.SaveChanges();
+
         }
 
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
