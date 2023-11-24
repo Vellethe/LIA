@@ -11,7 +11,7 @@ namespace Infrastructure.Services
         {
         }
 
-        public async Task GetData(IJobParse IJobParse, JobScoutContext context, TaggerService tagger)
+        public async Task GetData(IJobParse IJobParse, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
 
@@ -38,7 +38,7 @@ namespace Infrastructure.Services
                 // limit consecutive \n to 2
                 job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
 
-                var foundContacts = DescriptionParserService.ParseDescription(job.Description);
+                var foundContacts = descriptionParserService.ParseDescription(job.Description);
 
                 //code for removing already existing contacts
                 foreach (var contact in foundContacts)
@@ -52,11 +52,7 @@ namespace Infrastructure.Services
                 }
 
                 context.SaveChanges();
-
-
             }
-
         }
     }
-
 }

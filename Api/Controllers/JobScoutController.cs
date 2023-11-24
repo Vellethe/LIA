@@ -96,18 +96,21 @@ namespace Api.Controllers
         /// <summary>
         /// 
         /// </summary>
-        [HttpPost]
-        public void ReContact() { }
+        [HttpPost("reParseDescription")]
+        public void ReParseDescription(DescriptionParserService descriptionParserService,JobScoutContext context)
+        {
+            descriptionParserService.ReParseDescription(context);
+        }
 
         // <summary>
         // Triggers data loading from providers
         // </summary>
         // <returns></returns>
         [HttpPost("test")]
-        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger)
+        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
             var x = new PlatsbankenGetterService();
-            await dataGetter.GetData(x, context, tagger);
+            await dataGetter.GetData(x, context, tagger,descriptionParserService);
             return "hello world";
         }
 

@@ -30,7 +30,6 @@ namespace Infrastructure.Services
                     job.TagJobs.Add(new JobScoutTagJob { Tag = newTag });
                 }
             }
-
             context.SaveChanges();
         }
 
@@ -45,7 +44,6 @@ namespace Infrastructure.Services
                 NewJobTagging(job, context);
             }
             context.SaveChanges();
-
         }
 
         private bool CheckForTag(JobScoutJob job, JobScoutTag tagToFind)
@@ -62,12 +60,9 @@ namespace Infrastructure.Services
         private bool ContainsRegex(string str1, string tagName)
         {
             string escapedTag = Regex.Escape(tagName);
-            //\b word boundry
 
             var regex = new Regex(@$"(\s|^){escapedTag}(\s|\-|\.|$)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-            //the indexOf is used as a case insensitive contains
             return regex.IsMatch(str1);
         }
-
     }
 }
