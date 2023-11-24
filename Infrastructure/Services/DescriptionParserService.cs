@@ -50,7 +50,6 @@ namespace Infrastructure.Services
                 job.Contacts = ParseDescription(job.Description);
             }
             context.SaveChanges();
-
         }
 
         private Match FindEmailAddress(string Description)

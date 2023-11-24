@@ -52,11 +52,7 @@ namespace Infrastructure.Services
                 }
 
                 context.SaveChanges();
-
-
             }
-
         }
     }
-
 }
