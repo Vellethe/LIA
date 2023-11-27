@@ -18,14 +18,14 @@ namespace Api.Controllers
             this.logger = logger;
         }
 
-        // <summary>
-        //  Gets jobs that are from non excluded compaines form database and returns them sorted based on decending date.
-        // </summary>
-        // <param name="page"></param>
-        // <returns></returns>
+        /// <summary>
+        ///  Gets jobs that are from non excluded compaines form database and returns them sorted based on decending date.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
 
         [HttpGet("jobs")]
-        public List<JobScoutJob> GetJobs(int page = 0)
+        public ActionResult<List<JobScoutJob>> GetJobs(int page = 0)
         {
             int pageSize = 1_000_000;
             var x = context.JobScoutJobs
@@ -48,28 +48,29 @@ namespace Api.Controllers
             return x;
         }
 
-        // <summary>
-        // Gets all the tags that are not disabled.
-        // </summary>
-        // <returns></returns>
+        /// <summary>
+        /// Gets all the tags that are not disabled.
+        /// </summary>
+        /// <returns>testing</returns>
 
         [HttpGet("tags")]
-        public List<JobScoutTag> GetTags()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<JobScoutTag>> GetTags()
         {
             return context.JobScoutTags
                 .Where(x => x.IsDisabled == false)
                 .AsNoTracking()
                 .ToList();
-
         }
 
-        // <summary>
-        // Creation or reactivation of tags.
-        // </summary>
-        // <param name="name"></param>
+        /// <summary>
+        /// Creation or reactivation of tags.
+        /// </summary>
+        /// <param name="name"></param>
 
         [HttpPost("tags")]
-        public void CreateNewTag(string name, TaggerService tagger )
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult CreateNewTag(string name, TaggerService tagger)
         {
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
@@ -77,7 +78,7 @@ namespace Api.Controllers
                 logger.LogInformation($"tag {name} has been reactivated");
                 toFind.IsDisabled = false;
                 context.SaveChanges();
-                return;
+                return new OkResult();
             }
             var newTag = new JobScoutTag { Name = name };
             context.JobScoutTags.Add(newTag);
@@ -85,47 +86,56 @@ namespace Api.Controllers
             logger.LogInformation($"tag {name} has been created");
 
             tagger.NewTagTagging(newTag, context);
+            return new OkResult();
         }
+
         /// <summary>
         /// used to clear all tags and reasign them. Useful for when you have changed the code
         /// </summary>
         [HttpPost("retag")]
-        public void Retag(TaggerService tagger )
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult Retag(TaggerService tagger)
         {
             logger.LogInformation("tags are being regenerated");
             tagger.Retag(context);
+            return new OkResult();
         }
 
         /// <summary>
-        /// 
+        /// reparses the description for contacts
         /// </summary>
         [HttpPost("reParseDescription")]
-        public void ReParseDescription(DescriptionParserService descriptionParserService,JobScoutContext context)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult ReParseDescription(DescriptionParserService descriptionParserService, JobScoutContext context)
         {
             logger.LogInformation("desctiptions are being regenerated");
             descriptionParserService.ReParseDescription(context);
+            return new OkResult();
         }
 
-        // <summary>
-        // Triggers data loading from providers
-        // </summary>
-        // <returns></returns>
+        /// <summary>
+        /// Triggers data loading from providers 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("test")]
-        public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
             var provider = new PlatsbankenGetterService();
-            var addedJobs = await dataGetter.GetData(provider, context, tagger,descriptionParserService);
+            var addedJobs = await dataGetter.GetData(provider, context, tagger, descriptionParserService);
             logger.LogInformation($"added {addedJobs} jobs to db from provider {provider}");
-            return "hello world";
+            return new OkResult();
         }
 
-        // <summary>
-        // Used to remove tags from database "note that tags are not deleted only set to disabled".
-        // </summary>
-        // <param name="tagId"></param>
-        // <returns></returns>
+        /// <summary>
+        /// Used to remove tags from database "note that tags are not deleted only set to disabled".
+        /// </summary>
+        /// <param name="tagId"></param>
+        /// <returns></returns>
 
         [HttpDelete("tags")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeleteTag(int tagId)
         {
             var tag = context.JobScoutTags.Find(tagId);
@@ -141,49 +151,58 @@ namespace Api.Controllers
             return new NoContentResult();
         }
 
-        // <summary>
-        // Used to set favorites in the database
-        // </summary>
-        // <param name="id"></param>
-        // <param name="isFavorite"></param>
+        /// <summary>
+        /// Used to set favorites in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isFavorite"></param>
         [HttpPut("favorite")]
-        public void SetFavorite(int id, bool isFavorite)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult SetFavorite(int id, bool isFavorite)
         {
             //TODO status codes
             var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
             if (toFind is null)
             {
-                return;
+                return new NotFoundResult();
             }
             toFind.Favorite = isFavorite;
             context.SaveChanges();
+            return new OkResult();
         }
 
-        // <summary>
-        // Used to set exclueded in the database
-        // </summary>
-        // <param name="id"></param>
-        // <param name="isExcluded"></param>
+        /// <summary>
+        /// Used to set exclueded in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isExcluded"></param>
 
         [HttpPut("excluded")]
-        public void SetExcluded(int id, bool isExcluded)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult SetExcluded(int id, bool isExcluded)
         {
             var toFind = context.JobScoutCompanies.FirstOrDefault(x => x.Id == id);
             if (toFind is null)
             {
-                return;
+                return new NotFoundResult();
             }
             toFind.Excluded = isExcluded;
             context.SaveChanges();
+            return new OkResult();
         }
 
-        // <summary>
-        // Returns a list of comapanies
-        // </summary>
-        // <param name="onlyExcluded"></param>
-        // <returns></returns>
+        /// <summary>
+        /// Returns a list of comapanies
+        /// </summary>
+        /// <param name="onlyExcluded"></param>
+        /// <returns></returns>
         [HttpGet("companies")]
-        public List<JobScoutCompany> GetCompanies(bool onlyExcluded = false)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public ActionResult<List<JobScoutCompany>> GetCompanies(bool onlyExcluded = false)
         {
             if (onlyExcluded)
             {
@@ -193,7 +212,7 @@ namespace Api.Controllers
                     .ToList();
                 return data;
             }
-            return context.JobScoutCompanies.ToList();
+            return context.JobScoutCompanies.AsNoTracking().ToList();
         }
 
     }
