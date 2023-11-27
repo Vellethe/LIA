@@ -5,9 +5,7 @@ import { formatDate } from "./../Helpers/formating"
 export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, loadScroll,saveScroll}) {
     const [updateTrigger, setUppdateTrigger] = useState({});
 
-    useEffect(() => {
-        //loadScroll();
-    }, [])
+    useEffect(() => {}, [])
 
 
 

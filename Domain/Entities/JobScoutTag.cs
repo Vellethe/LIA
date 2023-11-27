@@ -10,6 +10,5 @@ namespace Domain
         public bool IsDisabled { get; set; }
         [JsonIgnore]// stops from searching what jobs have tag  note workaround to stop big serialization loop
         public List<JobScoutTagJob> TagJobs { get; set; }
-        // public List<JobScoutJobs> Jobs { get; set; }
     }
 }

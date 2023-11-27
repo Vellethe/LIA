@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Description.module.css';
 import { formatDate, parseTags } from "./../Helpers/formating"
 
-export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc, /*jobId*/ }) => {
+export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc }) => {
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
@@ -87,12 +87,6 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                     <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">
                         {`Link to ${job.provider}`}
                     </a>
-                    {/*{email && (*/}
-                    {/*    <div className={styles.emailAddress}>*/}
-                    {/*        <p className={styles.label}>Email Address:</p>*/}
-                    {/*        <p className={styles.value}>{email}</p>*/}
-                    {/*    </div>*/}
-                    {/*)};*/}
                 </div>
             </div>
         );

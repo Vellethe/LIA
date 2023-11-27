@@ -59,7 +59,6 @@ export const HomePage = () => {
     });
 
     function dataToShow() {
-        //TODO add use memo
         var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword))
         var sortedData = filterdData.sort((a, b) => { return sortAll(a, b, isAscending, sortType) });
         return sortedData;

@@ -107,7 +107,7 @@ export const SettingsPage = () => {
             <table className={commonStylesTable.table}>
                 <thead className={commonStylesTable.thead}>
                     <tr>
-                        <th className={styles.text}>{/*Sökord*/}Tags</th>
+                        <th className={styles.text}>Tags</th>
                         <th className={styles.deleteButton}></th>
                     </tr>
                 </thead>

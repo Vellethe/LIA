@@ -22,7 +22,6 @@ namespace Infrastructure.Services
                 if (context.JobScoutJobs.Any(x => x.ProviderUniqueId == job.ProviderUniqueId && x.Provider == job.Provider))
                 {
                     //Already exists in db
-                    //TODO maybe update values
                     continue;
                 }
 

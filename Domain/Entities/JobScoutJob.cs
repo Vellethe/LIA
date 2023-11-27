@@ -17,7 +17,6 @@ namespace Domain
 
         public JobScoutCompany Company { get; set; }
         public List<JobScoutTagJob> TagJobs { get; set; }
-        //public List<JobScoutTags> Tags { get; set; }
         public List<JobScoutContact> Contacts { get; set; }
 
         public JobScoutJob() { }

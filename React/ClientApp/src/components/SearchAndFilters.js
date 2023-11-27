@@ -29,7 +29,6 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
         locations = locations.length === 0 ? null : locations;
         date = date === '' ? null : date;
 
-        //function setFilters(startDate, location, favoriteState, selectedTags, andMode,keyword) {
         updateFilter(date, locations, favorite, tags, andMode, keyword);
     };
 

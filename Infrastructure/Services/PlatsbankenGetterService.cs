@@ -9,7 +9,6 @@ namespace Infrastructure.Services
     {
         public async Task<List<JobScoutJob>> GetData(List<JobScoutTag> tags)
         {
-            //TODO split searches if above 2000 items in search
             var jobs = await GetDataFromApi(tags);
             List<JobScoutJob> output = new();
             foreach (var hit in jobs)
@@ -25,7 +24,7 @@ namespace Infrastructure.Services
             HttpClient httpClient = new HttpClient();
             //turns of some smart search that makes the searching harder
             httpClient.DefaultRequestHeaders.Add("x-feature-disable-smart-freetext", "true");
-            //only get the feilds we need to reduce network trafic
+            //only get the fields we need to reduce network traffic
             httpClient.DefaultRequestHeaders.Add("X-Fields", "total{value}, hits{id,webpage_url,application_contacts, publication_date, last_publication_date, headline, workplace_address{municipality}, employer{name}, description{text}}");
 
             NameValueCollection baseQueryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -40,7 +39,7 @@ namespace Infrastructure.Services
             baseQueryString.Add("limit", "100");
 
 
-            //Note theoretical limit at 2100 jobs per search becouse of platsbanken api limitation
+            //Note theoretical limit at 2100 jobs per search because of platsbanken api limitation
             var readArticles = 0;
             var availibleArticles = 2000;
             List<PlatsbankenHit> output = new List<PlatsbankenHit>();
@@ -60,7 +59,6 @@ namespace Infrastructure.Services
 
                 var respone = await httpClient.SendAsync(httpRequestMessage);
                 var jsonString = await respone.Content.ReadAsStringAsync();
-                //TODO implement network error handeling
                 PlatsBankenJsonObjectBinding jobs = JsonConvert.DeserializeObject<PlatsBankenJsonObjectBinding>(jsonString);
 
                 availibleArticles = jobs.Total.Value;
