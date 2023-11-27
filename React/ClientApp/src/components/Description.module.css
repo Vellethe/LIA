@@ -32,6 +32,11 @@
     align-items: center;
     padding: 10px;
 }
+.rowSpecial 
+{
+    align-items: center;
+    padding: 10px;
+}
 
 .label {
     margin-left: 20px;
