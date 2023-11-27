@@ -43,7 +43,7 @@ namespace Infrastructure.Services
             //used to quicly remove all items in sql
             context.Database.ExecuteSqlRaw("DELETE FROM JobScoutContacts WHERE IsGenerated=1");
 
-            var jobs = context.JobScoutJobs.Include(x=>x.Contacts);
+            var jobs = context.JobScoutJobs.Include(x=>x.Contacts).Include(x=>x.Company);
 
             foreach(var job in jobs)
             {
@@ -67,9 +67,11 @@ namespace Infrastructure.Services
         private Match FindPhoneNumber(string description)
         {
             //remove blankspace from phone number to make it easier to find
+            //NO-BREAK \U00A0
+            description = description.Replace("\u00A0", "");
             description = description.Replace(" ", "");
 
-            Match match = Regex.Match(description, @"(?:(?:\+\d{2})|0)\d{2}-?\d{7}");
+            Match match = Regex.Match(description, @"(?:(?:\+\d{2})|0)\d{1}-?\d{1}-?\d{7}");
 
             return match;
         }
