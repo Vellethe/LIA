@@ -50,7 +50,6 @@ namespace Infrastructure.Services
                         addedJobs += 1;
                     }
                 }
-
             }
             context.SaveChanges();
             return addedJobs;

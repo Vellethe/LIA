@@ -117,7 +117,7 @@ namespace Api.Controllers
         /// Triggers data loading from providers 
         /// </summary>
         /// <returns></returns>
-        [HttpPost("test")]
+        [HttpPost("run_data_gathering")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {

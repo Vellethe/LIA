@@ -1,10 +1,20 @@
 ﻿namespace Daemon
 {
+    using Microsoft.Extensions.Configuration;
     internal class Program
     {
         static void Main(string[] args)
         {
-            Uri uri = new Uri("https://localhost:7273/api/test");
+
+            var builder = new ConfigurationBuilder();
+
+            builder.SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json",optional:false, reloadOnChange: true);
+
+            IConfiguration config = builder.Build();
+
+
+            Uri uri = new Uri(config["callUrl"]);
             HttpClient httpClient = new HttpClient();
 
             HttpRequestMessage msg = new HttpRequestMessage()
