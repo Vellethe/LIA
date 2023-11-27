@@ -17,7 +17,7 @@ namespace Api
 
 
             builder.Services.AddCors();
-            //stops serialization loop when getting data from db 2 way navigation
+            //stops serialization loop when getting data from db 2 way navigation properties
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
