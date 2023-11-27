@@ -5,6 +5,7 @@ It's written with a React frontend while the backend is done in C#, these techno
 C# backend while having React as a frontend was new and challenging. There is some regex that could have been improved and also some data fetching that sometimes
 shows the information twice cause of the ad publishers or showing weird names because of uppercase letters in the description that we gather from.
 
+### **Installation**
 You're gonna need to have node package manager installed and run "npm install" in "React\ClientApp" to get all the used packages in this project 
 You will probably need to run "update-database" as well.
 
