@@ -74,6 +74,7 @@ namespace Api.Controllers
             var toFind = context.JobScoutTags.FirstOrDefault(x => x.Name == name);
             if (toFind is not null)
             {
+                logger.LogInformation($"tag {name} has been reactivated");
                 toFind.IsDisabled = false;
                 context.SaveChanges();
                 return;
@@ -81,6 +82,7 @@ namespace Api.Controllers
             var newTag = new JobScoutTag { Name = name };
             context.JobScoutTags.Add(newTag);
             context.SaveChanges();
+            logger.LogInformation($"tag {name} has been created");
 
             tagger.NewTagTagging(newTag, context);
         }
@@ -90,6 +92,7 @@ namespace Api.Controllers
         [HttpPost("retag")]
         public void Retag(TaggerService tagger )
         {
+            logger.LogInformation("tags are being regenerated");
             tagger.Retag(context);
         }
 
@@ -99,6 +102,7 @@ namespace Api.Controllers
         [HttpPost("reParseDescription")]
         public void ReParseDescription(DescriptionParserService descriptionParserService,JobScoutContext context)
         {
+            logger.LogInformation("desctiptions are being regenerated");
             descriptionParserService.ReParseDescription(context);
         }
 
@@ -109,8 +113,9 @@ namespace Api.Controllers
         [HttpPost("test")]
         public async Task<string> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
-            var x = new PlatsbankenGetterService();
-            await dataGetter.GetData(x, context, tagger,descriptionParserService);
+            var provider = new PlatsbankenGetterService();
+            var addedJobs = await dataGetter.GetData(provider, context, tagger,descriptionParserService);
+            logger.LogInformation($"added {addedJobs} jobs to db from provider {provider}");
             return "hello world";
         }
 

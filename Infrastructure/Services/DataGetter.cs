@@ -11,12 +11,13 @@ namespace Infrastructure.Services
         {
         }
 
-        public async Task GetData(IJobParse IJobParse, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
+        public async Task<int> GetData(IJobParse IJobParse, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
 
-            var x = await IJobParse.GetData(tagsToSearch);
-            foreach (var job in x)
+            var data = await IJobParse.GetData(tagsToSearch);
+            var addedJobs = 0;
+            foreach (var job in data)
             {
                 if (context.JobScoutJobs.Any(x => x.ProviderUniqueId == job.ProviderUniqueId && x.Provider == job.Provider))
                 {
@@ -47,12 +48,13 @@ namespace Infrastructure.Services
                     if(oldContact.Count() == 0)
                     {
                         job.Contacts.Add(contact);
+                        addedJobs += 1;
                     }
-
                 }
 
-                context.SaveChanges();
             }
+            context.SaveChanges();
+            return addedJobs;
         }
     }
 }
