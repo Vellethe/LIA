@@ -12,5 +12,8 @@ Most of the core code in react is found in homepage.js, majority of the states a
 and from there you can navigate yourself throught the components to see what they do/change how they work. Settingspage and excludedpage are seperated files with their own css
 if you want to make any changes to those 2 as well.
 
+Every component is divided into their own file to easier keep track of where it is. The api calls and sorting function are found in the "Helpers" folder.
+
+
 Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem --todo
 they will always have a place to reference what is expected. --todo
