@@ -55,7 +55,7 @@ namespace Api
 
             builder.Services.AddDbContext<JobScoutContext>(options =>
             {
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=JobScout;Integrated Security=True;MultipleActiveResultSets=true");
+                options.UseSqlServer(builder.Configuration.GetConnectionString("JobScoutDatabase"));
 
                 //Allan
                 //options.UseSqlServer(@"Server=MSI\SQLEXPRESS;Database=Jobscout;Integrated Security=true;TrustServerCertificate=true;");
