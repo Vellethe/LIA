@@ -41,7 +41,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         </div>
 
                         <div className={styles.grid}>
-                            <div className={styles.row}>
+                            <div className={styles.rowSpecial}>
                                 <p className={styles.label}>Location:</p>
                                 <p className={styles.value}>{job.municipality}</p>
                             </div>
