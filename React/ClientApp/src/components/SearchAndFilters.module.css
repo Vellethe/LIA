@@ -123,6 +123,7 @@ button
     border-right:12px solid transparent;
 
     border-bottom: 12px solid black;
+
 }
 
 .downArrow{
@@ -143,6 +144,9 @@ button
     border-bottom:12px solid transparent;
 
     border-left: 12px solid black;
+    padding-left:12px;
+
+
 }
 
 .arrowSort{
