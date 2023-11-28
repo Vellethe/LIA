@@ -35,22 +35,22 @@ and from there you can navigate yourself throught the components to see what the
 if you want to make any changes to those 2 as well.
 Every component is divided into their own file to easier keep track of where it is. The api calls and sorting function are found in the "Helpers" folder.
 
+### React component overview
 ```mermaid
 flowchart TD;
+  Home[Homepage]
+  Table[Table]
+  Search[SearchAndFilters]
+  Desc[Description]
+  Head[Header]
+  Layout[Layout]
+  Settings[Settings]
+  Excluded[Excluded]
 
-Home[Homepage]
-Table[Table]
-Search[SearchAndFilters]
-Desc[Description]
-Head[Header]
-Layout[Layout]
-Settings[Settings]
-Excluded[Excluded]
 
-
-Layout --> Head
-Head --> Home  & Settings & Excluded
-Home --> Table & Search & Desc
+  Layout --> Head
+  Head --> Home  & Settings & Excluded
+  Home --> Table & Search & Desc
 ```
 
 ## **Backend**
@@ -65,22 +65,22 @@ are added to a job. Outside of this we have all our entities in a entity folder 
 ### **Data source flowshart**
 
 ```mermaid
-  flowchart TD;
-    Api[Controller]
-    GetApiCall[run_data_gathering]
-    C[GetDataFromAllProviders]
-    D[GetData]
-    Provider1[PlatsbankenGetterService]
-    Provider2[another getterService]
-    DB[(DataBase)]
+flowchart TD;
+  Api[Controller]
+  GetApiCall[run_data_gathering]
+  C[GetDataFromAllProviders]
+  D[GetData]
+  Provider1[PlatsbankenGetterService]
+  Provider2[another getterService]
+  DB[(DataBase)]
 
-    Api --> GetApiCall;
-    GetApiCall --> C;
-    C --> D;
+  Api --> GetApiCall;
+  GetApiCall --> C;
+  C --> D;
 
-    D <-- JobScoutContext --> DB
+  D <-- JobScoutContext --> DB
 
-    D -- "IDataGetter" --> Provider1 & Provider2
+  D -- "IDataGetter" --> Provider1 & Provider2
 ```
 
 ## **Contributor**
