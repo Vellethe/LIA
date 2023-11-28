@@ -16,7 +16,5 @@ if you want to make any changes to those 2 as well.
 Every component is divided into their own file to easier keep track of where it is. The api calls and sorting function are found in the "Helpers" folder.
 
 ### **Backend**
-
-
-Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem --todo
-they will always have a place to reference what is expected. --todo
+In the service folder you'll find all our getters and parsers. What hits we're returning from the API, how we parse the text to store certain information and handle the tags that
+are added to a job. Outside of this we have all our entities in a entity folder and you can find the controller in the controller folder.
