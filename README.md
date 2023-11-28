@@ -15,6 +15,7 @@ You will probably need to run "update-database" as well.
 ## **Packages and program**
 
 Visual Studio 2022 .net 7.0, nuget packagelist below in case something goes wrong when opening project.
+Markdown Preview Mermaid Support 1.20.0 if you wanna edit the flowcharts in VSC
 ### NugetPackages
 ```
 <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.13" />
