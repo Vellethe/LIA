@@ -44,6 +44,8 @@ D[Description]
 E[Helpers]
 F[Header]
 G[Layout]
+M[Settings]
+N[Excluded]
 
 
 G --> F
