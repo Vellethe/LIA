@@ -41,10 +41,9 @@ are added to a job. Outside of this we have all our entities in a entity folder 
     B-->C;
     C-->D;
 
-    D<-->DB
+    D <-- JobScoutContext --> DB
 
-    D-->Provider1
-    D-->Provider2
+    D -- "IDataGetter" -->Provider1 & Provider2
 ```
 
 ## **Contributor**
