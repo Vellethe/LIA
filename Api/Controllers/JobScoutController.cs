@@ -121,7 +121,7 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
-            await dataGetter.GetAllProviders(logger, descriptionParserService, context, tagger);
+            await dataGetter.GetDataFromAllProviders(logger, descriptionParserService, context, tagger);
             return new OkResult();
         }
 

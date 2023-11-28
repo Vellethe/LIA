@@ -13,7 +13,7 @@ namespace Infrastructure.Services
         }
 
 
-        public async Task GetAllProviders(ILogger logger, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
+        public async Task GetDataFromAllProviders(ILogger logger, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             int totalNewJobs = 0;
             foreach (var getter in getters)
