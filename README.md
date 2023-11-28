@@ -27,6 +27,25 @@ are added to a job. Outside of this we have all our entities in a entity folder 
 2. Add a new constructor for ```Domain\Entities\JobScoutJob.cs``` that converts the data from the new getter to the standardised format.
 3. Add your new getter to the readonly array named ```Getters``` at the top of ```Infrastructure\Services\DataGetter.cs``` file.
 
+```mermaid
+  flowchart TD;
+    A[Controller]
+    B[run_data_gathering]
+    C[GetDataFromAllProviders]
+    D[GetData]
+    Provider1[PlatsbankenGetterService]
+    Provider2[another getterService]
+    DB[(DataBase)]
+
+    A-->B;
+    B-->C;
+    C-->D;
+
+    D<-->DB
+
+    D-->Provider1
+    D-->Provider2
+```
 
 ## **Contributor**
 [112axel](https://github.com/112axel),
