@@ -18,6 +18,29 @@ and from there you can navigate yourself throught the components to see what the
 if you want to make any changes to those 2 as well.
 Every component is divided into their own file to easier keep track of where it is. The api calls and sorting function are found in the "Helpers" folder.
 
+```mermaid
+flowchart TD;
+
+A[Homepage]
+B[Table]
+C[SearchAndFilters]
+D[Description]
+E[Helpers]
+F[Header]
+G[Layout]
+
+
+G --> F
+F --> A
+A --> B
+A --> C
+A --> D
+E --> A
+E --> B
+E --> C
+E --> D
+```
+
 ## **Backend**
 In the service folder you'll find all our getters and parsers. What hits we're returning from the API, how we parse the text to store certain information and handle the tags that
 are added to a job. Outside of this we have all our entities in a entity folder and you can find the controller in the controller folder.
