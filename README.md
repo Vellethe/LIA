@@ -12,6 +12,22 @@ shows the information twice cause of the ad publishers or showing weird names be
 You're gonna need to have node package manager installed and run ```npm install``` in "React\ClientApp" to get all the used packages in this project. 
 You will probably need to run "update-database" as well.
 
+## **Packages and program**
+
+Visual Studio 2022 .net 7.0, nuget packagelist below in case something goes wrong when opening project.
+### NugetPackages
+```
+<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.13" />
+<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+<PackageReference Include="Serilog" Version="3.1.1" />
+<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+<PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
+<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+```
+
+
 ## **Frontend**
 Most of the core code in react is found in homepage.js, majority of the states and everything that is imported and used for the basic functions to work is seen in homepage.js
 and from there you can navigate yourself throught the components to see what they do/change how they work. Settingspage and excludedpage are seperated files with their own css
