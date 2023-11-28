@@ -28,4 +28,4 @@ are added to a job. Outside of this we have all our entities in a entity folder 
 
 
 ### **License**
-[License.txt](https://github.com/Vellethe/LIA/files/13485268/License.txt)
+[Link to License](./License.txt)
