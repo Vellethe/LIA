@@ -8,15 +8,20 @@ C# backend while having React as a frontend was new and challenging.
 There is some regex that could have been improved and also some data fetching that sometimes
 shows the information twice cause of the ad publishers or showing weird names because of uppercase letters in the description that we gather from.
 
+## **Development environment**
+- Visual Studio 2022 
+- .net 7.0 
+- sql database
+- Node Package Manager
+- Markdown Preview Mermaid Support 1.20.0 (if you wanna edit the flowcharts in Visual studio code)
+
 ## **Installation**
-You're gonna need to have node package manager installed and run ```npm install``` in "React\ClientApp" to get all the used packages in this project. 
-You will probably need to run "update-database" as well.
+- Run `npm install` in `React\ClientApp` to download all of the node packages for the frontend. 
+- Change JobScoutDatabase in [appsetings](./Api/appsettings.json) to connection string to your database. Then run `update-database` to apply all of the migrations to the database.
+- Nuget Packages should be downloaded automaticly when opening visual studio
 
-## **Packages and program**
-
-Visual Studio 2022 .net 7.0, nuget packagelist below in case something goes wrong when opening project.
-Markdown Preview Mermaid Support 1.20.0 if you wanna edit the flowcharts in VSC
 ### NugetPackages
+nuget packagelist below in case something goes wrong when opening project.
 ```
 <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.13" />
 <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
@@ -58,9 +63,9 @@ In the service folder you'll find all our getters and parsers. What hits we're r
 are added to a job. Outside of this we have all our entities in a entity folder and you can find the controller in the controller folder.
 
 ### **Implementing new data sources**
-1. Add a class for the new data getter in ```Infrastructure\Services``` that implements ```IDataGetter```.
-2. Add a new constructor for ```Domain\Entities\JobScoutJob.cs``` that converts the data from the new getter to the standardised format.
-3. Add your new getter to the readonly array named ```Getters``` at the top of ```Infrastructure\Services\DataGetter.cs``` file.
+1. Add a class for the new data getter in `Infrastructure\Services` that implements `IDataGetter`.
+2. Add a new constructor for `Domain\Entities\JobScoutJob.cs` that converts the data from the new getter to the standardised format.
+3. Add your new getter to the readonly array named `Getters` at the top of `Infrastructure\Services\DataGetter.cs` file.
 
 ### **Data source flowshart**
 
