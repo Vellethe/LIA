@@ -23,17 +23,16 @@ namespace Infrastructure.Services
                 Match email = FindEmailAddress(possibleName.Value);
                 Match phoneNumber = FindPhoneNumber(possibleName.Value);
 
-                if (email.Success == false && phoneNumber.Success == false)
+                if (email.Success || phoneNumber.Success )
                 {
-                    continue;
+                    foundContacs.Add(new JobScoutContact()
+                    {
+                        Name = possibleName.Groups["name"].Value,
+                        Email = email.Success ? email.Value : null,
+                        PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null,
+                        IsGenerated = true
+                    });
                 }
-                foundContacs.Add(new JobScoutContact()
-                {
-                    Name = possibleName.Groups["name"].Value,
-                    Email = email.Success ? email.Value : null,
-                    PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null,
-                    IsGenerated = true
-                });
             }
             return foundContacs;
         }
@@ -43,9 +42,9 @@ namespace Infrastructure.Services
             //used to quicly remove all items in sql
             context.Database.ExecuteSqlRaw("DELETE FROM JobScoutContacts WHERE IsGenerated=1");
 
-            var jobs = context.JobScoutJobs.Include(x=>x.Contacts).Include(x=>x.Company);
+            var jobs = context.JobScoutJobs.Include(x => x.Contacts).Include(x => x.Company);
 
-            foreach(var job in jobs)
+            foreach (var job in jobs)
             {
                 job.Contacts = ParseDescription(job.Description);
             }
