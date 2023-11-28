@@ -38,26 +38,19 @@ Every component is divided into their own file to easier keep track of where it 
 ```mermaid
 flowchart TD;
 
-A[Homepage]
-B[Table]
-C[SearchAndFilters]
-D[Description]
-E[Helpers]
-F[Header]
-G[Layout]
-M[Settings]
-N[Excluded]
+Home[Homepage]
+Table[Table]
+Search[SearchAndFilters]
+Desc[Description]
+Head[Header]
+Layout[Layout]
+Settings[Settings]
+Excluded[Excluded]
 
 
-G --> F
-F --> A
-A --> B
-A --> C
-A --> D
-E --> A
-E --> B
-E --> C
-E --> D
+Layout --> Head
+Head --> Home  & Settings & Excluded
+Home --> Table & Search & Desc
 ```
 
 ## **Backend**
