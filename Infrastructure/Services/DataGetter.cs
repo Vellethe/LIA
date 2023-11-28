@@ -7,7 +7,7 @@ namespace Infrastructure.Services
 {
     public class DataGetterService
     {
-        private IDataGetter[] getters = { new PlatsbankenGetterService() };
+        private static readonly IDataGetter[] Getters = { new PlatsbankenGetterService() };
         public DataGetterService()
         {
         }
@@ -16,7 +16,7 @@ namespace Infrastructure.Services
         public async Task GetDataFromAllProviders(ILogger logger, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             int totalNewJobs = 0;
-            foreach (var getter in getters)
+            foreach (var getter in Getters)
             {
                 var numberOfJobs = await GetData(getter, descriptionParser, context, tagger);
                 totalNewJobs += numberOfJobs;
