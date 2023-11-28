@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Domain
+﻿namespace Domain
 {
     public class JobScoutJob
     {
@@ -8,7 +6,7 @@ namespace Domain
         public string Role { get; set; } = string.Empty;
         public string Municipality { get; set; } = string.Empty;
         public DateTime PostDate { get; set; }
-        public DateTime EndDate {  get; set; }
+        public DateTime EndDate { get; set; }
         public bool Favorite { get; set; }
         public string Provider { get; set; }
         public string ProviderUniqueId { get; set; }
@@ -31,7 +29,8 @@ namespace Domain
             Url = hit.Webpage_url;
             Description = hit.Description.Text;
             Company = new JobScoutCompany { Name = hit.Employer.Name };
-            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact() {
+            Contacts = hit.Application_Contacts.Select(x => new JobScoutContact()
+            {
                 Email = x.Email,
                 Name = x.Name ?? x.Description,
                 PhoneNumber = x.Telephone,

@@ -1,12 +1,7 @@
 ﻿using Data;
 using Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -23,7 +18,7 @@ namespace Infrastructure.Services
                 Match email = FindEmailAddress(possibleName.Value);
                 Match phoneNumber = FindPhoneNumber(possibleName.Value);
 
-                if (email.Success || phoneNumber.Success )
+                if (email.Success || phoneNumber.Success)
                 {
                     foundContacs.Add(new JobScoutContact()
                     {

@@ -38,7 +38,7 @@ namespace Infrastructure.Services
             //used to quicly remove all links from tags to jobs
             context.Database.ExecuteSqlRaw("delete from JobScoutTagJobs");
 
-            var allJobs = context.JobScoutJobs.Include(x=>x.TagJobs);
+            var allJobs = context.JobScoutJobs.Include(x => x.TagJobs);
             foreach (var job in allJobs)
             {
                 NewJobTagging(job, context);

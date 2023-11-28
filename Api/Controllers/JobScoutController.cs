@@ -121,9 +121,7 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
-            var provider = new PlatsbankenGetterService();
-            var addedJobs = await dataGetter.GetData(provider, context, tagger, descriptionParserService);
-            logger.LogInformation($"added {addedJobs} jobs to db from provider {provider}");
+            await dataGetter.GetAllProviders(logger, descriptionParserService, context, tagger);
             return new OkResult();
         }
 
