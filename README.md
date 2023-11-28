@@ -11,7 +11,7 @@ shows the information twice cause of the ad publishers or showing weird names be
 ## **Development environment**
 - Visual Studio 2022 
 - .net 7.0 
-- sql database
+- Microsoft SQL Server 2019 (RTM)-15.0.2000.5 (X64) Express Edition (64-bit) 
 - Node Package Manager
 - Markdown Preview Mermaid Support 1.20.0 (if you wanna edit the flowcharts in Visual studio code)
 
