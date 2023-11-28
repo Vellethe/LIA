@@ -7,7 +7,7 @@ namespace Infrastructure.Services
 {
     public class DataGetterService
     {
-        private IJobParse[] getters = { new PlatsbankenGetterService() };
+        private IDataGetter[] getters = { new PlatsbankenGetterService() };
         public DataGetterService()
         {
         }
@@ -25,7 +25,7 @@ namespace Infrastructure.Services
             logger.LogInformation($"In total {totalNewJobs} new jobs got saved");
         }
 
-        private async Task<int> GetData(IJobParse IJobParse, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
+        private async Task<int> GetData(IDataGetter IJobParse, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
 

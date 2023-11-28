@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 
 namespace Infrastructure.Services
 {
-    public class PlatsbankenGetterService : IJobParse
+    public class PlatsbankenGetterService : IDataGetter
     {
         public async Task<List<JobScoutJob>> GetData(List<JobScoutTag> tags)
         {

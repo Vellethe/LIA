@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Interfaces
 {
-    public interface IJobParse
+    public interface IDataGetter
     {
         Task<List<JobScoutJob>> GetData(List<JobScoutTag> tags);
     }
