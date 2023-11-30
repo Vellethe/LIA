@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useLayoutEffect} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from "./HomePage.module.css";
 import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
@@ -8,7 +8,6 @@ import { getData, updateExluded, getCompanyCount, updateFavorite } from './../He
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
-    const [reloadTrigger, setReloadTrigger] = useState({});
     const [selectedJob, setSelectedJob] = useState(null);
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
@@ -52,7 +51,7 @@ export const HomePage = () => {
             setServerData(x);
             getCompanyCount().then(count => setCompanyCount(count));
         });
-    }, [reloadTrigger]);
+    }, []);
 
     useEffect(() => {
         setCompanyCount(dataToShow().length);
@@ -76,8 +75,6 @@ export const HomePage = () => {
         setServerData(removeCompany(serverData, id));
     }
 
-
-
     function ShowTableOrDescription(show) {
         if (show) {
             return <div>
@@ -85,7 +82,6 @@ export const HomePage = () => {
                     data={dataToShow(serverData)}
                     updateExluded={(id, state) => { excludedHandeling(id, state); }}
                     selectForShowFunc={(job) => { saveScrollPos(); setSelectedJob(job) }}
-                    loadScroll={loadScrollPos}
                     saveScroll={saveScrollPos}
                     checkBoxFunc={handleFavoriteCheckbox}
                 />
@@ -114,11 +110,9 @@ export const HomePage = () => {
         }
     } );
 
-    var [x,setX] = useState({});
     useEffect(() => {
         loadScrollPos();
     }, [scrollTrigger])
-
 
     return (
         <div id={styles.pageContainer}>

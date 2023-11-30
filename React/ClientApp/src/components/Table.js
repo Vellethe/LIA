@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
 import x from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 import { formatDate } from "./../Helpers/formating"
-export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc, loadScroll,saveScroll}) {
-    const [updateTrigger, setUppdateTrigger] = useState({});
-
-    useEffect(() => {}, [])
-
-
+export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll}) {
 
     return (
         <div>
