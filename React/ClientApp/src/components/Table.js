@@ -1,4 +1,4 @@
-import x from "./../images/Red_X.png"
+import redXSymbol from "./../images/Red_X.png"
 import styles from "./Table.module.css"
 import { formatDate } from "./../Helpers/formating"
 export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll}) {
@@ -13,7 +13,7 @@ export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc,sav
 
                         <div className={styles.desciptionGrid}>
                             <div className={styles.textName}>{job.company.name}</div>
-                            <button className={`${styles.box} ${styles.exclude}`} onClick={(e) => {  saveScroll(); updateExluded(job.company.id, true); e.stopPropagation();}}><img src={x} alt="X" /></button>
+                            <button className={`${styles.box} ${styles.exclude}`} onClick={(e) => {  saveScroll(); updateExluded(job.company.id, true); e.stopPropagation();}}><img src={redXSymbol} alt="X" /></button>
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
