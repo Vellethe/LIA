@@ -44,10 +44,12 @@ namespace Infrastructure.Services
                 job.Company = dbCompany;
                 tagger.NewJobTagging(job, context);
 
-                if (job.TagJobs.Count() != 0)
+                if (job.TagJobs.Count() == 0)
                 {
-                    context.JobScoutJobs.Add(job);
+                    continue;
                 }
+
+                context.JobScoutJobs.Add(job);
 
                 // limit consecutive \n to 2
                 job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
@@ -64,8 +66,8 @@ namespace Infrastructure.Services
                         addedJobs += 1;
                     }
                 }
+                context.SaveChanges();
             }
-            context.SaveChanges();
             return addedJobs;
         }
     }
