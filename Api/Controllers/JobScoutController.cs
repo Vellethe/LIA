@@ -25,6 +25,7 @@ namespace Api.Controllers
         /// <returns></returns>
 
         [HttpGet("jobs")]
+        [Produces("application/json")]
         public ActionResult<List<JobScoutJob>> GetJobs(int page = 0)
         {
             int pageSize = 1_000_000;
@@ -55,6 +56,7 @@ namespace Api.Controllers
 
         [HttpGet("tags")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Produces("application/json")]
         public ActionResult<List<JobScoutTag>> GetTags()
         {
             return context.JobScoutTags
@@ -119,7 +121,7 @@ namespace Api.Controllers
         /// <returns></returns>
         [HttpPost("run_data_gathering")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Test(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
+        public async Task<IActionResult> RunDataGathering(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
         {
             await dataGetter.GetDataFromAllProviders(logger, descriptionParserService, context, tagger);
             return new OkResult();
@@ -157,6 +159,7 @@ namespace Api.Controllers
         [HttpPut("favorite")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json")]
         public IActionResult SetFavorite(int id, bool isFavorite)
         {
             //TODO status codes
@@ -179,6 +182,7 @@ namespace Api.Controllers
         [HttpPut("excluded")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json")]
         public IActionResult SetExcluded(int id, bool isExcluded)
         {
             var toFind = context.JobScoutCompanies.FirstOrDefault(x => x.Id == id);
@@ -199,6 +203,7 @@ namespace Api.Controllers
         [HttpGet("companies")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json")]
 
         public ActionResult<List<JobScoutCompany>> GetCompanies(bool onlyExcluded = false)
         {
