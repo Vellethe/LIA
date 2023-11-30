@@ -12,7 +12,7 @@ export const HomePage = () => {
     const [currentLocation, setCurrentLocation] = useState("Home");
     const updateLocation = (location) => { setCurrentLocation(location); };
 
-    const [companyCount, setCompanyCount] = useState(0);
+    const [jobCount, setjobCount] = useState(0);
 
     const [startDate, setStartDate] = useState(null);
     const [andMode,setAndMode] = useState(false);
@@ -49,12 +49,11 @@ export const HomePage = () => {
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
-            getCompanyCount().then(count => setCompanyCount(count));
         });
     }, []);
 
     useEffect(() => {
-        setCompanyCount(dataToShow().length);
+        setjobCount(dataToShow().length);
     });
 
     function dataToShow() {
@@ -129,7 +128,7 @@ export const HomePage = () => {
             <SearchAndFilters
                 updateFilter={setFilters}
                 hidden={selectedJob !== null}
-                companyCount={companyCount}
+                jobCount={jobCount}
                 isAscending={isAscending}
                 setIsAscending={setIsAscending}
                 updateSort={setSort}

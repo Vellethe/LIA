@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchAndFilters.module.css';
 import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidden, updateSort, sortType, andMode }) => {
+export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, updateSort, sortType, andMode }) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export const SearchAndFilters = ({ updateFilter, companyCount, isAscending, hidd
                 <div className={styles.area}>
                     <div className={styles.searchGroup1}>
 
-                        <span id={styles.companies}>Amount of jobs: {companyCount}</span>
+                        <span id={styles.companies}>Amount of jobs: {jobCount}</span>
 
                         <label htmlFor={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
