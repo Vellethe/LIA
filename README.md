@@ -17,7 +17,7 @@ shows the information twice cause of the ad publishers or showing weird names be
 
 ## **Installation**
 - Run `npm install` in `React\ClientApp` to download all of the node packages for the frontend. 
-- Change JobScoutDatabase in [appsetings](./Api/appsettings.json) to connection string to your database. Then run `update-database` to apply all of the migrations to the database.
+- Change JobScoutDatabase in [appsettings](./Api/appsettings.json) to connection string to your database. Then run `update-database` to apply all of the migrations to the database.
 - Nuget Packages should be downloaded automaticly when opening visual studio
 
 ### NugetPackages
@@ -64,7 +64,7 @@ are added to a job. Outside of this we have all our entities in a entity folder 
 
 ### **Implementing new data sources**
 1. Add a class for the new data getter in `Infrastructure\Services` that implements `IDataGetter`.
-2. Add a new constructor for `Domain\Entities\JobScoutJob.cs` that converts the data from the new getter to the standardised format.
+2. Add a new constructor for `Domain\Entities\JobScoutJob.cs` that converts the data from the new getter to the `JobScoutJob` format.
 3. Add your new getter to the readonly array named `Getters` at the top of `Infrastructure\Services\DataGetter.cs` file.
 
 ### **Data source flowshart**
@@ -91,7 +91,6 @@ flowchart TD;
 ## **Contributor**
 [112axel](https://github.com/112axel),
 [Vellethe](https://github.com/Vellethe)
-
 
 ## **License**
 [Link to License](./License.txt)
