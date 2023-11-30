@@ -24,7 +24,7 @@ export const HomePage = () => {
     const [isAscending, setIsAscending] = useState(false);
     const [sortType, setSortType] = useState("date");
 
-    const test = useRef(0);
+    const scrollPos = useRef(0);
 
 
     function setSort(name) {
@@ -94,13 +94,13 @@ export const HomePage = () => {
     //code for retention of page position between actions
     const [scrollTrigger, setScrollTrigger] = useState({});
     function saveScrollPos() {
-        test.current = window.pageYOffset;
+        scrollPos.current = window.pageYOffset;
     }
 
     function loadScrollPos() {
-        let scrollValue = test.current;
+        let scrollValue = scrollPos.current;
         window.scrollTo({ left: 0, top: scrollValue, behavior: "instant" });
-        test.current = 0;
+        scrollPos.current = 0;
     }
 
     const scrollY = window.scrollY;
