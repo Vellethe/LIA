@@ -64,6 +64,7 @@ namespace Infrastructure.Services
             //NO-BREAK \U00A0
             description = description.Replace("\u00A0", "");
             description = description.Replace(" ", "");
+            description = description.Replace("-", "");
 
             Match match = Regex.Match(description, @"(?:(?:\+\d{2})|0)\d{1}-?\d{1}-?\d{7}");
 

@@ -58,7 +58,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                                         ))}
                                     </ul>
                                 ) : (
-                                    <p className={styles.value2}>No contacts available</p>
+                                        <p className={styles.value2}>No contacts available, check link how to proceed with application</p>
                                 )}
                             </div>
 
