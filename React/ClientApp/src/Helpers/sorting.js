@@ -22,6 +22,8 @@ function filterByTags(item, searchTags, andMode) {
 }
 
 function searchByLocation(item, locations) {
+    locations = locations.filter(x => x !== "");
+
     if (locations === null || locations.length === 0) {
         return true; // If no locations specified, consider it a match
     }
