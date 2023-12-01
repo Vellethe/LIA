@@ -30,9 +30,6 @@ function searchByLocation(item, locations) {
         return true; // If no locations specified, consider it a match
     }
 
-
-    // Convert the first letter of each location to uppercase
-
     if (item.municipality && typeof item.municipality === "string") {
         return locations.some(location =>
             caseInsensitiveContains( item.municipality,location)
@@ -107,6 +104,6 @@ export function removeCompany(list, companyId) {
     return output;
 }
 
-function caseInsensitiveContains(findIn, toFind) {
+export function caseInsensitiveContains(findIn, toFind) {
     return findIn.toLowerCase().includes(toFind.toLowerCase());
 }

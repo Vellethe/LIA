@@ -1,22 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
 import { getTags, postTag } from "./../Helpers/apiCalls"
+import { caseInsensitiveContains } from "./../Helpers/sorting"
 
 export const SettingsPage = () => {
-    let allData = useRef([]);
     const [reloadTrigger,setReloadTrigger] = useState({});
-    const [showTags, setShowTags] = useState([]);
+    const [tags, setTags] = useState([]);
     const [addFormData, setAddFormData] = useState({
         tags: ""
     })
+    const [searchTerm, setSearchTerm] = useState("");
 
 
     useEffect(() => {
         getTags().then(x => {
-            setShowTags(x);
-            allData.current = x;
+            setTags(x);
         }
         )
     }, [reloadTrigger]);
@@ -44,7 +44,7 @@ export const SettingsPage = () => {
             tags: formattedTag
         }
 
-        const newTags = [...showTags, newTag];
+        const newTags = [...tags, newTag];
         await postTag(formattedTag);
         setReloadTrigger({});
 
@@ -72,11 +72,12 @@ export const SettingsPage = () => {
     }
 
     const searchChange = (event) => {
-        var searchWord = event.target.value;
-        var newTaglist = allData.current.filter((tag) => tag.name.toLowerCase().includes(searchWord.toLowerCase()))
-        setShowTags(newTaglist);
+        setSearchTerm(event.target.value);
     }
 
+    function tagsToShow() {
+        return tags.filter(x => caseInsensitiveContains(x.name, searchTerm));
+    }
 
     return (
         <div>
@@ -112,7 +113,7 @@ export const SettingsPage = () => {
                     </tr>
                 </thead>
                 <tbody className={commonStylesTable.tbody}>
-                    {showTags.map((tag) => (
+                    {tagsToShow().map((tag) => (
                         <tr key={tag.id}>
                             <td>{tag.name}</td>
                             <td>

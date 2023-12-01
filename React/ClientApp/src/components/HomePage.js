@@ -15,7 +15,6 @@ export const HomePage = () => {
     const [jobCount, setjobCount] = useState(0);
 
     const [startDate, setStartDate] = useState(null);
-    const [andMode,setAndMode] = useState(false);
     const [selectedTags,setSelectedTags] = useState([]);
     const [favoriteState,setFavoriteState]  = useState(false);
     const [location,setLocation]  = useState([]);
@@ -132,7 +131,6 @@ export const HomePage = () => {
                 setIsAscending={setIsAscending}
                 updateSort={setSort}
                 sortType={sortType}
-                andMode={andMode}
             />
 
             <DescriptionPage
