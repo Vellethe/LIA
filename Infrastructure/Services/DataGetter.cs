@@ -68,7 +68,6 @@ namespace Infrastructure.Services
         private async Task<int> GetData(IDataGetter IJobParse, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
-            throw new NotImplementedException();
             var data = await IJobParse.GetData(tagsToSearch);
             var addedJobs = 0;
             //TODO rewrite addRange(newjobs); context to notracking variable
