@@ -55,11 +55,11 @@ function filterByKeyword(item, keyword) {
     return caseInsensitiveContains(item.description, keyword) || caseInsensitiveContains(item.role, keyword) || caseInsensitiveContains( item.company.name, keyword);
 }
 
-export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags, andMode,keyword) {
+export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags,keyword) {
     return (
         filterByFavorite(item, doFavoriteSort) &&
         filterDataByDate(item, startShowDate) &&
-        filterByTags(item, searchTags, andMode) &&
+        filterByTags(item, searchTags, false) &&
         searchByLocation(item, locations) &&
         filterByKeyword(item,keyword)
     );

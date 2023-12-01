@@ -22,14 +22,13 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
         var locations = formFields.searchLocation.value.split(/,|\s+/).map(location => location.trim());
         var keyword = formFields.searchJobs.value;
         var date = formFields.startDate.value;
-        var andMode = formFields.andMode.checked;
         var favorite = formFields.favorite.checked;
         var tags = Array.from(document.getElementsByName("selectedTags")).filter(tag => tag.checked).map(x => x.value);
 
         locations = locations.length === 0 ? null : locations;
         date = date === '' ? null : date;
 
-        updateFilter(date, locations, favorite, tags, andMode, keyword);
+        updateFilter(date, locations, favorite, tags, keyword);
     };
 
 
@@ -86,12 +85,6 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
                         <label htmlFor={styles.favoriteCheckBox}>
                             <input type="checkbox" id={styles.favoriteCheckBox} onChange={submitForm} name="favorite"></input>
                             <span>Filter by favorites</span>
-                        </label>
-
-                        <label>
-                            <input type="checkbox"
-                                onChange={submitForm} name="andMode"></input>
-                            <span className={styles.andMode}>{andMode ? 'And' : 'Or'}</span>
                         </label>
 
                         <Dropdown tags={tags} submitForm={submitForm} />

@@ -37,12 +37,11 @@ export const HomePage = () => {
         }
     }
 
-    function setFilters(startDate, location, favoriteState, selectedTags, andMode, keyword) {
+    function setFilters(startDate, location, favoriteState, selectedTags , keyword) {
         setStartDate(startDate);
         setLocation(location);
         setFavoriteState(favoriteState);
         setSelectedTags(selectedTags);
-        setAndMode(andMode);
         setKeyword(keyword);
     }
 
@@ -57,7 +56,7 @@ export const HomePage = () => {
     });
 
     function dataToShow() {
-        var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, andMode, keyword))
+        var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, keyword))
         var sortedData = filterdData.sort((a, b) => { return sortAll(a, b, isAscending, sortType) });
         return sortedData;
     }

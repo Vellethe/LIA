@@ -31,6 +31,7 @@ namespace Infrastructure.Services
 
             var data = await IJobParse.GetData(tagsToSearch);
             var addedJobs = 0;
+            //TODO rewrite addRange(newjobs); context to notracking variable
             foreach (var job in data)
             {
                 if (context.JobScoutJobs.Any(x => x.ProviderUniqueId == job.ProviderUniqueId && x.Provider == job.Provider))
