@@ -63,7 +63,7 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
                                 id={styles.homeSearchLocation}
                                 type="text"
                                 name="searchLocation"
-                                placeholder="Location"
+                                placeholder="Search for one or more locations"
                                 onChange={submitForm}
                             />
                             <input id={styles.dates}
