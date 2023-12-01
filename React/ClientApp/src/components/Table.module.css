@@ -63,7 +63,7 @@ img{
 
 .jobTitle{
     grid-area:jobTitle;
-    font-size:40px;
+    font-size:20px;
     transition: font-size 0.2s;
 }
 .gridHome:hover 
