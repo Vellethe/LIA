@@ -120,9 +120,9 @@ namespace Api.Controllers
         /// <returns></returns>
         [HttpPost("run_data_gathering")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> RunDataGathering(DataGetterService dataGetter, JobScoutContext context, TaggerService tagger, DescriptionParserService descriptionParserService)
+        public async Task<IActionResult> RunDataGathering(DataGetterService dataGetter)
         {
-            await dataGetter.GetDataFromAllProviders(logger, descriptionParserService, context, tagger);
+            await dataGetter.GetDataFromAllProviders(logger);
             return new OkResult();
         }
 

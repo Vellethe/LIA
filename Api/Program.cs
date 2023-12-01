@@ -22,17 +22,29 @@ namespace Api
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
-            builder.Services.AddSingleton<DataGetterService>();
-            builder.Services.AddSingleton<TaggerService>();
-            builder.Services.AddSingleton<DescriptionParserService>();
-
-
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .WriteTo.Console()
                 .WriteTo.File(builder.Configuration["Path:LogPath"], rollingInterval: RollingInterval.Day)
                 .CreateLogger();
+
+            builder.Services.AddSingleton<TaggerService>();
+            builder.Services.AddSingleton<DescriptionParserService>();
+            builder.Services.AddSingleton<ErrorLogger>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<ErrorLogger>>();
+                return new ErrorLogger(logger);
+            });
+
+            builder.Services.AddScoped<DataGetterService>(provider => {
+                var errorLogger = provider.GetRequiredService<ErrorLogger>();
+                var tagger = provider.GetRequiredService<TaggerService>();
+                var descriptionParser = provider.GetRequiredService<DescriptionParserService>();
+                var context = provider.GetRequiredService<JobScoutContext>();
+                return new DataGetterService(errorLogger,tagger,descriptionParser,context);
+                });
+
 
             builder.Services.AddLogging(loggingBuilder =>
             {

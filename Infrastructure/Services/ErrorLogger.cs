@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public static class ErrorLogger
+    public class ErrorLogger
     {
-        public static void LogErrors(ILogger logger, Action action)
+        private readonly ILogger logger;
+        public ErrorLogger(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
+        public void LogErrors(Action action)
         {
             try
             {
@@ -21,7 +27,7 @@ namespace Infrastructure.Services
             }
         }
 
-        public static async Task LogErrorsAsync(ILogger logger, Func<Task> asyncAction)
+        public async Task LogErrorsAsync(Func<Task> asyncAction)
         {
             try
             {
@@ -29,11 +35,11 @@ namespace Infrastructure.Services
             }
             catch (Exception ex)
             {
-                logger.LogError($"An error occurred: {ex.Message}");
+                logger.LogError($"An error occurred: {ex}");
             }
         }
 
-        public static async Task<T> LogErrorsAsync<T>(ILogger logger, Func<Task<T>> asyncFunction)
+        public async Task<T> LogErrorsAsync<T>(Func<Task<T>> asyncFunction)
         {
             try
             {
@@ -41,7 +47,7 @@ namespace Infrastructure.Services
             }
             catch (Exception ex)
             {
-                logger.LogError($"An error occurred: {ex.Message}");
+                logger.LogError($"An error occurred: {ex}");
                 return default; // or throw or handle as appropriate for your case
             }
         }

@@ -8,23 +8,32 @@ namespace Infrastructure.Services
     public class DataGetterService
     {
         private static readonly IDataGetter[] Getters = { new PlatsbankenGetterService() };
-        public DataGetterService()
+        private ErrorLogger errorLogger { get; set; }
+        private TaggerService taggerService { get; set; }
+        private DescriptionParserService descriptionParserService { get; set; }
+        private JobScoutContext context { get; set; }
+        public DataGetterService(ErrorLogger errorLogger, TaggerService taggerService,
+            DescriptionParserService descriptionParserService,JobScoutContext context)
         {
+            this.errorLogger = errorLogger;
+            this.taggerService = taggerService;
+            this.descriptionParserService = descriptionParserService;
+            this.context = context;
         }
 
-        public async Task GetDataFromAllProviders(ILogger logger, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
+        public async Task GetDataFromAllProviders(ILogger logger)
         {
             int totalNewJobs = 0;
             foreach (var getter in Getters)
             {
-                int numberOfJobs = await ErrorLogger.LogErrorsAsync(logger, async () => await GetData(getter, descriptionParser, context, tagger));
+                int numberOfJobs = await errorLogger.LogErrorsAsync(async () => await GetData(getter, context));
                 totalNewJobs += numberOfJobs;
                 logger.LogInformation($"{getter} found {numberOfJobs} new jobs");
             }
             logger.LogInformation($"In total {totalNewJobs} new jobs got saved");
         }
 
-        private async Task<int> GetData(IDataGetter IJobParse, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
+        private async Task<int> GetData(IDataGetter IJobParse, JobScoutContext context)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
             var data = await IJobParse.GetData(tagsToSearch);
@@ -41,7 +50,7 @@ namespace Infrastructure.Services
                 //prevenets duplicate companies from being created
                 var dbCompany = context.JobScoutCompanies.FirstOrDefault(x => x.Name == job.Company.Name) ?? job.Company;
                 job.Company = dbCompany;
-                tagger.NewJobTagging(job, context);
+                taggerService.NewJobTagging(job, context);
 
                 if (job.TagJobs.Count() == 0)
                 {
@@ -53,7 +62,7 @@ namespace Infrastructure.Services
                 // limit consecutive \n to 2
                 job.Description = Regex.Replace(job.Description, @"\n{3,}", "\n\n");
 
-                var foundContacts = descriptionParser.ParseDescription(job.Description);
+                var foundContacts = descriptionParserService.ParseDescription(job.Description);
 
                 //code for removing already existing contacts
                 foreach (var contact in foundContacts)

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
 import styles from "./SettingsPage.module.css";
 import commonStylesTable from "./CommonTable.module.css"
 import { getTags, postTag } from "./../Helpers/apiCalls"
@@ -39,15 +38,8 @@ export const SettingsPage = () => {
         const inputTag = addFormData.tags.trim(); 
         const formattedTag = inputTag.charAt(0).toUpperCase() + inputTag.slice(1).toLowerCase();
 
-        const newTag = {
-            id: nanoid(),
-            tags: formattedTag
-        }
-
-        const newTags = [...tags, newTag];
         await postTag(formattedTag);
         setReloadTrigger({});
-
         setAddFormData({ tags: "" });
     }
 
