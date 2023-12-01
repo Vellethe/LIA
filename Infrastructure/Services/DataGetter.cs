@@ -12,21 +12,53 @@ namespace Infrastructure.Services
         {
         }
 
+        public static class ErrorLogger
+        {
+            public static void LogErrors(ILogger logger, Action action)
+            {
+                try
+                {
+                    action.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError($"An error occurred: {ex.Message}");
+                }
+            }
+
+            public static async Task LogErrorsAsync(ILogger logger, Func<Task> asyncAction)
+            {
+                try
+                {
+                    await asyncAction.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError($"An error occurred: {ex.Message}");
+                }
+            }
+
+            public static async Task<T> LogErrorsAsync<T>(ILogger logger, Func<Task<T>> asyncFunction)
+            {
+                try
+                {
+                    return await asyncFunction.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError($"An error occurred: {ex.Message}");
+                    return default; // or throw or handle as appropriate for your case
+                }
+            }
+        }
+
 
         public async Task GetDataFromAllProviders(ILogger logger, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             int totalNewJobs = 0;
             foreach (var getter in Getters)
             {
-                var numberOfJobs = 0;
-                try
-                {
-                    numberOfJobs = await GetData(getter, descriptionParser, context, tagger);
-                }
-                catch(Exception ex)
-                {
-                    logger.LogError($"{getter} has crached with this error {ex}");
-                }
+                int numberOfJobs = await ErrorLogger.LogErrorsAsync(logger, async () => await GetData(getter, descriptionParser, context, tagger));
                 totalNewJobs += numberOfJobs;
                 logger.LogInformation($"{getter} found {numberOfJobs} new jobs");
             }
@@ -36,7 +68,7 @@ namespace Infrastructure.Services
         private async Task<int> GetData(IDataGetter IJobParse, DescriptionParserService descriptionParser, JobScoutContext context, TaggerService tagger)
         {
             var tagsToSearch = context.JobScoutTags.Where(x => x.IsDisabled == false).ToList();
-
+            throw new NotImplementedException();
             var data = await IJobParse.GetData(tagsToSearch);
             var addedJobs = 0;
             //TODO rewrite addRange(newjobs); context to notracking variable
