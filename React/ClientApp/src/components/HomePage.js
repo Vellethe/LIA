@@ -18,7 +18,7 @@ export const HomePage = () => {
     const [andMode,setAndMode] = useState(false);
     const [selectedTags,setSelectedTags] = useState([]);
     const [favoriteState,setFavoriteState]  = useState(false);
-    const [location,setLocation]  = useState("");
+    const [location,setLocation]  = useState([]);
     const [keyword,setKeyword]  = useState("");
 
     const [isAscending, setIsAscending] = useState(false);

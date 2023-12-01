@@ -23,12 +23,13 @@ function filterByTags(item, searchTags, andMode) {
 
 function searchByLocation(item, locations) {
 
-    if (locations === null || locations.length === 0) {
+    //remove empty locations
+    locations = locations.filter(x => x !== "");
+
+    if (locations.length === 0) {
         return true; // If no locations specified, consider it a match
     }
 
-    //remove empty locations
-    locations = locations.filter(x => x !== "");
 
     // Convert the first letter of each location to uppercase
 
