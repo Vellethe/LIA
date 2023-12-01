@@ -44,7 +44,6 @@ namespace Api.Controllers
             {
                 job.TagJobs = job.TagJobs.Where(x => x.Tag.IsDisabled == false).ToList();
             }
-            logger.LogInformation("testing");
 
             return x;
         }

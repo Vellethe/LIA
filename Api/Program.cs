@@ -29,7 +29,7 @@ namespace Api
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .WriteTo.Console()
                 .WriteTo.File(builder.Configuration["Path:LogPath"], rollingInterval: RollingInterval.Day)
                 .CreateLogger();

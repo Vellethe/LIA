@@ -18,7 +18,15 @@ namespace Infrastructure.Services
             int totalNewJobs = 0;
             foreach (var getter in Getters)
             {
-                var numberOfJobs = await GetData(getter, descriptionParser, context, tagger);
+                var numberOfJobs = 0;
+                try
+                {
+                    numberOfJobs = await GetData(getter, descriptionParser, context, tagger);
+                }
+                catch(Exception ex)
+                {
+                    logger.LogError($"{getter} has crached with this error {ex}");
+                }
                 totalNewJobs += numberOfJobs;
                 logger.LogInformation($"{getter} found {numberOfJobs} new jobs");
             }
