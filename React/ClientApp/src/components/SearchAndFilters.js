@@ -91,17 +91,23 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
 
                         <div className={styles.arrowSort} onClick={() => { updateSort("company") }}>
                             {/*arrow*/}
-                            <div id={"nameSort"} className={arrowStateClass("company")} ></div>
+                            <div className={arrowStateClass("company")} ></div>
                             <span>Company name</span>
                         </div>
 
                     </div>
                 </div>
-                    <button id={styles.sorting}
-                        onClick={() => { updateSort("date") }}
-                    className={(isAscending ? "ascending" : "descending")}>
-                    {sortType === "date"? (isAscending ? "Oldest" : "Newest"):"Date sort"}
-                    </button>
+                <div id={styles.sorting} className={styles.arrowSort} onClick={() => { updateSort("date") }}>
+                    {/*arrow*/}
+                    <div className={arrowStateClass("date")} ></div>
+                    <span> Postdate </span>
+                </div>
+
+            {/*    <button id={styles.sorting}*/}
+            {/*        onClick={() => { updateSort("date") }}*/}
+            {/*        className={(isAscending ? "ascending" : "descending")}>*/}
+            {/*        {sortType === "date" ? (isAscending ? "Oldest" : "Newest") : "Date sort"}*/}
+            {/*    </button>*/}
             </div>
         </form>
     );
