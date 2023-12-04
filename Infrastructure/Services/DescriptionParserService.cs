@@ -15,20 +15,38 @@ namespace Infrastructure.Services
 
             foreach (Match possibleName in possibleNames)
             {
-                Match email = FindEmailAddress(possibleName.Value);
-                Match phoneNumber = FindPhoneNumber(possibleName.Value);
+                MatchCollection email = FindEmailAddress(possibleName.Value);
+                MatchCollection phoneNumber = FindPhoneNumber(possibleName.Value);
 
-                if (email.Success || phoneNumber.Success)
+                if (email.Any() || phoneNumber.Any())
                 {
                     foundContacs.Add(new JobScoutContact()
                     {
                         Name = possibleName.Groups["name"].Value,
-                        Email = email.Success ? email.Value : null,
-                        PhoneNumber = phoneNumber.Success ? phoneNumber.Value : null,
+                        Email = email.Any()? email[0].Value : null,
+                        PhoneNumber = phoneNumber.Any() ? phoneNumber[0].Value : null,
                         IsGenerated = true
                     });
                 }
             }
+
+            //code for catching remaining email and phonenumber
+            foreach(Match email in FindEmailAddress(description))
+            {
+                if (!foundContacs.Any(x => x.Email == email.Value))
+                {
+                    foundContacs.Add(new JobScoutContact { Email = email.Value, IsGenerated = true });
+                }
+            }
+
+            foreach (Match phoneNumber in FindPhoneNumber(description))
+            {
+                if (!foundContacs.Any(x => x.PhoneNumber == phoneNumber.Value))
+                {
+                    foundContacs.Add(new JobScoutContact { PhoneNumber = phoneNumber.Value, IsGenerated = true });
+                }
+            }
+
             return foundContacs;
         }
 
@@ -46,29 +64,29 @@ namespace Infrastructure.Services
             context.SaveChanges();
         }
 
-        private Match FindEmailAddress(string Description)
+        private MatchCollection FindEmailAddress(string inputText)
         {
             // Define the regex pattern for an email address
             string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
 
             // Use Regex.Match to find the first occurrence of the pattern in the Description
-            var match = Regex.Match(Description, pattern);
+            var matches = Regex.Matches(inputText, pattern);
 
 
-            return match;
+            return matches;
         }
 
-        private Match FindPhoneNumber(string description)
+        private MatchCollection FindPhoneNumber(string inputText)
         {
             //remove blankspace from phone number to make it easier to find
             //NO-BREAK \U00A0
-            description = description.Replace("\u00A0", "");
-            description = description.Replace(" ", "");
-            description = description.Replace("-", "");
+            inputText = inputText.Replace("\u00A0", "");
+            inputText = inputText.Replace(" ", "");
+            inputText = inputText.Replace("-", "");
 
-            Match match = Regex.Match(description, @"(?:(?:\+\d{2})|0)\d{1}-?\d{1}-?\d{7}");
+            var matches = Regex.Matches(inputText, @"(?:(?:\+\d{2})|0)\d{1}-?\d{1}-?\d{7}");
 
-            return match;
+            return matches;
         }
     }
 }
