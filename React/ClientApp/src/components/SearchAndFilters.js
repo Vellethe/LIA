@@ -89,9 +89,9 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
 
                         <Dropdown tags={tags} submitForm={submitForm} />
 
-                        <div className={styles.arrowSort}>
+                        <div className={styles.arrowSort} onClick={() => { updateSort("company") }}>
                             {/*arrow*/}
-                            <div id={"nameSort"} className={arrowStateClass("company")} onClick={() => { updateSort("company") }}></div>
+                            <div id={"nameSort"} className={arrowStateClass("company")} ></div>
                             <span>Company name</span>
                         </div>
 

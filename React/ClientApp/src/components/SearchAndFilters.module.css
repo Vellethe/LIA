@@ -152,6 +152,7 @@ button
 .arrowSort{
     display:flex;
     align-items:center;
+    cursor:pointer;
 }
 
 .arrowSort > span{
