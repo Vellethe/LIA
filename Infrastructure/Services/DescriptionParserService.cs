@@ -60,7 +60,7 @@ namespace Infrastructure.Services
 
             foreach (var job in jobs)
             {
-                job.Contacts = ParseDescription(job.Description);
+                job.Contacts.AddRange(ParseDescription(job.Description));
             }
             context.SaveChanges();
         }
