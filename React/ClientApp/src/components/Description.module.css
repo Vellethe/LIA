@@ -115,3 +115,15 @@ ul
     margin-top:3px;
     min-width: 300px;
 }
+
+fieldset{
+    border:1px solid black;
+}
+
+legend{
+    float:none;
+    width:fit-content;
+    margin-left:10px;
+    border-bottom: 2px dotted black;
+    height:33px;
+}

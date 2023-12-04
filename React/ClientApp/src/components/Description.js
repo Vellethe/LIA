@@ -50,11 +50,13 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                                 {(job.contacts && job.contacts.length > 0) ? (
                                     <ul className={styles.value2}>
                                         {job.contacts.map(contact => (
-                                            <li className={styles.contact} key={contact.id}>
+
+                                            <fieldset className={styles.contact} key={contact.id}>
+                                                {contact.isGenerated? <legend title="Generated from description may not be a 100% reliable">Generated</legend>:null}
                                                 {contact.name !== null ? <p>Name: {contact.name}</p> : null}
                                                 {contact.email !== null ? <p>Email: {contact.email}</p> : null}
                                                 {contact.phoneNumber !== null ? <p>Phone Number: {contact.phoneNumber}</p> : null}
-                                            </li>
+                                            </fieldset>
                                         ))}
                                     </ul>
                                 ) : (
