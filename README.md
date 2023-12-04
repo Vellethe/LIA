@@ -88,9 +88,15 @@ flowchart TD;
   D -- "IDataGetter" --> Provider1 & Provider2
 ```
 
+### Prestudy linkedin
+This link can be used to find jobs on linkedin it only finds 25 at a time you need to increase the start parameter value.
+https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=c%23&location=Gothenburg%2C%2BVastra%2BGotaland%2BCounty%2C%2BSweden&geoId=104114836&trk=public_jobs_jobs-search-bar_search-submit&start=20 Then you need to go into the job and grab the description and title from the html.
+
+
 ## **Contributor**
 [112axel](https://github.com/112axel),
 [Vellethe](https://github.com/Vellethe)
+
 
 ## **License**
 [Link to License](./License.txt)
