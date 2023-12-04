@@ -101,7 +101,7 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
                 <div id={styles.sorting} className={styles.arrowSort} onClick={() => { updateSort("date") }}>
                     {/*arrow*/}
                     <div className={arrowStateClass("date")} ></div>
-                    <span> Postdate </span>
+                    <span> Date </span>
                 </div>
 
             </div>
