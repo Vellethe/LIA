@@ -31,19 +31,21 @@ namespace Api
 
             builder.Services.AddSingleton<TaggerService>();
             builder.Services.AddSingleton<DescriptionParserService>();
+
             builder.Services.AddSingleton<ErrorLogger>(provider =>
             {
                 var logger = provider.GetRequiredService<ILogger<ErrorLogger>>();
                 return new ErrorLogger(logger);
             });
 
-            builder.Services.AddScoped<DataGetterService>(provider => {
+            builder.Services.AddScoped<DataGetterService>(provider =>
+            {
                 var errorLogger = provider.GetRequiredService<ErrorLogger>();
                 var tagger = provider.GetRequiredService<TaggerService>();
                 var descriptionParser = provider.GetRequiredService<DescriptionParserService>();
                 var context = provider.GetRequiredService<JobScoutContext>();
-                return new DataGetterService(errorLogger,tagger,descriptionParser,context);
-                });
+                return new DataGetterService(errorLogger, tagger, descriptionParser, context);
+            });
 
 
             builder.Services.AddLogging(loggingBuilder =>

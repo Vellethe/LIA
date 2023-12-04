@@ -13,7 +13,7 @@ namespace Infrastructure.Services
         private DescriptionParserService descriptionParserService { get; set; }
         private JobScoutContext context { get; set; }
         public DataGetterService(ErrorLogger errorLogger, TaggerService taggerService,
-            DescriptionParserService descriptionParserService,JobScoutContext context)
+            DescriptionParserService descriptionParserService, JobScoutContext context)
         {
             this.errorLogger = errorLogger;
             this.taggerService = taggerService;
