@@ -9,14 +9,15 @@ namespace Infrastructure.Services
     {
         public List<JobScoutContact> ParseDescription(string description)
         {
-            var possibleNames = Regex.Matches(description, @"(?<name>(?:[A-ZÅÄÖ][a-zåäö]+ ?){2,3})([^ ]+ ?){7}");
+            //Positive lookaheed to alow overlap of regex
+            var possibleNames = Regex.Matches(description, @"(?<name>(?:[A-ZÅÄÖ][a-zåäö]+ ?){2,3}(?=(?<afterText>([^ ]+ ?){7})))");
 
             var foundContacs = new List<JobScoutContact>();
 
             foreach (Match possibleName in possibleNames)
             {
-                MatchCollection email = FindEmailAddress(possibleName.Value);
-                MatchCollection phoneNumber = FindPhoneNumber(possibleName.Value);
+                MatchCollection email = FindEmailAddress(possibleName.Groups["afterText"].Value);
+                MatchCollection phoneNumber = FindPhoneNumber(possibleName.Groups["afterText"].Value);
 
                 if (email.Any() || phoneNumber.Any())
                 {
@@ -35,7 +36,7 @@ namespace Infrastructure.Services
             {
                 if (!foundContacs.Any(x => x.Email == email.Value))
                 {
-                    foundContacs.Add(new JobScoutContact { Email = email.Value, IsGenerated = true });
+                    foundContacs.Add(new JobScoutContact { Email = email.Groups["email"].Value, IsGenerated = true });
                 }
             }
 
@@ -67,7 +68,7 @@ namespace Infrastructure.Services
         private MatchCollection FindEmailAddress(string inputText)
         {
             // Define the regex pattern for an email address
-            string pattern = @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
+            string pattern = @"\(?(?<email>[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\)?";
 
             // Use Regex.Match to find the first occurrence of the pattern in the Description
             var matches = Regex.Matches(inputText, pattern);
