@@ -92,6 +92,10 @@ flowchart TD;
 This link can be used to find jobs on linkedin it only finds 25 at a time you need to increase the start parameter value.
 https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=c%23&location=Gothenburg%2C%2BVastra%2BGotaland%2BCounty%2C%2BSweden&geoId=104114836&trk=public_jobs_jobs-search-bar_search-submit&start=20 Then you need to go into the job and grab the description and title from the html.
 
+We had a hard time finding what endpoints are in the linkedin API but they allow creation of app with some restrictions what you can and can't do.
+They will grant access and give you a token to track what you do with the API. This requires a linkedin profile to be linked with the app since whoever is linked will also be responsible for everything that the API is used for.
+https://www.linkedin.com/developers/apps/new
+
 
 ## **Contributor**
 [112axel](https://github.com/112axel),
