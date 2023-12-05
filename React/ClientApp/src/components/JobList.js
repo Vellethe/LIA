@@ -1,7 +1,7 @@
 import redXSymbol from "./../images/Red_X.png"
-import styles from "./Table.module.css"
+import styles from "./JobList.module.css"
 import { formatDate } from "./../Helpers/formating"
-export function Table({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll}) {
+export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll}) {
     function selectJob(job) {
         var selection = window.getSelection();
         if (selection.type !== "Range") {

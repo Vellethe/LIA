@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from "./HomePage.module.css";
-import { Table } from './Table';
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { filterAll, sortAll, removeCompany } from './../Helpers/sorting'
 import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
+import { JobList } from './JobList';
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
@@ -75,7 +75,7 @@ export const HomePage = () => {
     function ShowTableOrDescription(show) {
         if (show) {
             return <div>
-                <Table
+                <JobList
                     data={dataToShow(serverData)}
                     updateExluded={(id, state) => { excludedHandeling(id, state); }}
                     selectForShowFunc={(job) => { saveScrollPos(); setSelectedJob(job) }}
