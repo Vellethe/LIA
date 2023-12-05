@@ -15,6 +15,10 @@ namespace Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.WebHost.ConfigureKestrel(serverOptions =>
+            {
+                serverOptions.Listen(System.Net.IPAddress.Any, 5000);
+            });
 
             builder.Services.AddCors();
             //stops serialization loop when getting data from db 2 way navigation properties
