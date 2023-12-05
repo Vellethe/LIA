@@ -94,6 +94,7 @@ https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=
 
 We had a hard time finding what endpoints are in the linkedin API but they allow creation of app with some restrictions what you can and can't do.
 They will grant access and give you a token to track what you do with the API. This requires a linkedin profile to be linked with the app since whoever is linked will also be responsible for everything that the API is used for.
+The endpoint seems to be able to showcase all ads that are posted in Linkedin but they have restrictions on how and what kind of purpose you can use them for.
 https://www.linkedin.com/developers/apps/new
 
 
