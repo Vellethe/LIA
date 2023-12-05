@@ -44,7 +44,7 @@ Every component is divided into their own file to easier keep track of where it 
 ```mermaid
 flowchart TD;
   Home[Homepage]
-  Table[Table]
+  Table[JobList]
   Search[SearchAndFilters]
   Desc[Description]
   Head[Header]
