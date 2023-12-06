@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\axelc\source\repos\LIA\Api\bin\Release\net7.0\publish\</_PublishTargetUrl>
-    <History>False|2023-12-05T13:01:58.6595239Z;False|2023-12-05T14:01:32.3761204+01:00;True|2023-12-05T13:57:42.3374923+01:00;</History>
+    <History>True|2023-12-06T08:11:46.9239728Z;False|2023-12-05T14:01:58.6595239+01:00;False|2023-12-05T14:01:32.3761204+01:00;True|2023-12-05T13:57:42.3374923+01:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
