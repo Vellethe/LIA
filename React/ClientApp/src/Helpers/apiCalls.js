@@ -1,5 +1,7 @@
-﻿export async function getData() {
-    var url = "http://localhost:5000/api/jobs?page=0";
+﻿var baseUrl = "http://localhost:5000";
+
+export async function getData() {
+    var url = baseUrl+"/api/jobs?page=0";
     var response = await fetch(url, {
         method: "GET",
     })
@@ -8,7 +10,7 @@
 }
 
 export async function getTags() {
-    var url = "http://localhost:5000/api/tags";
+    var url = baseUrl+"/api/tags";
     var response = await fetch(url, {
         method: "GET",
     })
@@ -17,7 +19,7 @@ export async function getTags() {
 }
 
 export async function updateFavorite(id, state) {
-    var url = `http://localhost:5000/api/favorite?id=${id}&isFavorite=${state}`;
+    var url = baseUrl+`/api/favorite?id=${id}&isFavorite=${state}`;
     console.log(id, state);
     var response = await fetch(url, {
         method: "PUT",
@@ -25,7 +27,7 @@ export async function updateFavorite(id, state) {
 }
 
 export async function updateExluded(id, state) {
-    var url = `http://localhost:5000/api/excluded?id=${id}&isExcluded=${state}`;
+    var url = baseUrl+`/api/excluded?id=${id}&isExcluded=${state}`;
     console.log(id, state);
     var response = await fetch(url, {
         method: "PUT",
@@ -33,7 +35,7 @@ export async function updateExluded(id, state) {
 }
 
 export async function getExclueded() {
-    var url = "http://localhost:5000/api/companies?onlyExcluded=true";
+    var url = baseUrl+"/api/companies?onlyExcluded=true";
     var response = await fetch(url, {
         method: "GET",
     })
@@ -42,7 +44,7 @@ export async function getExclueded() {
 }
 
 export async function postTag(name) {
-    var url = "http://localhost:5000/api/tags?name=" + encodeURIComponent(name);
+    var url = baseUrl+"/api/tags?name=" + encodeURIComponent(name);
     var response = await fetch(url, {
         method: "POST",
     })

@@ -20,6 +20,14 @@ shows the information twice cause of the ad publishers or showing weird names be
 - Change JobScoutDatabase in [appsettings](./Api/appsettings.json) to connection string to your database. Then run `update-database` to apply all of the migrations to the database.
 - Nuget Packages should be downloaded automaticly when opening visual studio
 
+## **Deployment**
+When you want to deploy the program publish the project from the build dropdown, this will create a folder with the program files in `./bin/Release/net7.0/publish`. Make sure to both publish `React` and `Api`.
+
+### Default ports
+- Backend 5000
+- Frontend 3000
+
+
 ### NugetPackages
 nuget packagelist below in case something goes wrong when opening project.
 ```

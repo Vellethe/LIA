@@ -5,7 +5,7 @@ builder.Services.AddControllersWithViews();
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    serverOptions.Listen(System.Net.IPAddress.Any, 3000);
+    serverOptions.Listen(System.Net.IPAddress.Any, int.Parse(builder.Configuration["Hosting:Port"]));
 });
 
 var app = builder.Build();
