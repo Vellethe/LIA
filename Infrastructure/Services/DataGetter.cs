@@ -71,9 +71,9 @@ namespace Infrastructure.Services
                     if (oldContact.Count() == 0)
                     {
                         job.Contacts.Add(contact);
-                        addedJobs += 1;
                     }
                 }
+                addedJobs += 1;
                 context.SaveChanges();
             }
             return addedJobs;
