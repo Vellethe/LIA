@@ -1,6 +1,7 @@
 import redXSymbol from "./../images/Red_X.png"
 import styles from "./JobList.module.css"
 import { formatDate } from "./../Helpers/formating"
+import { useEffect } from "react"
 export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll,userId}) {
     function selectJob(job) {
         var selection = window.getSelection();
@@ -8,6 +9,15 @@ export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,s
             selectForShowFunc(job);
         }
     }
+
+    useEffect(() => {
+
+    }, [userId])
+
+    function checkboxState(job) {
+        return job.favorites.find((x) => x.user.id === userId);
+    }
+
     return (
         <div>
             <div className={styles.body} >
@@ -22,8 +32,7 @@ export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,s
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
-                            {JSON.stringify(job.favorites)}
-                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorites.find((x) => x.id = userId)} />
+                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" checked={checkboxState(job)} />
                             <label htmlFor={job.id}>Favorite</label>
                         </div>
                         <div className={styles.textDate}>{formatDate(job.postDate)}</div>

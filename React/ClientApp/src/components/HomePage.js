@@ -53,6 +53,7 @@ export const HomePage = () => {
         });
     }, []);
 
+
     useEffect(() => {
         setjobCount(dataToShow().length);
     });
@@ -91,7 +92,7 @@ export const HomePage = () => {
         updateFavorite(event.currentTarget.id, event.currentTarget.checked, selectedUserId);
     }
 
-    function excludedHandeling(id,state){
+    function excludedHandeling(id, state) {
         updateExluded(id, state);
         setServerData(removeCompany(serverData, id));
     }
@@ -130,7 +131,7 @@ export const HomePage = () => {
         if (selectedJob === null) {
             window.scrollTo({ left: 0, top: scrollY, behavior: "instant" });
         }
-    } );
+    });
 
     useEffect(() => {
         loadScrollPos();
