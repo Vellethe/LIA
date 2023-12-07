@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using Domain.Entities;
+
+namespace Domain
 {
     public class JobScoutJob
     {
@@ -7,13 +9,13 @@
         public string Municipality { get; set; } = string.Empty;
         public DateTime PostDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool Favorite { get; set; }
         public string Provider { get; set; }
         public string ProviderUniqueId { get; set; }
         public string Url { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
         public JobScoutCompany Company { get; set; }
+        public List<JobScoutFavorite> Favorites { get; set; }
         public List<JobScoutTagJob> TagJobs { get; set; }
         public List<JobScoutContact> Contacts { get; set; }
 

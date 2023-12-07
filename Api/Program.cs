@@ -8,6 +8,7 @@ namespace Api
     using Microsoft.OpenApi.Models;
     using Serilog.Events;
     using System.Reflection;
+    using Domain.Entities;
 
     public class Program
     {
@@ -81,6 +82,15 @@ namespace Api
 
 
             var app = builder.Build();
+            //code for creating default user
+            using(var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<JobScoutContext>();
+                if(context.JobScoutUsers.Any() == false)
+                {
+                    context.JobScoutUsers.Add(new JobScoutUser { Name = "Default" });
+                }
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

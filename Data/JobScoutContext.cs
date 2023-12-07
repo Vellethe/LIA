@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data
@@ -19,5 +20,7 @@ namespace Data
         public DbSet<JobScoutJob> JobScoutJobs { get; set; }
         public DbSet<JobScoutTagJob> JobScoutTagJobs { get; set; }
         public DbSet<JobScoutTag> JobScoutTags { get; set; }
+        public DbSet<JobScoutFavorite> JobScoutFavorites { get; set; }
+        public DbSet<JobScoutUser> JobScoutUsers { get; set; }
     }
 }

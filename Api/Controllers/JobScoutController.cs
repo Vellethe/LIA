@@ -1,5 +1,6 @@
 ﻿using Data;
 using Domain;
+using Domain.Entities;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace Api.Controllers
                 .Include(j => j.Contacts)
                 .Include(j => j.Company)
                 .Include(j => j.TagJobs).ThenInclude(j => j.Tag)
+                .Include(j=>j.Favorites).ThenInclude(j=>j.User)
                 .Where(x => x.Company.Excluded == false)
                 .OrderByDescending(j => j.PostDate)
                 .Skip(pageSize * page).Take(pageSize)
@@ -155,19 +157,42 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="isFavorite"></param>
+        /// <param name="userId"></param>
         [HttpPut("favorite")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Produces("application/json")]
-        public IActionResult SetFavorite(int id, bool isFavorite)
+        public IActionResult SetFavorite(int id, bool isFavorite, int userId=0)
         {
             //TODO status codes
-            var toFind = context.JobScoutJobs.FirstOrDefault(x => x.Id == id);
+            var toFind = context.JobScoutJobs.Include(x=>x.Favorites).FirstOrDefault(x => x.Id == id);
             if (toFind is null)
             {
                 return new NotFoundResult();
             }
-            toFind.Favorite = isFavorite;
+
+            var findUser = context.JobScoutUsers.FirstOrDefault(x => x.Id == userId);
+            if(findUser is null)
+            {
+                return new NotFoundResult();
+            }
+
+            var favoriteObj = toFind.Favorites.FirstOrDefault(a => a.Id == userId);
+            if (isFavorite)
+            {
+                if (favoriteObj == null)
+                {
+                    toFind.Favorites.Add(new JobScoutFavorite { User = findUser });
+                }
+            }
+            else
+            {
+                if (favoriteObj != null)
+                {
+                    context.JobScoutFavorites.Remove(favoriteObj);
+                }
+            }
+
             context.SaveChanges();
             return new OkResult();
         }
@@ -215,6 +240,12 @@ namespace Api.Controllers
                 return data;
             }
             return context.JobScoutCompanies.AsNoTracking().ToList();
+        }
+
+        [HttpGet("users")]
+        public ActionResult<List<JobScoutUser>> GetUsers()
+        {
+            return context.JobScoutUsers.ToList();
         }
 
     }
