@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchAndFilters.module.css';
 import { getTags } from "./../Helpers/apiCalls"
 import Dropdown from './DropDown';
-export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, updateSort, sortType}) => {
+export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, updateSort, sortType, users}) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -88,6 +88,7 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
                         </label>
 
                         <Dropdown tags={tags} submitForm={submitForm} />
+                       {/* <Dropdown users={users} submitForm={submitForm} />*/}
 
                         <div className={styles.arrowSort} onClick={() => { updateSort("company") }}>
                             {/*arrow*/}
