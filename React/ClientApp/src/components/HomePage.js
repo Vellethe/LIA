@@ -152,7 +152,7 @@ export const HomePage = () => {
                 <label htmlFor="userSelect">Select User: </label>
                 <select id="userSelect" onChange={handleUserChange} value={selectedUserId}>
                     {users.map((user) => (
-                        <option key={user.id} value={user.id}>
+                        <option selected={user.id == selectedUserId} value={user.id} key={user.id}>
                             {user.name}
                         </option>
                     ))}

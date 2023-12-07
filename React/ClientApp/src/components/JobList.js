@@ -22,6 +22,7 @@ export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,s
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
+                            {JSON.stringify(job.favorites)}
                             <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorites.find((x) => x.id = userId)} />
                             <label htmlFor={job.id}>Favorite</label>
                         </div>
