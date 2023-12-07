@@ -85,7 +85,7 @@ export const HomePage = () => {
             selectedJob.favorites.push({ id: -1, user: { id: selectedUserId } });
         }
         else {
-            selectedJob.favorites = [];
+            selectedJob.favorites = selectedJob.favorites.filter(favorite => favorite.user.id !== selectedUserId);
         }
         setServerData(jobs);
         updateFavorite(event.currentTarget.id, event.currentTarget.checked, selectedUserId);
