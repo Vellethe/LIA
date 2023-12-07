@@ -35,7 +35,7 @@ function Dropdown({ tags, submitForm }) {
                     ))}
                 </ul>
             </div>
-        </div>
+        </div> 
     );
 }
 

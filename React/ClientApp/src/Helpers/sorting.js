@@ -3,7 +3,7 @@
         return true;
     }
 
-    return item.favorites.find((x) => x.id = userId) !== undefined;
+    return item.favorites.find((x) => x.id = userId);
 };
 
 function filterByTags(item, searchTags, andMode) {

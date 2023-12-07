@@ -148,7 +148,7 @@ export const HomePage = () => {
                 )}
             </div>
 
-            <div>
+            <div className={styles.users}>
                 <label htmlFor="userSelect">Select User: </label>
                 <select id="userSelect" onChange={handleUserChange} value={selectedUserId}>
                     {users.map((user) => (
