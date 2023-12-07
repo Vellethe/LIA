@@ -63,6 +63,11 @@ export const HomePage = () => {
         return sortedData;
     }
 
+    const handleUserChange = (event) => {
+        const newUserId = parseInt(event.target.value);
+        setSelectedUserId(newUserId);
+    };
+
     const handleFavoriteCheckbox = async (event) => {
         var jobs = [...serverData];
 
@@ -133,6 +138,15 @@ export const HomePage = () => {
                     <span onClick={() => updateLocation('Description')}> Description</span>
                 </>
                 )}
+            </div>
+
+            <div>
+                <label htmlFor="userSelect">Select User: </label>
+                <select id="userSelect" onChange={handleUserChange} value={selectedUserId}>
+                    <option value={1}>User 1</option>
+                    <option value={2}>User 2</option>
+                    {/* Add more options as needed */}
+                </select>
             </div>
 
             <SearchAndFilters
