@@ -58,7 +58,7 @@ export const HomePage = () => {
     });
 
     function dataToShow() {
-        var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, keyword))
+        var filterdData = serverData.filter(job => filterAll(job, startDate, location, favoriteState, selectedTags, keyword, selectedUserId))
         var sortedData = filterdData.sort((a, b) => { return sortAll(a, b, isAscending, sortType) });
         return sortedData;
     }
