@@ -1,7 +1,7 @@
 import redXSymbol from "./../images/Red_X.png"
 import styles from "./JobList.module.css"
 import { formatDate } from "./../Helpers/formating"
-export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll}) {
+export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,saveScroll,userId}) {
     function selectJob(job) {
         var selection = window.getSelection();
         if (selection.type !== "Range") {
@@ -22,7 +22,7 @@ export function JobList({ data, checkBoxFunc, updateExluded, selectForShowFunc,s
                             <div className={styles.textLocation}>{job.municipality}</div>
                         </div>
                         <div onClick={e => e.stopPropagation()} className={`${styles.box} ${styles.star}`}>
-                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorite} />
+                            <input id={job.id} onChange={checkBoxFunc} type="checkbox" defaultChecked={job.favorites.find((x) => x.id = userId)} />
                             <label htmlFor={job.id}>Favorite</label>
                         </div>
                         <div className={styles.textDate}>{formatDate(job.postDate)}</div>

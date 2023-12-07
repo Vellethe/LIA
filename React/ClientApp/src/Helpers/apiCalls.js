@@ -18,8 +18,8 @@ export async function getTags() {
     return data
 }
 
-export async function updateFavorite(id, state) {
-    var url = baseUrl+`/api/favorite?id=${id}&isFavorite=${state}`;
+export async function updateFavorite(id, state,userId) {
+    var url = baseUrl+`/api/favorite?id=${id}&isFavorite=${state}&userID=${userId}`;
     console.log(id, state);
     var response = await fetch(url, {
         method: "PUT",
@@ -50,3 +50,9 @@ export async function postTag(name) {
     })
 }
 
+export async function getUsers() {
+    var url = baseUrl+"/api/users";
+    var response = await fetch(url, {
+        method: "GET",
+    })
+}

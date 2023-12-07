@@ -25,6 +25,8 @@ export const HomePage = () => {
 
     const scrollPos = useRef(0);
 
+    const [selectedUserId, setSelectedUserId] = useState(0);
+
 
     function setSort(name) {
         if (sortType === name) {
@@ -64,7 +66,7 @@ export const HomePage = () => {
         var jobs = [...serverData];
         jobs.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
         setServerData(jobs);
-        updateFavorite(event.currentTarget.id, event.currentTarget.checked);
+        updateFavorite(event.currentTarget.id, event.currentTarget.checked, selectedUserId);
     }
 
     function excludedHandeling(id,state){
@@ -81,6 +83,7 @@ export const HomePage = () => {
                     selectForShowFunc={(job) => { saveScrollPos(); setSelectedJob(job) }}
                     saveScroll={saveScrollPos}
                     checkBoxFunc={handleFavoriteCheckbox}
+                    userId={selectedUserId}
                 />
             </div>
         }
