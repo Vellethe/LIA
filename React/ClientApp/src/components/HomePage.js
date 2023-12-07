@@ -68,6 +68,14 @@ export const HomePage = () => {
         setSelectedUserId(newUserId);
     };
 
+    const users = [
+        { id: 1, name: 'User 1' },
+        { id: 2, name: 'User 2' },
+        { id: 3, name: 'User 3' },
+        { id: 4, name: 'User 4' },
+        { id: 5, name: 'User 5' },
+    ];
+
     const handleFavoriteCheckbox = async (event) => {
         var jobs = [...serverData];
 
@@ -143,9 +151,11 @@ export const HomePage = () => {
             <div>
                 <label htmlFor="userSelect">Select User: </label>
                 <select id="userSelect" onChange={handleUserChange} value={selectedUserId}>
-                    <option value={1}>User 1</option>
-                    <option value={2}>User 2</option>
-                    {/* Add more options as needed */}
+                    {users.map((user) => (
+                        <option key={user.id} value={user.id}>
+                            {user.name}
+                        </option>
+                    ))}
                 </select>
             </div>
 
