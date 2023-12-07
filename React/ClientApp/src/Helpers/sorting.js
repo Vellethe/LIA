@@ -1,9 +1,9 @@
-﻿function filterByFavorite(item, filterFavorite) {
+﻿function filterByFavorite(item, filterFavorite,userId) {
     if (!filterFavorite) {
         return true;
     }
 
-    return item.favorite === true;
+    return item.favorites.find((x) => x.id = userId);
 };
 
 function filterByTags(item, searchTags, andMode) {
@@ -57,9 +57,9 @@ function filterByKeyword(item, keyword) {
     return caseInsensitiveContains(item.description, keyword) || caseInsensitiveContains(item.role, keyword) || caseInsensitiveContains( item.company.name, keyword);
 }
 
-export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags,keyword) {
+export function filterAll(item, startShowDate, locations, doFavoriteSort, searchTags,keyword,userId) {
     return (
-        filterByFavorite(item, doFavoriteSort) &&
+        filterByFavorite(item, doFavoriteSort,userId) &&
         filterDataByDate(item, startShowDate) &&
         filterByTags(item, searchTags, false) &&
         searchByLocation(item, locations) &&

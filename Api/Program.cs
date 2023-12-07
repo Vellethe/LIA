@@ -83,14 +83,23 @@ namespace Api
 
             var app = builder.Build();
             //code for creating default user
-            using(var scope = app.Services.CreateScope())
+            using (var scope = app.Services.CreateScope())
             {
+                List<string> userList = new() { "user1", "user2", "user3" };
                 var context = scope.ServiceProvider.GetRequiredService<JobScoutContext>();
-                if(context.JobScoutUsers.Any() == false)
+                if (context.JobScoutUsers.Any() == false)
                 {
                     context.JobScoutUsers.Add(new JobScoutUser { Name = "Default" });
-                    context.SaveChanges();
                 }
+                var allUsers = context.JobScoutUsers.ToList();
+                foreach (var userToAdd in userList)
+                {
+                    if (!allUsers.Any(x => x.Name == userToAdd))
+                    {
+                        context.JobScoutUsers.Add(new JobScoutUser { Name = userToAdd });
+                    }
+                }
+                context.SaveChanges();
             }
 
             // Configure the HTTP request pipeline.
