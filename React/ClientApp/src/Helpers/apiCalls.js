@@ -55,4 +55,6 @@ export async function getUsers() {
     var response = await fetch(url, {
         method: "GET",
     })
+    var data = await response.json();
+    return data;
 }

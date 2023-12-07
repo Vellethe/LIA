@@ -3,7 +3,7 @@ import styles from "./HomePage.module.css";
 import { SearchAndFilters } from "./SearchAndFilters"
 import { DescriptionPage } from './Description';
 import { filterAll, sortAll, removeCompany } from './../Helpers/sorting'
-import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
+import { getData, updateExluded, getUsers, updateFavorite } from './../Helpers/apiCalls'
 import { JobList } from './JobList';
 import { parseTags } from '../Helpers/formating';
 
@@ -16,10 +16,10 @@ export const HomePage = () => {
     const [jobCount, setjobCount] = useState(0);
 
     const [startDate, setStartDate] = useState(null);
-    const [selectedTags,setSelectedTags] = useState([]);
-    const [favoriteState,setFavoriteState]  = useState(false);
-    const [location,setLocation]  = useState([]);
-    const [keyword,setKeyword]  = useState("");
+    const [selectedTags, setSelectedTags] = useState([]);
+    const [favoriteState, setFavoriteState] = useState(false);
+    const [location, setLocation] = useState([]);
+    const [keyword, setKeyword] = useState("");
 
     const [isAscending, setIsAscending] = useState(false);
     const [sortType, setSortType] = useState("date");
@@ -27,6 +27,10 @@ export const HomePage = () => {
     const scrollPos = useRef(0);
 
     const [selectedUserId, setSelectedUserId] = useState(1);
+
+    const [users, setUsers] = useState([
+    ]
+    )
 
 
     function setSort(name) {
@@ -39,7 +43,7 @@ export const HomePage = () => {
         }
     }
 
-    function setFilters(startDate, location, favoriteState, selectedTags , keyword) {
+    function setFilters(startDate, location, favoriteState, selectedTags, keyword) {
         setStartDate(startDate);
         setLocation(location);
         setFavoriteState(favoriteState);
@@ -50,6 +54,9 @@ export const HomePage = () => {
     useEffect(() => {
         getData().then(x => {
             setServerData(x);
+        });
+        getUsers().then(x => {
+            setUsers(x);
         });
     }, []);
 
@@ -68,14 +75,6 @@ export const HomePage = () => {
         const newUserId = parseInt(event.target.value);
         setSelectedUserId(newUserId);
     };
-
-    const users = [
-        { id: 1, name: 'User 1' },
-        { id: 2, name: 'User 2' },
-        { id: 3, name: 'User 3' },
-        { id: 4, name: 'User 4' },
-        { id: 5, name: 'User 5' },
-    ];
 
     const handleFavoriteCheckbox = async (event) => {
         var jobs = [...serverData];
