@@ -80,11 +80,11 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         <input
                             className={styles.checkBox}
                             type="checkbox"
-                            defaultChecked={job.favorites.find((x) => x.id == userId)}
+                            defaultChecked={job.favorites.find((x) => x.id === userId)}
                             onChange={updateFavoriteFunc}
                             id={job.id}
                         />
-                        Favorite: {favorite ? 'Yes' : 'No'}
+                        Favorite: {job.favorites.find((x) => x.id === userId) ? 'Yes' : 'No'}
                     </label>
                     <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">
                         {`Link to ${job.provider}`}

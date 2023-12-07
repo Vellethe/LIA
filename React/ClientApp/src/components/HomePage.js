@@ -5,6 +5,7 @@ import { DescriptionPage } from './Description';
 import { filterAll, sortAll, removeCompany } from './../Helpers/sorting'
 import { getData, updateExluded, getCompanyCount, updateFavorite } from './../Helpers/apiCalls'
 import { JobList } from './JobList';
+import { parseTags } from '../Helpers/formating';
 
 export const HomePage = () => {
     const [serverData, setServerData] = useState([]);
@@ -64,7 +65,15 @@ export const HomePage = () => {
 
     const handleFavoriteCheckbox = async (event) => {
         var jobs = [...serverData];
-        jobs.find(x => x.id === parseInt(event.currentTarget.id)).favorite = event.currentTarget.checked;
+
+        var selectedJob = jobs.find(x => x.id === parseInt(event.currentTarget.id));
+
+        if (event.currentTarget.checked) {
+            selectedJob.favorites.push({ id: -1, user: { id: selectedUserId } });
+        }
+        else {
+            selectedJob.favorites = [];
+        }
         setServerData(jobs);
         updateFavorite(event.currentTarget.id, event.currentTarget.checked, selectedUserId);
     }
