@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styles from './DropDown.module.css';
 
-function Dropdown({ tags, users, submitForm }) {
+function Dropdown({ tags, submitForm }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
-    const [selectedUserId, setSelectedUserId] = useState(1);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -23,63 +22,20 @@ function Dropdown({ tags, users, submitForm }) {
         submitForm();
     }
 
-    //const handleUserChange = (userId) => {
-    //    setSelectedUserId(userId);
-    //};
-
     return (
-       /* <>*/
-            <div className={styles.dropdown}>
-                <button onClick={toggleDropdown} className={styles['dropdown-button']}>
-                    Skills
-                </button>
-                <div
-                    className={styles.scrollMenu}
-                    style={isOpen ? {} : { display: 'none' }}
-                    onMouseLeave={() => setIsOpen(false)}
-                >
-                    <ul className={styles['dropdown-list']}>
-                        {tags.map((tag) => (
-                            <li key={tag.name}>
-                                <label htmlFor={tag.name}>{tag.name}</label>
-                                <input
-                                    defaultChecked={selectedTags.includes(tag.name)}
-                                    onChange={() => handleDropdownTick(tag.name)}
-                                    type="checkbox"
-                                    id={tag.name}
-                                    name="selectedTags"
-                                    value={tag.name}
-                                />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+        <div className={styles.dropdown}>
+            <button onClick={toggleDropdown} className={styles['dropdown-button']}>Skills</button>
+            <div className={styles.scrollMenu} style={isOpen ? {} : { display: 'none' }} onMouseLeave={() => setIsOpen(false)}>
+                <ul className={styles['dropdown-list']}>
+                    {tags.map(tag => (
+                        <li key={tag.name}>
+                            <label htmlFor={tag.name}>{tag.name}</label>
+                            <input defaultChecked={selectedTags.includes(tag.name)} onChange={() => handleDropdownTick(tag.name)} type="checkbox" id={tag.name} name="selectedTags" value={tag.name} />
+                        </li>
+                    ))}
+                </ul>
             </div>
-
-        //    <div className={styles.dropdown}>
-        //        <button
-        //            onClick={toggleDropdown}
-        //           className={styles['dropdown-button']}
-        //       >
-        //            Select User
-        //        </button>
-        //        <div
-        //            className={styles.scrollMenu}
-        //            style={isOpen ? {} : { display: 'none' }}
-        //            onMouseLeave={() => setIsOpen(false)}
-        //        >
-        //            <ul className={styles['dropdown-list']}>
-        //                {users.map((user) => (
-        //                    <li key={user.id}>
-        //                        <button onClick={() => handleUserChange(user.id)}>
-        //                            {user.name}
-        //                        </button>
-        //                    </li>
-        //                ))}
-        //            </ul>
-        //        </div>
-        //    </div>
-        //</>
+        </div>
     );
 }
 

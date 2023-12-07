@@ -88,7 +88,6 @@ export const SearchAndFilters = ({ updateFilter, jobCount, isAscending, hidden, 
                         </label>
 
                         <Dropdown tags={tags} submitForm={submitForm} />
-                       {/* <Dropdown users={users} submitForm={submitForm} />*/}
 
                         <div className={styles.arrowSort} onClick={() => { updateSort("company") }}>
                             {/*arrow*/}
