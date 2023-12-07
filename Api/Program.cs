@@ -89,6 +89,7 @@ namespace Api
                 if(context.JobScoutUsers.Any() == false)
                 {
                     context.JobScoutUsers.Add(new JobScoutUser { Name = "Default" });
+                    context.SaveChanges();
                 }
             }
 

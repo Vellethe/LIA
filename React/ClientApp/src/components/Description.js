@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Description.module.css';
 import { formatDate, parseTags } from "./../Helpers/formating"
 
-export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc }) => {
+export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteFunc, userId }) => {
     useEffect(() => {
         window.scrollTo({ left: 0, top: 0, behavior: "instant" });
     });
@@ -80,7 +80,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                         <input
                             className={styles.checkBox}
                             type="checkbox"
-                            defaultChecked={job.favorite}
+                            defaultChecked={job.favorites.find((x) => x.id == userId)}
                             onChange={updateFavoriteFunc}
                             id={job.id}
                         />

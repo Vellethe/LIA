@@ -162,10 +162,10 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Produces("application/json")]
-        public IActionResult SetFavorite(int id, bool isFavorite, int userId=0)
+        public IActionResult SetFavorite(int id, bool isFavorite, int userId=1)
         {
             //TODO status codes
-            var toFind = context.JobScoutJobs.Include(x=>x.Favorites).FirstOrDefault(x => x.Id == id);
+            var toFind = context.JobScoutJobs.Include(x=>x.Favorites).ThenInclude(x=>x.User).FirstOrDefault(x => x.Id == id);
             if (toFind is null)
             {
                 return new NotFoundResult();
@@ -177,7 +177,7 @@ namespace Api.Controllers
                 return new NotFoundResult();
             }
 
-            var favoriteObj = toFind.Favorites.FirstOrDefault(a => a.Id == userId);
+            var favoriteObj = toFind.Favorites.FirstOrDefault(a => a.User.Id == userId);
             if (isFavorite)
             {
                 if (favoriteObj == null)

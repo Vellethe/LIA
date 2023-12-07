@@ -25,7 +25,7 @@ export const HomePage = () => {
 
     const scrollPos = useRef(0);
 
-    const [selectedUserId, setSelectedUserId] = useState(0);
+    const [selectedUserId, setSelectedUserId] = useState(1);
 
 
     function setSort(name) {
@@ -141,6 +141,7 @@ export const HomePage = () => {
                 favorite={selectedJob ? selectedJob.favorite : false}
                 backButtonFunc={() => { setSelectedJob(null); setScrollTrigger({}); }}
                 updateFavoriteFunc={handleFavoriteCheckbox}
+                userId={selectedUserId}
             />
 
             {ShowTableOrDescription(selectedJob == null)}
