@@ -87,7 +87,7 @@ export const DescriptionPage = ({ job, backButtonFunc, favorite, updateFavoriteF
                             onChange={updateFavoriteFunc}
                             id={job.id}
                         />
-                        Favorite: {checkboxState ? 'Yes' : 'No'}
+                        Favorite: {checkboxState(job) ? 'Yes' : 'No'}
                     </label>
                     <a href={job.url} className={styles.webUrl} target="_blank" rel="noopener noreferrer">
                         {`Link to ${job.provider}`}
