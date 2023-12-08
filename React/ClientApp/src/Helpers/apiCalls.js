@@ -28,7 +28,6 @@ export async function updateFavorite(id, state,userId) {
 
 export async function updateExluded(id, state) {
     var url = baseUrl+`/api/excluded?id=${id}&isExcluded=${state}`;
-    console.log(id, state);
     var response = await fetch(url, {
         method: "PUT",
     })
